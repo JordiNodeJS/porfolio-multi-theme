@@ -55,7 +55,7 @@ const Navigation = () => {
           >
             JORGe
           </motion.div>
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation */}{" "}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
               <motion.a
@@ -63,12 +63,12 @@ const Navigation = () => {
                 href={item.href}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
-                className="text-gray-300 hover:text-white transition-colors duration-300 font-medium"
+                className="text-gray-400 hover:text-white transition-colors duration-300 font-medium"
               >
                 {item.name}
               </motion.a>
             ))}
-          </div>{" "}
+          </div>
           {/* Social Links & Theme Toggle */}
           <div className="hidden lg:flex items-center space-x-4">
             {socialLinks.map((social) => (
@@ -93,7 +93,7 @@ const Navigation = () => {
           <motion.button
             whileTap={{ scale: 0.95 }}
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 text-gray-300 hover:text-white"
+            className="md:hidden p-2 text-gray-400 hover:text-white"
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </motion.button>

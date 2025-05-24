@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
 import { usePortfolioData } from "../hooks/usePortfolioData";
-import { Project } from "../types";
+import type { Project } from "../types";
 
 const ProjectCard = ({
   project,
@@ -38,9 +38,7 @@ const ProjectCard = ({
         </motion.div>
         {/* Overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          {" "}
           <div className="absolute bottom-4 left-4 right-4 flex gap-2">
-            {" "}
             {project.link && (
               <motion.a
                 href={project.link}
@@ -76,7 +74,7 @@ const ProjectCard = ({
         <div className="flex justify-between items-center mb-3">
           <h3 className="text-xl font-semibold text-white group-hover:text-primary-400 transition-colors">
             {project.title}
-          </h3>{" "}
+          </h3>
           <div className="flex gap-1.5">
             {project.link && (
               <span
@@ -125,10 +123,7 @@ const Projects = () => {
   const { data } = usePortfolioData();
 
   return (
-    <section
-      id="projects"
-      className="section-padding bg-gradient-to-b from-slate-900 to-gray-800"
-    >
+    <section id="projects" className="section-padding section-bg-gradient">
       <div className="container-custom">
         {/* Header */}
         <motion.div

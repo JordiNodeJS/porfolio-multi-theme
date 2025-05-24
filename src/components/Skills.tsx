@@ -55,12 +55,12 @@ const SkillBar = ({
       viewport={{ once: true }}
       className="mb-6"
     >
+      {" "}
       <div className="flex justify-between items-center mb-2">
         <h3 className="text-lg font-semibold text-white">{skill.nombre}</h3>
         <span className="text-sm text-gray-400 capitalize">{skill.nivel}</span>
       </div>
-
-      <div className="w-full bg-gray-700 rounded-full h-3 overflow-hidden">
+      <div className="w-full dark:bg-gray-700 light:bg-gray-300 rounded-full h-3 overflow-hidden">
         <motion.div
           initial={{ width: 0 }}
           whileInView={{ width: `${progress}%` }}
@@ -96,7 +96,7 @@ const TechIcon = ({
   <motion.div
     whileHover={{ scale: 1.1, y: -5 }}
     whileTap={{ scale: 0.95 }}
-    className="flex flex-col items-center p-4 glass-effect rounded-xl hover:bg-white/10 transition-all duration-300 group"
+    className="flex flex-col items-center p-4 glass-effect rounded-xl dark:hover:bg-white/10 light:hover:bg-black/5 transition-all duration-300 group"
   >
     <div
       className={`p-3 rounded-lg bg-gradient-to-br ${color} mb-3 group-hover:shadow-lg transition-shadow`}
@@ -122,10 +122,7 @@ const Skills = () => {
   ];
 
   return (
-    <section
-      id="skills"
-      className="section-padding bg-gradient-to-b from-gray-800 to-slate-900"
-    >
+    <section id="skills" className="section-padding section-bg-gradient">
       <div className="container-custom">
         {/* Header */}
         <motion.div

@@ -22,12 +22,23 @@
 
   /* Dark mode (default) */
   .dark body {
-    @apply bg-gradient-to-br from-slate-900 via-gray-900 to-slate-900;
+    background: linear-gradient(
+      to bottom right,
+      rgb(15 23 42),
+      rgb(17 24 39),
+      rgb(15 23 42)
+    );
   }
 
   /* Light mode */
   .light body {
-    @apply bg-gradient-to-br from-gray-50 via-white to-gray-100 text-gray-900;
+    background: linear-gradient(
+      to bottom right,
+      rgb(249 250 251),
+      rgb(255 255 255),
+      rgb(243 244 246)
+    );
+    @apply text-gray-900;
   }
 
   /* Custom scrollbar - Dark mode */
@@ -72,15 +83,112 @@
   }
 
   .light .glass-effect {
-    @apply bg-black/5 backdrop-blur-md border border-black/10;
+    @apply bg-white/70 backdrop-blur-md border border-gray-200/50 shadow-lg;
+  }
+
+  /* Text colors - Theme aware */
+  .dark .text-white {
+    color: rgb(255 255 255);
+  }
+
+  .light .text-white {
+    color: rgb(17 24 39);
+  }
+
+  .dark .text-gray-400 {
+    color: rgb(156 163 175);
+  }
+
+  .light .text-gray-400 {
+    color: rgb(107 114 128);
+  }
+
+  .dark .text-gray-300 {
+    color: rgb(209 213 219);
+  }
+
+  .light .text-gray-300 {
+    color: rgb(75 85 99);
+  }
+
+  /* Primary colors - Theme aware */
+  .dark .text-primary-400 {
+    color: rgb(96 165 250);
+  }
+
+  .light .text-primary-400 {
+    color: rgb(37 99 235);
+  }
+
+  .dark .text-primary-300 {
+    color: rgb(147 197 253);
+  }
+
+  .light .text-primary-300 {
+    color: rgb(59 130 246);
+  }
+
+  /* Background gradients - Theme aware */
+  .section-bg-gradient {
+    background: linear-gradient(to bottom, rgb(15 23 42), rgb(31 41 55));
+  }
+
+  .dark .section-bg-gradient {
+    background: linear-gradient(to bottom, rgb(15 23 42), rgb(31 41 55));
+  }
+
+  .light .section-bg-gradient {
+    background: linear-gradient(to bottom, rgb(249 250 251), rgb(255 255 255));
+  }
+
+  .hero-bg-gradient {
+    background: linear-gradient(to bottom right, rgb(0 0 0), rgb(31 41 55));
+  }
+
+  .dark .hero-bg-gradient {
+    background: linear-gradient(to bottom right, rgb(0 0 0), rgb(31 41 55));
+  }
+
+  .light .hero-bg-gradient {
+    background: linear-gradient(
+      to bottom right,
+      rgb(249 250 251),
+      rgb(229 231 235)
+    );
+  }
+
+  .dark .hero-bg-gradient {
+    background: linear-gradient(
+      to bottom right,
+      rgb(15 23 42),
+      rgb(17 24 39),
+      rgb(15 23 42)
+    );
+  }
+
+  .light .hero-bg-gradient {
+    background: linear-gradient(
+      to bottom right,
+      rgb(249 250 251),
+      rgb(255 255 255),
+      rgb(243 244 246)
+    );
   }
 
   .gradient-text {
     @apply bg-gradient-to-r from-primary-400 to-primary-600 bg-clip-text text-transparent;
   }
 
+  .light .gradient-text {
+    @apply bg-gradient-to-r from-primary-600 to-primary-800 bg-clip-text text-transparent;
+  }
+
   .card-hover {
     @apply transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary-500/20;
+  }
+
+  .light .card-hover {
+    @apply transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary-600/30;
   }
 
   .btn-primary {
@@ -94,6 +202,50 @@
   .container-custom {
     @apply max-w-7xl mx-auto;
   }
+
+  /* Navigation theme support */
+  .dark .nav-bg {
+    @apply bg-slate-900/80;
+  }
+
+  .light .nav-bg {
+    @apply bg-white/80;
+  }
+
+  /* Modal theme support */
+  .dark .modal-bg {
+    @apply bg-slate-900;
+  }
+
+  .light .modal-bg {
+    @apply bg-white;
+  }
+
+  /* Border colors - Theme aware */
+  .dark .border-primary-500 {
+    border-color: rgb(59 130 246);
+  }
+
+  .light .border-primary-500 {
+    border-color: rgb(37 99 235);
+  }
+
+  .dark .border-primary-400 {
+    border-color: rgb(96 165 250);
+  }
+
+  .light .border-primary-400 {
+    border-color: rgb(59 130 246);
+  }
+
+  /* Timeline node borders */
+  .light .border-slate-900 {
+    border-color: rgb(255 255 255);
+  }
+
+  .dark .border-slate-900 {
+    border-color: rgb(15 23 42);
+  }
 }
 
 @layer utilities {
@@ -103,6 +255,15 @@
 
   .text-shadow-lg {
     text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Light mode text shadows */
+  .light .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+
+  .light .text-shadow-lg {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 
   /* Tooltips personalizados */
@@ -115,6 +276,10 @@
     content: attr(data-tooltip);
   }
 
+  .light .tooltip::after {
+    @apply bg-gray-200 text-gray-900 border border-gray-300;
+  }
+
   .tooltip-top::after {
     @apply bottom-full mb-1;
   }
@@ -125,5 +290,13 @@
 
   .tooltip:hover::after {
     @apply opacity-100 visible;
+  }
+
+  /* Line clamp utilities */
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 }

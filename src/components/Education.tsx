@@ -17,8 +17,9 @@ const EducationCard = ({
       viewport={{ once: true }}
       className="glass-effect rounded-xl overflow-hidden card-hover group"
     >
+      {" "}
       {/* Header */}
-      <div className="bg-gradient-to-r from-primary-500/20 to-purple-500/20 p-6 border-b border-white/10">
+      <div className="bg-gradient-to-r from-primary-500/20 to-purple-500/20 p-6 border-b border-themed">
         <div className="flex items-start justify-between">
           <div className="flex items-center gap-3">
             <motion.div
@@ -29,7 +30,7 @@ const EducationCard = ({
               <GraduationCap className="w-6 h-6 text-primary-400" />
             </motion.div>
             <div>
-              <h3 className="text-xl font-bold text-white group-hover:text-primary-400 transition-colors">
+              <h3 className="text-xl font-bold text-themed group-hover:text-primary-400 transition-colors">
                 {education.title}
               </h3>
               <p className="text-primary-400 font-medium">{education.center}</p>
@@ -46,20 +47,18 @@ const EducationCard = ({
           >
             <ExternalLink className="w-5 h-5" />
           </motion.a>
-        </div>
-
+        </div>{" "}
         {/* Duration */}
-        <div className="flex items-center gap-2 mt-3 text-gray-300">
+        <div className="flex items-center gap-2 mt-3 text-muted">
           <Calendar className="w-4 h-4" />
           <span className="text-sm">
             {education.start_date} - {education.end_date}
           </span>
         </div>
-      </div>
-
+      </div>{" "}
       {/* Content */}
       <div className="p-6">
-        <p className="text-gray-300 text-sm leading-relaxed mb-6">
+        <p className="text-muted text-sm leading-relaxed mb-6">
           {education.description}
         </p>
 
@@ -76,15 +75,14 @@ const EducationCard = ({
             >
               {tag}
             </motion.span>
-          ))}
+          ))}{" "}
           {education.tags.length > 6 && (
-            <span className="px-3 py-1 bg-gray-500/20 text-gray-300 text-xs rounded-full border border-gray-500/30">
+            <span className="px-3 py-1 bg-gray-500/20 text-muted text-xs rounded-full border border-gray-500/30">
               +{education.tags.length - 6}
             </span>
           )}
         </div>
       </div>
-
       {/* Featured Badge */}
       {index === 0 && (
         <motion.div
@@ -116,7 +114,7 @@ const Education = () => {
   return (
     <section
       id="education"
-      className="section-padding bg-gradient-to-b from-gray-800 to-slate-900"
+      className="section-padding bg-section-light dark:bg-section-dark"
     >
       <div className="container-custom">
         {/* Header */}
@@ -129,8 +127,8 @@ const Education = () => {
         >
           <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-6">
             Formación Académica
-          </h2>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+          </h2>{" "}
+          <p className="text-xl text-muted max-w-2xl mx-auto">
             Mi camino de aprendizaje continuo en tecnologías de desarrollo
           </p>
         </motion.div>
@@ -151,17 +149,17 @@ const Education = () => {
                 className="inline-flex items-center justify-center w-12 h-12 bg-primary-500/20 rounded-lg mb-4"
               >
                 <stat.icon className="w-6 h-6 text-primary-400" />
-              </motion.div>
+              </motion.div>{" "}
               <motion.div
                 initial={{ scale: 0 }}
                 whileInView={{ scale: 1 }}
                 transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
                 viewport={{ once: true }}
-                className="text-3xl font-bold text-white mb-2"
+                className="text-3xl font-bold text-themed mb-2"
               >
                 {stat.value}
               </motion.div>
-              <p className="text-gray-400">{stat.label}</p>
+              <p className="text-muted">{stat.label}</p>
             </motion.div>
           ))}
         </div>
@@ -181,11 +179,12 @@ const Education = () => {
           viewport={{ once: true }}
           className="mt-16 text-center"
         >
+          {" "}
           <div className="glass-effect p-8 rounded-xl max-w-4xl mx-auto">
-            <h3 className="text-2xl font-bold text-white mb-4">
+            <h3 className="text-2xl font-bold text-themed mb-4">
               Filosofía de Aprendizaje
             </h3>
-            <p className="text-gray-300 leading-relaxed">
+            <p className="text-muted leading-relaxed">
               "Creo firmemente en el aprendizaje continuo y la adaptación a las
               nuevas tecnologías. Mi formación no solo abarca conocimientos
               técnicos, sino también metodologías ágiles, trabajo en equipo y

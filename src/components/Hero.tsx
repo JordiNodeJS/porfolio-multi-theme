@@ -42,12 +42,12 @@ const Hero = () => {
       id="hero"
       className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 lg:pt-28"
     >
+      {" "}
       {/* Animated Background */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary-900/20 via-purple-900/20 to-pink-900/20"></div>{" "}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-900/10 via-purple-900/10 to-pink-900/10"></div>
+        <div className="absolute inset-0 hero-bg-gradient opacity-20"></div>
+        <div className="absolute inset-0 hero-bg-gradient opacity-10"></div>
       </div>
-
       {/* Floating Elements */}
       <motion.div
         animate={floatingAnimation}
@@ -67,7 +67,6 @@ const Hero = () => {
         }}
         className="absolute top-1/2 right-10 w-16 h-16 bg-pink-500/10 rounded-full blur-xl"
       />
-
       <div className="container-custom relative z-10">
         <motion.div
           variants={containerVariants}

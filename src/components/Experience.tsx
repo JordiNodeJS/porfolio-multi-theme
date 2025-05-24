@@ -60,27 +60,24 @@ const ExperienceCard = ({
           }
           title={isClickableCard ? "Haz clic para ver logros destacados" : ""}
         >
+          {" "}
           {/* Tooltip personalizado */}
           {isClickableCard && (
-            <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-slate-800 text-white text-xs px-3 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap z-10 border border-primary-500/30">
+            <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 glass-effect text-white text-xs px-3 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap z-10 border border-primary-500/30">
               💡 Haz clic para ver logros destacados
-              <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-slate-800"></div>
+              <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-current"></div>
             </div>
           )}
-
           <h3 className="text-xl font-bold text-white mb-2">
             {experience.company}
           </h3>
-
           <div className="flex items-center gap-2 mb-4 text-primary-400">
             <MapPin className="w-4 h-4" />
             <span className="text-sm">España</span>
           </div>
-
           <p className="text-gray-300 text-sm leading-relaxed mb-4">
             {experience.experience}
           </p>
-
           {/* Links */}
           {experience.links && (
             <div className="flex gap-2 flex-wrap">
@@ -117,9 +114,9 @@ const ExperienceCard = ({
           viewport={{ once: true, margin: "-50px" }}
           className="relative z-20"
         >
-          {/* Main timeline node */}
+          {/* Main timeline node */}{" "}
           <motion.div
-            className="w-6 h-6 bg-primary-500 rounded-full border-4 border-slate-900 relative overflow-hidden shadow-lg shadow-primary-500/50"
+            className="w-6 h-6 bg-primary-500 rounded-full border-4 dark:border-slate-900 light:border-white relative overflow-hidden shadow-lg shadow-primary-500/50"
             whileHover={{ scale: 1.3, rotate: 180 }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
           >
@@ -166,7 +163,6 @@ const ExperienceCard = ({
               className="absolute inset-1 bg-white rounded-full opacity-80"
             />
           </motion.div>
-
           {/* Connecting line to content */}
           <motion.div
             initial={{ width: 0, opacity: 0 }}
@@ -358,10 +354,7 @@ const Experience = () => {
   };
 
   return (
-    <section
-      id="experience"
-      className="section-padding bg-gradient-to-b from-slate-900 to-gray-800"
-    >
+    <section id="experience" className="section-padding section-bg-gradient">
       <div className="container-custom">
         {/* Header */}
         <motion.div
@@ -460,18 +453,17 @@ const Experience = () => {
                 exit={{ opacity: 0 }}
                 className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50"
                 onClick={() => setActiveModal(null)}
-              />
-
+              />{" "}
               {/* Modal */}
               <motion.div
                 initial={{ opacity: 0, x: "100%" }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: "100%" }}
                 transition={{ type: "spring", damping: 25, stiffness: 300 }}
-                className="fixed right-0 top-0 h-full w-full max-w-2xl bg-slate-900 border-l border-primary-500/30 z-50 overflow-y-auto"
+                className="fixed right-0 top-0 h-full w-full max-w-2xl modal-bg border-l border-primary-500/30 z-50 overflow-y-auto"
               >
                 {/* Header del Modal */}
-                <div className="sticky top-0 bg-slate-900/95 backdrop-blur-md border-b border-primary-500/30 p-6">
+                <div className="sticky top-0 modal-bg/95 backdrop-blur-md border-b border-primary-500/30 p-6">
                   <div className="flex items-center justify-between">
                     <div>
                       <h2 className="text-2xl font-bold gradient-text">
