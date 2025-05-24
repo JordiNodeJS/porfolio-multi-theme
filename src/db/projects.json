@@ -1,5 +1,25 @@
 [
   {
+    "id": "remove-bg-001",
+    "title": "Remove Background",
+    "status": "in production",
+    "imgCover": "img-project/remove-bg.png",
+    "description": "Aplicación web que elimina automáticamente el fondo de imágenes usando inteligencia artificial. Permite subir imágenes, procesarlas en el backend y descargar la versión sin fondo. Ejemplo educativo de monorepo moderno con Next.js y Express usando Bun.",
+    "link": "https://github.com/JordiNodeJS/remove-background",
+    "demo": "http://ec2-3-254-74-19.eu-west-1.compute.amazonaws.com:3000/",
+    "tags": [
+      "typescript",
+      "nextjs",
+      "express",
+      "bun",
+      "monorepo",
+      "clerk",
+      "tailwindcss",
+      "ai",
+      "imgly/background-removal-node"
+    ]
+  },
+  {
     "id": "9b681b4d",
     "title": "IT Academy directory",
     "status": "in production",

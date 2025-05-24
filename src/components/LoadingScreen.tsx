@@ -3,22 +3,14 @@ import { useState, useEffect } from "react";
 
 const LoadingScreen = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    // Simulate loading progress
-    const interval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(interval);
-          setTimeout(() => setIsLoading(false), 800);
-          return 100;
-        }
-        return prev + Math.random() * 15;
-      });
-    }, 100);
+    // Simplified loading - just show for 2 seconds
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
 
-    return () => clearInterval(interval);
+    return () => clearTimeout(timer);
   }, []);
 
   // Animation variants for the J letter
@@ -128,47 +120,22 @@ const LoadingScreen = () => {
                     repeat: Infinity,
                     ease: "easeInOut",
                   }}
-                  className="absolute top-1/2 left-1/2 w-3 h-3 rounded-full"
-                  style={{
-                    background: `linear-gradient(45deg, #3B82F6, #8B5CF6, #EC4899)`,
-                    filter: "blur(1px)",
-                  }}
+                  className="absolute top-1/2 left-1/2 w-3 h-3 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 blur-sm"
                 />
               ))}
-            </motion.div>
-
+            </motion.div>{" "}
             {/* Loading text */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1, duration: 0.6 }}
+              className="text-center"
             >
               <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent mb-2">
                 Jorge Portfolio
               </h1>
               <p className="text-slate-400 text-lg">Cargando experiencia...</p>
             </motion.div>
-
-            {/* Progress bar */}
-            <motion.div
-              className="w-64 mx-auto mt-8"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.5, duration: 0.5 }}
-            >
-              <div className="w-full bg-slate-800 rounded-full h-2">
-                <motion.div
-                  initial={{ width: 0 }}
-                  animate={{ width: `${progress}%` }}
-                  transition={{ duration: 0.3 }}
-                  className="h-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full"
-                />
-              </div>
-              <p className="text-slate-500 text-sm mt-2">
-                {Math.round(progress)}%
-              </p>
-            </motion.div>
-
             {/* Background floating elements */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
               {[...Array(12)].map((_, i) => (

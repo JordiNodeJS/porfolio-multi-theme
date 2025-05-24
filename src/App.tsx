@@ -5,6 +5,7 @@ import Projects from "./components/Projects";
 import Skills from "./components/Skills";
 import Experience from "./components/Experience";
 import Education from "./components/Education";
+import Contact from "./components/Contact";
 import ScrollToTop from "./components/ScrollToTop";
 import FloatingParticles from "./components/FloatingParticles";
 import LoadingScreen from "./components/LoadingScreen";
@@ -58,19 +59,23 @@ function App() {
           {/* Divider with animated gradient */}
           <div className="h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent mx-8"></div>
 
-          <Projects />
+          <Experience />
 
           <div className="h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent mx-8"></div>
 
-          <Skills />
+          <Projects />
 
           <div className="h-px bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent mx-8"></div>
 
-          <Experience />
+          <Skills />
 
           <div className="h-px bg-gradient-to-r from-transparent via-orange-500/50 to-transparent mx-8"></div>
 
           <Education />
+
+          <div className="h-px bg-gradient-to-r from-transparent via-pink-500/50 to-transparent mx-8"></div>
+
+          <Contact />
         </main>
 
         {/* Footer */}

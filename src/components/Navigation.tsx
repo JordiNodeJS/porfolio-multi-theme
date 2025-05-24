@@ -6,21 +6,29 @@ import ThemeToggle from "./ThemeToggle";
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          setScrolled(window.scrollY > 50);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
   const navItems = [
     { name: "Inicio", href: "#hero" },
     { name: "Sobre mí", href: "#about" },
-    { name: "Proyectos", href: "#projects" },
     { name: "Experiencia", href: "#experience" },
+    { name: "Proyectos", href: "#projects" },
+    { name: "Habilidades", href: "#skills" },
+    { name: "Formación", href: "#education" },
     { name: "Contacto", href: "#contact" },
   ];
 
@@ -34,8 +42,8 @@ const Navigation = () => {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "glass-effect shadow-2xl" : "bg-gray-900/0"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out ${
+        scrolled ? "glass-effect shadow-2xl backdrop-blur-md" : "bg-transparent"
       }`}
     >
       <div className="container-custom">

@@ -1,11 +1,18 @@
 [
   {
+    "company": "FLiPO | Frontend React Engineer",
+    "experience": "Julio 2023 – abril 2025 FLIPO - Edit Your Live S.L Startup líder en venta online de gafas modulares y graduadas.\nResponsabilidades Principales:\nDesarrollo y mejora continua del ERP interno.\nImplementación de nuevas características y resolución de incidencias.\nColaboración estrecha con equipos técnicos y de gestión para alinear mejoras con las necesidades del negocio."
+  },
+  {
     "company": "IT Academy BCN. Barcelona Activa.",
     "experience": "IT Academy_directory, working under agile methodologies such as SCRUM, fixing bugs, testing, new functionalities, documentation in conjunction with backend using Vite-React, Redux Toolkit, Vitest/Jest (UI testing), React Testing Library, Styled Components, and UseForms."
   },
   {
     "company": "Aula Magna Business School SLU.",
     "experience": "Web design with php, wordpress, css and plugins Team coworking improving the web reusability. Improved user interface, and user experience.",
-    "links": ["https://aulamagnabs.com/wids/", "https://ambs.education/wids/"]
+    "links": [
+      "https://aulamagnabs.com/wids/",
+      "https://ambs.education/wids/"
+    ]
   }
 ]
