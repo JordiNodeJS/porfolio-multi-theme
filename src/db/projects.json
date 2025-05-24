@@ -26,7 +26,12 @@
     "imgCover": "img-project/itagame.png",
     "description": "Gamification of a study platform using React and Tailwind.",
     "link": "https://github.com/IT-Academy-BCN/ita-game",
-    "tags": ["javascript", "react", "tailwindcss", "vite"]
+    "tags": [
+      "javascript",
+      "react",
+      "tailwindcss",
+      "vite"
+    ]
   },
   {
     "id": "9b68aa3d",
@@ -36,7 +41,13 @@
     "description": "The App consists of generating a very low resolution image, respecting the outline of the original image, with the purpose of being used as a placeholder or temporary substitute.",
     "link": "https://github.com/JordiNodeJS/generate-low-placeholder",
     "demo": "https://generate-low-placeholder.vercel.app",
-    "tags": ["javascript", "react", "tailwindcss", "cloudinary", "vite"]
+    "tags": [
+      "javascript",
+      "react",
+      "tailwindcss",
+      "cloudinary",
+      "vite"
+    ]
   },
   {
     "id": "9b68qa3d",
@@ -45,7 +56,13 @@
     "imgCover": "img-project/kings-league-project.png",
     "description": "Open source project, where I collaborate fixing fix some bugs, docu, github actions.",
     "link": "https://github.com/JordiNodeJS/kings-league-project",
-    "tags": ["javascript", "react", "tailwindcss", "git actions", "vite"]
+    "tags": [
+      "javascript",
+      "react",
+      "tailwindcss",
+      "git actions",
+      "vite"
+    ]
   },
   {
     "id": "d4613430",
@@ -54,7 +71,12 @@
     "imgCover": "img-project/weather.png",
     "description": "The purpose of this app was to build an interface between the client and a third-party API.",
     "link": "https://github.com/JordiNodeJS/weather-app",
-    "tags": ["html", "javascript", "css", "api"]
+    "tags": [
+      "html",
+      "javascript",
+      "css",
+      "api"
+    ]
   },
   {
     "id": "781d5bab",
@@ -63,7 +85,11 @@
     "imgCover": "img-project/game.png",
     "description": "Basic game created in javascript whose learning objective was the manipulation of the DOM of the HTML document to present the results.",
     "link": "https://github.com/JordiNodeJS/AdivinaPro",
-    "tags": ["html", "javascript", "bootstrap"]
+    "tags": [
+      "html",
+      "javascript",
+      "bootstrap"
+    ]
   },
   {
     "id": "a3203cfa",
@@ -72,7 +98,11 @@
     "imgCover": "img-project/slider.png",
     "description": "A sample button of an automatic slider.",
     "link": "https://jordinodejs.github.io/Image-Slideshow-Effect-OnlyJS/",
-    "tags": ["html", "javascript", "css"]
+    "tags": [
+      "html",
+      "javascript",
+      "css"
+    ]
   },
   {
     "id": "a3203tra",

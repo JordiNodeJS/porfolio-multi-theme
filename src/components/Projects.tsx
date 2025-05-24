@@ -37,7 +37,10 @@ const ProjectCard = ({
           )}
         </motion.div>
         {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">          <div className="absolute bottom-4 left-4 right-4 flex gap-2">
+        <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          {" "}
+          <div className="absolute bottom-4 left-4 right-4 flex gap-2">
+            {" "}
             {project.link && (
               <motion.a
                 href={project.link}
@@ -45,11 +48,13 @@ const ProjectCard = ({
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                className="bg-white/20 backdrop-blur-sm text-white p-2 rounded-lg hover:bg-white/30 transition-colors"
+                className="tooltip bg-white/20 backdrop-blur-sm text-white p-2 rounded-lg hover:bg-white/30 transition-all duration-300 hover:shadow-[0_0_8px_rgba(255,255,255,0.3)]"
+                data-tooltip="Ver código en GitHub"
               >
                 <Github className="w-5 h-5" />
               </motion.a>
-            )}            {project.demo && (
+            )}
+            {project.demo && (
               <motion.a
                 href={project.demo}
                 target="_blank"
@@ -71,12 +76,19 @@ const ProjectCard = ({
         <div className="flex justify-between items-center mb-3">
           <h3 className="text-xl font-semibold text-white group-hover:text-primary-400 transition-colors">
             {project.title}
-          </h3>          <div className="flex gap-1.5">
+          </h3>{" "}
+          <div className="flex gap-1.5">
             {project.link && (
-              <span className="tooltip w-2 h-2 rounded-full bg-blue-400" data-tooltip="Código disponible"></span>
+              <span
+                className="tooltip w-2 h-2 rounded-full bg-blue-400"
+                data-tooltip="Código disponible"
+              ></span>
             )}
             {project.demo && (
-              <span className="tooltip w-2 h-2 rounded-full bg-green-400" data-tooltip="Demo en vivo"></span>
+              <span
+                className="tooltip w-2 h-2 rounded-full bg-green-400"
+                data-tooltip="Demo en vivo"
+              ></span>
             )}
           </div>
         </div>

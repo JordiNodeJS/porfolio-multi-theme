@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ChevronDown, Download, ExternalLink } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { usePortfolioData } from "../hooks/usePortfolioData";
 
 const Hero = () => {
@@ -40,7 +40,7 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 lg:pt-28"
     >
       {/* Animated Background */}
       <div className="absolute inset-0 z-0">
@@ -90,14 +90,12 @@ const Hero = () => {
               />
             </div>
           </motion.div>
-
           {/* Greeting */}
           <motion.div variants={itemVariants} className="mb-4">
             <span className="text-primary-400 font-medium text-lg md:text-xl">
               👋 Hola, soy
             </span>
           </motion.div>
-
           {/* Name */}
           <motion.h1
             variants={itemVariants}
@@ -107,7 +105,6 @@ const Hero = () => {
               {data?.presentation.name || "JORGe"}
             </span>
           </motion.h1>
-
           {/* Title */}
           <motion.h2
             variants={itemVariants}
@@ -115,7 +112,6 @@ const Hero = () => {
           >
             {data?.presentation.title || "Frontend React Developer"}
           </motion.h2>
-
           {/* Description */}
           <motion.p
             variants={itemVariants}
@@ -123,45 +119,21 @@ const Hero = () => {
           >
             {data?.presentation.description ||
               "Creando experiencias digitales excepcionales con React y tecnologías modernas"}
-          </motion.p>
-
-          {/* CTA Buttons */}
-          <motion.div
-            variants={itemVariants}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-          >
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="btn-primary flex items-center gap-2 text-lg px-8 py-4"
-            >
-              <ExternalLink className="w-5 h-5" />
-              Ver Proyectos
-            </motion.button>
-
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="glass-effect hover:bg-white/10 text-white font-semibold py-4 px-8 rounded-lg transition-all duration-300 flex items-center gap-2 text-lg"
-            >
-              <Download className="w-5 h-5" />
-              Descargar CV
-            </motion.button>
-          </motion.div>
-
+          </motion.p>{" "}
           {/* Scroll Indicator */}
           <motion.div
             variants={itemVariants}
             className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
           >
-            <motion.div
+            <motion.a
+              href="#projects"
               animate={{ y: [0, 10, 0] }}
               transition={{ duration: 2, repeat: Infinity }}
-              className="flex flex-col items-center text-gray-400"
+              className="flex flex-col items-center text-gray-400 hover:text-primary-400 transition-colors duration-300 cursor-pointer"
             >
-              <span className="text-sm mb-2">Scroll</span>
+              <span className="text-sm mb-2">Ver Proyectos</span>
               <ChevronDown className="w-6 h-6" />
-            </motion.div>
+            </motion.a>
           </motion.div>
         </motion.div>
       </div>

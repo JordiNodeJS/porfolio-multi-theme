@@ -104,17 +104,25 @@
   .text-shadow-lg {
     text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   }
-  
+
   /* Tooltips personalizados */
   .tooltip {
     @apply relative inline-block;
   }
-  
+
   .tooltip::after {
-    @apply absolute left-1/2 -translate-x-1/2 bottom-full mb-1 px-2 py-1 bg-gray-800 text-white text-xs rounded whitespace-nowrap opacity-0 invisible transition-opacity duration-200;
+    @apply absolute left-1/2 -translate-x-1/2 bottom-full mb-1 px-2 py-1 bg-gray-800 text-white text-xs rounded whitespace-nowrap opacity-0 invisible transition-opacity duration-200 z-50;
     content: attr(data-tooltip);
   }
-  
+
+  .tooltip-top::after {
+    @apply bottom-full mb-1;
+  }
+
+  .tooltip-bottom::after {
+    @apply top-full mt-1 bottom-auto mb-0;
+  }
+
   .tooltip:hover::after {
     @apply opacity-100 visible;
   }
