@@ -1,0 +1,14 @@
+[
+  {
+    "nombre": "React JS",
+    "nivel": "avanzado"
+  },
+  {
+    "nombre": "Python",
+    "nivel": "intermedio"
+  },
+  {
+    "nombre": "Inglés",
+    "nivel": "B2"
+  }
+]

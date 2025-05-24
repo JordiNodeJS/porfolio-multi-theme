@@ -1,0 +1,31 @@
+[
+  {
+    "id": "edu5cc7",
+    "center": "BootCamp  IT Academy",
+    "link": "https://www.barcelonactiva.cat/es/itacademy",
+    "title": "Front-End React Developer",
+    "description": "Front-End React Developer at Bootcamp IT Academy: An 18-week program where skills such as HTML, CSS, SASS, JavaScript, ReactJS, among others, were taught. In addition, different tools such as Vite and Create React App were used, and libraries such as Bootstrap, Mantine and MUI were worked with. A project was carried out that involved the use of GitHub, Typescript, Node, among others. It was also learned how to deploy on different platforms, such as GitHub Pages, Vercel, Netlify, Render.com and Fly.io.",
+    "start_date": "01/09/2015",
+    "end_date": "30/06/2019",
+    "tags": ["HTML", "CSS", "SASS", "JavaScript", "ReactJS", "MUI", "TailwindCSS", "Bootstrap", "Chakra", "Styled-Components", "Git", "GitHub", "TypeScript"]
+  },
+  {
+    "id": "edu7fcc",
+    "center": "Center CIFO La Violeta",
+    "link": "https://serveiocupacio.gencat.cat/es/soc/com-ens-organitzem/centres-propis-formacio-cifo-cfpa/centres-dinnovacio-i-formacio-ocupacional-cifo/cifo-barcelona-la-violeta/index.html",
+    "title": "Web applications development Full Stack",
+    "description": "Full Stack Web Development at CIFO La Violeta: This 600-hour course allowed the student to acquire skills in web programming in the client and server environment, as well as the development of web documents using markup languages. It also taught about usability and accessibility in the client environment, data access in web applications in the server environment and the implementation of web applications in internet, intranet and extranet environments. Different deployment tools were used, such as Heroku, Vercel, Netlify and GitHub Pages.",
+    "start_date": "01/09/2018",
+    "end_date": "30/06/2019",
+    "tags": ["HTML", "CSS", "JavaScript", "PHP", "Netlify", "Vercel", "Render", "Fly.io"]
+  },
+  {
+    "id": "edu5ucc",
+    "center": "SINENSIA IT SOLUTIONS",
+    "title": "Web applications development ANGULAR",
+    "description": "Web Application Development with Angular at SINENSIA IT SOLUTIONS: A 60-hour course where web applications development using Angular was taught.",
+    "start_date": "01/09/2018",
+    "end_date": "30/06/2019",
+    "tags": ["HTML", "CSS", "JavaScript", "Angular", "TypeScript"]
+  }
+]

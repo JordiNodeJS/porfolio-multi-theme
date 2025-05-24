@@ -1,0 +1,11 @@
+[
+  {
+    "company": "IT Academy BCN. Barcelona Activa.",
+    "experience": "IT Academy_directory, working under agile methodologies such as SCRUM, fixing bugs, testing, new functionalities, documentation in conjunction with backend using Vite-React, Redux Toolkit, Vitest/Jest (UI testing), React Testing Library, Styled Components, and UseForms."
+  },
+  {
+    "company": "Aula Magna Business School SLU.",
+    "experience": "Web design with php, wordpress, css and plugins Team coworking improving the web reusability. Improved user interface, and user experience.",
+    "links": ["https://aulamagnabs.com/wids/", "https://ambs.education/wids/"]
+  }
+]
