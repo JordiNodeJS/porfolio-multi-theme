@@ -5,6 +5,7 @@ import {
   type Experience,
   type Education,
   type Project,
+  type Achievement,
 } from "../types";
 
 import dbData from "../db/db.json";
@@ -12,6 +13,7 @@ import skillsData from "../db/skills.json";
 import experienceData from "../db/experience.json";
 import educationData from "../db/education.json";
 import projectsData from "../db/projects.json";
+import achievementsData from "../db/achievements.json";
 
 export const usePortfolioData = () => {
   const [data, setData] = useState<DatabaseData | null>(null);
@@ -19,6 +21,9 @@ export const usePortfolioData = () => {
   const [experience, setExperience] = useState<Experience[]>([]);
   const [education, setEducation] = useState<Education[]>([]);
   const [projects, setProjects] = useState<Project[]>([]);
+  const [achievements, setAchievements] = useState<
+    Record<string, Achievement[]>
+  >({});
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -28,6 +33,7 @@ export const usePortfolioData = () => {
       setExperience(experienceData as Experience[]);
       setEducation(educationData as Education[]);
       setProjects(projectsData as Project[]);
+      setAchievements(achievementsData as Record<string, Achievement[]>);
     } catch (error) {
       console.error("Error loading portfolio data:", error);
     } finally {
@@ -40,6 +46,7 @@ export const usePortfolioData = () => {
     skills,
     experience,
     education,
+    achievements,
     loading,
   };
 };

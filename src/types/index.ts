@@ -47,3 +47,10 @@ export interface ContactInfo {
   linkedin?: string;
   portfolio?: string;
 }
+
+export interface Achievement {
+  title: string;
+  description: string;
+  impact: string;
+  icon: string;
+}
