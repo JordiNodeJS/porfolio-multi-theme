@@ -1,54 +1,78 @@
-# React + TypeScript + Vite
+# 🚀 Portfolio Moderno con Animaciones
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Un portfolio impresionante y moderno construido con React, TypeScript, Framer Motion y TailwindCSS.
 
-Currently, two official plugins are available:
+## ✨ Características Implementadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 🎨 Diseño y UX
 
-## Expanding the ESLint configuration
+- ✅ **Diseño moderno** con efectos de vidrio (glass morphism)
+- ✅ **Tema oscuro/claro** con transiciones suaves
+- ✅ **Animaciones impresionantes** usando Framer Motion
+- ✅ **Responsive design** optimizado para todos los dispositivos
+- ✅ **Partículas flotantes** de fondo para un efecto visual único
+- ✅ **Pantalla de carga** animada para una experiencia pulida
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 🔧 Tecnologías
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- ✅ **React 18** con TypeScript
+- ✅ **Vite** como build tool
+- ✅ **Framer Motion** para animaciones
+- ✅ **TailwindCSS v3** para estilos
+- ✅ **Lucide React** para iconos
+- ✅ **Bun** como package manager
+
+### 🚀 Funcionalidades
+
+- ✅ **Navegación suave** entre secciones
+- ✅ **Efectos hover** interactivos en proyectos y tarjetas
+- ✅ **Barras de progreso animadas** para habilidades
+- ✅ **Timeline animado** para experiencia
+- ✅ **Formulario de contacto** funcional
+- ✅ **Botón scroll-to-top** con animaciones
+- ✅ **Carga de datos** desde archivos JSON locales
+
+## 📁 Componentes Principales
+
+- **Navigation**: Barra de navegación con efecto glass y menú móvil
+- **Hero**: Sección principal con animaciones de entrada y avatar giratorio
+- **Projects**: Grid de proyectos con hover effects y filtros por tecnología
+- **Skills**: Barras de progreso animadas con niveles de competencia
+- **Experience**: Timeline interactivo con tarjetas alternadas
+- **Education**: Tarjetas de formación académica con estadísticas
+- **Contact**: Formulario funcional con información de contacto
+- **ThemeToggle**: Botón para cambiar entre tema oscuro y claro
+- **LoadingScreen**: Pantalla de carga con animaciones
+- **FloatingParticles**: Partículas de fondo animadas
+
+## 🚀 Instalación y Uso
+
+```bash
+# Instalar dependencias con Bun
+bun install
+
+# Iniciar servidor de desarrollo
+bun dev
+
+# Construir para producción
+bun run build
+
+# Vista previa de producción
+bun run preview
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📝 Personalización
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Edita los archivos JSON en `src/db/` para personalizar el contenido:
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+- `db.json`: Información personal
+- `projects.json`: Tus proyectos
+- `skills.json`: Habilidades técnicas
+- `experience.json`: Experiencia laboral
+- `education.json`: Formación académica
+
+---
+
+⭐ **Portfolio completamente funcional con animaciones modernas!**
+
+🚀 **Servidor corriendo en: http://localhost:5174**
