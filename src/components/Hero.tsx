@@ -68,62 +68,68 @@ const Hero = () => {
         className="absolute top-1/2 right-10 w-16 h-16 bg-pink-500/10 rounded-full blur-xl"
       />
       <div className="container-custom relative z-10">
+        {" "}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="text-center max-w-4xl mx-auto"
+          className="max-w-6xl mx-auto"
         >
-          {/* Profile Image */}
-          <motion.div
-            variants={itemVariants}
-            whileHover={{ scale: 1.1, rotate: 5 }}
-            className="relative mx-auto mb-8 w-40 h-40 md:w-48 md:h-48"
-          >
-            <div className="absolute inset-0 bg-gradient-to-r from-primary-400 to-purple-500 rounded-full animate-spin-slow"></div>
-            <div className="absolute inset-2 bg-gradient-to-br from-gray-800 to-gray-900 rounded-full p-2">
-              <img
-                src="/src/assets/developer.png"
-                alt="Profile"
-                className="w-full h-full object-cover rounded-full"
-              />
-            </div>
-          </motion.div>
           {/* Greeting */}
-          <motion.div variants={itemVariants} className="mb-4">
+          <motion.div variants={itemVariants} className="text-center mb-6">
             <span className="text-primary-400 font-medium text-lg md:text-xl">
               👋 Hola, soy
             </span>
           </motion.div>
-          {/* Name */}
-          <motion.h1
-            variants={itemVariants}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6"
-          >
-            <span className="gradient-text">
-              {data?.presentation.name || "JORGe"}
-            </span>
-          </motion.h1>
-          {/* Title */}
-          <motion.h2
-            variants={itemVariants}
-            className="text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-300 mb-6"
-          >
-            {data?.presentation.title || "Frontend React Developer"}
-          </motion.h2>          {/* Description */}
+
+          {/* Main Content with Photo and Title */}
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16 mb-8">
+            {/* Profile Image */}
+            <motion.div
+              variants={itemVariants}
+              whileHover={{ scale: 1.1, rotate: 5 }}
+              className="relative w-40 h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 flex-shrink-0"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-primary-400 to-purple-500 rounded-full animate-spin-slow"></div>
+              <div className="absolute inset-2 bg-gradient-to-br from-gray-800 to-gray-900 rounded-full p-2">
+                <img
+                  src="/src/assets/developer.png"
+                  alt="Profile"
+                  className="w-full h-full object-cover rounded-full"
+                />
+              </div>
+            </motion.div>
+
+            {/* Name and Title */}
+            <div className="text-center lg:text-left">
+              <motion.h1
+                variants={itemVariants}
+                className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4"
+              >
+                <span className="gradient-text">
+                  {data?.presentation.name || "JORGe"}
+                </span>
+              </motion.h1>
+              <motion.h2
+                variants={itemVariants}
+                className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-semibold text-gray-300"
+              >
+                {data?.presentation.title || "Frontend React Developer"}
+              </motion.h2>
+            </div>
+          </div>
+
+          {/* Description */}
           <motion.p
             variants={itemVariants}
-            className="text-lg md:text-xl text-gray-400 mb-16 max-w-2xl mx-auto leading-relaxed"
+            className="text-lg md:text-xl text-gray-400 mb-16 max-w-3xl mx-auto leading-relaxed text-center"
           >
             {data?.presentation.description ||
               "Creando experiencias digitales excepcionales con React y tecnologías modernas"}
           </motion.p>
-          
+
           {/* Scroll Indicator */}
-          <motion.div
-            variants={itemVariants}
-            className="mt-8"
-          >
+          <motion.div variants={itemVariants} className="text-center">
             <motion.a
               href="#projects"
               animate={{ y: [0, 10, 0] }}

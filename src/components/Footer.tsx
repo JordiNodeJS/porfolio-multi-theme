@@ -11,7 +11,7 @@ const Footer = () => {
     },
     {
       icon: <Linkedin className="w-5 h-5" />,
-      label: "LinkedIn", 
+      label: "LinkedIn",
       href: "https://www.linkedin.com/in/jorge-frontend/",
       color: "hover:text-blue-400",
     },
@@ -19,11 +19,11 @@ const Footer = () => {
 
   const techStack = [
     "React",
-    "TypeScript", 
+    "TypeScript",
     "Framer Motion",
     "TailwindCSS",
     "Vite",
-    "Bun"
+    "Bun",
   ];
 
   return (
@@ -47,7 +47,8 @@ const Footer = () => {
           >
             <h3 className="text-2xl font-bold gradient-text mb-3">JORGe</h3>
             <p className="text-slate-400 text-sm leading-relaxed">
-              Frontend React Developer apasionado por crear experiencias digitales excepcionales con tecnologías modernas.
+              Frontend React Developer apasionado por crear experiencias
+              digitales excepcionales con tecnologías modernas.
             </p>
           </motion.div>
 
@@ -131,11 +132,12 @@ const Footer = () => {
           <div className="flex items-center gap-2">
             <span>© {new Date().getFullYear()} Jorge Portfolio.</span>
             <span className="flex items-center gap-1">
-              Hecho con <Heart className="w-4 h-4 text-red-400 animate-pulse" /> y
+              Hecho con <Heart className="w-4 h-4 text-red-400 animate-pulse" />{" "}
+              y
               <Coffee className="w-4 h-4 text-amber-400" />
             </span>
           </div>
-          
+
           <motion.div
             whileHover={{ scale: 1.05 }}
             className="text-xs text-slate-500 hover:text-slate-300 transition-colors duration-300"
