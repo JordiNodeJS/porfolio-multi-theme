@@ -9,7 +9,8 @@ export interface Project {
   title: string;
   imgCover: string;
   description: string;
-  link: string;
+  link?: string;
+  demo?: string;
   tags: string[];
 }
 

@@ -6,6 +6,7 @@
     "imgCover": "img-project/itacademy.png",
     "description": "Working under agile methodologies such as SCRUM, fixing bugs, testing, new functionalities, documentation in conjunction with backend.",
     "link": "https://github.com/IT-Academy-BCN/ita-directory",
+    "demo": "https://ita-directory-app.vercel.app",
     "tags": [
       "javascript",
       "react",
@@ -34,6 +35,7 @@
     "imgCover": "img-project/generatelow.png",
     "description": "The App consists of generating a very low resolution image, respecting the outline of the original image, with the purpose of being used as a placeholder or temporary substitute.",
     "link": "https://github.com/JordiNodeJS/generate-low-placeholder",
+    "demo": "https://generate-low-placeholder.vercel.app",
     "tags": ["javascript", "react", "tailwindcss", "cloudinary", "vite"]
   },
   {

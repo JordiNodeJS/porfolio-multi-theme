@@ -37,35 +37,49 @@ const ProjectCard = ({
           )}
         </motion.div>
         {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <div className="absolute bottom-4 left-4 right-4 flex gap-2">
-            <motion.a
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              className="bg-white/20 backdrop-blur-sm text-white p-2 rounded-lg hover:bg-white/30 transition-colors"
-            >
-              <Github className="w-5 h-5" />
-            </motion.a>
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              className="bg-primary-500/80 backdrop-blur-sm text-white p-2 rounded-lg hover:bg-primary-600/80 transition-colors flex-1 flex items-center justify-center gap-2"
-            >
-              <ExternalLink className="w-4 h-4" />
-              Ver Demo
-            </motion.button>
+        <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">          <div className="absolute bottom-4 left-4 right-4 flex gap-2">
+            {project.link && (
+              <motion.a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="bg-white/20 backdrop-blur-sm text-white p-2 rounded-lg hover:bg-white/30 transition-colors"
+              >
+                <Github className="w-5 h-5" />
+              </motion.a>
+            )}            {project.demo && (
+              <motion.a
+                href={project.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="bg-primary-500/80 backdrop-blur-sm text-white p-2 rounded-lg hover:bg-primary-600/80 transition-all duration-300 flex-1 flex items-center justify-center gap-2 hover:shadow-[0_0_8px_rgba(59,130,246,0.6)]"
+              >
+                <ExternalLink className="w-4 h-4" />
+                <span>Ver Demo</span>
+              </motion.a>
+            )}
           </div>
         </div>
       </div>
 
       {/* Content */}
       <div className="p-6">
-        <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-primary-400 transition-colors">
-          {project.title}
-        </h3>
+        <div className="flex justify-between items-center mb-3">
+          <h3 className="text-xl font-semibold text-white group-hover:text-primary-400 transition-colors">
+            {project.title}
+          </h3>          <div className="flex gap-1.5">
+            {project.link && (
+              <span className="tooltip w-2 h-2 rounded-full bg-blue-400" data-tooltip="Código disponible"></span>
+            )}
+            {project.demo && (
+              <span className="tooltip w-2 h-2 rounded-full bg-green-400" data-tooltip="Demo en vivo"></span>
+            )}
+          </div>
+        </div>
 
         <p className="text-gray-400 text-sm leading-relaxed mb-4 line-clamp-3">
           {project.description}
