@@ -5,7 +5,7 @@ import Projects from "./components/Projects";
 import Skills from "./components/Skills";
 import Experience from "./components/Experience";
 import Education from "./components/Education";
-import Contact from "./components/Contact";
+import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import FloatingParticles from "./components/FloatingParticles";
 import LoadingScreen from "./components/LoadingScreen";
@@ -74,19 +74,10 @@ function App() {
           <Education />
 
           <div className="h-px bg-gradient-to-r from-transparent via-pink-500/50 to-transparent mx-8"></div>
-
-          <Contact />
         </main>
 
-        {/* Footer */}
-        <footer className="dark:bg-slate-800/50 light:bg-white/50 backdrop-blur-sm border-t dark:border-slate-700/50 light:border-gray-200/50 py-8 relative z-10">
-          <div className="max-w-6xl mx-auto px-4 text-center">
-            <p className="dark:text-slate-400 light:text-gray-600 text-sm">
-              © {new Date().getFullYear()} Mi Portfolio. Hecho con ❤️ usando
-              React + TypeScript + Framer Motion
-            </p>
-          </div>
-        </footer>
+        {/* Modern Footer */}
+        <Footer />
 
         {/* Scroll to top button */}
         <ScrollToTop />

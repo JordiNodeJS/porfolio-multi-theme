@@ -110,19 +110,19 @@ const Hero = () => {
             className="text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-300 mb-6"
           >
             {data?.presentation.title || "Frontend React Developer"}
-          </motion.h2>
-          {/* Description */}
+          </motion.h2>          {/* Description */}
           <motion.p
             variants={itemVariants}
-            className="text-lg md:text-xl text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed"
+            className="text-lg md:text-xl text-gray-400 mb-16 max-w-2xl mx-auto leading-relaxed"
           >
             {data?.presentation.description ||
               "Creando experiencias digitales excepcionales con React y tecnologías modernas"}
-          </motion.p>{" "}
+          </motion.p>
+          
           {/* Scroll Indicator */}
           <motion.div
             variants={itemVariants}
-            className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+            className="mt-8"
           >
             <motion.a
               href="#projects"
