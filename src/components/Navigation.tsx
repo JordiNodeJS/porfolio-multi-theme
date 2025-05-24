@@ -31,10 +31,13 @@ const Navigation = () => {
     { name: "Formación", href: "#education" },
     { name: "Contacto", href: "#contact" },
   ];
-
   const socialLinks = [
-    { icon: Github, href: "https://github.com", label: "GitHub" },
-    { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
+    { icon: Github, href: "https://github.com/JordiNodeJS", label: "GitHub" },
+    {
+      icon: Linkedin,
+      href: "https://www.linkedin.com/in/jorge-frontend/",
+      label: "LinkedIn",
+    },
     { icon: Mail, href: "mailto:your-email@example.com", label: "Email" },
   ];
 
