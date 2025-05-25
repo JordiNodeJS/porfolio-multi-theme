@@ -58,7 +58,8 @@
                 "description": "At Aula Magna Business School I specialized in event web design, working as a team to improve web usability and user experience (UX/UI), creating attractive and functional visual solutions."
             }
         }
-    },    "projects": {
+    },
+    "projects": {
         "title": "Featured Projects",
         "subtitle": "A selection of my most representative work",
         "viewProject": "View Project",
@@ -68,7 +69,8 @@
         "liveDemo": "Live Demo",
         "sourceCode": "Source Code",
         "viewMore": "View More Projects"
-    },    "skills": {
+    },
+    "skills": {
         "title": "Technical Skills",
         "subtitle": "Technologies and tools I work with",
         "competenceLevel": "Competence Level",
@@ -80,7 +82,8 @@
             "tools": "Tools",
             "databases": "Databases"
         }
-    },    "education": {
+    },
+    "education": {
         "title": "Academic Background",
         "subtitle": "My continuous learning journey in development technologies",
         "degree": "Degree",
@@ -120,7 +123,11 @@
         "rights": "All rights reserved.",
         "madeWith": "Made with",
         "and": "and",
-        "by": "by"
+        "by": "by",
+        "techStack": "Tech Stack",
+        "connectWithMe": "Connect with me",
+        "description": "Frontend React Developer passionate about creating exceptional digital experiences with modern technologies.",
+        "designedWith": "Designed and developed with ❤️"
     },
     "loading": {
         "text": "Loading portfolio..."

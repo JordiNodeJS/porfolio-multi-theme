@@ -63,14 +63,13 @@ const Footer = () => {
             viewport={{ once: true }}
             className="text-center md:text-left"
           >
-            <h3 className="text-2xl font-bold gradient-text mb-3">JORGe</h3>
+            <h3 className="text-2xl font-bold gradient-text mb-3">JORGe</h3>{" "}
             <p
               className={`text-sm leading-relaxed ${
                 theme === "dark" ? "text-slate-400" : "text-gray-600"
               }`}
             >
-              Frontend React Developer apasionado por crear experiencias
-              digitales excepcionales con tecnologías modernas.
+              {footer.description}
             </p>
           </motion.div>
 
@@ -82,13 +81,14 @@ const Footer = () => {
             viewport={{ once: true }}
             className="text-center"
           >
+            {" "}
             <h4
               className={`font-semibold mb-4 flex items-center justify-center md:justify-start gap-2 ${
                 theme === "dark" ? "text-white" : "text-gray-900"
               }`}
             >
               <Code className="w-4 h-4" />
-              Tech Stack
+              {footer.techStack}
             </h4>
             <div className="flex flex-wrap gap-2 justify-center md:justify-start">
               {techStack.map((tech, index) => (
@@ -118,12 +118,13 @@ const Footer = () => {
             viewport={{ once: true }}
             className="text-center md:text-right"
           >
+            {" "}
             <h4
               className={`font-semibold mb-4 ${
                 theme === "dark" ? "text-white" : "text-gray-900"
               }`}
             >
-              Conecta conmigo
+              {footer.connectWithMe}
             </h4>
             <div className="flex gap-4 justify-center md:justify-end">
               {socialLinks.map((social, index) => (
@@ -175,19 +176,22 @@ const Footer = () => {
             theme === "dark" ? "text-slate-400" : "text-gray-600"
           }`}
         >
+          {" "}
           <div className="flex items-center gap-2">
-            <span>© {new Date().getFullYear()} Jorge Portfolio.</span>
+            <span>
+              © {new Date().getFullYear()} Jorge Portfolio. {footer.rights}
+            </span>
             <span className="flex items-center gap-1">
-              Hecho con <Heart className="w-4 h-4 text-red-400 animate-pulse" />{" "}
-              y
+              {footer.madeWith}{" "}
+              <Heart className="w-4 h-4 text-red-400 animate-pulse" />{" "}
+              {footer.and}
               <Coffee
                 className={`w-4 h-4 ${
                   theme === "dark" ? "text-amber-400" : "text-amber-600"
                 }`}
               />
             </span>
-          </div>
-
+          </div>{" "}
           <motion.div
             whileHover={{ scale: 1.05 }}
             className={`text-xs transition-colors duration-300 ${
@@ -196,7 +200,7 @@ const Footer = () => {
                 : "text-gray-500 hover:text-gray-700"
             }`}
           >
-            Diseñado y desarrollado con ❤️
+            {footer.designedWith}
           </motion.div>
         </motion.div>
       </div>

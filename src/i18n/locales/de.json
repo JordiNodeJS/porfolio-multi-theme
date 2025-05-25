@@ -6,7 +6,8 @@
         "skills": "Fähigkeiten",
         "education": "Bildung",
         "contact": "Kontakt"
-    },    "hero": {
+    },
+    "hero": {
         "greeting": "Hallo! Ich bin",
         "name": "Jordi Nodal",
         "title": "Frontend React Engineer",
@@ -57,7 +58,8 @@
                 "description": "Bei Aula Magna Business School spezialisierte ich mich auf Event-Webdesign und arbeitete im Team, um die Web-Usability und Benutzererfahrung (UX/UI) zu verbessern und attraktive und funktionale visuelle Lösungen zu schaffen."
             }
         }
-    },    "projects": {
+    },
+    "projects": {
         "title": "Hervorgehobene Projekte",
         "subtitle": "Eine Auswahl meiner repräsentativsten Arbeiten",
         "viewProject": "Projekt ansehen",
@@ -67,9 +69,11 @@
         "liveDemo": "Live-Demo",
         "sourceCode": "Quellcode",
         "viewMore": "Mehr Projekte ansehen"
-    },    "skills": {
+    },
+    "skills": {
         "title": "Technische Fähigkeiten",
-        "subtitle": "Technologien und Werkzeuge, mit denen ich arbeite",        "competenceLevel": "Kompetenzniveau",
+        "subtitle": "Technologien und Werkzeuge, mit denen ich arbeite",
+        "competenceLevel": "Kompetenzniveau",
         "techStack": "Tech-Stack",
         "methodologies": "Methoden und Werkzeuge",
         "categories": {
@@ -78,7 +82,8 @@
             "tools": "Werkzeuge",
             "databases": "Datenbanken"
         }
-    },    "education": {
+    },
+    "education": {
         "title": "Akademischer Hintergrund",
         "subtitle": "Meine kontinuierliche Lernreise in Entwicklungstechnologien",
         "degree": "Abschluss",
@@ -118,7 +123,11 @@
         "rights": "Alle Rechte vorbehalten.",
         "madeWith": "Erstellt mit",
         "and": "und",
-        "by": "von"
+        "by": "von",
+        "techStack": "Tech-Stack",
+        "connectWithMe": "Verbinde dich mit mir",
+        "description": "Frontend React Developer mit Leidenschaft für die Erstellung außergewöhnlicher digitaler Erlebnisse mit modernen Technologien.",
+        "designedWith": "Entworfen und entwickelt mit ❤️"
     },
     "loading": {
         "text": "Portfolio wird geladen..."

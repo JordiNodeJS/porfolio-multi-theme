@@ -10,6 +10,7 @@ const languages = [
   { code: "de", name: "Deutsch", flag: "🇩🇪" },
   { code: "it", name: "Italiano", flag: "🇮🇹" },
   { code: "pt", name: "Português", flag: "🇵🇹" },
+  { code: "ca", name: "Català", flag: "🏴" },
 ];
 
 const LanguageSelector = () => {

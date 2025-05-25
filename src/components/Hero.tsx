@@ -99,7 +99,9 @@ const Hero = () => {
           initial="hidden"
           animate="visible"
           className="max-w-6xl mx-auto"
-        >          {/* Greeting */}
+        >
+          {" "}
+          {/* Greeting */}
           <motion.div variants={itemVariants} className="text-center mb-8">
             <span
               className={`font-medium text-lg md:text-xl ${
@@ -212,7 +214,9 @@ const Hero = () => {
                   : "text-gray-600 hover:text-primary-600"
               }`}
             >
-              <span className="text-sm mb-2 font-medium">{hero.viewProjects}</span>
+              <span className="text-sm mb-2 font-medium">
+                {hero.viewProjects}
+              </span>
               <div
                 className={`p-2 rounded-full transition-all duration-300 group-hover:scale-110 ${
                   theme === "dark"

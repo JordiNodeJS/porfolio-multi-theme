@@ -9,6 +9,7 @@ import fr from "./locales/fr.json";
 import de from "./locales/de.json";
 import it from "./locales/it.json";
 import pt from "./locales/pt.json";
+import ca from "./locales/ca.json";
 
 const resources = {
   es: { translation: es },
@@ -17,6 +18,7 @@ const resources = {
   de: { translation: de },
   it: { translation: it },
   pt: { translation: pt },
+  ca: { translation: ca },
 };
 
 i18n

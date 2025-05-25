@@ -1,31 +1,13 @@
 {
     "navigation": {
         "home": "Accueil",
-        "experience": "Expéri    "education": {
-        "title": "Formation Académique",
-        "subtitle": "Mon parcours d'apprentissage continu dans les technologies de développement",
-        "degree": "Diplôme",
-        "institution": "Institution",
-        "period": "Période",
-        "description": "Description",
-        "skills": "Compétences acquises:",
-        "certificate": "Voir le Certificat",
-        "viewCertificate": "Voir le certificat ou le projet",
-        "featured": "Mis en avant",
-        "stats": {
-            "trainings": "Formations",
-            "technologies": "Technologies",
-            "projects": "Projets"
-        },
-        "learningPhilosophy": {
-            "title": "Philosophie d'Apprentissage",
-            "description": "Je crois fermement en l'apprentissage continu et l'adaptation aux nouvelles technologies. Ma formation englobe non seulement les connaissances techniques, mais aussi les méthodologies agiles, le travail d'équipe et les meilleures pratiques de développement qui me permettent de créer des solutions robustes et évolutives."
-        }
-    },      "projects": "Projets",
+        "experience": "Expérience",
+        "projects": "Projets",
         "skills": "Compétences",
         "education": "Formation",
         "contact": "Contact"
-    },    "hero": {
+    },
+    "hero": {
         "greeting": "Bonjour ! Je suis",
         "name": "Jordi Nodal",
         "title": "Ingénieur Frontend React",
@@ -39,9 +21,9 @@
         "subtitle": "Mon parcours professionnel développant des solutions innovantes",
         "location": "Espagne",
         "viewProject": "Voir le projet",
-        "clickTooltip": "💡 Cliquez pour voir les réalisations remarquables",
+        "clickTooltip": "💡 Cliquez pour voir les réalisations marquantes",
         "technologiesUsed": "Technologies utilisées",
-        "achievements": "Réalisations Remarquables",
+        "achievements": "Réalisations Marquantes",
         "description": "Description :",
         "impact": "Impact :",
         "period": "Période :",
@@ -50,12 +32,12 @@
         "testing": "Tests :",
         "methodologies": "Méthodologies :",
         "tools": "Outils :",
-        "featuredProjects": "Projets phares :",
+        "featuredProjects": "Projets en vedette :",
         "companies": {
             "flipo": {
                 "title": "FLiPO | Ingénieur Frontend React",
                 "period": "Juillet 2023 – Avril 2025",
-                "description": "Pendant mon temps chez FLiPO, une startup leader dans la vente en ligne de lunettes modulaires et sur ordonnance, j'ai contribué significativement au développement et à l'amélioration de l'ERP interne, implémentant des solutions innovantes qui ont directement impacté l'efficacité opérationnelle de l'entreprise."
+                "description": "Pendant mon temps chez FLiPO, une startup leader dans la vente en ligne de lunettes modulaires et graduées, j'ai contribué significativement au développement et à l'amélioration de l'ERP interne, implémentant des solutions innovantes qui ont impacté directement l'efficacité opérationnelle de l'entreprise."
             },
             "itacademy": {
                 "title": "IT Academy BCN | Ingénieur Frontend React",
@@ -66,29 +48,32 @@
                 "methodologies": "Agile (Scrum, Kanban, sprints de 2 semaines), POO",
                 "tools": "Git, GitHub, Sonar, Docker",
                 "projects": {
-                    "itaDirectory": "ITA Directory : Projet pour les étudiants de Barcelona Activa - IT Academy",
-                    "itaGame": "ITA Game : Plateforme de gamification pour les étudiants d'académie de code"
+                    "itaDirectory": "ITA Directory : Projet pour étudiants de Barcelona Activa - IT Academy",
+                    "itaGame": "ITA Game : Plateforme de gamification pour élèves d'académie de code"
                 }
             },
             "aulaMagna": {
-                "title": "Aula Magna Business School SLU | Designer Web",
+                "title": "Aula Magna Business School SLU | Web Designer",
                 "period": "2022",
-                "description": "Chez Aula Magna Business School, je me suis spécialisé dans le design web d'événements, travaillant en équipe pour améliorer l'utilisabilité web et l'expérience utilisateur (UX/UI), créant des solutions visuelles attrayantes et fonctionnelles."
+                "description": "Chez Aula Magna Business School, je me suis spécialisé dans la conception web d'événements, travaillant en équipe pour améliorer l'utilisabilité web et l'expérience utilisateur (UX/UI), créant des solutions visuelles attrayantes et fonctionnelles."
             }
         }
-    },    "projects": {
-        "title": "Projets Phares",
+    },
+    "projects": {
+        "title": "Projets Marquants",
         "subtitle": "Une sélection de mes travaux les plus représentatifs",
         "viewProject": "Voir le Projet",
         "viewCode": "Voir le Code",
         "technologies": "Technologies :",
-        "features": "Fonctionnalités :",
+        "features": "Caractéristiques :",
         "liveDemo": "Démo en Direct",
         "sourceCode": "Code Source",
         "viewMore": "Voir Plus de Projets"
-    },    "skills": {
+    },
+    "skills": {
         "title": "Compétences Techniques",
-        "subtitle": "Technologies et outils avec lesquels je travaille",        "competenceLevel": "Niveau de Compétence",
+        "subtitle": "Technologies et outils avec lesquels je travaille",
+        "competenceLevel": "Niveau de Compétence",
         "techStack": "Stack Technologique",
         "methodologies": "Méthodologies et Outils",
         "categories": {
@@ -97,7 +82,8 @@
             "tools": "Outils",
             "databases": "Bases de Données"
         }
-    },    "education": {
+    },
+    "education": {
         "title": "Formation Académique",
         "subtitle": "Mon parcours d'apprentissage continu dans les technologies de développement",
         "degree": "Diplôme",
@@ -125,7 +111,7 @@
         "email": "Email",
         "message": "Message",
         "send": "Envoyer le Message",
-        "sending": "Envoi...",
+        "sending": "Envoi en cours...",
         "success": "Message envoyé avec succès !",
         "error": "Erreur lors de l'envoi du message. Veuillez réessayer.",
         "social": "Réseaux Sociaux",
@@ -137,7 +123,11 @@
         "rights": "Tous droits réservés.",
         "madeWith": "Fait avec",
         "and": "et",
-        "by": "par"
+        "by": "par",
+        "techStack": "Tech Stack",
+        "connectWithMe": "Connectez-vous avec moi",
+        "description": "Développeur Frontend React passionné par la création d'expériences numériques exceptionnelles avec des technologies modernes.",
+        "designedWith": "Conçu et développé avec ❤️"
     },
     "loading": {
         "text": "Chargement du portfolio..."
@@ -154,6 +144,7 @@
         "fr": "Français",
         "de": "Deutsch",
         "it": "Italiano",
-        "pt": "Português"
+        "pt": "Português",
+        "ca": "Català"
     }
 }

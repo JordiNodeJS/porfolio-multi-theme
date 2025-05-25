@@ -96,14 +96,14 @@ const TechIcon = ({
   color: string;
 }) => (
   <motion.div
-    whileHover={{ 
-      scale: 1.1, 
+    whileHover={{
+      scale: 1.1,
       y: -5,
-      rotate: [0, -1, 1, -1, 1, 0]
+      rotate: [0, -1, 1, -1, 1, 0],
     }}
-    transition={{ 
+    transition={{
       duration: 0.3,
-      rotate: { duration: 0.3, ease: "easeInOut" }
+      rotate: { duration: 0.3, ease: "easeInOut" },
     }}
     whileTap={{ scale: 0.95 }}
     className="flex flex-col items-center p-4 glass-effect rounded-xl dark:hover:bg-white/10 light:hover:bg-black/5 transition-all duration-300 group"
@@ -142,7 +142,9 @@ const Skills = () => {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
           className="text-center mb-16"
-        >          <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-6">
+        >
+          {" "}
+          <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-6">
             {skills.title}
           </h2>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">
@@ -157,7 +159,9 @@ const Skills = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-          >            <h3 className="text-2xl font-bold text-white mb-8">
+          >
+            {" "}
+            <h3 className="text-2xl font-bold text-white mb-8">
               {skills.competenceLevel}
             </h3>
             <div className="space-y-4">
@@ -173,7 +177,9 @@ const Skills = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-          >            <h3 className="text-2xl font-bold text-white mb-8">
+          >
+            {" "}
+            <h3 className="text-2xl font-bold text-white mb-8">
               {skills.techStack}
             </h3>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
@@ -189,7 +195,6 @@ const Skills = () => {
                 </motion.div>
               ))}
             </div>
-
             {/* Additional Info */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -197,7 +202,9 @@ const Skills = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
               viewport={{ once: true }}
               className="mt-8 p-6 glass-effect rounded-xl"
-            >              <h4 className="text-lg font-semibold text-white mb-3">
+            >
+              {" "}
+              <h4 className="text-lg font-semibold text-white mb-3">
                 {skills.methodologies}
               </h4>
               <div className="flex flex-wrap gap-2">

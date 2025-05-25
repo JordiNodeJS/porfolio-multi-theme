@@ -6,7 +6,8 @@
         "skills": "Habilidades",
         "education": "Educação",
         "contact": "Contato"
-    },    "hero": {
+    },
+    "hero": {
         "greeting": "Olá! Eu sou",
         "name": "Jordi Nodal",
         "title": "Engenheiro Frontend React",
@@ -57,7 +58,8 @@
                 "description": "Na Aula Magna Business School me especializei no design web de eventos, trabalhando em equipe para melhorar a usabilidade web e experiência do usuário (UX/UI), criando soluções visuais atrativas e funcionais."
             }
         }
-    },    "projects": {
+    },
+    "projects": {
         "title": "Projetos Destacados",
         "subtitle": "Uma seleção dos meus trabalhos mais representativos",
         "viewProject": "Ver Projeto",
@@ -67,9 +69,11 @@
         "liveDemo": "Demo Ao Vivo",
         "sourceCode": "Código Fonte",
         "viewMore": "Ver Mais Projetos"
-    },    "skills": {
+    },
+    "skills": {
         "title": "Habilidades Técnicas",
-        "subtitle": "Tecnologias e ferramentas com as quais trabalho",        "competenceLevel": "Nível de Competência",
+        "subtitle": "Tecnologias e ferramentas com as quais trabalho",
+        "competenceLevel": "Nível de Competência",
         "techStack": "Stack Tecnológico",
         "methodologies": "Metodologias e Ferramentas",
         "categories": {
@@ -78,7 +82,8 @@
             "tools": "Ferramentas",
             "databases": "Bancos de Dados"
         }
-    },    "education": {
+    },
+    "education": {
         "title": "Formação Acadêmica",
         "subtitle": "Minha jornada de aprendizado contínuo em tecnologias de desenvolvimento",
         "degree": "Grau",
@@ -118,7 +123,11 @@
         "rights": "Todos os direitos reservados.",
         "madeWith": "Feito com",
         "and": "e",
-        "by": "por"
+        "by": "por",
+        "techStack": "Stack Tecnológico",
+        "connectWithMe": "Conecte-se comigo",
+        "description": "Desenvolvedor Frontend React apaixonado por criar experiências digitais excepcionais com tecnologias modernas.",
+        "designedWith": "Projetado e desenvolvido com ❤️"
     },
     "loading": {
         "text": "Carregando portfólio..."

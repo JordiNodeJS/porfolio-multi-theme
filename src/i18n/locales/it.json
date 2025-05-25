@@ -6,7 +6,8 @@
         "skills": "Competenze",
         "education": "Formazione",
         "contact": "Contatto"
-    },    "hero": {
+    },
+    "hero": {
         "greeting": "Ciao! Sono",
         "name": "Jordi Nodal",
         "title": "Frontend React Engineer",
@@ -57,7 +58,8 @@
                 "description": "In Aula Magna Business School mi sono specializzato nel design web di eventi, lavorando in team per migliorare l'usabilità web e l'esperienza utente (UX/UI), creando soluzioni visive attraenti e funzionali."
             }
         }
-    },    "projects": {
+    },
+    "projects": {
         "title": "Progetti in Evidenza",
         "subtitle": "Una selezione dei miei lavori più rappresentativi",
         "viewProject": "Vedi Progetto",
@@ -67,9 +69,11 @@
         "liveDemo": "Demo Live",
         "sourceCode": "Codice Sorgente",
         "viewMore": "Vedi Altri Progetti"
-    },    "skills": {
+    },
+    "skills": {
         "title": "Competenze Tecniche",
-        "subtitle": "Tecnologie e strumenti con cui lavoro",        "competenceLevel": "Livello di Competenza",
+        "subtitle": "Tecnologie e strumenti con cui lavoro",
+        "competenceLevel": "Livello di Competenza",
         "techStack": "Stack Tecnologico",
         "methodologies": "Metodologie e Strumenti",
         "categories": {
@@ -78,7 +82,8 @@
             "tools": "Strumenti",
             "databases": "Database"
         }
-    },    "education": {
+    },
+    "education": {
         "title": "Formazione Accademica",
         "subtitle": "Il mio percorso di apprendimento continuo nelle tecnologie di sviluppo",
         "degree": "Titolo",
@@ -118,7 +123,11 @@
         "rights": "Tutti i diritti riservati.",
         "madeWith": "Fatto con",
         "and": "e",
-        "by": "da"
+        "by": "da",
+        "techStack": "Stack Tecnologico",
+        "connectWithMe": "Connettiti con me",
+        "description": "Sviluppatore Frontend React appassionato nella creazione di esperienze digitali eccezionali con tecnologie moderne.",
+        "designedWith": "Progettato e sviluppato con ❤️"
     },
     "loading": {
         "text": "Caricamento portfolio..."

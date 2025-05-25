@@ -108,9 +108,11 @@ const EducationCard = ({
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.3 }}
           viewport={{ once: true }}
-          className={`absolute top-4 right-4 ${education.link ? 'mr-12' : ''}`}
+          className={`absolute top-4 right-4 ${education.link ? "mr-12" : ""}`}
         >
-          <div className="flex items-center gap-1 bg-yellow-500/20 text-yellow-400 px-2 py-1 rounded-full text-xs border border-yellow-500/30">            <Star className="w-3 h-3" />
+          <div className="flex items-center gap-1 bg-yellow-500/20 text-yellow-400 px-2 py-1 rounded-full text-xs border border-yellow-500/30">
+            {" "}
+            <Star className="w-3 h-3" />
             {translations.featured}
           </div>
         </motion.div>
@@ -124,9 +126,21 @@ const Education = () => {
   const { education: educationTranslations } = usePortfolioTranslations();
 
   const stats = [
-    { label: educationTranslations.stats.trainings, value: education.length, icon: GraduationCap },
-    { label: educationTranslations.stats.technologies, value: "15+", icon: Star },
-    { label: educationTranslations.stats.projects, value: "10+", icon: Calendar },
+    {
+      label: educationTranslations.stats.trainings,
+      value: education.length,
+      icon: GraduationCap,
+    },
+    {
+      label: educationTranslations.stats.technologies,
+      value: "15+",
+      icon: Star,
+    },
+    {
+      label: educationTranslations.stats.projects,
+      value: "10+",
+      icon: Calendar,
+    },
   ];
 
   return (
@@ -142,14 +156,15 @@ const Education = () => {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
           className="text-center mb-16"
-        >          <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-6">
+        >
+          {" "}
+          <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-6">
             {educationTranslations.title}
           </h2>
           <p className="text-xl text-muted max-w-2xl mx-auto">
             {educationTranslations.subtitle}
           </p>
         </motion.div>
-
         {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
           {stats.map((stat, index) => (
@@ -179,21 +194,21 @@ const Education = () => {
               <p className="text-muted">{stat.label}</p>
             </motion.div>
           ))}
-        </div>        {/* Education Cards */}
+        </div>{" "}
+        {/* Education Cards */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {education.map((edu, index) => (
-            <EducationCard 
-              key={edu.id} 
-              education={edu} 
-              index={index} 
+            <EducationCard
+              key={edu.id}
+              education={edu}
+              index={index}
               translations={{
                 viewCertificate: educationTranslations.viewCertificate,
-                featured: educationTranslations.featured
+                featured: educationTranslations.featured,
               }}
             />
           ))}
         </div>
-
         {/* Learning Philosophy */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -203,7 +218,9 @@ const Education = () => {
           className="mt-16 text-center"
         >
           {" "}
-          <div className="glass-effect p-8 rounded-xl max-w-4xl mx-auto">            <h3 className="text-2xl font-bold text-themed mb-4">
+          <div className="glass-effect p-8 rounded-xl max-w-4xl mx-auto">
+            {" "}
+            <h3 className="text-2xl font-bold text-themed mb-4">
               {educationTranslations.learningPhilosophy.title}
             </h3>
             <p className="text-muted leading-relaxed">

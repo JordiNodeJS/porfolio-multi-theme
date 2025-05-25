@@ -1,0 +1,150 @@
+{
+    "navigation": {
+        "home": "Inici",
+        "experience": "Experiència",
+        "projects": "Projectes",
+        "skills": "Habilitats",
+        "education": "Educació",
+        "contact": "Contacte"
+    },
+    "hero": {
+        "greeting": "Hola! Sóc",
+        "name": "Jordi Nodal",
+        "title": "Frontend React Engineer",
+        "subtitle": "Desenvolupador Frontend especialitzat en React amb experiència creant interfícies modernes i funcionals",
+        "cta": "Veure el meu treball",
+        "downloadCV": "Descarregar CV",
+        "viewProjects": "Veure Projectes"
+    },
+    "experience": {
+        "title": "Experiència Professional",
+        "subtitle": "La meva trajectòria professional desenvolupant solucions innovadores",
+        "location": "Espanya",
+        "viewProject": "Veure projecte",
+        "clickTooltip": "💡 Fes clic per veure assoliments destacats",
+        "technologiesUsed": "Tecnologies utilitzades",
+        "achievements": "Assoliments Destacats",
+        "description": "Descripció:",
+        "impact": "Impacte:",
+        "period": "Període:",
+        "technologiesAndMethodologies": "Tecnologies i Metodologies Utilitzades:",
+        "frontend": "Frontend:",
+        "testing": "Testing:",
+        "methodologies": "Metodologies:",
+        "tools": "Eines:",
+        "featuredProjects": "Projectes destacats:",
+        "companies": {
+            "flipo": {
+                "title": "FLiPO | Frontend React Engineer",
+                "period": "Juliol 2023 – Abril 2025",
+                "description": "Durant el meu temps a FLiPO, una startup líder en venda online d'ulleres modulars i graduades, vaig contribuir significativament al desenvolupament i millora de l'ERP intern, implementant solucions innovadores que van impactar directament en l'eficiència operativa de l'empresa."
+            },
+            "itacademy": {
+                "title": "IT Academy BCN | Frontend React Engineer",
+                "period": "2022",
+                "description": "A IT Academy BCN vaig col·laborar remotament en un equip de 12 persones utilitzant metodologies àgils (Scrum, Kanban i sprints de 2 setmanes). Vaig participar en el desenvolupament de projectes com ITA Directory i ITA Game, centrant-me en la millora del sistema ERP i la implementació de noves funcionalitats.",
+                "frontend": "JavaScript, TypeScript, React.js, Redux, Context API, Hooks, Styled Components",
+                "testing": "Vitest",
+                "methodologies": "Agile (Scrum, Kanban, sprints de 2 setmanes), POO",
+                "tools": "Git, GitHub, Sonar, Docker",
+                "projects": {
+                    "itaDirectory": "ITA Directory: Projecte per a estudiants de Barcelona Activa - IT Academy",
+                    "itaGame": "ITA Game: Plataforma de gamificació per a alumnes d'acadèmia de codi"
+                }
+            },
+            "aulaMagna": {
+                "title": "Aula Magna Business School SLU | Web Designer",
+                "period": "2022",
+                "description": "A Aula Magna Business School em vaig especialitzar en el disseny web d'esdeveniments, treballant en equip per millorar la usabilitat web i l'experiència d'usuari (UX/UI), creant solucions visuals atractives i funcionals."
+            }
+        }
+    },
+    "projects": {
+        "title": "Projectes Destacats",
+        "subtitle": "Una selecció dels meus treballs més representatius",
+        "viewProject": "Veure Projecte",
+        "viewCode": "Veure Codi",
+        "technologies": "Tecnologies:",
+        "features": "Característiques:",
+        "liveDemo": "Demo en Viu",
+        "sourceCode": "Codi Font",
+        "viewMore": "Veure Més Projectes"
+    },
+    "skills": {
+        "title": "Habilitats Tècniques",
+        "subtitle": "Tecnologies i eines amb les quals treballo",
+        "competenceLevel": "Nivell de Competència",
+        "techStack": "Stack Tecnològic",
+        "methodologies": "Metodologies i Eines",
+        "categories": {
+            "frontend": "Frontend",
+            "backend": "Backend",
+            "tools": "Eines",
+            "databases": "Bases de Dades"
+        }
+    },
+    "education": {
+        "title": "Formació Acadèmica",
+        "subtitle": "El meu camí d'aprenentatge continu en tecnologies de desenvolupament",
+        "degree": "Titulació",
+        "institution": "Institució",
+        "period": "Període",
+        "description": "Descripció",
+        "skills": "Habilitats adquirides:",
+        "certificate": "Veure Certificat",
+        "viewCertificate": "Veure certificat o projecte",
+        "featured": "Destacat",
+        "stats": {
+            "trainings": "Formacions",
+            "technologies": "Tecnologies",
+            "projects": "Projectes"
+        },
+        "learningPhilosophy": {
+            "title": "Filosofia d'Aprenentatge",
+            "description": "Crec fermament en l'aprenentatge continu i l'adaptació a les noves tecnologies. La meva formació no només abasta coneixements tècnics, sinó també metodologies àgils, treball en equip i millors pràctiques de desenvolupament que em permeten crear solucions robustes i escalables."
+        }
+    },
+    "contact": {
+        "title": "Contacte",
+        "subtitle": "Tens un projecte al cap? Parlem!",
+        "name": "Nom",
+        "email": "Email",
+        "message": "Missatge",
+        "send": "Enviar Missatge",
+        "sending": "Enviant...",
+        "success": "Missatge enviat correctament!",
+        "error": "Error en enviar el missatge. Torna-ho a provar.",
+        "social": "Xarxes Socials",
+        "location": "Ubicació",
+        "phone": "Telèfon",
+        "availability": "Disponible per a projectes freelance"
+    },
+    "footer": {
+        "rights": "Tots els drets reservats.",
+        "madeWith": "Fet amb",
+        "and": "i",
+        "by": "per",
+        "techStack": "Tech Stack",
+        "connectWithMe": "Connecta amb mi",
+        "description": "Frontend React Developer apassionat per crear experiències digitals excepcionals amb tecnologies modernes.",
+        "designedWith": "Dissenyat i desenvolupat amb ❤️"
+    },
+    "loading": {
+        "text": "Carregant portfolio..."
+    },
+    "theme": {
+        "toggle": "Canviar tema",
+        "light": "Mode clar",
+        "dark": "Mode fosc"
+    },
+    "language": {
+        "select": "Seleccionar idioma",
+        "es": "Español",
+        "en": "English",
+        "fr": "Français",
+        "de": "Deutsch",
+        "it": "Italiano",
+        "pt": "Português",
+        "ca": "Català"
+    }
+}

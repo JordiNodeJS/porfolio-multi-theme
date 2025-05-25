@@ -61,7 +61,7 @@ export const usePortfolioTranslations = () => {
     liveDemo: t("projects.liveDemo"),
     sourceCode: t("projects.sourceCode"),
     viewMore: t("projects.viewMore"),
-  };  // Helper para skills section
+  }; // Helper para skills section
   const skills = {
     title: t("skills.title"),
     subtitle: t("skills.subtitle"),
@@ -114,13 +114,16 @@ export const usePortfolioTranslations = () => {
     phone: t("contact.phone"),
     availability: t("contact.availability"),
   };
-
   // Helper para footer
   const footer = {
     rights: t("footer.rights"),
     madeWith: t("footer.madeWith"),
     and: t("footer.and"),
     by: t("footer.by"),
+    techStack: t("footer.techStack"),
+    connectWithMe: t("footer.connectWithMe"),
+    description: t("footer.description"),
+    designedWith: t("footer.designedWith"),
   };
 
   // Helper para theme y language

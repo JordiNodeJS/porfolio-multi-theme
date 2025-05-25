@@ -11,7 +11,8 @@ const ProjectCard = ({
   projects,
 }: {
   project: Project;
-  index: number;  projects: {
+  index: number;
+  projects: {
     viewProject: string;
     viewCode: string;
     technologies: string;
@@ -55,7 +56,8 @@ const ProjectCard = ({
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}                className="tooltip bg-white/20 backdrop-blur-sm text-white p-2 rounded-lg hover:bg-white/30 transition-all duration-300 hover:shadow-[0_0_8px_rgba(255,255,255,0.3)]"
+                whileTap={{ scale: 0.9 }}
+                className="tooltip bg-white/20 backdrop-blur-sm text-white p-2 rounded-lg hover:bg-white/30 transition-all duration-300 hover:shadow-[0_0_8px_rgba(255,255,255,0.3)]"
                 data-tooltip={projects.sourceCode}
               >
                 <Github className="w-5 h-5" />
@@ -87,12 +89,14 @@ const ProjectCard = ({
           <div className="flex gap-1.5">
             {project.link && (
               <span
-                className="tooltip w-2 h-2 rounded-full bg-blue-400"                data-tooltip={projects.sourceCode}
+                className="tooltip w-2 h-2 rounded-full bg-blue-400"
+                data-tooltip={projects.sourceCode}
               ></span>
             )}
             {project.demo && (
               <span
-                className="tooltip w-2 h-2 rounded-full bg-green-400"                data-tooltip={projects.liveDemo}
+                className="tooltip w-2 h-2 rounded-full bg-green-400"
+                data-tooltip={projects.liveDemo}
               ></span>
             )}
           </div>
@@ -109,12 +113,12 @@ const ProjectCard = ({
               key={tag}
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              whileHover={{ 
-                rotate: [0, -2, 2, -2, 2, 0]
+              whileHover={{
+                rotate: [0, -2, 2, -2, 2, 0],
               }}
-              transition={{ 
+              transition={{
                 delay: tagIndex * 0.1,
-                rotate: { duration: 0.3 }
+                rotate: { duration: 0.3 },
               }}
               className="px-3 py-1 bg-primary-500/20 text-primary-300 text-xs rounded-full border border-primary-500/30 cursor-default"
             >
@@ -154,25 +158,26 @@ const Projects = () => {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
           className="text-center mb-16"
-        >          <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-6">
+        >
+          {" "}
+          <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-6">
             {projectsTranslations.title}
           </h2>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">
             {projectsTranslations.subtitle}
           </p>
         </motion.div>
-
-        {/* Projects Grid */}        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Projects Grid */}{" "}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.slice(0, visibleProjects).map((project, index) => (
-            <ProjectCard 
-              key={project.id} 
-              project={project} 
-              index={index} 
+            <ProjectCard
+              key={project.id}
+              project={project}
+              index={index}
               projects={projectsTranslations}
             />
           ))}
         </div>
-
         {/* View More Button */}
         {visibleProjects < totalProjects && (
           <motion.div
@@ -185,7 +190,9 @@ const Projects = () => {
             <motion.button
               onClick={showMoreProjects}
               whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}              className="glass-effect hover:bg-white/10 text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 border border-primary-500/50 hover:border-primary-400"            >
+              whileTap={{ scale: 0.95 }}
+              className="glass-effect hover:bg-white/10 text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 border border-primary-500/50 hover:border-primary-400"
+            >
               {projectsTranslations.viewMore}
             </motion.button>
           </motion.div>
