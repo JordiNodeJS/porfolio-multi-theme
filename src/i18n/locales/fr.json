@@ -1,0 +1,129 @@
+{
+    "navigation": {
+        "home": "Accueil",
+        "experience": "Expérience",
+        "projects": "Projets",
+        "skills": "Compétences",
+        "education": "Formation",
+        "contact": "Contact"
+    },
+    "hero": {
+        "greeting": "Bonjour ! Je suis",
+        "name": "Jordi Nodal",
+        "title": "Ingénieur Frontend React",
+        "subtitle": "Développeur Frontend spécialisé en React avec une expérience dans la création d'interfaces modernes et fonctionnelles",
+        "cta": "Voir mon travail",
+        "downloadCV": "Télécharger CV"
+    },
+    "experience": {
+        "title": "Expérience Professionnelle",
+        "subtitle": "Mon parcours professionnel développant des solutions innovantes",
+        "location": "Espagne",
+        "viewProject": "Voir le projet",
+        "clickTooltip": "💡 Cliquez pour voir les réalisations remarquables",
+        "technologiesUsed": "Technologies utilisées",
+        "achievements": "Réalisations Remarquables",
+        "description": "Description :",
+        "impact": "Impact :",
+        "period": "Période :",
+        "technologiesAndMethodologies": "Technologies et Méthodologies Utilisées :",
+        "frontend": "Frontend :",
+        "testing": "Tests :",
+        "methodologies": "Méthodologies :",
+        "tools": "Outils :",
+        "featuredProjects": "Projets phares :",
+        "companies": {
+            "flipo": {
+                "title": "FLiPO | Ingénieur Frontend React",
+                "period": "Juillet 2023 – Avril 2025",
+                "description": "Pendant mon temps chez FLiPO, une startup leader dans la vente en ligne de lunettes modulaires et sur ordonnance, j'ai contribué significativement au développement et à l'amélioration de l'ERP interne, implémentant des solutions innovantes qui ont directement impacté l'efficacité opérationnelle de l'entreprise."
+            },
+            "itacademy": {
+                "title": "IT Academy BCN | Ingénieur Frontend React",
+                "period": "2022",
+                "description": "Chez IT Academy BCN, j'ai collaboré à distance dans une équipe de 12 personnes en utilisant des méthodologies agiles (Scrum, Kanban et sprints de 2 semaines). J'ai participé au développement de projets comme ITA Directory et ITA Game, me concentrant sur l'amélioration du système ERP et l'implémentation de nouvelles fonctionnalités.",
+                "frontend": "JavaScript, TypeScript, React.js, Redux, Context API, Hooks, Styled Components",
+                "testing": "Vitest",
+                "methodologies": "Agile (Scrum, Kanban, sprints de 2 semaines), POO",
+                "tools": "Git, GitHub, Sonar, Docker",
+                "projects": {
+                    "itaDirectory": "ITA Directory : Projet pour les étudiants de Barcelona Activa - IT Academy",
+                    "itaGame": "ITA Game : Plateforme de gamification pour les étudiants d'académie de code"
+                }
+            },
+            "aulaMagna": {
+                "title": "Aula Magna Business School SLU | Designer Web",
+                "period": "2022",
+                "description": "Chez Aula Magna Business School, je me suis spécialisé dans le design web d'événements, travaillant en équipe pour améliorer l'utilisabilité web et l'expérience utilisateur (UX/UI), créant des solutions visuelles attrayantes et fonctionnelles."
+            }
+        }
+    },
+    "projects": {
+        "title": "Projets Phares",
+        "subtitle": "Une sélection de mes travaux les plus représentatifs",
+        "viewProject": "Voir le Projet",
+        "viewCode": "Voir le Code",
+        "technologies": "Technologies :",
+        "features": "Fonctionnalités :",
+        "liveDemo": "Démo en Direct",
+        "sourceCode": "Code Source"
+    },
+    "skills": {
+        "title": "Compétences Techniques",
+        "subtitle": "Technologies et outils avec lesquels je travaille",
+        "categories": {
+            "frontend": "Frontend",
+            "backend": "Backend",
+            "tools": "Outils",
+            "databases": "Bases de Données"
+        }
+    },
+    "education": {
+        "title": "Formation Académique",
+        "subtitle": "Mon parcours éducatif et certifications",
+        "degree": "Diplôme",
+        "institution": "Institution",
+        "period": "Période",
+        "description": "Description",
+        "skills": "Compétences acquises :",
+        "certificate": "Voir le Certificat"
+    },
+    "contact": {
+        "title": "Contact",
+        "subtitle": "Vous avez un projet en tête ? Parlons-en !",
+        "name": "Nom",
+        "email": "Email",
+        "message": "Message",
+        "send": "Envoyer le Message",
+        "sending": "Envoi...",
+        "success": "Message envoyé avec succès !",
+        "error": "Erreur lors de l'envoi du message. Veuillez réessayer.",
+        "social": "Réseaux Sociaux",
+        "location": "Localisation",
+        "phone": "Téléphone",
+        "availability": "Disponible pour des projets freelance"
+    },
+    "footer": {
+        "rights": "Tous droits réservés.",
+        "madeWith": "Fait avec",
+        "and": "et",
+        "by": "par"
+    },
+    "loading": {
+        "text": "Chargement du portfolio..."
+    },
+    "theme": {
+        "toggle": "Changer de thème",
+        "light": "Mode clair",
+        "dark": "Mode sombre"
+    },
+    "language": {
+        "select": "Sélectionner la langue",
+        "es": "Español",
+        "en": "English",
+        "fr": "Français",
+        "de": "Deutsch",
+        "it": "Italiano",
+        "pt": "Português"
+    }
+}

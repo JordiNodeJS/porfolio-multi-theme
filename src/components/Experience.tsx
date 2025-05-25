@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { MapPin, ExternalLink, X } from "lucide-react";
 import { usePortfolioData } from "../hooks/usePortfolioData";
+import { useTranslation } from "react-i18next";
 import { useState } from "react";
 
 const ExperienceCard = ({
@@ -12,6 +13,7 @@ const ExperienceCard = ({
   index: number;
   onCompanyClick?: (company: string, cardIndex: number) => void;
 }) => {
+  const { t } = useTranslation();
   const [isCardHovered, setIsCardHovered] = useState(false);
   const [isNodeHovered, setIsNodeHovered] = useState(false);
   const isClickableCard =
@@ -60,19 +62,20 @@ const ExperienceCard = ({
           onMouseEnter={() => setIsCardHovered(true)}
           onMouseLeave={() => setIsCardHovered(false)}
         >
+          {" "}
           {/* Tooltip personalizado */}
           {isClickableCard && (
             <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 glass-effect text-white text-xs px-3 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap z-10 border border-primary-500/30">
-              💡 Haz clic para ver logros destacados
+              {t("experience.clickTooltip")}
               <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-current"></div>
             </div>
           )}
           <h3 className="text-xl font-bold text-white mb-2 text-left">
             {experience.company}
-          </h3>
+          </h3>{" "}
           <div className="flex items-center gap-2 mb-4 text-primary-400">
             <MapPin className="w-4 h-4" />
-            <span className="text-sm">España</span>
+            <span className="text-sm">{t("experience.location")}</span>
           </div>
           <p className="text-gray-300 text-sm leading-relaxed mb-4 text-left">
             {experience.experience}
@@ -90,8 +93,9 @@ const ExperienceCard = ({
                   whileTap={{ scale: 0.95 }}
                   className="flex items-center gap-1 text-xs text-primary-400 hover:text-primary-300 transition-colors"
                 >
+                  {" "}
                   <ExternalLink className="w-3 h-3" />
-                  Ver proyecto
+                  {t("experience.viewProject")}
                 </motion.a>
               ))}
             </div>
@@ -193,6 +197,7 @@ const ExperienceCard = ({
 };
 
 const Experience = () => {
+  const { t } = useTranslation();
   const { experience, achievements } = usePortfolioData();
   const [activeModal, setActiveModal] = useState<string | null>(null);
   const [modalDirection, setModalDirection] = useState<"left" | "right">(
@@ -207,32 +212,27 @@ const Experience = () => {
   const getAchievements = (company: string) => {
     return achievements[company] || [];
   };
-
   const getCompanyInfo = (company: string) => {
     switch (company) {
       case "FLiPO":
         return {
-          title: "FLiPO | Frontend React Engineer",
-          period: "Julio 2023 – Abril 2025",
-          description:
-            "Durante mi tiempo en FLiPO, una startup líder en venta online de gafas modulares y graduadas, contribuí significativamente al desarrollo y mejora del ERP interno, implementando soluciones innovadoras que impactaron directamente en la eficiencia operativa de la empresa.",
+          title: t("experience.companies.flipo.title"),
+          period: t("experience.companies.flipo.period"),
+          description: t("experience.companies.flipo.description"),
         };
       case "IT Academy":
         return {
-          title: "IT Academy BCN | Frontend React Engineer",
-          period: "2022",
-          description:
-            "En IT Academy BCN colaboré remotamente en un equipo de 12 personas utilizando metodologías ágiles (Scrum, Kanban y sprints de 2 semanas). Participé en el desarrollo de proyectos como ITA Directory e ITA Game, enfocándome en la mejora del sistema ERP y la implementación de nuevas funcionalidades.",
+          title: t("experience.companies.itacademy.title"),
+          period: t("experience.companies.itacademy.period"),
+          description: t("experience.companies.itacademy.description"),
         };
       case "Aula Magna":
         return {
-          title: "Aula Magna Business School SLU | Web Designer",
-          period: "2022",
-          description:
-            "En Aula Magna Business School me especialicé en el diseño web de eventos, trabajando en equipo para mejorar la usabilidad web y la experiencia de usuario (UX/UI), creando soluciones visuales atractivas y funcionales.",
+          title: t("experience.companies.aulaMagna.title"),
+          period: t("experience.companies.aulaMagna.period"),
+          description: t("experience.companies.aulaMagna.description"),
         };
       default:
-        return { title: "", period: "", description: "" };
         return { title: "", period: "", description: "" };
     }
   };
@@ -248,11 +248,12 @@ const Experience = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
+          {" "}
           <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-6">
-            Experiencia Profesional
+            {t("experience.title")}
           </h2>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            Mi trayectoria profesional desarrollando soluciones innovadoras
+            {t("experience.subtitle")}
           </p>
         </motion.div>{" "}
         {/* Timeline */}
@@ -291,8 +292,9 @@ const Experience = () => {
           className="mt-16 text-center"
         >
           <div className="glass-effect p-8 rounded-xl max-w-4xl mx-auto">
+            {" "}
             <h3 className="text-2xl font-bold text-white mb-6">
-              Tecnologías utilizadas
+              {t("experience.technologiesUsed")}
             </h3>
             <div className="flex flex-wrap justify-center gap-3">
               {[
@@ -360,8 +362,9 @@ const Experience = () => {
                 <div className="sticky top-0 modal-bg/95 backdrop-blur-md border-b border-primary-500/30 p-6">
                   <div className="flex items-center justify-between">
                     <div>
+                      {" "}
                       <h2 className="text-2xl font-bold gradient-text">
-                        Logros Destacados
+                        {t("experience.achievements")}
                       </h2>
                       <p className="text-primary-400 mt-1">
                         {getCompanyInfo(activeModal).title}
@@ -396,18 +399,18 @@ const Experience = () => {
                           </h3>
 
                           <div className="space-y-3">
+                            {" "}
                             <div>
                               <h4 className="text-sm font-semibold text-primary-400 mb-1">
-                                Descripción:
+                                {t("experience.description")}
                               </h4>
                               <p className="text-gray-300 text-sm leading-relaxed">
                                 {achievement.description}
                               </p>
                             </div>
-
                             <div>
                               <h4 className="text-sm font-semibold text-green-400 mb-1">
-                                Impacto:
+                                {t("experience.impact")}
                               </h4>
                               <p className="text-gray-300 text-sm leading-relaxed">
                                 {achievement.impact}
@@ -426,65 +429,73 @@ const Experience = () => {
                     transition={{ delay: 0.6 }}
                     className="mt-8 p-6 bg-primary-500/10 rounded-xl border border-primary-500/30"
                   >
+                    {" "}
                     <h3 className="text-lg font-bold text-white mb-2">
-                      Período: {getCompanyInfo(activeModal).period}
+                      {t("experience.period")}{" "}
+                      {getCompanyInfo(activeModal).period}
                     </h3>
                     <p className="text-gray-300 text-sm">
                       {getCompanyInfo(activeModal).description}
                     </p>
-
                     {/* Tecnologías específicas según la empresa */}
                     {activeModal === "IT Academy" && (
                       <div className="mt-4">
+                        {" "}
                         <h4 className="text-md font-bold text-white mb-3">
-                          Tecnologías y Metodologías Utilizadas:
+                          {t("experience.technologiesAndMethodologies")}
                         </h4>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                           <div>
                             <p className="text-primary-400 font-semibold mb-1">
-                              Frontend:
+                              {t("experience.frontend")}
                             </p>
                             <p className="text-gray-300">
-                              JavaScript, TypeScript, React.js, Redux, Context
-                              API, Hooks, Styled Components
+                              {t("experience.companies.itacademy.frontend")}
                             </p>
                           </div>
                           <div>
                             <p className="text-primary-400 font-semibold mb-1">
-                              Testing:
-                            </p>
-                            <p className="text-gray-300">Vitest</p>
-                          </div>
-                          <div>
-                            <p className="text-primary-400 font-semibold mb-1">
-                              Metodologías:
+                              {t("experience.testing")}
                             </p>
                             <p className="text-gray-300">
-                              Agile (Scrum, Kanban, sprints de 2 semanas), POO
+                              {t("experience.companies.itacademy.testing")}
                             </p>
                           </div>
                           <div>
                             <p className="text-primary-400 font-semibold mb-1">
-                              Herramientas:
+                              {t("experience.methodologies")}
                             </p>
                             <p className="text-gray-300">
-                              Git, GitHub, Sonar, Docker
+                              {t(
+                                "experience.companies.itacademy.methodologies"
+                              )}
+                            </p>
+                          </div>
+                          <div>
+                            <p className="text-primary-400 font-semibold mb-1">
+                              {t("experience.tools")}
+                            </p>
+                            <p className="text-gray-300">
+                              {t("experience.companies.itacademy.tools")}
                             </p>
                           </div>
                         </div>
-
                         <div className="mt-4">
                           <p className="text-primary-400 font-semibold mb-2">
-                            Proyectos destacados:
+                            {t("experience.featuredProjects")}
                           </p>
                           <div className="space-y-1">
                             <p className="text-gray-300">
-                              • <strong>ITA Directory:</strong> Proyecto para
-                              estudiantes de Barcelona Activa - IT Academy
+                              • <strong>ITA Directory:</strong>{" "}
+                              {t(
+                                "experience.companies.itacademy.projects.itaDirectory"
+                              )}
                             </p>
                             <p className="text-gray-300">
-                              • <strong>ITA Game:</strong> Plataforma de
-                              gamificación para alumnos de academia de código
+                              • <strong>ITA Game:</strong>{" "}
+                              {t(
+                                "experience.companies.itacademy.projects.itaGame"
+                              )}
                             </p>
                           </div>
                         </div>

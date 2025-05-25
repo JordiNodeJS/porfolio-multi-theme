@@ -1,9 +1,12 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Menu, X, Github, Linkedin, Mail } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import ThemeToggle from "./ThemeToggle";
+import LanguageSelector from "./LanguageSelector";
 
 const Navigation = () => {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
@@ -23,13 +26,12 @@ const Navigation = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
   const navItems = [
-    { name: "Inicio", href: "#hero" },
-    { name: "Sobre mí", href: "#about" },
-    { name: "Experiencia", href: "#experience" },
-    { name: "Proyectos", href: "#projects" },
-    { name: "Habilidades", href: "#skills" },
-    { name: "Formación", href: "#education" },
-    { name: "Contacto", href: "#contact" },
+    { name: t("navigation.home"), href: "#hero" },
+    { name: t("navigation.experience"), href: "#experience" },
+    { name: t("navigation.projects"), href: "#projects" },
+    { name: t("navigation.skills"), href: "#skills" },
+    { name: t("navigation.education"), href: "#education" },
+    { name: t("navigation.contact"), href: "#contact" },
   ];
   const socialLinks = [
     { icon: Github, href: "https://github.com/JordiNodeJS", label: "GitHub" },
@@ -71,7 +73,7 @@ const Navigation = () => {
                 {item.name}
               </motion.a>
             ))}
-          </div>
+          </div>{" "}
           {/* Social Links & Theme Toggle */}
           <div className="hidden lg:flex items-center space-x-4">
             {socialLinks.map((social) => (
@@ -88,6 +90,9 @@ const Navigation = () => {
                 <social.icon className="w-5 h-5" />
               </motion.a>
             ))}
+
+            {/* Language Selector */}
+            <LanguageSelector />
 
             {/* Theme Toggle */}
             <ThemeToggle />
@@ -125,22 +130,28 @@ const Navigation = () => {
               >
                 {item.name}
               </motion.a>
-            ))}
-            <div className="flex items-center space-x-4 pt-4 border-t border-white/10">
-              {socialLinks.map((social) => (
-                <motion.a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.2 }}
-                  whileTap={{ scale: 0.9 }}
-                  className="p-2 text-gray-400 hover:text-white transition-colors duration-300"
-                  aria-label={social.label}
-                >
-                  <social.icon className="w-5 h-5" />
-                </motion.a>
-              ))}
+            ))}{" "}
+            <div className="flex items-center justify-between pt-4 border-t border-white/10">
+              <div className="flex items-center space-x-4">
+                {socialLinks.map((social) => (
+                  <motion.a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.2 }}
+                    whileTap={{ scale: 0.9 }}
+                    className="p-2 text-gray-400 hover:text-white transition-colors duration-300"
+                    aria-label={social.label}
+                  >
+                    <social.icon className="w-5 h-5" />
+                  </motion.a>
+                ))}
+              </div>
+              <div className="flex items-center space-x-2">
+                <LanguageSelector />
+                <ThemeToggle />
+              </div>
             </div>
           </div>
         </div>

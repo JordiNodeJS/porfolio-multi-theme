@@ -1,0 +1,129 @@
+{
+    "navigation": {
+        "home": "Inicio",
+        "experience": "Experiencia",
+        "projects": "Proyectos",
+        "skills": "Habilidades",
+        "education": "Educación",
+        "contact": "Contacto"
+    },
+    "hero": {
+        "greeting": "¡Hola! Soy",
+        "name": "Jordi Nodal",
+        "title": "Frontend React Engineer",
+        "subtitle": "Desarrollador Frontend especializado en React con experiencia en crear interfaces modernas y funcionales",
+        "cta": "Ver mi trabajo",
+        "downloadCV": "Descargar CV"
+    },
+    "experience": {
+        "title": "Experiencia Profesional",
+        "subtitle": "Mi trayectoria profesional desarrollando soluciones innovadoras",
+        "location": "España",
+        "viewProject": "Ver proyecto",
+        "clickTooltip": "💡 Haz clic para ver logros destacados",
+        "technologiesUsed": "Tecnologías utilizadas",
+        "achievements": "Logros Destacados",
+        "description": "Descripción:",
+        "impact": "Impacto:",
+        "period": "Período:",
+        "technologiesAndMethodologies": "Tecnologías y Metodologías Utilizadas:",
+        "frontend": "Frontend:",
+        "testing": "Testing:",
+        "methodologies": "Metodologías:",
+        "tools": "Herramientas:",
+        "featuredProjects": "Proyectos destacados:",
+        "companies": {
+            "flipo": {
+                "title": "FLiPO | Frontend React Engineer",
+                "period": "Julio 2023 – Abril 2025",
+                "description": "Durante mi tiempo en FLiPO, una startup líder en venta online de gafas modulares y graduadas, contribuí significativamente al desarrollo y mejora del ERP interno, implementando soluciones innovadoras que impactaron directamente en la eficiencia operativa de la empresa."
+            },
+            "itacademy": {
+                "title": "IT Academy BCN | Frontend React Engineer",
+                "period": "2022",
+                "description": "En IT Academy BCN colaboré remotamente en un equipo de 12 personas utilizando metodologías ágiles (Scrum, Kanban y sprints de 2 semanas). Participé en el desarrollo de proyectos como ITA Directory e ITA Game, enfocándome en la mejora del sistema ERP y la implementación de nuevas funcionalidades.",
+                "frontend": "JavaScript, TypeScript, React.js, Redux, Context API, Hooks, Styled Components",
+                "testing": "Vitest",
+                "methodologies": "Agile (Scrum, Kanban, sprints de 2 semanas), POO",
+                "tools": "Git, GitHub, Sonar, Docker",
+                "projects": {
+                    "itaDirectory": "ITA Directory: Proyecto para estudiantes de Barcelona Activa - IT Academy",
+                    "itaGame": "ITA Game: Plataforma de gamificación para alumnos de academia de código"
+                }
+            },
+            "aulaMagna": {
+                "title": "Aula Magna Business School SLU | Web Designer",
+                "period": "2022",
+                "description": "En Aula Magna Business School me especialicé en el diseño web de eventos, trabajando en equipo para mejorar la usabilidad web y la experiencia de usuario (UX/UI), creando soluciones visuales atractivas y funcionales."
+            }
+        }
+    },
+    "projects": {
+        "title": "Proyectos Destacados",
+        "subtitle": "Una selección de mis trabajos más representativos",
+        "viewProject": "Ver Proyecto",
+        "viewCode": "Ver Código",
+        "technologies": "Tecnologías:",
+        "features": "Características:",
+        "liveDemo": "Demo en Vivo",
+        "sourceCode": "Código Fuente"
+    },
+    "skills": {
+        "title": "Habilidades Técnicas",
+        "subtitle": "Tecnologías y herramientas con las que trabajo",
+        "categories": {
+            "frontend": "Frontend",
+            "backend": "Backend",
+            "tools": "Herramientas",
+            "databases": "Bases de Datos"
+        }
+    },
+    "education": {
+        "title": "Formación Académica",
+        "subtitle": "Mi trayectoria educativa y certificaciones",
+        "degree": "Titulación",
+        "institution": "Institución",
+        "period": "Período",
+        "description": "Descripción",
+        "skills": "Habilidades adquiridas:",
+        "certificate": "Ver Certificado"
+    },
+    "contact": {
+        "title": "Contacto",
+        "subtitle": "¿Tienes un proyecto en mente? ¡Hablemos!",
+        "name": "Nombre",
+        "email": "Email",
+        "message": "Mensaje",
+        "send": "Enviar Mensaje",
+        "sending": "Enviando...",
+        "success": "¡Mensaje enviado correctamente!",
+        "error": "Error al enviar el mensaje. Inténtalo de nuevo.",
+        "social": "Redes Sociales",
+        "location": "Ubicación",
+        "phone": "Teléfono",
+        "availability": "Disponible para proyectos freelance"
+    },
+    "footer": {
+        "rights": "Todos los derechos reservados.",
+        "madeWith": "Hecho con",
+        "and": "y",
+        "by": "por"
+    },
+    "loading": {
+        "text": "Cargando portfolio..."
+    },
+    "theme": {
+        "toggle": "Cambiar tema",
+        "light": "Modo claro",
+        "dark": "Modo oscuro"
+    },
+    "language": {
+        "select": "Seleccionar idioma",
+        "es": "Español",
+        "en": "English",
+        "fr": "Français",
+        "de": "Deutsch",
+        "it": "Italiano",
+        "pt": "Português"
+    }
+}
