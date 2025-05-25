@@ -1,11 +1,9 @@
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-import { usePortfolioData } from "../hooks/usePortfolioData";
 import { useTheme } from "../contexts/ThemeContext";
 import { usePortfolioTranslations } from "../hooks/usePortfolioTranslations";
 
 const Hero = () => {
-  const { data } = usePortfolioData();
   const { theme } = useTheme();
   const { hero } = usePortfolioTranslations();
 

@@ -1,16 +1,15 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { MapPin, ExternalLink, X } from "lucide-react";
-import { usePortfolioData } from "../hooks/usePortfolioData";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
-import type { Experience } from "../types";
+import type { ExperienceType } from "../types";
 
 const ExperienceCard = ({
   experience,
   index,
   onCompanyClick,
 }: {
-  experience: Experience;
+  experience: ExperienceType;
   index: number;
   onCompanyClick?: (company: string, cardIndex: number) => void;
 }) => {
@@ -199,11 +198,39 @@ const ExperienceCard = ({
 
 const Experience = () => {
   const { t } = useTranslation();
-  const { experience } = usePortfolioData();
   const [activeModal, setActiveModal] = useState<string | null>(null);
   const [modalDirection, setModalDirection] = useState<"left" | "right">(
     "right"
   );
+
+  // Generate experience data from translations
+  const generateExperiencesFromTranslations = (): ExperienceType[] => {
+    const companies = [
+      {
+        key: "flipo",
+        name: "FLiPO",
+        links: [], // No links specified in original data
+      },
+      {
+        key: "itacademy",
+        name: "IT Academy",
+        links: [], // No links specified in original data
+      },
+      {
+        key: "aulaMagna",
+        name: "Aula Magna",
+        links: [], // No links specified in original data
+      },
+    ];
+
+    return companies.map((company) => ({
+      company: t(`experience.companies.${company.key}.title`),
+      experience: t(`experience.companies.${company.key}.description`),
+      links: company.links,
+    }));
+  };
+
+  const experience = generateExperiencesFromTranslations();
   const handleCompanyClick = (company: string, cardIndex: number) => {
     setModalDirection(cardIndex % 2 === 0 ? "right" : "left");
     setActiveModal(company);
@@ -216,31 +243,33 @@ const Experience = () => {
     setActiveModal(null);
     // Mostrar el menú de navegación cuando se cierra el modal
     window.dispatchEvent(new CustomEvent("showNavigation"));
-  };  const getAchievements = (company: string) => {
+  };
+  const getAchievements = (company: string) => {
     const companiesConfig = {
-      "FLiPO": 7,  // 7 logros para FLiPO
-      "IT Academy": 7,  // 7 logros para IT Academy
-      "Aula Magna": 2   // 2 logros para Aula Magna
+      FLiPO: 7, // 7 logros para FLiPO
+      "IT Academy": 7, // 7 logros para IT Academy
+      "Aula Magna": 2, // 2 logros para Aula Magna
     };
-    
-    const achievementCount = companiesConfig[company as keyof typeof companiesConfig] || 0;
-    
+
+    const achievementCount =
+      companiesConfig[company as keyof typeof companiesConfig] || 0;
+
     // Generar logros basados en las traducciones únicamente
     return Array.from({ length: achievementCount }, (_, index) => ({
       title: t(`achievements.${company}.${index}.title`),
-      description: t(`achievements.${company}.${index}.description`), 
+      description: t(`achievements.${company}.${index}.description`),
       impact: t(`achievements.${company}.${index}.impact`),
-      icon: getAchievementIcon(company, index)
+      icon: getAchievementIcon(company, index),
     }));
   };
 
   const getAchievementIcon = (company: string, index: number): string => {
     const iconMaps = {
-      "FLiPO": ["🎯", "🔧", "⚡", "📈", "💳", "🌿", "🤝"],
+      FLiPO: ["🎯", "🔧", "⚡", "📈", "💳", "🌿", "🤝"],
       "IT Academy": ["🎨", "🔧", "⚡", "🚀", "👥", "📝", "🎓"],
-      "Aula Magna": ["🎪", "🔧"]
+      "Aula Magna": ["🎪", "🔧"],
     };
-    
+
     const icons = iconMaps[company as keyof typeof iconMaps] || [];
     return icons[index] || "✨";
   };

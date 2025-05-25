@@ -8,11 +8,11 @@ const SkillBar = ({
   skill,
   index,
 }: {
-  skill: { nombre: string; nivel: string };
+  skill: { name: string; level: string }; // Changed from nombre to name, nivel to level (as string for now)
   index: number;
 }) => {
-  const getProgressValue = (nivel: string) => {
-    switch (nivel.toLowerCase()) {
+  const getProgressValue = (level: string) => {
+    switch (level.toLowerCase()) {
       case "avanzado":
       case "advanced":
         return 90;
@@ -29,8 +29,8 @@ const SkillBar = ({
     }
   };
 
-  const getSkillColor = (nivel: string) => {
-    switch (nivel.toLowerCase()) {
+  const getSkillColor = (level: string) => {
+    switch (level.toLowerCase()) {
       case "avanzado":
       case "advanced":
         return "from-green-400 to-emerald-500";
@@ -47,7 +47,7 @@ const SkillBar = ({
     }
   };
 
-  const progress = getProgressValue(skill.nivel);
+  const progress = getProgressValue(skill.level); // Changed from nivel to level
 
   return (
     <motion.div
@@ -59,8 +59,12 @@ const SkillBar = ({
     >
       {" "}
       <div className="flex justify-between items-center mb-2">
-        <h3 className="text-lg font-semibold text-white">{skill.nombre}</h3>
-        <span className="text-sm text-gray-400 capitalize">{skill.nivel}</span>
+        <h3 className="text-lg font-semibold text-white">{skill.name}</h3>{" "}
+        {/* Changed from nombre to name */}
+        <span className="text-sm text-gray-400 capitalize">
+          {skill.level}
+        </span>{" "}
+        {/* Changed from nivel to level */}
       </div>
       <div className="w-full dark:bg-gray-700 light:bg-gray-300 rounded-full h-3 overflow-hidden">
         <motion.div
@@ -69,7 +73,7 @@ const SkillBar = ({
           transition={{ duration: 1.5, delay: index * 0.1, ease: "easeOut" }}
           viewport={{ once: true }}
           className={`h-full bg-gradient-to-r ${getSkillColor(
-            skill.nivel
+            skill.level // Changed from nivel to level
           )} rounded-full relative`}
         >
           <motion.div
@@ -120,8 +124,8 @@ const TechIcon = ({
 );
 
 const Skills = () => {
-  const { skills: skillsData } = usePortfolioData();
-  const { skills } = usePortfolioTranslations();
+  const { skills: skillsDataFromHook } = usePortfolioData(); // Renamed to avoid conflict
+  const { skills: skillsTranslations } = usePortfolioTranslations(); // Renamed for clarity
 
   const techStack = [
     { icon: Code2, name: "React", color: "from-blue-400 to-blue-600" },
@@ -131,6 +135,10 @@ const Skills = () => {
     { icon: Code2, name: "Vite", color: "from-purple-400 to-purple-600" },
     { icon: Globe, name: "TailwindCSS", color: "from-teal-400 to-teal-600" },
   ];
+
+  if (!skillsDataFromHook || !skillsTranslations) {
+    return <div>Loading skills data...</div>; // Or some other loading indicator
+  }
 
   return (
     <section id="skills" className="section-padding section-bg-gradient">
@@ -145,10 +153,10 @@ const Skills = () => {
         >
           {" "}
           <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-6">
-            {skills.title}
+            {skillsTranslations.title} {/* Use translated title */}
           </h2>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            {skills.subtitle}
+            {skillsTranslations.subtitle} {/* Use translated subtitle */}
           </p>
         </motion.div>
 
@@ -162,11 +170,16 @@ const Skills = () => {
           >
             {" "}
             <h3 className="text-2xl font-bold text-white mb-8">
-              {skills.competenceLevel}
+              {skillsTranslations.competenceLevel}{" "}
+              {/* Use translated competenceLevel */}
             </h3>
             <div className="space-y-4">
-              {skillsData.map((skill, index) => (
-                <SkillBar key={skill.nombre} skill={skill} index={index} />
+              {skillsDataFromHook.map((skill, index) => (
+                <SkillBar
+                  key={skill.id || index}
+                  skill={{ name: skill.name, level: String(skill.level) }}
+                  index={index}
+                />
               ))}
             </div>
           </motion.div>
@@ -180,7 +193,7 @@ const Skills = () => {
           >
             {" "}
             <h3 className="text-2xl font-bold text-white mb-8">
-              {skills.techStack}
+              {skillsTranslations.techStack} {/* Use translated techStack */}
             </h3>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
               {techStack.map((tech, index) => (
@@ -201,27 +214,38 @@ const Skills = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
               viewport={{ once: true }}
-              className="mt-8 p-6 glass-effect rounded-xl"
+              className="mt-8 p-6 bg-gray-800/50 dark:bg-opacity-50 light:bg-opacity-20 backdrop-blur-sm rounded-xl shadow-lg"
             >
-              {" "}
-              <h4 className="text-lg font-semibold text-white mb-3">
-                {skills.methodologies}
+              <h4 className="text-xl font-semibold text-white mb-4">
+                {skillsTranslations.methodologies}{" "}
+                {/* Corrected: Use skillsTranslations */}
               </h4>
-              <div className="flex flex-wrap gap-2">
+              <ul className="space-y-2">
                 {[
                   "Agile/SCRUM",
                   "Git/GitHub",
                   "Testing (Jest/Vitest)",
                   "CI/CD",
                 ].map((method) => (
-                  <span
-                    key={method}
-                    className="px-3 py-1 bg-primary-500/20 text-primary-300 text-sm rounded-full border border-primary-500/30"
-                  >
-                    {method}
-                  </span>
+                  <li key={method} className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="w-4 h-4 mr-2 text-primary-400"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={2}
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M9 12h6m-3-3v6m6.364-9.364a9 9 0 10-12.728 12.728A9 9 0 0018.364 2.636z"
+                      />
+                    </svg>
+                    <span className="text-gray-300">{method}</span>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </motion.div>
           </motion.div>
         </div>
