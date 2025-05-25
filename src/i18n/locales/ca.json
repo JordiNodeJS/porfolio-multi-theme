@@ -9,7 +9,7 @@
     },
     "hero": {
         "greeting": "Hola! Sóc",
-        "name": "Jordi Nodal",
+        "name": "JOrGE",
         "title": "Frontend React Engineer",
         "subtitle": "Desenvolupador Frontend especialitzat en React amb experiència creant interfícies modernes i funcionals",
         "cta": "Veure el meu treball",
@@ -107,6 +107,84 @@
                 "description": "UX/UI i funcionalitats per a l'arquitectura."
             }
         }
+    },
+    "achievements": {
+        "FLiPO": [
+            {
+                "title": "Optimització de la Usabilitat de l'ERP",
+                "description": "Vaig redissenyar i ajustar la interfície per simplificar fluxos de treball i millorar la navegació del sistema.",
+                "impact": "Vaig aconseguir que els usuaris interactuessin de manera més intuïtiva, reduint la corba d'aprenentatge i augmentant l'eficiència operativa."
+            },
+            {
+                "title": "Depuració i Refactorització del Codi",
+                "description": "Vaig identificar àrees problemàtiques i vaig aplicar les millors pràctiques de programació per millorar la llegibilitat i qualitat del codi.",
+                "impact": "Vaig refactoritzar mòduls crítics, eliminant redundàncies i creant una base de codi més estable i fàcil de mantenir."
+            },
+            {
+                "title": "Implementació de Noves Funcionalitats",
+                "description": "Vaig dissenyar i integrar noves característiques a l'ERP, liderant l'anàlisi de necessitats i usant metodologies àgils per assegurar una integració fluida.",
+                "impact": "Vaig incrementar l'eficiència operativa del sistema en un 30%, aportant solucions innovadores que van respondre directament a les demandes dels usuaris."
+            },
+            {
+                "title": "Optimització del Rendiment",
+                "description": "Vaig realitzar ajustos per reduir els temps de càrrega, optimitzar consultes i gestionar de forma eficient els recursos de l'ERP.",
+                "impact": "Vaig millorar significativament el rendiment general del sistema, traduint-se en una experiència d'usuari més àgil i fiable."
+            },
+            {
+                "title": "Integració de Passarel·la de Pagament (Stripe, TPV i ERP)",
+                "description": "Vaig liderar la implementació i optimització de la interfície i lògica de pagaments, treballant conjuntament amb l'equip de Backend, Tech Lead i Project Manager.",
+                "impact": "Agilitat Financera: Va permetre rebre pagaments a l'instant en el moment del lliurament de la comanda. Avantatge Competitiu: Va enfortir la posició de l'empresa al mercat oferint una solució robusta i eficient de gestió financera."
+            },
+            {
+                "title": "Implementació d'Estratègia Git (Feature Branching)",
+                "description": "Vaig introduir i motivar l'equip a seguir una estratègia de ramificació basada en 'feature branching', adaptada a equips mitjans.",
+                "impact": "Aquesta metodologia va millorar l'organització del codi i va potenciar la col·laboració en el desenvolupament, reduint conflictes i facilitant la integració de noves funcionalitats."
+            }
+        ],
+        "IT Academy": [
+            {
+                "title": "Optimització de l'ERP i Millores en UI/UX",
+                "description": "Vaig implementar ajustos estratègics en la interfície i experiència d'usuari, simplificant els fluxos de navegació i reduint la corba d'aprenentatge.",
+                "impact": "Vaig millorar significativament la usabilitat de l'ERP, facilitant les tasques diàries i augmentant la satisfacció dels usuaris."
+            },
+            {
+                "title": "Depuració i Refactorització de Codi",
+                "description": "Vaig identificar i solucionar àrees crítiques en el codi, eliminant redundàncies i aplicant pràctiques recomanades de programació orientada a objectes.",
+                "impact": "Vaig elevar la qualitat i mantenibilitat del codi, reduint el nombre d'errors i facilitant futures actualitzacions."
+            },
+            {
+                "title": "Optimització del Rendiment de Consultes a l'API",
+                "description": "Vaig realitzar ajustos específics en la lògica de programació per optimitzar l'execució i eficiència de les consultes.",
+                "impact": "Es va notar una reducció en els temps de resposta, millorant el rendiment general del sistema i l'experiència de l'usuari."
+            },
+            {
+                "title": "Implementació de Flux de Treball amb Git/GitHub (CI/CD)",
+                "description": "Vaig establir un procés d'integració i desplegament continu a través de Git i GitHub, consolidant un flux de treball àgil per a l'equip.",
+                "impact": "Això va accelerar el lliurament de noves funcionalitats i millores, garantint major estabilitat en cada desplegament."
+            },
+            {
+                "title": "Col·laboració en Equip Remot (12 persones)",
+                "description": "Vaig treballar efectivament en un equip distribuït de 12 persones utilitzant metodologies àgils com Scrum i Kanban amb sprints de 2 setmanes.",
+                "impact": "Vaig contribuir al desenvolupament exitós de projectes com ITA Directory i ITA Game, millorant les habilitats de treball col·laboratiu de l'equip."
+            }
+        ],
+        "Aula Magna": [
+            {
+                "title": "Disseny Web d'Esdeveniments",
+                "description": "Vaig desenvolupar dissenys web específics per a esdeveniments, centrant-me en la presentació visual i funcionalitat específica per a cada ocasió.",
+                "impact": "Vaig crear experiències web atractives que van millorar la presència digital dels esdeveniments i van augmentar la participació dels assistents."
+            },
+            {
+                "title": "Millora d'Usabilitat Web",
+                "description": "Vaig treballar en equip per identificar i resoldre problemes d'usabilitat, optimitzant la navegació i accessibilitat del lloc web.",
+                "impact": "Vaig aconseguir una experiència d'usuari més fluida i accessible, reduint la taxa d'abandonament i millorant la satisfacció de l'usuari."
+            },
+            {
+                "title": "Optimització d'UX/UI",
+                "description": "Vaig implementar millores en l'experiència i interfície d'usuari, aplicant principis de disseny centrat en l'usuari.",
+                "impact": "Vaig millorar significativament la interacció de l'usuari amb la plataforma, creant interfícies més intuïtives i atractives."
+            }
+        ]
     },
     "skills": {
         "title": "Habilitats Tècniques",

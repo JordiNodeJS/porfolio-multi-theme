@@ -199,19 +199,50 @@ const ExperienceCard = ({
 
 const Experience = () => {
   const { t } = useTranslation();
-  const { experience, achievements } = usePortfolioData();
+  const { experience } = usePortfolioData();
   const [activeModal, setActiveModal] = useState<string | null>(null);
   const [modalDirection, setModalDirection] = useState<"left" | "right">(
     "right"
   );
-
   const handleCompanyClick = (company: string, cardIndex: number) => {
     setModalDirection(cardIndex % 2 === 0 ? "right" : "left");
     setActiveModal(company);
+
+    // Ocultar el menú de navegación cuando se abre el modal
+    window.dispatchEvent(new CustomEvent("hideNavigation"));
   };
 
-  const getAchievements = (company: string) => {
-    return achievements[company] || [];
+  const handleCloseModal = () => {
+    setActiveModal(null);
+    // Mostrar el menú de navegación cuando se cierra el modal
+    window.dispatchEvent(new CustomEvent("showNavigation"));
+  };  const getAchievements = (company: string) => {
+    const companiesConfig = {
+      "FLiPO": 7,  // 7 logros para FLiPO
+      "IT Academy": 7,  // 7 logros para IT Academy
+      "Aula Magna": 2   // 2 logros para Aula Magna
+    };
+    
+    const achievementCount = companiesConfig[company as keyof typeof companiesConfig] || 0;
+    
+    // Generar logros basados en las traducciones únicamente
+    return Array.from({ length: achievementCount }, (_, index) => ({
+      title: t(`achievements.${company}.${index}.title`),
+      description: t(`achievements.${company}.${index}.description`), 
+      impact: t(`achievements.${company}.${index}.impact`),
+      icon: getAchievementIcon(company, index)
+    }));
+  };
+
+  const getAchievementIcon = (company: string, index: number): string => {
+    const iconMaps = {
+      "FLiPO": ["🎯", "🔧", "⚡", "📈", "💳", "🌿", "🤝"],
+      "IT Academy": ["🎨", "🔧", "⚡", "🚀", "👥", "📝", "🎓"],
+      "Aula Magna": ["🎪", "🔧"]
+    };
+    
+    const icons = iconMaps[company as keyof typeof iconMaps] || [];
+    return icons[index] || "✨";
   };
   const getCompanyInfo = (company: string) => {
     switch (company) {
@@ -333,13 +364,13 @@ const Experience = () => {
         <AnimatePresence>
           {activeModal && (
             <>
-              {/* Overlay */}
+              {/* Overlay */}{" "}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50"
-                onClick={() => setActiveModal(null)}
+                onClick={handleCloseModal}
               />{" "}
               {/* Modal */}
               <motion.div
@@ -370,9 +401,9 @@ const Experience = () => {
                       <p className="text-primary-400 mt-1">
                         {getCompanyInfo(activeModal).title}
                       </p>
-                    </div>
+                    </div>{" "}
                     <button
-                      onClick={() => setActiveModal(null)}
+                      onClick={handleCloseModal}
                       className="p-2 text-gray-400 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
                     >
                       <X className="w-6 h-6" />

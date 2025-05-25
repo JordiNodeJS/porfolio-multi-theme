@@ -9,7 +9,7 @@
     },
     "hero": {
         "greeting": "Hallo! Ich bin",
-        "name": "Jordi Nodal",
+        "name": "JOrGE",
         "title": "Frontend React Engineer",
         "subtitle": "Frontend-Entwickler spezialisiert auf React mit Erfahrung in der Erstellung moderner und funktionaler Schnittstellen",
         "cta": "Meine Arbeit ansehen",
@@ -107,6 +107,84 @@
                 "description": "UX/UI und Funktionalitäten für die Architektur."
             }
         }
+    },
+    "achievements": {
+        "FLiPO": [
+            {
+                "title": "Optimierung der ERP-Benutzerfreundlichkeit",
+                "description": "Ich habe das Interface neu gestaltet und angepasst, um Arbeitsabläufe zu vereinfachen und die Systemnavigation zu verbessern.",
+                "impact": "Ich erreichte eine intuitivere Benutzerinteraktion, reduzierte die Lernkurve und steigerte die operative Effizienz."
+            },
+            {
+                "title": "Code-Debugging und Refactoring",
+                "description": "Ich identifizierte problematische Bereiche und wendete bewährte Programmierverfahren an, um die Lesbarkeit und Qualität des Codes zu verbessern.",
+                "impact": "Ich refactorierte kritische Module, beseitigte Redundanzen und schuf eine stabilere und wartungsfreundlichere Codebasis."
+            },
+            {
+                "title": "Implementierung neuer Funktionalitäten",
+                "description": "Ich entwarf und integrierte neue Funktionen in das ERP, leitete die Bedarfsanalyse und verwendete agile Methoden, um eine reibungslose Integration sicherzustellen.",
+                "impact": "Ich steigerte die operative Effizienz des Systems um 30% und lieferte innovative Lösungen, die direkt auf die Benutzerforderungen eingingen."
+            },
+            {
+                "title": "Leistungsoptimierung",
+                "description": "Ich nahm Anpassungen vor, um Ladezeiten zu reduzieren, Abfragen zu optimieren und ERP-Ressourcen effizient zu verwalten.",
+                "impact": "Ich verbesserte die allgemeine Systemleistung erheblich, was zu einer agileren und zuverlässigeren Benutzererfahrung führte."
+            },
+            {
+                "title": "Integration des Zahlungsgateways (Stripe, TPV und ERP)",
+                "description": "Ich leitete die Implementierung und Optimierung der Zahlungsschnittstelle und -logik und arbeitete eng mit dem Backend-Team, Tech Lead und Project Manager zusammen.",
+                "impact": "Finanzielle Agilität: Ermöglichte den sofortigen Zahlungserhalt zum Zeitpunkt der Bestelllieferung. Wettbewerbsvorteil: Stärkte die Marktposition des Unternehmens durch eine robuste und effiziente Finanzmanagement-Lösung."
+            },
+            {
+                "title": "Implementierung der Git-Strategie (Feature Branching)",
+                "description": "Ich führte eine auf 'Feature Branching' basierende Verzweigungsstrategie ein und motivierte das Team dazu, diese für mittelgroße Teams angepasste Strategie zu befolgen.",
+                "impact": "Diese Methodik verbesserte die Code-Organisation und verstärkte die Entwicklungszusammenarbeit, reduzierte Konflikte und erleichterte die Integration neuer Funktionalitäten."
+            }
+        ],
+        "IT Academy": [
+            {
+                "title": "ERP-Optimierung und UI/UX-Verbesserungen",
+                "description": "Ich implementierte strategische Anpassungen in der Benutzeroberfläche und Benutzererfahrung, vereinfachte Navigationsabläufe und reduzierte die Lernkurve.",
+                "impact": "Ich verbesserte die ERP-Benutzerfreundlichkeit erheblich, was die täglichen Aufgaben erleichterte und die Benutzerzufriedenheit steigerte."
+            },
+            {
+                "title": "Code-Debugging und Refactoring",
+                "description": "Ich identifizierte und löste kritische Bereiche im Code, beseitigte Redundanzen und wendete empfohlene objektorientierte Programmierverfahren an.",
+                "impact": "Ich erhöhte die Codequalität und Wartbarkeit, reduzierte die Anzahl der Fehler und erleichterte zukünftige Updates."
+            },
+            {
+                "title": "Optimierung der API-Abfrageleistung",
+                "description": "Ich nahm spezifische Anpassungen in der Programmierlogik vor, um die Ausführung und Effizienz der Abfragen zu optimieren.",
+                "impact": "Eine Reduzierung der Antwortzeiten wurde festgestellt, was die allgemeine Systemleistung und Benutzererfahrung verbesserte."
+            },
+            {
+                "title": "Implementierung des Git/GitHub-Workflows (CI/CD)",
+                "description": "Ich etablierte einen kontinuierlichen Integrations- und Bereitstellungsprozess über Git und GitHub und konsolidierte einen agilen Workflow für das Team.",
+                "impact": "Dies beschleunigte die Bereitstellung neuer Funktionen und Verbesserungen und gewährleistete gleichzeitig größere Stabilität bei jeder Bereitstellung."
+            },
+            {
+                "title": "Remote-Team-Zusammenarbeit (12 Personen)",
+                "description": "Ich arbeitete effektiv in einem verteilten Team von 12 Personen unter Verwendung agiler Methoden wie Scrum und Kanban mit 2-Wochen-Sprints.",
+                "impact": "Ich trug zur erfolgreichen Entwicklung von Projekten wie ITA Directory und ITA Game bei und verbesserte die kollaborativen Arbeitsfähigkeiten des Teams."
+            }
+        ],
+        "Aula Magna": [
+            {
+                "title": "Event-Webdesign",
+                "description": "Ich entwickelte eventspezifische Webdesigns mit Fokus auf visuelle Präsentation und spezifische Funktionalität für jeden Anlass.",
+                "impact": "Ich schuf attraktive Web-Erlebnisse, die die digitale Präsenz von Events verbesserten und die Teilnehmerbeteiligung steigerten."
+            },
+            {
+                "title": "Verbesserung der Web-Benutzerfreundlichkeit",
+                "description": "Ich arbeitete im Team daran, Benutzerfreundlichkeitsprobleme zu identifizieren und zu lösen, optimierte die Website-Navigation und Zugänglichkeit.",
+                "impact": "Ich erreichte eine flüssigere und zugänglichere Benutzererfahrung, reduzierte die Abbruchrate und verbesserte die Benutzerzufriedenheit."
+            },
+            {
+                "title": "UX/UI-Optimierung",
+                "description": "Ich implementierte Verbesserungen in der Benutzererfahrung und -schnittstelle und wendete benutzerzentrierte Designprinzipien an.",
+                "impact": "Ich verbesserte die Benutzerinteraktion mit der Plattform erheblich und schuf intuitivere und attraktivere Schnittstellen."
+            }
+        ]
     },
     "skills": {
         "title": "Technische Fähigkeiten",

@@ -9,7 +9,7 @@
     },
     "hero": {
         "greeting": "¡Hola! Soy",
-        "name": "Jordi Nodal",
+        "name": "JOrGE",
         "title": "Frontend React Engineer",
         "subtitle": "Desarrollador Frontend especializado en React con experiencia en crear interfaces modernas y funcionales",
         "cta": "Ver mi trabajo",
@@ -107,6 +107,84 @@
                 "description": "UX/UI y funcionalidades para la arquitectura."
             }
         }
+    },
+    "achievements": {
+        "FLiPO": [
+            {
+                "title": "Optimización de la Usabilidad del ERP",
+                "description": "Rediseñé y ajusté la interfaz para simplificar flujos de trabajo y mejorar la navegación del sistema.",
+                "impact": "Logré que los usuarios interactuaran de manera más intuitiva, reduciendo la curva de aprendizaje y aumentando la eficiencia operativa."
+            },
+            {
+                "title": "Depuración y Refactorización del Código",
+                "description": "Identifiqué áreas problemáticas y apliqué las mejores prácticas de programación para mejorar la legibilidad y calidad del código.",
+                "impact": "Refactoricé módulos críticos, eliminando redundancias y creando una base de código más estable y fácil de mantener."
+            },
+            {
+                "title": "Implementación de Nuevas Funcionalidades",
+                "description": "Diseñé e integré nuevas características al ERP, liderando el análisis de necesidades y usando metodologías ágiles para asegurar una integración fluida.",
+                "impact": "Incrementé la eficiencia operativa del sistema en un 30%, aportando soluciones innovadoras que respondieron directamente a las demandas de los usuarios."
+            },
+            {
+                "title": "Optimización del Rendimiento",
+                "description": "Realicé ajustes para reducir los tiempos de carga, optimizar consultas y gestionar de forma eficiente los recursos del ERP.",
+                "impact": "Mejoré significativamente la performance general del sistema, lo que se tradujo en una experiencia de usuario más ágil y confiable."
+            },
+            {
+                "title": "Integración de Pasarela de Pago (Stripe, TPV y ERP)",
+                "description": "Lideré la implementación y optimización de la interfaz y lógica de pagos, trabajando en conjunto con el equipo de Backend, Tech Lead y Project Manager.",
+                "impact": "Agilidad Financiera: Permitió recibir pagos al instante en el momento de la entrega del pedido. Ventaja Competitiva: Fortaleció la posición de la empresa en el mercado al ofrecer una solución robusta y eficiente de gestión financiera."
+            },
+            {
+                "title": "Implementación de Estrategia de Git (Feature Branching)",
+                "description": "Introduje y motivé al equipo a seguir una estrategia de ramificación basada en 'feature branching', adaptada a equipos medianos.",
+                "impact": "Esta metodología mejoró la organización del código y potenció la colaboración en el desarrollo, reduciendo conflictos y facilitando la integración de nuevas funcionalidades."
+            }
+        ],
+        "IT Academy": [
+            {
+                "title": "Optimización del ERP y Mejoras en UI/UX",
+                "description": "Implementé ajustes estratégicos en la interfaz y experiencia de usuario, simplificando los flujos de navegación y reduciendo la curva de aprendizaje.",
+                "impact": "Mejoré significativamente la usabilidad del ERP, lo que facilitó las tareas diarias y aumentó la satisfacción de los usuarios."
+            },
+            {
+                "title": "Depuración y Refactorización de Código",
+                "description": "Identifiqué y solucioné áreas críticas en el código, eliminando redundancias y aplicando prácticas recomendadas de programación orientada a objetos.",
+                "impact": "Elevé la calidad y mantenibilidad del código, reduciendo el número de errores y facilitando futuras actualizaciones."
+            },
+            {
+                "title": "Optimización del Rendimiento de Consultas a la API",
+                "description": "Realicé ajustes específicos en la lógica de programación para optimizar la ejecución y eficiencia de las consultas.",
+                "impact": "Se notó una reducción en los tiempos de respuesta, lo que mejoró la performance general del sistema y la experiencia del usuario."
+            },
+            {
+                "title": "Implementación de Flujo de Trabajo con Git/GitHub (CI/CD)",
+                "description": "Establecí un proceso de integración y despliegue continuo a través de Git y GitHub, consolidando un flujo de trabajo ágil para el equipo.",
+                "impact": "Esto aceleró la entrega de nuevas funcionalidades y mejoras, al mismo tiempo que garantizó una mayor estabilidad en cada despliegue."
+            },
+            {
+                "title": "Colaboración en Equipo Remoto (12 personas)",
+                "description": "Trabajé efectivamente en un equipo distribuido de 12 personas utilizando metodologías ágiles como Scrum y Kanban con sprints de 2 semanas.",
+                "impact": "Contribuí al desarrollo exitoso de proyectos como ITA Directory e ITA Game, mejorando las habilidades de trabajo colaborativo del equipo."
+            }
+        ],
+        "Aula Magna": [
+            {
+                "title": "Diseño Web de Eventos",
+                "description": "Desarrollé diseños web específicos para eventos, enfocándome en la presentación visual y funcionalidad específica para cada ocasión.",
+                "impact": "Creé experiencias web atractivas que mejoraron la presencia digital de los eventos y aumentaron la participación de los asistentes."
+            },
+            {
+                "title": "Mejora de Usabilidad Web",
+                "description": "Trabajé en equipo para identificar y resolver problemas de usabilidad, optimizando la navegación y accesibilidad del sitio web.",
+                "impact": "Logré una experiencia de usuario más fluida y accesible, reduciendo la tasa de abandono y mejorando la satisfacción del usuario."
+            },
+            {
+                "title": "Optimización de UX/UI",
+                "description": "Implementé mejoras en la experiencia e interfaz de usuario, aplicando principios de diseño centrado en el usuario.",
+                "impact": "Mejoré significativamente la interacción del usuario con la plataforma, creando interfaces más intuitivas y atractivas."
+            }
+        ]
     },
     "skills": {
         "title": "Habilidades Técnicas",

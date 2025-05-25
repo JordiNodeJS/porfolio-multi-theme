@@ -9,7 +9,7 @@
     },
     "hero": {
         "greeting": "Hello! I'm",
-        "name": "Jordi Nodal",
+        "name": "JOrGE",
         "title": "Frontend React Engineer",
         "subtitle": "Frontend Developer specialized in React with experience in creating modern and functional interfaces",
         "cta": "View my work",
@@ -107,6 +107,84 @@
                 "description": "UX/UI and functionalities to architecture."
             }
         }
+    },
+    "achievements": {
+        "FLiPO": [
+            {
+                "title": "ERP Usability Optimization",
+                "description": "I redesigned and adjusted the interface to simplify workflows and improve system navigation.",
+                "impact": "I achieved more intuitive user interaction, reducing the learning curve and increasing operational efficiency."
+            },
+            {
+                "title": "Code Debugging and Refactoring",
+                "description": "I identified problematic areas and applied programming best practices to improve code readability and quality.",
+                "impact": "I refactored critical modules, eliminating redundancies and creating a more stable and maintainable codebase."
+            },
+            {
+                "title": "Implementation of New Functionalities",
+                "description": "I designed and integrated new features into the ERP, leading needs analysis and using agile methodologies to ensure smooth integration.",
+                "impact": "I increased system operational efficiency by 30%, providing innovative solutions that directly responded to user demands."
+            },
+            {
+                "title": "Performance Optimization",
+                "description": "I made adjustments to reduce loading times, optimize queries, and efficiently manage ERP resources.",
+                "impact": "I significantly improved the overall system performance, resulting in a more agile and reliable user experience."
+            },
+            {
+                "title": "Payment Gateway Integration (Stripe, TPV and ERP)",
+                "description": "I led the implementation and optimization of payment interface and logic, working together with Backend team, Tech Lead and Project Manager.",
+                "impact": "Financial Agility: Enabled instant payment receipt at order delivery time. Competitive Advantage: Strengthened the company's market position by offering a robust and efficient financial management solution."
+            },
+            {
+                "title": "Git Strategy Implementation (Feature Branching)",
+                "description": "I introduced and motivated the team to follow a branching strategy based on 'feature branching', adapted to medium-sized teams.",
+                "impact": "This methodology improved code organization and enhanced development collaboration, reducing conflicts and facilitating the integration of new functionalities."
+            }
+        ],
+        "IT Academy": [
+            {
+                "title": "ERP Optimization and UI/UX Improvements",
+                "description": "I implemented strategic adjustments to the interface and user experience, simplifying navigation flows and reducing the learning curve.",
+                "impact": "I significantly improved ERP usability, which facilitated daily tasks and increased user satisfaction."
+            },
+            {
+                "title": "Code Debugging and Refactoring",
+                "description": "I identified and solved critical areas in the code, eliminating redundancies and applying recommended object-oriented programming practices.",
+                "impact": "I elevated code quality and maintainability, reducing the number of errors and facilitating future updates."
+            },
+            {
+                "title": "API Query Performance Optimization",
+                "description": "I made specific adjustments to programming logic to optimize query execution and efficiency.",
+                "impact": "A reduction in response times was noted, which improved overall system performance and user experience."
+            },
+            {
+                "title": "Git/GitHub Workflow Implementation (CI/CD)",
+                "description": "I established a continuous integration and deployment process through Git and GitHub, consolidating an agile workflow for the team.",
+                "impact": "This accelerated the delivery of new functionalities and improvements, while ensuring greater stability in each deployment."
+            },
+            {
+                "title": "Remote Team Collaboration (12 people)",
+                "description": "I worked effectively in a distributed team of 12 people using agile methodologies such as Scrum and Kanban with 2-week sprints.",
+                "impact": "I contributed to the successful development of projects like ITA Directory and ITA Game, improving the team's collaborative work skills."
+            }
+        ],
+        "Aula Magna": [
+            {
+                "title": "Event Web Design",
+                "description": "I developed web designs specific to events, focusing on visual presentation and specific functionality for each occasion.",
+                "impact": "I created attractive web experiences that improved the digital presence of events and increased attendee participation."
+            },
+            {
+                "title": "Web Usability Improvement",
+                "description": "I worked as a team to identify and solve usability problems, optimizing website navigation and accessibility.",
+                "impact": "I achieved a more fluid and accessible user experience, reducing abandonment rate and improving user satisfaction."
+            },
+            {
+                "title": "UX/UI Optimization",
+                "description": "I implemented improvements in user experience and interface, applying user-centered design principles.",
+                "impact": "I significantly improved user interaction with the platform, creating more intuitive and attractive interfaces."
+            }
+        ]
     },
     "skills": {
         "title": "Technical Skills",

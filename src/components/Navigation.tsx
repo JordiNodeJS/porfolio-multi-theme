@@ -9,6 +9,8 @@ const Navigation = () => {
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
+
   useEffect(() => {
     let ticking = false;
 
@@ -22,8 +24,24 @@ const Navigation = () => {
       }
     };
 
+    const handleHideNavigation = () => {
+      setIsHidden(true);
+      setIsOpen(false); // También cerrar el menú móvil si está abierto
+    };
+
+    const handleShowNavigation = () => {
+      setIsHidden(false);
+    };
+
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("hideNavigation", handleHideNavigation);
+    window.addEventListener("showNavigation", handleShowNavigation);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("hideNavigation", handleHideNavigation);
+      window.removeEventListener("showNavigation", handleShowNavigation);
+    };
   }, []);
   const navItems = [
     { name: t("navigation.home"), href: "#hero" },
@@ -31,8 +49,16 @@ const Navigation = () => {
     { name: t("navigation.projects"), href: "#projects" },
     { name: t("navigation.skills"), href: "#skills" },
     { name: t("navigation.education"), href: "#education" },
-    { name: t("navigation.contact"), href: "#contact" },
   ];
+
+  const handleNavClick = (href: string) => {
+    setIsOpen(false);
+    // Smooth scroll to section
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   const socialLinks = [
     { icon: Github, href: "https://github.com/JordiNodeJS", label: "GitHub" },
     {
@@ -42,14 +68,17 @@ const Navigation = () => {
     },
     { icon: Mail, href: "mailto:your-email@example.com", label: "Email" },
   ];
-
   return (
     <motion.nav
       initial={{ y: -100 }}
-      animate={{ y: 0 }}
+      animate={{
+        y: isHidden ? -100 : 0,
+        opacity: isHidden ? 0 : 1,
+      }}
+      transition={{ duration: 0.3 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out ${
         scrolled ? "glass-effect shadow-2xl backdrop-blur-md" : "bg-transparent"
-      }`}
+      } ${isHidden ? "pointer-events-none" : ""}`}
     >
       <div className="container-custom">
         <div className="flex items-center justify-between h-16 lg:h-20">
@@ -63,15 +92,15 @@ const Navigation = () => {
           {/* Desktop Navigation */}{" "}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <motion.a
+              <motion.button
                 key={item.name}
-                href={item.href}
+                onClick={() => handleNavClick(item.href)}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
-                className="text-gray-400 hover:text-white transition-colors duration-300 font-medium"
+                className="text-gray-400 hover:text-white transition-colors duration-300 font-medium bg-transparent border-none cursor-pointer"
               >
                 {item.name}
-              </motion.a>
+              </motion.button>
             ))}
           </div>{" "}
           {/* Social Links & Theme Toggle */}
@@ -119,17 +148,17 @@ const Navigation = () => {
         className="md:hidden glass-effect border-t border-white/10"
       >
         <div className="container-custom py-4">
+          {" "}
           <div className="flex flex-col space-y-4">
             {navItems.map((item) => (
-              <motion.a
+              <motion.button
                 key={item.name}
-                href={item.href}
+                onClick={() => handleNavClick(item.href)}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => setIsOpen(false)}
-                className="text-gray-300 hover:text-white transition-colors duration-300 font-medium py-2"
+                className="text-gray-300 hover:text-white transition-colors duration-300 font-medium py-2 text-left bg-transparent border-none cursor-pointer"
               >
                 {item.name}
-              </motion.a>
+              </motion.button>
             ))}{" "}
             <div className="flex items-center justify-between pt-4 border-t border-white/10">
               <div className="flex items-center space-x-4">
