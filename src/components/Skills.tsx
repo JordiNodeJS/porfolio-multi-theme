@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { usePortfolioData } from "../hooks/usePortfolioData";
 import { usePortfolioTranslations } from "../hooks/usePortfolioTranslations";
-import { Code2, Database, Globe, Palette } from "lucide-react";
+import { Code2, Database, Globe, Palette, FileCode2, FileJson, Box, Cpu, Layers, Network, GitBranch, DatabaseZap, FileCode, FileJson2 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 const SkillBar = ({
@@ -109,11 +109,15 @@ const Skills = () => {
 
   const techStack = [
     { icon: Code2, name: "React", color: "from-blue-400 to-blue-600" },
-    { icon: Globe, name: "JavaScript", color: "from-yellow-400 to-yellow-600" },
-    { icon: Database, name: "TypeScript", color: "from-blue-500 to-blue-700" },
+    { icon: FileCode2, name: "JavaScript", color: "from-yellow-400 to-yellow-600" },
+    { icon: FileJson, name: "TypeScript", color: "from-blue-500 to-blue-700" },
     { icon: Palette, name: "CSS/SASS", color: "from-pink-400 to-pink-600" },
-    { icon: Code2, name: "Vite", color: "from-purple-400 to-purple-600" },
-    { icon: Globe, name: "TailwindCSS", color: "from-teal-400 to-teal-600" },
+    { icon: Box, name: "Vite", color: "from-purple-400 to-purple-600" },
+    { icon: Layers, name: "TailwindCSS", color: "from-teal-400 to-teal-600" },
+    { icon: DatabaseZap, name: "SQL", color: "from-orange-400 to-orange-600" },
+    { icon: Cpu, name: "NestJS", color: "from-red-400 to-red-600" },
+    { icon: FileCode, name: "Next.js", color: "from-gray-400 to-gray-600" },
+    { icon: Network, name: "Redux", color: "from-purple-400 to-indigo-600" },
   ];
 
   if (!skillsDataFromHook || !skillsTranslations) {
