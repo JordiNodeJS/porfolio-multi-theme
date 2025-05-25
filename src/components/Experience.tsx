@@ -119,7 +119,7 @@ const ExperienceCard = ({
         >
           {/* Main timeline node */}{" "}
           <motion.div
-            className="w-6 h-6 bg-primary-500 rounded-full border-4 dark:border-slate-900 light:border-white relative overflow-hidden shadow-lg shadow-primary-500/50"
+            className="w-6 h-6 bg-primary-500 rounded-full border-4 dark:border-slate-900 border-white relative overflow-hidden shadow-lg shadow-primary-500/50"
             animate={
               isCardHovered || isNodeHovered
                 ? { scale: 1.3, rotate: 180 }
