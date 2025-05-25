@@ -58,8 +58,7 @@
                 "description": "Bei Aula Magna Business School spezialisierte ich mich auf Event-Webdesign und arbeitete im Team, um die Web-Usability und Benutzererfahrung (UX/UI) zu verbessern und attraktive und funktionale visuelle Lösungen zu schaffen."
             }
         }
-    },
-    "projects": {
+    },    "projects": {
         "title": "Hervorgehobene Projekte",
         "subtitle": "Eine Auswahl meiner repräsentativsten Arbeiten",
         "viewProject": "Projekt ansehen",
@@ -68,7 +67,45 @@
         "features": "Funktionen:",
         "liveDemo": "Live-Demo",
         "sourceCode": "Quellcode",
-        "viewMore": "Mehr Projekte ansehen"
+        "viewMore": "Mehr Projekte ansehen",
+        "items": {
+            "remove-bg-001": {
+                "title": "Hintergrund entfernen",
+                "description": "Webanwendung, die automatisch Bildhintergründe mit künstlicher Intelligenz entfernt. Ermöglicht das Hochladen von Bildern, deren Verarbeitung im Backend und das Herunterladen der hintergrundfreien Version. Lehrbeispiel eines modernen Monorepos mit Next.js und Express mit Bun."
+            },
+            "9b681b4d": {
+                "title": "IT Academy Verzeichnis",
+                "description": "Arbeiten unter agilen Methoden wie SCRUM, Fehler beheben, testen, neue Funktionen, Dokumentation in Verbindung mit dem Backend."
+            },
+            "9b68cc3d": {
+                "title": "Ita-Game",
+                "description": "Gamification einer Studienplattform mit React und Tailwind."
+            },
+            "9b68aa3d": {
+                "title": "Platzhalter-Generator für Bilder",
+                "description": "Die App besteht darin, ein Bild mit sehr niedriger Auflösung zu generieren, das die Umrisse des Originalbildes respektiert, um als Platzhalter oder temporärer Ersatz verwendet zu werden."
+            },
+            "9b68qa3d": {
+                "title": "King League Projekt",
+                "description": "Open-Source-Projekt, bei dem ich durch das Beheben einiger Bugs, Dokumentation und Github-Actions mitgearbeitet habe."
+            },
+            "d4613430": {
+                "title": "Wetter App",
+                "description": "Der Zweck dieser App war es, eine Schnittstelle zwischen dem Client und einer Drittanbieter-API zu erstellen."
+            },
+            "781d5bab": {
+                "title": "Ratespiel",
+                "description": "Grundlegendes Spiel in JavaScript erstellt, dessen Lernziel die Manipulation des DOM des HTML-Dokuments zur Darstellung der Ergebnisse war."
+            },
+            "a3203cfa": {
+                "title": "Bilderdiashow-Effekt nur JS",
+                "description": "Ein Beispielbutton eines automatischen Sliders."
+            },
+            "a3203tra": {
+                "title": "FreeForEver",
+                "description": "UX/UI und Funktionalitäten für die Architektur."
+            }
+        }
     },
     "skills": {
         "title": "Technische Fähigkeiten",

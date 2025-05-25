@@ -58,8 +58,7 @@
                 "description": "At Aula Magna Business School I specialized in event web design, working as a team to improve web usability and user experience (UX/UI), creating attractive and functional visual solutions."
             }
         }
-    },
-    "projects": {
+    },    "projects": {
         "title": "Featured Projects",
         "subtitle": "A selection of my most representative work",
         "viewProject": "View Project",
@@ -68,7 +67,45 @@
         "features": "Features:",
         "liveDemo": "Live Demo",
         "sourceCode": "Source Code",
-        "viewMore": "View More Projects"
+        "viewMore": "View More Projects",
+        "items": {
+            "remove-bg-001": {
+                "title": "Remove Background",
+                "description": "Web application that automatically removes image backgrounds using artificial intelligence. Allows uploading images, processing them on the backend, and downloading the background-free version. Educational example of a modern monorepo with Next.js and Express using Bun."
+            },
+            "9b681b4d": {
+                "title": "IT Academy Directory",
+                "description": "Working under agile methodologies such as SCRUM, fixing bugs, testing, new functionalities, documentation in conjunction with backend."
+            },
+            "9b68cc3d": {
+                "title": "Ita-Game",
+                "description": "Gamification of a study platform using React and Tailwind."
+            },
+            "9b68aa3d": {
+                "title": "Placeholder Generator for Images",
+                "description": "The App consists of generating a very low resolution image, respecting the outline of the original image, with the purpose of being used as a placeholder or temporary substitute."
+            },
+            "9b68qa3d": {
+                "title": "King League Project",
+                "description": "Open source project, where I collaborate fixing some bugs, documentation, and github actions."
+            },
+            "d4613430": {
+                "title": "Weather App",
+                "description": "The purpose of this app was to build an interface between the client and a third-party API."
+            },
+            "781d5bab": {
+                "title": "Guess Game",
+                "description": "Basic game created in javascript whose learning objective was the manipulation of the DOM of the HTML document to present the results."
+            },
+            "a3203cfa": {
+                "title": "Image Slideshow Effect Only JS",
+                "description": "A sample button of an automatic slider."
+            },
+            "a3203tra": {
+                "title": "FreeForEver",
+                "description": "UX/UI and functionalities to architecture."
+            }
+        }
     },
     "skills": {
         "title": "Technical Skills",

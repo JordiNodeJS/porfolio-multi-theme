@@ -58,8 +58,7 @@
                 "description": "Na Aula Magna Business School me especializei no design web de eventos, trabalhando em equipe para melhorar a usabilidade web e experiência do usuário (UX/UI), criando soluções visuais atrativas e funcionais."
             }
         }
-    },
-    "projects": {
+    },    "projects": {
         "title": "Projetos Destacados",
         "subtitle": "Uma seleção dos meus trabalhos mais representativos",
         "viewProject": "Ver Projeto",
@@ -68,7 +67,45 @@
         "features": "Características:",
         "liveDemo": "Demo Ao Vivo",
         "sourceCode": "Código Fonte",
-        "viewMore": "Ver Mais Projetos"
+        "viewMore": "Ver Mais Projetos",
+        "items": {
+            "remove-bg-001": {
+                "title": "Remover Fundo",
+                "description": "Aplicação web que remove automaticamente o fundo de imagens usando inteligência artificial. Permite carregar imagens, processá-las no backend e baixar a versão sem fundo. Exemplo educativo de um monorepo moderno com Next.js e Express usando Bun."
+            },
+            "9b681b4d": {
+                "title": "Diretório IT Academy",
+                "description": "Trabalhando sob metodologias ágeis como SCRUM, corrigindo bugs, testando, novas funcionalidades, documentação em conjunto com o backend."
+            },
+            "9b68cc3d": {
+                "title": "Ita-Game",
+                "description": "Gamificação de uma plataforma de estudo usando React e Tailwind."
+            },
+            "9b68aa3d": {
+                "title": "Gerador de Placeholders para Imagens",
+                "description": "A aplicação consiste em gerar uma imagem de resolução muito baixa, respeitando o contorno da imagem original, com o propósito de ser usada como placeholder ou substituto temporário."
+            },
+            "9b68qa3d": {
+                "title": "Projeto King League",
+                "description": "Projeto open source, onde colaborei corrigindo alguns bugs, documentação e github actions."
+            },
+            "d4613430": {
+                "title": "App do Tempo",
+                "description": "O propósito desta aplicação foi construir uma interface entre o cliente e uma API de terceiros."
+            },
+            "781d5bab": {
+                "title": "Adivinhar",
+                "description": "Jogo básico criado em javascript cujo objetivo de aprendizagem foi a manipulação do DOM do documento HTML para apresentar os resultados."
+            },
+            "a3203cfa": {
+                "title": "Efeito de Slideshow de Imagens Apenas JS",
+                "description": "Um exemplo de botão de um slider automático."
+            },
+            "a3203tra": {
+                "title": "FreeForEver",
+                "description": "UX/UI e funcionalidades para arquitetura."
+            }
+        }
     },
     "skills": {
         "title": "Habilidades Técnicas",

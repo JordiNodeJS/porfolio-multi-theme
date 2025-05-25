@@ -58,8 +58,7 @@
                 "description": "In Aula Magna Business School mi sono specializzato nel design web di eventi, lavorando in team per migliorare l'usabilità web e l'esperienza utente (UX/UI), creando soluzioni visive attraenti e funzionali."
             }
         }
-    },
-    "projects": {
+    },    "projects": {
         "title": "Progetti in Evidenza",
         "subtitle": "Una selezione dei miei lavori più rappresentativi",
         "viewProject": "Vedi Progetto",
@@ -68,7 +67,45 @@
         "features": "Caratteristiche:",
         "liveDemo": "Demo Live",
         "sourceCode": "Codice Sorgente",
-        "viewMore": "Vedi Altri Progetti"
+        "viewMore": "Vedi Altri Progetti",
+        "items": {
+            "remove-bg-001": {
+                "title": "Rimozione Sfondo",
+                "description": "Applicazione web che rimuove automaticamente gli sfondi delle immagini utilizzando l'intelligenza artificiale. Consente di caricare immagini, elaborarle nel backend e scaricare la versione senza sfondo. Esempio educativo di un monorepo moderno con Next.js ed Express utilizzando Bun."
+            },
+            "9b681b4d": {
+                "title": "Directory IT Academy",
+                "description": "Lavorando sotto metodologie agili come SCRUM, correggendo bug, testando, nuove funzionalità, documentazione insieme al backend."
+            },
+            "9b68cc3d": {
+                "title": "Ita-Game",
+                "description": "Gamification di una piattaforma di studio utilizzando React e Tailwind."
+            },
+            "9b68aa3d": {
+                "title": "Generatore di Placeholder per Immagini",
+                "description": "L'app consiste nel generare un'immagine a risoluzione molto bassa, rispettando il contorno dell'immagine originale, con lo scopo di essere utilizzata come placeholder o sostituto temporaneo."
+            },
+            "9b68qa3d": {
+                "title": "Progetto King League",
+                "description": "Progetto open source, dove ho collaborato correggendo alcuni bug, documentazione e github actions."
+            },
+            "d4613430": {
+                "title": "App Meteo",
+                "description": "Lo scopo di questa app era costruire un'interfaccia tra il client e un'API di terze parti."
+            },
+            "781d5bab": {
+                "title": "Indovina",
+                "description": "Gioco base creato in javascript il cui obiettivo di apprendimento era la manipolazione del DOM del documento HTML per presentare i risultati."
+            },
+            "a3203cfa": {
+                "title": "Effetto Slideshow di Immagini Solo JS",
+                "description": "Un pulsante di esempio di uno slider automatico."
+            },
+            "a3203tra": {
+                "title": "FreeForEver",
+                "description": "UX/UI e funzionalità per l'architettura."
+            }
+        }
     },
     "skills": {
         "title": "Competenze Tecniche",

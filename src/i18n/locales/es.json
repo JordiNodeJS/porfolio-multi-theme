@@ -58,8 +58,7 @@
                 "description": "En Aula Magna Business School me especialicé en el diseño web de eventos, trabajando en equipo para mejorar la usabilidad web y la experiencia de usuario (UX/UI), creando soluciones visuales atractivas y funcionales."
             }
         }
-    },
-    "projects": {
+    },    "projects": {
         "title": "Proyectos Destacados",
         "subtitle": "Una selección de mis trabajos más representativos",
         "viewProject": "Ver Proyecto",
@@ -68,7 +67,45 @@
         "features": "Características:",
         "liveDemo": "Demo en Vivo",
         "sourceCode": "Código Fuente",
-        "viewMore": "Ver Más Proyectos"
+        "viewMore": "Ver Más Proyectos",
+        "items": {
+            "remove-bg-001": {
+                "title": "Eliminador de Fondos",
+                "description": "Aplicación web que elimina automáticamente el fondo de imágenes usando inteligencia artificial. Permite subir imágenes, procesarlas en el backend y descargar la versión sin fondo. Ejemplo educativo de monorepo moderno con Next.js y Express usando Bun."
+            },
+            "9b681b4d": {
+                "title": "Directorio IT Academy",
+                "description": "Trabajando bajo metodologías ágiles como SCRUM, solucionando errores, realizando pruebas, implementando nuevas funcionalidades y documentación en conjunto con el backend."
+            },
+            "9b68cc3d": {
+                "title": "Ita-Game",
+                "description": "Gamificación de una plataforma de estudio utilizando React y Tailwind."
+            },
+            "9b68aa3d": {
+                "title": "Generador de Placeholders para Imágenes",
+                "description": "La aplicación consiste en generar una imagen de muy baja resolución, respetando el contorno de la imagen original, con el propósito de ser utilizada como placeholder o sustituto temporal."
+            },
+            "9b68qa3d": {
+                "title": "Proyecto King League",
+                "description": "Proyecto open source, donde colaboré corrigiendo algunos errores, documentación y github actions."
+            },
+            "d4613430": {
+                "title": "App sobre el Tiempo",
+                "description": "El propósito de esta aplicación fue construir una interfaz entre el cliente y una API de terceros."
+            },
+            "781d5bab": {
+                "title": "Adivina",
+                "description": "Juego básico creado en javascript cuyo objetivo de aprendizaje fue la manipulación del DOM del documento HTML para presentar los resultados."
+            },
+            "a3203cfa": {
+                "title": "Efecto de Carrusel de Imágenes Solo JS",
+                "description": "Un ejemplo de botón de un carrusel automático."
+            },
+            "a3203tra": {
+                "title": "FreeForEver",
+                "description": "UX/UI y funcionalidades para la arquitectura."
+            }
+        }
     },
     "skills": {
         "title": "Habilidades Técnicas",

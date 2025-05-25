@@ -58,8 +58,7 @@
                 "description": "Chez Aula Magna Business School, je me suis spécialisé dans la conception web d'événements, travaillant en équipe pour améliorer l'utilisabilité web et l'expérience utilisateur (UX/UI), créant des solutions visuelles attrayantes et fonctionnelles."
             }
         }
-    },
-    "projects": {
+    },    "projects": {
         "title": "Projets Marquants",
         "subtitle": "Une sélection de mes travaux les plus représentatifs",
         "viewProject": "Voir le Projet",
@@ -68,7 +67,45 @@
         "features": "Caractéristiques :",
         "liveDemo": "Démo en Direct",
         "sourceCode": "Code Source",
-        "viewMore": "Voir Plus de Projets"
+        "viewMore": "Voir Plus de Projets",
+        "items": {
+            "remove-bg-001": {
+                "title": "Suppression d'Arrière-plan",
+                "description": "Application web qui supprime automatiquement l'arrière-plan des images en utilisant l'intelligence artificielle. Permet de télécharger des images, de les traiter sur le backend et de télécharger la version sans arrière-plan. Exemple éducatif d'un monorepo moderne avec Next.js et Express utilisant Bun."
+            },
+            "9b681b4d": {
+                "title": "Répertoire IT Academy",
+                "description": "Travaillant sous des méthodologies agiles telles que SCRUM, corrigeant des bugs, testant, nouvelles fonctionnalités, documentation en conjonction avec le backend."
+            },
+            "9b68cc3d": {
+                "title": "Ita-Game",
+                "description": "Gamification d'une plateforme d'étude utilisant React et Tailwind."
+            },
+            "9b68aa3d": {
+                "title": "Générateur de Placeholders pour Images",
+                "description": "L'application consiste à générer une image de très faible résolution, respectant le contour de l'image originale, dans le but d'être utilisée comme placeholder ou substitut temporaire."
+            },
+            "9b68qa3d": {
+                "title": "Projet King League",
+                "description": "Projet open source, où j'ai collaboré en corrigeant quelques bugs, documentation et github actions."
+            },
+            "d4613430": {
+                "title": "App Météo",
+                "description": "Le but de cette application était de construire une interface entre le client et une API tierce."
+            },
+            "781d5bab": {
+                "title": "Devine",
+                "description": "Jeu de base créé en javascript dont l'objectif d'apprentissage était la manipulation du DOM du document HTML pour présenter les résultats."
+            },
+            "a3203cfa": {
+                "title": "Effet de Diaporama d'Images Seulement JS",
+                "description": "Un exemple de bouton d'un curseur automatique."
+            },
+            "a3203tra": {
+                "title": "FreeForEver",
+                "description": "UX/UI et fonctionnalités pour l'architecture."
+            }
+        }
     },
     "skills": {
         "title": "Compétences Techniques",

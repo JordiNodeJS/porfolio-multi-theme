@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
 import { usePortfolioData } from "../hooks/usePortfolioData";
 import { usePortfolioTranslations } from "../hooks/usePortfolioTranslations";
+import { useTranslation } from "react-i18next";
 import type { Project } from "../types";
 import { useState } from "react";
 
@@ -21,6 +22,16 @@ const ProjectCard = ({
     viewMore: string;
   };
 }) => {
+  const { t } = useTranslation();
+  
+  // Función para obtener el título y descripción traducidos
+  const getProjectTranslation = (id: string, field: 'title' | 'description') => {
+    const translationKey = `projects.items.${id}.${field}`;
+    const translation = t(translationKey);
+    // Si no existe la traducción, usar el valor original del JSON
+    return translation !== translationKey ? translation : (field === 'title' ? project.title : project.description);
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
@@ -81,10 +92,9 @@ const ProjectCard = ({
       </div>
 
       {/* Content */}
-      <div className="p-6">
-        <div className="flex justify-between items-center mb-3">
+      <div className="p-6">        <div className="flex justify-between items-center mb-3">
           <h3 className="text-xl font-semibold text-white group-hover:text-primary-400 transition-colors">
-            {project.title}
+            {getProjectTranslation(project.id, 'title')}
           </h3>
           <div className="flex gap-1.5">
             {project.link && (
@@ -103,7 +113,7 @@ const ProjectCard = ({
         </div>
 
         <p className="text-gray-400 text-sm leading-relaxed mb-4 line-clamp-3">
-          {project.description}
+          {getProjectTranslation(project.id, 'description')}
         </p>
 
         {/* Tags */}

@@ -58,8 +58,7 @@
                 "description": "A Aula Magna Business School em vaig especialitzar en el disseny web d'esdeveniments, treballant en equip per millorar la usabilitat web i l'experiència d'usuari (UX/UI), creant solucions visuals atractives i funcionals."
             }
         }
-    },
-    "projects": {
+    },    "projects": {
         "title": "Projectes Destacats",
         "subtitle": "Una selecció dels meus treballs més representatius",
         "viewProject": "Veure Projecte",
@@ -68,7 +67,45 @@
         "features": "Característiques:",
         "liveDemo": "Demo en Viu",
         "sourceCode": "Codi Font",
-        "viewMore": "Veure Més Projectes"
+        "viewMore": "Veure Més Projectes",
+        "items": {
+            "remove-bg-001": {
+                "title": "Eliminar Fons",
+                "description": "Aplicació web que elimina automàticament el fons de les imatges utilitzant intel·ligència artificial. Permet pujar imatges, processar-les al backend i descarregar la versió sense fons. Exemple educatiu d'un monorepo modern amb Next.js i Express utilitzant Bun."
+            },
+            "9b681b4d": {
+                "title": "Directori IT Academy",
+                "description": "Treballant sota metodologies àgils com SCRUM, solucionant errors, provant, noves funcionalitats, documentació conjuntament amb el backend."
+            },
+            "9b68cc3d": {
+                "title": "Ita-Game",
+                "description": "Gamificació d'una plataforma d'estudi utilitzant React i Tailwind."
+            },
+            "9b68aa3d": {
+                "title": "Generador de Placeholders per a Imatges",
+                "description": "L'aplicació consisteix en generar una imatge de resolució molt baixa, respectant el contorn de la imatge original, amb el propòsit de ser utilitzada com a placeholder o substitut temporal."
+            },
+            "9b68qa3d": {
+                "title": "Projecte King League",
+                "description": "Projecte open source, on vaig col·laborar solucionant alguns errors, documentació i github actions."
+            },
+            "d4613430": {
+                "title": "App del Temps",
+                "description": "El propòsit d'aquesta aplicació va ser construir una interfície entre el client i una API de tercers."
+            },
+            "781d5bab": {
+                "title": "Endevina",
+                "description": "Joc bàsic creat en javascript l'objectiu d'aprenentatge del qual va ser la manipulació del DOM del document HTML per presentar els resultats."
+            },
+            "a3203cfa": {
+                "title": "Efecte de Presentació d'Imatges Només JS",
+                "description": "Un exemple de botó d'un slider automàtic."
+            },
+            "a3203tra": {
+                "title": "FreeForEver",
+                "description": "UX/UI i funcionalitats per a l'arquitectura."
+            }
+        }
     },
     "skills": {
         "title": "Habilitats Tècniques",

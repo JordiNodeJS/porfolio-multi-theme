@@ -3,13 +3,14 @@ import { MapPin, ExternalLink, X } from "lucide-react";
 import { usePortfolioData } from "../hooks/usePortfolioData";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
+import type { Experience } from "../types";
 
 const ExperienceCard = ({
   experience,
   index,
   onCompanyClick,
 }: {
-  experience: any;
+  experience: Experience;
   index: number;
   onCompanyClick?: (company: string, cardIndex: number) => void;
 }) => {
