@@ -239,7 +239,9 @@ const Hero = () => {
               className={`flex flex-col items-center transition-colors duration-300 cursor-pointer group ${
                 theme === "dark"
                   ? "text-gray-400 hover:text-primary-400"
-                  : "text-gray-600 hover:text-primary-600"
+                  : theme === "light"
+                  ? "text-gray-600 hover:text-primary-600"
+                  : "text-[#f3ebd3] hover:text-[#e3b505]"
               }`}
             >
               <span className="text-sm mb-2 font-medium">
@@ -249,7 +251,9 @@ const Hero = () => {
                 className={`p-2 rounded-full transition-all duration-300 group-hover:scale-110 ${
                   theme === "dark"
                     ? "bg-slate-800/50 group-hover:bg-primary-500/20"
-                    : "bg-gray-100 group-hover:bg-primary-100"
+                    : theme === "light"
+                    ? "bg-gray-100 group-hover:bg-primary-100"
+                    : "bg-[#6e4c30]/50 group-hover:bg-[#e3b505]/30"
                 }`}
               >
                 <ChevronDown className="w-5 h-5" />
