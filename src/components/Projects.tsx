@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
 import { usePortfolioData } from "../hooks/usePortfolioData";
 import type { Project } from "../types";
+import { useState } from "react";
 
 const ProjectCard = ({
   project,
@@ -127,6 +128,14 @@ const ProjectCard = ({
 
 const Projects = () => {
   const { data } = usePortfolioData();
+  const [visibleProjects, setVisibleProjects] = useState(6);
+
+  const projects = data?.projects || [];
+  const totalProjects = projects.length;
+
+  const showMoreProjects = () => {
+    setVisibleProjects(totalProjects);
+  };
 
   return (
     <section id="projects" className="section-padding section-bg-gradient">
@@ -150,27 +159,30 @@ const Projects = () => {
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {data?.projects.map((project, index) => (
+          {projects.slice(0, visibleProjects).map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} />
           ))}
         </div>
 
         {/* View More Button */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          viewport={{ once: true }}
-          className="text-center mt-12"
-        >
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="glass-effect hover:bg-white/10 text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 border border-primary-500/50 hover:border-primary-400"
+        {visibleProjects < totalProjects && (
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="text-center mt-12"
           >
-            Ver Más Proyectos
-          </motion.button>
-        </motion.div>
+            <motion.button
+              onClick={showMoreProjects}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="glass-effect hover:bg-white/10 text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 border border-primary-500/50 hover:border-primary-400"
+            >
+              Ver Más Proyectos
+            </motion.button>
+          </motion.div>
+        )}
       </div>
     </section>
   );
