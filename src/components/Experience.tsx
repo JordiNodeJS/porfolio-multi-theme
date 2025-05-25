@@ -12,6 +12,8 @@ const ExperienceCard = ({
   index: number;
   onCompanyClick?: (company: string) => void;
 }) => {
+  const [isCardHovered, setIsCardHovered] = useState(false);
+  const [isNodeHovered, setIsNodeHovered] = useState(false);
   const isClickableCard =
     experience.company.includes("FLiPO") ||
     experience.company.includes("IT Academy") ||
@@ -55,6 +57,8 @@ const ExperienceCard = ({
               : undefined
           }
           title={isClickableCard ? "Haz clic para ver logros destacados" : ""}
+          onMouseEnter={() => setIsCardHovered(true)}
+          onMouseLeave={() => setIsCardHovered(false)}
         >
           {/* Tooltip personalizado */}
           {isClickableCard && (
@@ -112,8 +116,10 @@ const ExperienceCard = ({
           {/* Main timeline node */}{" "}
           <motion.div
             className="w-6 h-6 bg-primary-500 rounded-full border-4 dark:border-slate-900 light:border-white relative overflow-hidden shadow-lg shadow-primary-500/50"
-            whileHover={{ scale: 1.3, rotate: 180 }}
+            animate={isCardHovered || isNodeHovered ? { scale: 1.3, rotate: 180 } : { scale: 1, rotate: 0 }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            onMouseEnter={() => setIsNodeHovered(true)}
+            onMouseLeave={() => setIsNodeHovered(false)}
           >
             {/* Pulsing effect */}
             <motion.div
