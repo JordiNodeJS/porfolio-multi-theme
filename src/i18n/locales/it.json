@@ -6,14 +6,14 @@
         "skills": "Competenze",
         "education": "Formazione",
         "contact": "Contatto"
-    },
-    "hero": {
+    },    "hero": {
         "greeting": "Ciao! Sono",
         "name": "Jordi Nodal",
         "title": "Frontend React Engineer",
         "subtitle": "Sviluppatore Frontend specializzato in React con esperienza nella creazione di interfacce moderne e funzionali",
         "cta": "Vedi il mio lavoro",
-        "downloadCV": "Scarica CV"
+        "downloadCV": "Scarica CV",
+        "viewProjects": "Vedi Progetti"
     },
     "experience": {
         "title": "Esperienza Professionale",
@@ -57,8 +57,7 @@
                 "description": "In Aula Magna Business School mi sono specializzato nel design web di eventi, lavorando in team per migliorare l'usabilità web e l'esperienza utente (UX/UI), creando soluzioni visive attraenti e funzionali."
             }
         }
-    },
-    "projects": {
+    },    "projects": {
         "title": "Progetti in Evidenza",
         "subtitle": "Una selezione dei miei lavori più rappresentativi",
         "viewProject": "Vedi Progetto",
@@ -66,27 +65,39 @@
         "technologies": "Tecnologie:",
         "features": "Caratteristiche:",
         "liveDemo": "Demo Live",
-        "sourceCode": "Codice Sorgente"
-    },
-    "skills": {
+        "sourceCode": "Codice Sorgente",
+        "viewMore": "Vedi Altri Progetti"
+    },    "skills": {
         "title": "Competenze Tecniche",
-        "subtitle": "Tecnologie e strumenti con cui lavoro",
+        "subtitle": "Tecnologie e strumenti con cui lavoro",        "competenceLevel": "Livello di Competenza",
+        "techStack": "Stack Tecnologico",
+        "methodologies": "Metodologie e Strumenti",
         "categories": {
             "frontend": "Frontend",
             "backend": "Backend",
             "tools": "Strumenti",
             "databases": "Database"
         }
-    },
-    "education": {
-        "title": "Background Accademico",
-        "subtitle": "Il mio percorso educativo e certificazioni",
+    },    "education": {
+        "title": "Formazione Accademica",
+        "subtitle": "Il mio percorso di apprendimento continuo nelle tecnologie di sviluppo",
         "degree": "Titolo",
         "institution": "Istituzione",
         "period": "Periodo",
         "description": "Descrizione",
         "skills": "Competenze acquisite:",
-        "certificate": "Vedi Certificato"
+        "certificate": "Vedi Certificato",
+        "viewCertificate": "Visualizza certificato o progetto",
+        "featured": "In evidenza",
+        "stats": {
+            "trainings": "Formazioni",
+            "technologies": "Tecnologie",
+            "projects": "Progetti"
+        },
+        "learningPhilosophy": {
+            "title": "Filosofia di Apprendimento",
+            "description": "Credo fermamente nell'apprendimento continuo e nell'adattamento alle nuove tecnologie. La mia formazione comprende non solo conoscenze tecniche, ma anche metodologie agili, lavoro di squadra e migliori pratiche di sviluppo che mi permettono di creare soluzioni robuste e scalabili."
+        }
     },
     "contact": {
         "title": "Contatto",

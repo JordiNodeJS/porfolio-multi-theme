@@ -1,13 +1,28 @@
 import { motion } from "framer-motion";
 import { GraduationCap, Calendar, ExternalLink, Star } from "lucide-react";
 import { usePortfolioData } from "../hooks/usePortfolioData";
+import { usePortfolioTranslations } from "../hooks/usePortfolioTranslations";
 
 const EducationCard = ({
   education,
   index,
+  translations,
 }: {
-  education: any;
+  education: {
+    id: string;
+    title: string;
+    center: string;
+    link?: string;
+    start_date: string;
+    end_date: string;
+    description: string;
+    tags: string[];
+  };
   index: number;
+  translations: {
+    viewCertificate: string;
+    featured: string;
+  };
 }) => {
   return (
     <motion.div
@@ -45,7 +60,7 @@ const EducationCard = ({
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               className="p-2 text-gray-400 hover:text-primary-400 transition-colors"
-              title="Ver certificado o proyecto"
+              title={translations.viewCertificate}
             >
               <ExternalLink className="w-5 h-5" />
             </motion.a>
@@ -95,9 +110,8 @@ const EducationCard = ({
           viewport={{ once: true }}
           className={`absolute top-4 right-4 ${education.link ? 'mr-12' : ''}`}
         >
-          <div className="flex items-center gap-1 bg-yellow-500/20 text-yellow-400 px-2 py-1 rounded-full text-xs border border-yellow-500/30">
-            <Star className="w-3 h-3" />
-            Destacado
+          <div className="flex items-center gap-1 bg-yellow-500/20 text-yellow-400 px-2 py-1 rounded-full text-xs border border-yellow-500/30">            <Star className="w-3 h-3" />
+            {translations.featured}
           </div>
         </motion.div>
       )}
@@ -107,11 +121,12 @@ const EducationCard = ({
 
 const Education = () => {
   const { education } = usePortfolioData();
+  const { education: educationTranslations } = usePortfolioTranslations();
 
   const stats = [
-    { label: "Formaciones", value: education.length, icon: GraduationCap },
-    { label: "Tecnologías", value: "15+", icon: Star },
-    { label: "Proyectos", value: "10+", icon: Calendar },
+    { label: educationTranslations.stats.trainings, value: education.length, icon: GraduationCap },
+    { label: educationTranslations.stats.technologies, value: "15+", icon: Star },
+    { label: educationTranslations.stats.projects, value: "10+", icon: Calendar },
   ];
 
   return (
@@ -127,12 +142,11 @@ const Education = () => {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
           className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-6">
-            Formación Académica
-          </h2>{" "}
+        >          <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-6">
+            {educationTranslations.title}
+          </h2>
           <p className="text-xl text-muted max-w-2xl mx-auto">
-            Mi camino de aprendizaje continuo en tecnologías de desarrollo
+            {educationTranslations.subtitle}
           </p>
         </motion.div>
 
@@ -165,12 +179,18 @@ const Education = () => {
               <p className="text-muted">{stat.label}</p>
             </motion.div>
           ))}
-        </div>
-
-        {/* Education Cards */}
+        </div>        {/* Education Cards */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {education.map((edu, index) => (
-            <EducationCard key={edu.id} education={edu} index={index} />
+            <EducationCard 
+              key={edu.id} 
+              education={edu} 
+              index={index} 
+              translations={{
+                viewCertificate: educationTranslations.viewCertificate,
+                featured: educationTranslations.featured
+              }}
+            />
           ))}
         </div>
 
@@ -183,16 +203,11 @@ const Education = () => {
           className="mt-16 text-center"
         >
           {" "}
-          <div className="glass-effect p-8 rounded-xl max-w-4xl mx-auto">
-            <h3 className="text-2xl font-bold text-themed mb-4">
-              Filosofía de Aprendizaje
+          <div className="glass-effect p-8 rounded-xl max-w-4xl mx-auto">            <h3 className="text-2xl font-bold text-themed mb-4">
+              {educationTranslations.learningPhilosophy.title}
             </h3>
             <p className="text-muted leading-relaxed">
-              "Creo firmemente en el aprendizaje continuo y la adaptación a las
-              nuevas tecnologías. Mi formación no solo abarca conocimientos
-              técnicos, sino también metodologías ágiles, trabajo en equipo y
-              mejores prácticas de desarrollo que me permiten crear soluciones
-              robustas y escalables."
+              "{educationTranslations.learningPhilosophy.description}"
             </p>
           </div>
         </motion.div>

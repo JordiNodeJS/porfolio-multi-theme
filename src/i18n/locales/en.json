@@ -11,9 +11,10 @@
         "greeting": "Hello! I'm",
         "name": "Jordi Nodal",
         "title": "Frontend React Engineer",
-        "subtitle": "Frontend Developer specialized in React with experience creating modern and functional interfaces",
+        "subtitle": "Frontend Developer specialized in React with experience in creating modern and functional interfaces",
         "cta": "View my work",
-        "downloadCV": "Download CV"
+        "downloadCV": "Download CV",
+        "viewProjects": "View Projects"
     },
     "experience": {
         "title": "Professional Experience",
@@ -57,8 +58,7 @@
                 "description": "At Aula Magna Business School I specialized in event web design, working as a team to improve web usability and user experience (UX/UI), creating attractive and functional visual solutions."
             }
         }
-    },
-    "projects": {
+    },    "projects": {
         "title": "Featured Projects",
         "subtitle": "A selection of my most representative work",
         "viewProject": "View Project",
@@ -66,27 +66,40 @@
         "technologies": "Technologies:",
         "features": "Features:",
         "liveDemo": "Live Demo",
-        "sourceCode": "Source Code"
-    },
-    "skills": {
+        "sourceCode": "Source Code",
+        "viewMore": "View More Projects"
+    },    "skills": {
         "title": "Technical Skills",
         "subtitle": "Technologies and tools I work with",
+        "competenceLevel": "Competence Level",
+        "techStack": "Tech Stack",
+        "methodologies": "Methodologies & Tools",
         "categories": {
             "frontend": "Frontend",
             "backend": "Backend",
             "tools": "Tools",
             "databases": "Databases"
         }
-    },
-    "education": {
+    },    "education": {
         "title": "Academic Background",
-        "subtitle": "My educational journey and certifications",
+        "subtitle": "My continuous learning journey in development technologies",
         "degree": "Degree",
         "institution": "Institution",
         "period": "Period",
         "description": "Description",
         "skills": "Skills acquired:",
-        "certificate": "View Certificate"
+        "certificate": "View Certificate",
+        "viewCertificate": "View certificate or project",
+        "featured": "Featured",
+        "stats": {
+            "trainings": "Trainings",
+            "technologies": "Technologies",
+            "projects": "Projects"
+        },
+        "learningPhilosophy": {
+            "title": "Learning Philosophy",
+            "description": "I firmly believe in continuous learning and adaptation to new technologies. My education encompasses not only technical knowledge, but also agile methodologies, teamwork and development best practices that allow me to create robust and scalable solutions."
+        }
     },
     "contact": {
         "title": "Contact",

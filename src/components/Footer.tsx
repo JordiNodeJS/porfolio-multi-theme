@@ -1,9 +1,11 @@
 import { motion } from "framer-motion";
 import { Github, Linkedin, Heart, Code, Coffee } from "lucide-react";
 import { useTheme } from "../contexts/ThemeContext";
+import { usePortfolioTranslations } from "../hooks/usePortfolioTranslations";
 
 const Footer = () => {
   const { theme } = useTheme();
+  const { footer } = usePortfolioTranslations();
   const socialLinks = [
     {
       icon: <Github className="w-5 h-5" />,

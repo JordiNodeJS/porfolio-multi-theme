@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { usePortfolioData } from "../hooks/usePortfolioData";
+import { usePortfolioTranslations } from "../hooks/usePortfolioTranslations";
 import { Code2, Database, Globe, Palette } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
 const SkillBar = ({
   skill,
@@ -89,7 +91,7 @@ const TechIcon = ({
   name,
   color,
 }: {
-  icon: any;
+  icon: LucideIcon;
   name: string;
   color: string;
 }) => (
@@ -118,7 +120,8 @@ const TechIcon = ({
 );
 
 const Skills = () => {
-  const { skills } = usePortfolioData();
+  const { skills: skillsData } = usePortfolioData();
+  const { skills } = usePortfolioTranslations();
 
   const techStack = [
     { icon: Code2, name: "React", color: "from-blue-400 to-blue-600" },
@@ -139,13 +142,11 @@ const Skills = () => {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
           className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-6">
-            Habilidades & Tecnologías
+        >          <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-6">
+            {skills.title}
           </h2>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            Mi experiencia abarca diversas tecnologías modernas de desarrollo
-            frontend
+            {skills.subtitle}
           </p>
         </motion.div>
 
@@ -156,12 +157,11 @@ const Skills = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-          >
-            <h3 className="text-2xl font-bold text-white mb-8">
-              Nivel de Competencia
+          >            <h3 className="text-2xl font-bold text-white mb-8">
+              {skills.competenceLevel}
             </h3>
             <div className="space-y-4">
-              {skills.map((skill, index) => (
+              {skillsData.map((skill, index) => (
                 <SkillBar key={skill.nombre} skill={skill} index={index} />
               ))}
             </div>
@@ -173,9 +173,8 @@ const Skills = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-          >
-            <h3 className="text-2xl font-bold text-white mb-8">
-              Stack Tecnológico
+          >            <h3 className="text-2xl font-bold text-white mb-8">
+              {skills.techStack}
             </h3>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
               {techStack.map((tech, index) => (
@@ -198,9 +197,8 @@ const Skills = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
               viewport={{ once: true }}
               className="mt-8 p-6 glass-effect rounded-xl"
-            >
-              <h4 className="text-lg font-semibold text-white mb-3">
-                Metodologías
+            >              <h4 className="text-lg font-semibold text-white mb-3">
+                {skills.methodologies}
               </h4>
               <div className="flex flex-wrap gap-2">
                 {[

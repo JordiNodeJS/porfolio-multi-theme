@@ -6,14 +6,14 @@
         "skills": "Fähigkeiten",
         "education": "Bildung",
         "contact": "Kontakt"
-    },
-    "hero": {
+    },    "hero": {
         "greeting": "Hallo! Ich bin",
         "name": "Jordi Nodal",
         "title": "Frontend React Engineer",
         "subtitle": "Frontend-Entwickler spezialisiert auf React mit Erfahrung in der Erstellung moderner und funktionaler Schnittstellen",
         "cta": "Meine Arbeit ansehen",
-        "downloadCV": "Lebenslauf herunterladen"
+        "downloadCV": "Lebenslauf herunterladen",
+        "viewProjects": "Projekte ansehen"
     },
     "experience": {
         "title": "Berufserfahrung",
@@ -57,8 +57,7 @@
                 "description": "Bei Aula Magna Business School spezialisierte ich mich auf Event-Webdesign und arbeitete im Team, um die Web-Usability und Benutzererfahrung (UX/UI) zu verbessern und attraktive und funktionale visuelle Lösungen zu schaffen."
             }
         }
-    },
-    "projects": {
+    },    "projects": {
         "title": "Hervorgehobene Projekte",
         "subtitle": "Eine Auswahl meiner repräsentativsten Arbeiten",
         "viewProject": "Projekt ansehen",
@@ -66,27 +65,39 @@
         "technologies": "Technologien:",
         "features": "Funktionen:",
         "liveDemo": "Live-Demo",
-        "sourceCode": "Quellcode"
-    },
-    "skills": {
+        "sourceCode": "Quellcode",
+        "viewMore": "Mehr Projekte ansehen"
+    },    "skills": {
         "title": "Technische Fähigkeiten",
-        "subtitle": "Technologien und Werkzeuge, mit denen ich arbeite",
+        "subtitle": "Technologien und Werkzeuge, mit denen ich arbeite",        "competenceLevel": "Kompetenzniveau",
+        "techStack": "Tech-Stack",
+        "methodologies": "Methoden und Werkzeuge",
         "categories": {
             "frontend": "Frontend",
             "backend": "Backend",
             "tools": "Werkzeuge",
             "databases": "Datenbanken"
         }
-    },
-    "education": {
-        "title": "Bildungsweg",
-        "subtitle": "Mein Bildungsweg und Zertifizierungen",
+    },    "education": {
+        "title": "Akademischer Hintergrund",
+        "subtitle": "Meine kontinuierliche Lernreise in Entwicklungstechnologien",
         "degree": "Abschluss",
         "institution": "Institution",
         "period": "Zeitraum",
         "description": "Beschreibung",
         "skills": "Erworbene Fähigkeiten:",
-        "certificate": "Zertifikat ansehen"
+        "certificate": "Zertifikat ansehen",
+        "viewCertificate": "Zertifikat oder Projekt anzeigen",
+        "featured": "Hervorgehoben",
+        "stats": {
+            "trainings": "Ausbildungen",
+            "technologies": "Technologien",
+            "projects": "Projekte"
+        },
+        "learningPhilosophy": {
+            "title": "Lernphilosophie",
+            "description": "Ich glaube fest an kontinuierliches Lernen und die Anpassung an neue Technologien. Meine Ausbildung umfasst nicht nur technisches Wissen, sondern auch agile Methodologien, Teamarbeit und bewährte Entwicklungspraktiken, die es mir ermöglichen, robuste und skalierbare Lösungen zu schaffen."
+        }
     },
     "contact": {
         "title": "Kontakt",

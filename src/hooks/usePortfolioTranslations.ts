@@ -20,7 +20,6 @@ export const usePortfolioTranslations = () => {
     education: t("navigation.education"),
     contact: t("navigation.contact"),
   };
-
   // Helper para hero section
   const hero = {
     greeting: t("hero.greeting"),
@@ -29,6 +28,7 @@ export const usePortfolioTranslations = () => {
     subtitle: t("hero.subtitle"),
     cta: t("hero.cta"),
     downloadCV: t("hero.downloadCV"),
+    viewProjects: t("hero.viewProjects"),
   };
 
   // Helper para experience section
@@ -50,7 +50,6 @@ export const usePortfolioTranslations = () => {
     tools: t("experience.tools"),
     featuredProjects: t("experience.featuredProjects"),
   };
-
   // Helper para projects section
   const projects = {
     title: t("projects.title"),
@@ -61,12 +60,14 @@ export const usePortfolioTranslations = () => {
     features: t("projects.features"),
     liveDemo: t("projects.liveDemo"),
     sourceCode: t("projects.sourceCode"),
-  };
-
-  // Helper para skills section
+    viewMore: t("projects.viewMore"),
+  };  // Helper para skills section
   const skills = {
     title: t("skills.title"),
     subtitle: t("skills.subtitle"),
+    competenceLevel: t("skills.competenceLevel"),
+    techStack: t("skills.techStack"),
+    methodologies: t("skills.methodologies"),
     categories: {
       frontend: t("skills.categories.frontend"),
       backend: t("skills.categories.backend"),
@@ -74,7 +75,6 @@ export const usePortfolioTranslations = () => {
       databases: t("skills.categories.databases"),
     },
   };
-
   // Helper para education section
   const education = {
     title: t("education.title"),
@@ -85,6 +85,17 @@ export const usePortfolioTranslations = () => {
     description: t("education.description"),
     skills: t("education.skills"),
     certificate: t("education.certificate"),
+    viewCertificate: t("education.viewCertificate"),
+    featured: t("education.featured"),
+    stats: {
+      trainings: t("education.stats.trainings"),
+      technologies: t("education.stats.technologies"),
+      projects: t("education.stats.projects"),
+    },
+    learningPhilosophy: {
+      title: t("education.learningPhilosophy.title"),
+      description: t("education.learningPhilosophy.description"),
+    },
   };
 
   // Helper para contact section

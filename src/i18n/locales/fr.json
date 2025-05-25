@@ -1,19 +1,38 @@
 {
     "navigation": {
         "home": "Accueil",
-        "experience": "Expérience",
-        "projects": "Projets",
+        "experience": "Expéri    "education": {
+        "title": "Formation Académique",
+        "subtitle": "Mon parcours d'apprentissage continu dans les technologies de développement",
+        "degree": "Diplôme",
+        "institution": "Institution",
+        "period": "Période",
+        "description": "Description",
+        "skills": "Compétences acquises:",
+        "certificate": "Voir le Certificat",
+        "viewCertificate": "Voir le certificat ou le projet",
+        "featured": "Mis en avant",
+        "stats": {
+            "trainings": "Formations",
+            "technologies": "Technologies",
+            "projects": "Projets"
+        },
+        "learningPhilosophy": {
+            "title": "Philosophie d'Apprentissage",
+            "description": "Je crois fermement en l'apprentissage continu et l'adaptation aux nouvelles technologies. Ma formation englobe non seulement les connaissances techniques, mais aussi les méthodologies agiles, le travail d'équipe et les meilleures pratiques de développement qui me permettent de créer des solutions robustes et évolutives."
+        }
+    },      "projects": "Projets",
         "skills": "Compétences",
         "education": "Formation",
         "contact": "Contact"
-    },
-    "hero": {
+    },    "hero": {
         "greeting": "Bonjour ! Je suis",
         "name": "Jordi Nodal",
         "title": "Ingénieur Frontend React",
         "subtitle": "Développeur Frontend spécialisé en React avec une expérience dans la création d'interfaces modernes et fonctionnelles",
         "cta": "Voir mon travail",
-        "downloadCV": "Télécharger CV"
+        "downloadCV": "Télécharger CV",
+        "viewProjects": "Voir les Projets"
     },
     "experience": {
         "title": "Expérience Professionnelle",
@@ -57,8 +76,7 @@
                 "description": "Chez Aula Magna Business School, je me suis spécialisé dans le design web d'événements, travaillant en équipe pour améliorer l'utilisabilité web et l'expérience utilisateur (UX/UI), créant des solutions visuelles attrayantes et fonctionnelles."
             }
         }
-    },
-    "projects": {
+    },    "projects": {
         "title": "Projets Phares",
         "subtitle": "Une sélection de mes travaux les plus représentatifs",
         "viewProject": "Voir le Projet",
@@ -66,27 +84,39 @@
         "technologies": "Technologies :",
         "features": "Fonctionnalités :",
         "liveDemo": "Démo en Direct",
-        "sourceCode": "Code Source"
-    },
-    "skills": {
+        "sourceCode": "Code Source",
+        "viewMore": "Voir Plus de Projets"
+    },    "skills": {
         "title": "Compétences Techniques",
-        "subtitle": "Technologies et outils avec lesquels je travaille",
+        "subtitle": "Technologies et outils avec lesquels je travaille",        "competenceLevel": "Niveau de Compétence",
+        "techStack": "Stack Technologique",
+        "methodologies": "Méthodologies et Outils",
         "categories": {
             "frontend": "Frontend",
             "backend": "Backend",
             "tools": "Outils",
             "databases": "Bases de Données"
         }
-    },
-    "education": {
+    },    "education": {
         "title": "Formation Académique",
-        "subtitle": "Mon parcours éducatif et certifications",
+        "subtitle": "Mon parcours d'apprentissage continu dans les technologies de développement",
         "degree": "Diplôme",
         "institution": "Institution",
         "period": "Période",
         "description": "Description",
         "skills": "Compétences acquises :",
-        "certificate": "Voir le Certificat"
+        "certificate": "Voir le Certificat",
+        "viewCertificate": "Voir le certificat ou le projet",
+        "featured": "Mis en avant",
+        "stats": {
+            "trainings": "Formations",
+            "technologies": "Technologies",
+            "projects": "Projets"
+        },
+        "learningPhilosophy": {
+            "title": "Philosophie d'Apprentissage",
+            "description": "Je crois fermement en l'apprentissage continu et l'adaptation aux nouvelles technologies. Ma formation englobe non seulement les connaissances techniques, mais aussi les méthodologies agiles, le travail d'équipe et les meilleures pratiques de développement qui me permettent de créer des solutions robustes et évolutives."
+        }
     },
     "contact": {
         "title": "Contact",
