@@ -4,9 +4,11 @@ import { Menu, X, Github, Linkedin, Mail } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import ThemeToggle from "./ThemeToggle";
 import LanguageSelector from "./LanguageSelector";
+import { useTheme } from "../contexts/ThemeContext";
 
 const Navigation = () => {
   const { t } = useTranslation();
+  const { theme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
@@ -97,7 +99,11 @@ const Navigation = () => {
                 onClick={() => handleNavClick(item.href)}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
-                className="text-gray-400 hover:text-white transition-colors duration-300 font-medium bg-transparent border-none cursor-pointer"
+                className={`transition-colors duration-300 font-medium bg-transparent border-none cursor-pointer ${
+                  theme === "vintage" 
+                    ? "text-[#f3ebd3]/80 hover:text-[#f3ebd3]" 
+                    : "text-gray-400 hover:text-white"
+                }`}
               >
                 {item.name}
               </motion.button>
@@ -130,7 +136,11 @@ const Navigation = () => {
           <motion.button
             whileTap={{ scale: 0.95 }}
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 text-gray-400 hover:text-white"
+            className={`md:hidden p-2 ${
+              theme === "vintage" 
+                ? "text-[#f3ebd3]/80 hover:text-[#f3ebd3]" 
+                : "text-gray-400 hover:text-white"
+            }`}
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </motion.button>
@@ -145,7 +155,11 @@ const Navigation = () => {
           height: isOpen ? "auto" : 0,
         }}
         transition={{ duration: 0.3 }}
-        className="md:hidden glass-effect border-t border-white/10"
+        className={`md:hidden glass-effect border-t ${
+          theme === "vintage" 
+            ? "border-[#a78a21]/30" 
+            : "border-white/10"
+        }`}
       >
         <div className="container-custom py-4">
           {" "}
@@ -155,12 +169,20 @@ const Navigation = () => {
                 key={item.name}
                 onClick={() => handleNavClick(item.href)}
                 whileTap={{ scale: 0.95 }}
-                className="text-gray-300 hover:text-white transition-colors duration-300 font-medium py-2 text-left bg-transparent border-none cursor-pointer"
+                className={`transition-colors duration-300 font-medium py-2 text-left bg-transparent border-none cursor-pointer ${
+                  theme === "vintage" 
+                    ? "text-[#f3ebd3]/90 hover:text-[#f3ebd3]" 
+                    : "text-gray-300 hover:text-white"
+                }`}
               >
                 {item.name}
               </motion.button>
             ))}{" "}
-            <div className="flex items-center justify-between pt-4 border-t border-white/10">
+            <div className={`flex items-center justify-between pt-4 border-t ${
+              theme === "vintage" 
+                ? "border-[#a78a21]/30" 
+                : "border-white/10"
+            }`}>
               <div className="flex items-center space-x-4">
                 {socialLinks.map((social) => (
                   <motion.a
@@ -170,7 +192,11 @@ const Navigation = () => {
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.2 }}
                     whileTap={{ scale: 0.9 }}
-                    className="p-2 text-gray-400 hover:text-white transition-colors duration-300"
+                    className={`p-2 transition-colors duration-300 ${
+                      theme === "vintage" 
+                        ? "text-[#f3ebd3]/80 hover:text-[#f3ebd3]" 
+                        : "text-gray-400 hover:text-white"
+                    }`}
                     aria-label={social.label}
                   >
                     <social.icon className="w-5 h-5" />

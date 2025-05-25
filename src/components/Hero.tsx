@@ -45,7 +45,9 @@ const Hero = () => {
       className={`relative min-h-screen flex items-center justify-center overflow-hidden pt-24 lg:pt-28 transition-all duration-300 ${
         theme === "dark"
           ? "bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"
-          : "bg-gradient-to-br from-gray-50 via-white to-gray-100"
+          : theme === "light"
+          ? "bg-gradient-to-br from-gray-50 via-white to-gray-100"
+          : "bg-gradient-to-br from-[#6e4c30] via-[#8b5e3c] to-[#4a5240]"
       }`}
     >
       {/* Animated Background */}
@@ -54,14 +56,18 @@ const Hero = () => {
           className={`absolute inset-0 opacity-20 ${
             theme === "dark"
               ? "hero-bg-gradient"
-              : "bg-gradient-to-br from-blue-50/50 to-purple-50/50"
+              : theme === "light"
+              ? "bg-gradient-to-br from-blue-50/50 to-purple-50/50"
+              : "bg-gradient-to-br from-[#a78a21]/30 to-[#d27c54]/30"
           }`}
         ></div>
         <div
           className={`absolute inset-0 opacity-10 ${
             theme === "dark"
               ? "hero-bg-gradient"
-              : "bg-gradient-to-br from-primary-50/30 to-purple-50/30"
+              : theme === "light"
+              ? "bg-gradient-to-br from-primary-50/30 to-purple-50/30"
+              : "bg-gradient-to-br from-[#e3b505]/20 to-[#94a197]/20"
           }`}
         ></div>
       </div>
@@ -69,7 +75,9 @@ const Hero = () => {
       <motion.div
         animate={floatingAnimation}
         className={`absolute top-20 left-10 w-20 h-20 rounded-full blur-xl ${
-          theme === "dark" ? "bg-primary-500/10" : "bg-primary-400/20"
+          theme === "dark" ? "bg-primary-500/10" : 
+          theme === "light" ? "bg-primary-400/20" :
+          "bg-[#e3b505]/20"
         }`}
       />
       <motion.div
@@ -78,7 +86,9 @@ const Hero = () => {
           transition: { ...floatingAnimation.transition, delay: 1 },
         }}
         className={`absolute bottom-20 right-20 w-32 h-32 rounded-full blur-xl ${
-          theme === "dark" ? "bg-purple-500/10" : "bg-purple-400/20"
+          theme === "dark" ? "bg-purple-500/10" : 
+          theme === "light" ? "bg-purple-400/20" :
+          "bg-[#d27c54]/20"
         }`}
       />
       <motion.div
@@ -87,7 +97,9 @@ const Hero = () => {
           transition: { ...floatingAnimation.transition, delay: 2 },
         }}
         className={`absolute top-1/2 right-10 w-16 h-16 rounded-full blur-xl ${
-          theme === "dark" ? "bg-pink-500/10" : "bg-pink-400/20"
+          theme === "dark" ? "bg-pink-500/10" : 
+          theme === "light" ? "bg-pink-400/20" :
+          "bg-[#a78a21]/20"
         }`}
       />
       <div className="container-custom relative z-10">
@@ -103,7 +115,9 @@ const Hero = () => {
           <motion.div variants={itemVariants} className="text-center mb-8">
             <span
               className={`font-medium text-lg md:text-xl ${
-                theme === "dark" ? "text-primary-400" : "text-primary-600"
+                theme === "dark" ? "text-primary-400" : 
+                theme === "light" ? "text-primary-600" :
+                "text-[#e3b505]"
               }`}
             >
               👋 {hero.greeting}
@@ -122,7 +136,9 @@ const Hero = () => {
                 className={`absolute inset-0 rounded-full animate-spin-slow ${
                   theme === "dark"
                     ? "bg-gradient-to-r from-primary-400 via-purple-500 to-primary-400"
-                    : "bg-gradient-to-r from-primary-500 via-purple-600 to-primary-500"
+                    : theme === "light"
+                    ? "bg-gradient-to-r from-primary-500 via-purple-600 to-primary-500"
+                    : "bg-gradient-to-r from-[#e3b505] via-[#d27c54] to-[#e3b505]"
                 }`}
               ></div>
 
@@ -131,7 +147,9 @@ const Hero = () => {
                 className={`absolute inset-2 rounded-full p-3 ${
                   theme === "dark"
                     ? "bg-gradient-to-br from-gray-800 to-gray-900"
-                    : "bg-gradient-to-br from-white to-gray-50"
+                    : theme === "light"
+                    ? "bg-gradient-to-br from-white to-gray-50"
+                    : "bg-gradient-to-br from-[#8b5e3c] to-[#6e4c30]"
                 }`}
               >
                 <div className="relative w-full h-full rounded-full overflow-hidden">
@@ -145,7 +163,9 @@ const Hero = () => {
                     className={`absolute inset-0 rounded-full ${
                       theme === "dark"
                         ? "bg-gradient-to-t from-slate-900/20 to-transparent"
-                        : "bg-gradient-to-t from-gray-100/20 to-transparent"
+                        : theme === "light"
+                        ? "bg-gradient-to-t from-gray-100/20 to-transparent"
+                        : "bg-gradient-to-t from-[#4a5240]/20 to-transparent"
                     }`}
                   ></div>
                 </div>
@@ -156,7 +176,9 @@ const Hero = () => {
                 className={`absolute inset-0 rounded-full blur-xl opacity-30 ${
                   theme === "dark"
                     ? "bg-gradient-to-r from-primary-400 to-purple-500"
-                    : "bg-gradient-to-r from-primary-500 to-purple-600"
+                    : theme === "light"
+                    ? "bg-gradient-to-r from-primary-500 to-purple-600"
+                    : "bg-gradient-to-r from-[#e3b505] to-[#d27c54]"
                 }`}
               ></div>
             </motion.div>
@@ -167,7 +189,9 @@ const Hero = () => {
               <motion.h1
                 variants={itemVariants}
                 className={`text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold mb-6 leading-tight ${
-                  theme === "dark" ? "text-white" : "text-gray-900"
+                  theme === "dark" ? "text-white" : 
+                  theme === "light" ? "text-gray-900" :
+                  "text-[#f3ebd3]"
                 }`}
               >
                 <span className="gradient-text">{hero.name}</span>
@@ -175,7 +199,9 @@ const Hero = () => {
               <motion.h2
                 variants={itemVariants}
                 className={`text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold mb-4 ${
-                  theme === "dark" ? "text-gray-300" : "text-gray-700"
+                  theme === "dark" ? "text-gray-300" : 
+                  theme === "light" ? "text-gray-700" :
+                  "text-[#f3ebd3]/90"
                 }`}
               >
                 {hero.title}
@@ -186,7 +212,9 @@ const Hero = () => {
                 className={`w-24 h-1 mx-auto rounded-full ${
                   theme === "dark"
                     ? "bg-gradient-to-r from-primary-400 to-purple-500"
-                    : "bg-gradient-to-r from-primary-500 to-purple-600"
+                    : theme === "light"
+                    ? "bg-gradient-to-r from-primary-500 to-purple-600"
+                    : "bg-gradient-to-r from-[#e3b505] to-[#d27c54]"
                 }`}
               ></motion.div>
             </div>
@@ -195,7 +223,9 @@ const Hero = () => {
           <motion.p
             variants={itemVariants}
             className={`text-lg md:text-xl mb-16 max-w-4xl mx-auto leading-relaxed text-center ${
-              theme === "dark" ? "text-gray-400" : "text-gray-600"
+              theme === "dark" ? "text-gray-400" : 
+              theme === "light" ? "text-gray-600" :
+              "text-[#f3ebd3]/80"
             }`}
           >
             {hero.subtitle}

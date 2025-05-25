@@ -41,6 +41,17 @@
     @apply text-gray-900;
   }
 
+  /* Vintage mode */
+  [data-theme='vintage'] body {
+    background: linear-gradient(
+      to bottom right,
+      #6e4c30, /* vintage.brown.dark */
+      #8b5e3c, /* vintage.brown.DEFAULT */
+      #4a5240  /* vintage.olive */
+    );
+    color: #f3ebd3; /* vintage.cream */
+  }
+
   /* Custom scrollbar - Dark mode */
   .dark ::-webkit-scrollbar {
     width: 8px;
@@ -74,6 +85,24 @@
   .light ::-webkit-scrollbar-thumb:hover {
     @apply bg-primary-500;
   }
+  
+  /* Custom scrollbar - Vintage mode */
+  [data-theme='vintage'] ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  [data-theme='vintage'] ::-webkit-scrollbar-track {
+    background-color: #6e4c30; /* vintage.brown.dark */
+  }
+
+  [data-theme='vintage'] ::-webkit-scrollbar-thumb {
+    background-color: #c69f26; /* vintage.mustard.DEFAULT */
+    border-radius: 9999px;
+  }
+
+  [data-theme='vintage'] ::-webkit-scrollbar-thumb:hover {
+    background-color: #e3b505; /* vintage.mustard.light */
+  }
 }
 
 @layer components {
@@ -86,6 +115,13 @@
     @apply bg-white/70 backdrop-blur-md border border-gray-200/50 shadow-lg;
   }
 
+  [data-theme='vintage'] .glass-effect {
+    background-color: rgba(168, 126, 88, 0.3); /* vintage.brown.light with 30% opacity */
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(167, 138, 33, 0.3); /* vintage.mustard.dark with 30% opacity */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+
   /* Text colors - Theme aware */
   .dark .text-white {
     color: rgb(255 255 255);
@@ -93,6 +129,10 @@
 
   .light .text-white {
     color: rgb(17 24 39);
+  }
+  
+  [data-theme='vintage'] .text-white {
+    color: rgb(243 235 211); /* vintage-cream */
   }
 
   .dark .text-gray-400 {
@@ -102,6 +142,10 @@
   .light .text-gray-400 {
     color: rgb(107 114 128);
   }
+  
+  [data-theme='vintage'] .text-gray-400 {
+    color: rgb(118 140 122); /* vintage-sage-DEFAULT */
+  }
 
   .dark .text-gray-300 {
     color: rgb(209 213 219);
@@ -109,6 +153,10 @@
 
   .light .text-gray-300 {
     color: rgb(75 85 99);
+  }
+  
+  [data-theme='vintage'] .text-gray-300 {
+    color: rgb(148 161 151); /* vintage-sage-light */
   }
 
   /* Primary colors - Theme aware */
@@ -140,6 +188,10 @@
   .light .section-bg-gradient {
     background: linear-gradient(to bottom, rgb(249 250 251), rgb(255 255 255));
   }
+  
+  [data-theme='vintage'] .section-bg-gradient {
+    background: linear-gradient(to bottom, rgb(110 76 48), rgb(74 82 64)); /* brown-dark to olive */
+  }
 
   .hero-bg-gradient {
     background: linear-gradient(to bottom right, rgb(0 0 0), rgb(31 41 55));
@@ -155,6 +207,14 @@
       rgb(249 250 251),
       rgb(229 231 235)
     );
+  }
+  
+  [data-theme='vintage'] .hero-bg-gradient {
+    background: linear-gradient(
+      to bottom right,
+      rgb(139 94 60),
+      rgb(95 111 97)
+    ); /* brown-DEFAULT to sage-dark */
   }
 
   .dark .hero-bg-gradient {
@@ -182,6 +242,12 @@
   .light .gradient-text {
     @apply bg-gradient-to-r from-primary-600 to-primary-800 bg-clip-text text-transparent;
   }
+  
+  [data-theme='vintage'] .gradient-text {
+    background-image: linear-gradient(to right, #e3b505, #d27c54); /* vintage.mustard.light to vintage.terracotta */
+    background-clip: text;
+    color: transparent;
+  }
 
   .card-hover {
     @apply transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary-500/20;
@@ -190,9 +256,35 @@
   .light .card-hover {
     @apply transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary-600/30;
   }
+  
+  [data-theme='vintage'] .card-hover {
+    transition-property: all;
+    transition-duration: 300ms;
+  }
+  
+  [data-theme='vintage'] .card-hover:hover {
+    transform: scale(1.05);
+    box-shadow: 0 25px 50px -12px rgba(198, 159, 38, 0.4); /* vintage.mustard.DEFAULT with 40% opacity */
+  }
 
   .btn-primary {
     @apply bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg;
+  }
+  
+  [data-theme='vintage'] .btn-primary {
+    background-image: linear-gradient(to right, #c69f26, #d27c54); /* vintage.mustard.DEFAULT to vintage.terracotta */
+    color: #f3ebd3; /* vintage.cream */
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    transition-property: all;
+    transition-duration: 300ms;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+  
+  [data-theme='vintage'] .btn-primary:hover {
+    background-image: linear-gradient(to right, #a78a21, #8b5e3c); /* vintage.mustard.dark to vintage.brown.DEFAULT */
+    transform: scale(1.05);
   }
 
   .section-padding {

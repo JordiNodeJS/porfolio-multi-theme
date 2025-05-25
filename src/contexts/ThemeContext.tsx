@@ -6,7 +6,7 @@ import {
   type ReactNode,
 } from "react";
 
-type Theme = "dark" | "light";
+type Theme = "dark" | "light" | "vintage";
 
 interface ThemeContextType {
   theme: Theme;
@@ -33,20 +33,26 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   useEffect(() => {
     // Check for saved theme preference or default to 'dark'
     const savedTheme = localStorage.getItem("theme") as Theme;
-    if (savedTheme && (savedTheme === "dark" || savedTheme === "light")) {
+    if (savedTheme && (savedTheme === "dark" || savedTheme === "light" || savedTheme === "vintage")) {
       setTheme(savedTheme);
     }
   }, []);
 
   useEffect(() => {
     // Apply theme to document and save to localStorage
-    document.documentElement.classList.toggle("dark", theme === "dark");
-    document.documentElement.classList.toggle("light", theme === "light");
+    document.documentElement.setAttribute('data-theme', theme);
+    // Also keep class for compatibility with existing code
+    document.documentElement.classList.remove("dark", "light", "vintage");
+    document.documentElement.classList.add(theme);
     localStorage.setItem("theme", theme);
   }, [theme]);
 
   const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === "dark" ? "light" : "dark"));
+    setTheme((prevTheme) => {
+      if (prevTheme === "dark") return "light";
+      if (prevTheme === "light") return "vintage";
+      return "dark";
+    });
   };
 
   return (

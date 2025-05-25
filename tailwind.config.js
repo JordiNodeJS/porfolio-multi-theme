@@ -31,9 +31,33 @@ export default {
           800: "#1e293b",
           900: "#0f172a",
         },
+        vintage: {
+          // Marrones
+          brown: {
+            light: "#a87e58",
+            DEFAULT: "#8b5e3c",
+            dark: "#6e4c30",
+          },
+          // Mostaza
+          mustard: {
+            light: "#e3b505",
+            DEFAULT: "#c69f26",
+            dark: "#a78a21",
+          },
+          // Verdes apagados
+          sage: {
+            light: "#94a197",
+            DEFAULT: "#768c7a",
+            dark: "#5f6f61",
+          },
+          // Colores complementarios
+          cream: "#f3ebd3",
+          terracotta: "#d27c54",
+          olive: "#4a5240",
+        },
       },
     },
   },
   plugins: [require("@tailwindcss/typography")],
-  darkMode: "class",
+  darkMode: ["class", "[data-theme='dark']"],
 };
