@@ -58,7 +58,8 @@
                 "description": "A Aula Magna Business School em vaig especialitzar en el disseny web d'esdeveniments, treballant en equip per millorar la usabilitat web i l'experiència d'usuari (UX/UI), creant solucions visuals atractives i funcionals."
             }
         }
-    },    "projects": {
+    },
+    "projects": {
         "title": "Projectes Destacats",
         "subtitle": "Una selecció dels meus treballs més representatius",
         "viewProject": "Veure Projecte",

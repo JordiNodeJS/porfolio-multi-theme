@@ -23,13 +23,20 @@ const ProjectCard = ({
   };
 }) => {
   const { t } = useTranslation();
-  
+
   // Función para obtener el título y descripción traducidos
-  const getProjectTranslation = (id: string, field: 'title' | 'description') => {
+  const getProjectTranslation = (
+    id: string,
+    field: "title" | "description"
+  ) => {
     const translationKey = `projects.items.${id}.${field}`;
     const translation = t(translationKey);
     // Si no existe la traducción, usar el valor original del JSON
-    return translation !== translationKey ? translation : (field === 'title' ? project.title : project.description);
+    return translation !== translationKey
+      ? translation
+      : field === "title"
+      ? project.title
+      : project.description;
   };
 
   return (
@@ -92,9 +99,11 @@ const ProjectCard = ({
       </div>
 
       {/* Content */}
-      <div className="p-6">        <div className="flex justify-between items-center mb-3">
+      <div className="p-6">
+        {" "}
+        <div className="flex justify-between items-center mb-3">
           <h3 className="text-xl font-semibold text-white group-hover:text-primary-400 transition-colors">
-            {getProjectTranslation(project.id, 'title')}
+            {getProjectTranslation(project.id, "title")}
           </h3>
           <div className="flex gap-1.5">
             {project.link && (
@@ -111,11 +120,9 @@ const ProjectCard = ({
             )}
           </div>
         </div>
-
         <p className="text-gray-400 text-sm leading-relaxed mb-4 line-clamp-3">
-          {getProjectTranslation(project.id, 'description')}
+          {getProjectTranslation(project.id, "description")}
         </p>
-
         {/* Tags */}
         <div className="flex flex-wrap gap-2">
           {project.tags.slice(0, 4).map((tag, tagIndex) => (

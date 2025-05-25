@@ -58,7 +58,8 @@
                 "description": "Bei Aula Magna Business School spezialisierte ich mich auf Event-Webdesign und arbeitete im Team, um die Web-Usability und Benutzererfahrung (UX/UI) zu verbessern und attraktive und funktionale visuelle Lösungen zu schaffen."
             }
         }
-    },    "projects": {
+    },
+    "projects": {
         "title": "Hervorgehobene Projekte",
         "subtitle": "Eine Auswahl meiner repräsentativsten Arbeiten",
         "viewProject": "Projekt ansehen",
