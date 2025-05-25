@@ -1,9 +1,8 @@
 import { motion } from "framer-motion";
 import { GraduationCap, Calendar, ExternalLink, Star } from "lucide-react";
-// import { usePortfolioData } from "../hooks/usePortfolioData"; // Removed
 import { usePortfolioTranslations } from "../hooks/usePortfolioTranslations";
-import { useTranslation } from "react-i18next"; // Added for t function
-import type { Education as EducationType } from "../types"; // Added type import
+import type { Education as EducationType } from "../types";
+import educationData from "../db/education.json";
 
 const EducationCard = ({
   education,
@@ -115,46 +114,15 @@ const EducationCard = ({
 };
 
 const Education = () => {
-  // const { education } = usePortfolioData(); // Removed
   const { education: educationTranslations } = usePortfolioTranslations();
-  const { t } = useTranslation(); // Added
 
-  // Generate education data from translations
-  const generateEducationFromTranslations = (): EducationType[] => {
-    // Define a more specific type for the items from translations
-    type TranslationEducationItem = Omit<EducationType, "id">;
-    const educationItems = t("education.items", {
-      returnObjects: true,
-    }) as Record<string, TranslationEducationItem>;
-
-    if (!educationItems || typeof educationItems !== "object") {
-      console.warn(
-        "Education items not found or not an object in translations."
-      );
-      return [];
-    }
-
-    return Object.keys(educationItems).map((key): EducationType => {
-      const item = educationItems[key];
-      return {
-        id: key, // Use the translation key as id
-        center: item.center || "",
-        link: item.link,
-        title: item.title || "",
-        description: item.description || "",
-        start_date: item.start_date || "",
-        end_date: item.end_date || "",
-        tags: Array.isArray(item.tags) ? item.tags : [],
-      };
-    });
-  };
-
-  const educationData = generateEducationFromTranslations(); // Renamed from education to educationData
+  // Use education data directly from JSON file
+  const education = educationData as EducationType[];
 
   const stats = [
     {
       label: educationTranslations.stats.trainings,
-      value: educationData.length, // Use educationData
+      value: education.length,
       icon: GraduationCap,
     },
     {
@@ -223,22 +191,17 @@ const Education = () => {
         </div>{" "}
         {/* Education Cards */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {educationData.map(
-            (
-              edu,
-              index // Use educationData
-            ) => (
-              <EducationCard
-                key={edu.id}
-                education={edu}
-                index={index}
-                translations={{
-                  viewCertificate: educationTranslations.viewCertificate,
-                  featured: educationTranslations.featured,
-                }}
-              />
-            )
-          )}
+          {education.map((edu, index) => (
+            <EducationCard
+              key={edu.id}
+              education={edu}
+              index={index}
+              translations={{
+                viewCertificate: educationTranslations.viewCertificate,
+                featured: educationTranslations.featured,
+              }}
+            />
+          ))}
         </div>
         {/* Learning Philosophy */}
         <motion.div

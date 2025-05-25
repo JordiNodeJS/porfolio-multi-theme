@@ -6,7 +6,7 @@ import {
   type ReactNode,
 } from "react";
 
-type Theme = "dark" | "light" | "vintage";
+type Theme = "dark" | "light" | "vintage" | "retro-pastel";
 
 interface ThemeContextType {
   theme: Theme;
@@ -33,7 +33,7 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   useEffect(() => {
     // Check for saved theme preference or default to 'dark'
     const savedTheme = localStorage.getItem("theme") as Theme;
-    if (savedTheme && (savedTheme === "dark" || savedTheme === "light" || savedTheme === "vintage")) {
+    if (savedTheme && (savedTheme === "dark" || savedTheme === "light" || savedTheme === "vintage" || savedTheme === "retro-pastel")) {
       setTheme(savedTheme);
     }
   }, []);
@@ -42,7 +42,7 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
     // Apply theme to document and save to localStorage
     document.documentElement.setAttribute('data-theme', theme);
     // Also keep class for compatibility with existing code
-    document.documentElement.classList.remove("dark", "light", "vintage");
+    document.documentElement.classList.remove("dark", "light", "vintage", "retro-pastel");
     document.documentElement.classList.add(theme);
     localStorage.setItem("theme", theme);
   }, [theme]);
@@ -51,6 +51,7 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
     setTheme((prevTheme) => {
       if (prevTheme === "dark") return "light";
       if (prevTheme === "light") return "vintage";
+      if (prevTheme === "vintage") return "retro-pastel";
       return "dark";
     });
   };

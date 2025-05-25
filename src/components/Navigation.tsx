@@ -79,7 +79,7 @@ const Navigation = () => {
       }}
       transition={{ duration: 0.3 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out ${
-        scrolled ? "glass-effect shadow-2xl backdrop-blur-md" : "bg-transparent"
+        scrolled ? "glass-effect shadow-2xl backdrop-blur-md nav-bg" : "bg-transparent"
       } ${isHidden ? "pointer-events-none" : ""}`}
     >
       <div className="container-custom">
@@ -102,6 +102,8 @@ const Navigation = () => {
                 className={`transition-colors duration-300 font-medium bg-transparent border-none cursor-pointer ${
                   theme === "vintage" 
                     ? "text-[#f3ebd3]/80 hover:text-[#f3ebd3]" 
+                    : theme === "retro-pastel"
+                    ? "text-[#3d2c2c]/80 hover:text-[#e56b81]" 
                     : "text-gray-400 hover:text-white"
                 }`}
               >
@@ -119,7 +121,13 @@ const Navigation = () => {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.2, rotate: 5 }}
                 whileTap={{ scale: 0.9 }}
-                className="p-2 text-gray-400 hover:text-white transition-colors duration-300"
+                className={`p-2 transition-colors duration-300 ${
+                  theme === "vintage" 
+                    ? "text-[#f3ebd3]/80 hover:text-[#f3ebd3]" 
+                    : theme === "retro-pastel"
+                    ? "text-[#3d2c2c]/80 hover:text-[#e56b81]" 
+                    : "text-gray-400 hover:text-white"
+                }`}
                 aria-label={social.label}
               >
                 <social.icon className="w-5 h-5" />
@@ -139,6 +147,8 @@ const Navigation = () => {
             className={`md:hidden p-2 ${
               theme === "vintage" 
                 ? "text-[#f3ebd3]/80 hover:text-[#f3ebd3]" 
+                : theme === "retro-pastel"
+                ? "text-[#3d2c2c]/80 hover:text-[#e56b81]" 
                 : "text-gray-400 hover:text-white"
             }`}
           >
@@ -158,6 +168,8 @@ const Navigation = () => {
         className={`md:hidden glass-effect border-t ${
           theme === "vintage" 
             ? "border-[#a78a21]/30" 
+            : theme === "retro-pastel"
+            ? "border-[#e56b81]/30" 
             : "border-white/10"
         }`}
       >
@@ -172,6 +184,8 @@ const Navigation = () => {
                 className={`transition-colors duration-300 font-medium py-2 text-left bg-transparent border-none cursor-pointer ${
                   theme === "vintage" 
                     ? "text-[#f3ebd3]/90 hover:text-[#f3ebd3]" 
+                    : theme === "retro-pastel"
+                    ? "text-[#3d2c2c]/90 hover:text-[#e56b81]" 
                     : "text-gray-300 hover:text-white"
                 }`}
               >
@@ -181,6 +195,8 @@ const Navigation = () => {
             <div className={`flex items-center justify-between pt-4 border-t ${
               theme === "vintage" 
                 ? "border-[#a78a21]/30" 
+                : theme === "retro-pastel"
+                ? "border-[#e56b81]/30" 
                 : "border-white/10"
             }`}>
               <div className="flex items-center space-x-4">
@@ -195,6 +211,8 @@ const Navigation = () => {
                     className={`p-2 transition-colors duration-300 ${
                       theme === "vintage" 
                         ? "text-[#f3ebd3]/80 hover:text-[#f3ebd3]" 
+                        : theme === "retro-pastel"
+                        ? "text-[#3d2c2c]/80 hover:text-[#e56b81]" 
                         : "text-gray-400 hover:text-white"
                     }`}
                     aria-label={social.label}

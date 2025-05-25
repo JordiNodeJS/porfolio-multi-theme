@@ -53,7 +53,7 @@ export interface ExperienceType {
 export interface Education {
   id: string;
   center: string;
-  link: string;
+  link?: string; // Made optional since not all education items have a link
   title: string;
   description: string;
   start_date: string;

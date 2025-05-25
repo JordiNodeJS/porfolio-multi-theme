@@ -55,9 +55,32 @@ export default {
           terracotta: "#d27c54",
           olive: "#4a5240",
         },
+        retroPastel: {
+          // Rosa pastel (tonos más oscuros para mejor contraste)
+          pink: {
+            light: "#ffaec0",
+            DEFAULT: "#ff8da3",
+            dark: "#e56b81",
+          },
+          // Amarillo pastel natilla (tonos más intensos)
+          custard: {
+            light: "#ffe9a6",
+            DEFAULT: "#ffd34d",
+            dark: "#e6b800",
+          },
+          // Colores complementarios con mejor contraste
+          mint: "#92c9a9",
+          lavender: "#9d8fc2",
+          babyBlue: "#8fc4e5",
+          peach: "#ffaa80",
+          text: "#3d2c2c",
+          background: "#fffaf0",
+        },
       },
     },
   },
   plugins: [require("@tailwindcss/typography")],
   darkMode: ["class", "[data-theme='dark']"],
+  // Asegúrate que el nuevo tema 'retro-pastel' sea reconocido por Tailwind
+  retroPastelMode: "[data-theme='retro-pastel']",
 };
