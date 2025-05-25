@@ -8,46 +8,26 @@ const SkillBar = ({
   skill,
   index,
 }: {
-  skill: { name: string; level: string }; // Changed from nombre to name, nivel to level (as string for now)
+  skill: { name: string; level: number; };
   index: number;
 }) => {
-  const getProgressValue = (level: string) => {
-    switch (level.toLowerCase()) {
-      case "avanzado":
-      case "advanced":
-        return 90;
-      case "intermedio":
-      case "intermediate":
-        return 70;
-      case "básico":
-      case "basic":
-        return 50;
-      case "b2":
-        return 75;
-      default:
-        return 60;
-    }
+  const getSkillLevelText = (level: number): string => {
+    if (level >= 85) return "Avanzado";
+    if (level >= 65) return "Intermedio";
+    if (level >= 40) return "Básico";
+    if (level === 75) return "B2"; // Special case for language proficiency
+    return "Intermedio";
   };
 
-  const getSkillColor = (level: string) => {
-    switch (level.toLowerCase()) {
-      case "avanzado":
-      case "advanced":
-        return "from-green-400 to-emerald-500";
-      case "intermedio":
-      case "intermediate":
-        return "from-blue-400 to-blue-500";
-      case "básico":
-      case "basic":
-        return "from-yellow-400 to-orange-500";
-      case "b2":
-        return "from-purple-400 to-purple-500";
-      default:
-        return "from-primary-400 to-primary-500";
-    }
+  const getSkillColor = (level: number) => {
+    if (level >= 85) return "from-green-400 to-emerald-500";
+    if (level >= 65) return "from-blue-400 to-blue-500";
+    if (level >= 40) return "from-yellow-400 to-orange-500";
+    if (level === 75) return "from-purple-400 to-purple-500";
+    return "from-primary-400 to-primary-500";
   };
 
-  const progress = getProgressValue(skill.level); // Changed from nivel to level
+  const progress = skill.level; // Level is already a number
 
   return (
     <motion.div
@@ -62,7 +42,7 @@ const SkillBar = ({
         <h3 className="text-lg font-semibold text-white">{skill.name}</h3>{" "}
         {/* Changed from nombre to name */}
         <span className="text-sm text-gray-400 capitalize">
-          {skill.level}
+          {getSkillLevelText(skill.level)}
         </span>{" "}
         {/* Changed from nivel to level */}
       </div>
@@ -177,7 +157,7 @@ const Skills = () => {
               {skillsDataFromHook.map((skill, index) => (
                 <SkillBar
                   key={skill.id || index}
-                  skill={{ name: skill.name, level: String(skill.level) }}
+                  skill={{ name: skill.name, level: skill.level }}
                   index={index}
                 />
               ))}
