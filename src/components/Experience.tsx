@@ -299,14 +299,16 @@ const Experience = () => {
                 "Git/GitHub",
                 "PHP",
                 "WordPress",
-              ].map((tech, index) => (
+              ].map((tech) => (
                 <motion.span
                   key={tech}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: index * 0.05 }}
-                  viewport={{ once: true }}
-                  className="px-4 py-2 bg-primary-500/20 text-primary-300 text-sm rounded-full border border-primary-500/30 hover:bg-primary-500/30 transition-colors"
+                  className="bg-primary-500/20 text-primary-300 px-4 py-2 rounded-full text-sm font-medium border border-primary-500/30 shadow-sm hover:bg-primary-500/30 transition-colors cursor-default"
+                  whileHover={{
+                    rotate: [0, -2, 2, -2, 2, 0],
+                  }}
+                  transition={{
+                    rotate: { duration: 0.3, ease: "easeInOut" },
+                  }}
                 >
                   {tech}
                 </motion.span>

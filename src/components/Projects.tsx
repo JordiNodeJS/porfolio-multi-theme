@@ -102,8 +102,14 @@ const ProjectCard = ({
               key={tag}
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ delay: tagIndex * 0.1 }}
-              className="px-3 py-1 bg-primary-500/20 text-primary-300 text-xs rounded-full border border-primary-500/30"
+              whileHover={{ 
+                rotate: [0, -2, 2, -2, 2, 0]
+              }}
+              transition={{ 
+                delay: tagIndex * 0.1,
+                rotate: { duration: 0.3 }
+              }}
+              className="px-3 py-1 bg-primary-500/20 text-primary-300 text-xs rounded-full border border-primary-500/30 cursor-default"
             >
               {tag}
             </motion.span>

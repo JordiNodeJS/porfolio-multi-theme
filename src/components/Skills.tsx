@@ -94,7 +94,15 @@ const TechIcon = ({
   color: string;
 }) => (
   <motion.div
-    whileHover={{ scale: 1.1, y: -5 }}
+    whileHover={{ 
+      scale: 1.1, 
+      y: -5,
+      rotate: [0, -1, 1, -1, 1, 0]
+    }}
+    transition={{ 
+      duration: 0.3,
+      rotate: { duration: 0.3, ease: "easeInOut" }
+    }}
     whileTap={{ scale: 0.95 }}
     className="flex flex-col items-center p-4 glass-effect rounded-xl dark:hover:bg-white/10 light:hover:bg-black/5 transition-all duration-300 group"
   >
