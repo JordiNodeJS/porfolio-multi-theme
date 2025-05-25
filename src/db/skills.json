@@ -4,7 +4,11 @@
     "nivel": "avanzado"
   },
   {
-    "nombre": "Python",
+    "nombre": "TypeScript",
+    "nivel": "intermedio"
+  },
+  {
+    "nombre": "Node.js",
     "nivel": "intermedio"
   },
   {

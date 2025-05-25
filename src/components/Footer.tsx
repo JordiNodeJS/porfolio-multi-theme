@@ -1,13 +1,15 @@
 import { motion } from "framer-motion";
 import { Github, Linkedin, Heart, Code, Coffee } from "lucide-react";
+import { useTheme } from "../contexts/ThemeContext";
 
 const Footer = () => {
+  const { theme } = useTheme();
   const socialLinks = [
     {
       icon: <Github className="w-5 h-5" />,
       label: "GitHub",
       href: "https://github.com/JordiNodeJS",
-      color: "hover:text-gray-300",
+      color: theme === "dark" ? "hover:text-gray-300" : "hover:text-gray-600",
     },
     {
       icon: <Linkedin className="w-5 h-5" />,
@@ -27,11 +29,25 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border-t border-slate-700/50 overflow-hidden">
+    <footer
+      className={`relative overflow-hidden border-t transition-all duration-300 ${
+        theme === "dark"
+          ? "bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border-slate-700/50"
+          : "bg-gradient-to-br from-gray-50 via-white to-gray-100 border-gray-200/50"
+      }`}
+    >
       {/* Background Effects */}
       <div className="absolute inset-0">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"></div>
+        <div
+          className={`absolute top-0 left-1/4 w-96 h-96 rounded-full blur-3xl ${
+            theme === "dark" ? "bg-blue-500/5" : "bg-blue-500/10"
+          }`}
+        ></div>
+        <div
+          className={`absolute bottom-0 right-1/4 w-96 h-96 rounded-full blur-3xl ${
+            theme === "dark" ? "bg-purple-500/5" : "bg-purple-500/10"
+          }`}
+        ></div>
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 py-12">
@@ -46,7 +62,11 @@ const Footer = () => {
             className="text-center md:text-left"
           >
             <h3 className="text-2xl font-bold gradient-text mb-3">JORGe</h3>
-            <p className="text-slate-400 text-sm leading-relaxed">
+            <p
+              className={`text-sm leading-relaxed ${
+                theme === "dark" ? "text-slate-400" : "text-gray-600"
+              }`}
+            >
               Frontend React Developer apasionado por crear experiencias
               digitales excepcionales con tecnologías modernas.
             </p>
@@ -60,7 +80,11 @@ const Footer = () => {
             viewport={{ once: true }}
             className="text-center"
           >
-            <h4 className="text-white font-semibold mb-4 flex items-center justify-center md:justify-start gap-2">
+            <h4
+              className={`font-semibold mb-4 flex items-center justify-center md:justify-start gap-2 ${
+                theme === "dark" ? "text-white" : "text-gray-900"
+              }`}
+            >
               <Code className="w-4 h-4" />
               Tech Stack
             </h4>
@@ -72,7 +96,11 @@ const Footer = () => {
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.3, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="px-3 py-1 bg-slate-700/50 text-slate-300 text-xs rounded-full border border-slate-600/50 hover:border-primary-500/50 transition-all duration-300"
+                  className={`px-3 py-1 text-xs rounded-full border transition-all duration-300 hover:border-primary-500/50 ${
+                    theme === "dark"
+                      ? "bg-slate-700/50 text-slate-300 border-slate-600/50"
+                      : "bg-gray-100 text-gray-700 border-gray-300/50 hover:bg-gray-200"
+                  }`}
                 >
                   {tech}
                 </motion.span>
@@ -88,7 +116,13 @@ const Footer = () => {
             viewport={{ once: true }}
             className="text-center md:text-right"
           >
-            <h4 className="text-white font-semibold mb-4">Conecta conmigo</h4>
+            <h4
+              className={`font-semibold mb-4 ${
+                theme === "dark" ? "text-white" : "text-gray-900"
+              }`}
+            >
+              Conecta conmigo
+            </h4>
             <div className="flex gap-4 justify-center md:justify-end">
               {socialLinks.map((social, index) => (
                 <motion.a
@@ -102,7 +136,11 @@ const Footer = () => {
                   viewport={{ once: true }}
                   whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className={`w-12 h-12 bg-slate-800/50 border border-slate-700/50 rounded-xl flex items-center justify-center text-slate-400 transition-all duration-300 ${social.color} hover:border-primary-500/50 hover:bg-slate-700/50`}
+                  className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 hover:border-primary-500/50 ${
+                    theme === "dark"
+                      ? `bg-slate-800/50 border-slate-700/50 text-slate-400 hover:bg-slate-700/50 ${social.color}`
+                      : `bg-gray-100 border-gray-200 text-gray-600 hover:bg-gray-200 ${social.color}`
+                  }`}
                   aria-label={social.label}
                 >
                   {social.icon}
@@ -118,7 +156,11 @@ const Footer = () => {
           whileInView={{ scaleX: 1 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="h-px bg-gradient-to-r from-transparent via-slate-700 to-transparent mb-6"
+          className={`h-px mb-6 ${
+            theme === "dark"
+              ? "bg-gradient-to-r from-transparent via-slate-700 to-transparent"
+              : "bg-gradient-to-r from-transparent via-gray-300 to-transparent"
+          }`}
         />
 
         {/* Bottom Bar */}
@@ -127,20 +169,30 @@ const Footer = () => {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.6 }}
           viewport={{ once: true }}
-          className="flex flex-col md:flex-row items-center justify-between gap-4 text-slate-400 text-sm"
+          className={`flex flex-col md:flex-row items-center justify-between gap-4 text-sm ${
+            theme === "dark" ? "text-slate-400" : "text-gray-600"
+          }`}
         >
           <div className="flex items-center gap-2">
             <span>© {new Date().getFullYear()} Jorge Portfolio.</span>
             <span className="flex items-center gap-1">
               Hecho con <Heart className="w-4 h-4 text-red-400 animate-pulse" />{" "}
               y
-              <Coffee className="w-4 h-4 text-amber-400" />
+              <Coffee
+                className={`w-4 h-4 ${
+                  theme === "dark" ? "text-amber-400" : "text-amber-600"
+                }`}
+              />
             </span>
           </div>
 
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="text-xs text-slate-500 hover:text-slate-300 transition-colors duration-300"
+            className={`text-xs transition-colors duration-300 ${
+              theme === "dark"
+                ? "text-slate-500 hover:text-slate-300"
+                : "text-gray-500 hover:text-gray-700"
+            }`}
           >
             Diseñado y desarrollado con ❤️
           </motion.div>
