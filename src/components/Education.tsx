@@ -37,16 +37,19 @@ const EducationCard = ({
             </div>
           </div>
 
-          <motion.a
-            href={education.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            className="p-2 text-gray-400 hover:text-primary-400 transition-colors"
-          >
-            <ExternalLink className="w-5 h-5" />
-          </motion.a>
+          {education.link && (
+            <motion.a
+              href={education.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              className="p-2 text-gray-400 hover:text-primary-400 transition-colors"
+              title="Ver certificado o proyecto"
+            >
+              <ExternalLink className="w-5 h-5" />
+            </motion.a>
+          )}
         </div>{" "}
         {/* Duration */}
         <div className="flex items-center gap-2 mt-3 text-muted">
@@ -90,7 +93,7 @@ const EducationCard = ({
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.3 }}
           viewport={{ once: true }}
-          className="absolute top-4 right-4"
+          className={`absolute top-4 right-4 ${education.link ? 'mr-12' : ''}`}
         >
           <div className="flex items-center gap-1 bg-yellow-500/20 text-yellow-400 px-2 py-1 rounded-full text-xs border border-yellow-500/30">
             <Star className="w-3 h-3" />
