@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { usePortfolioData } from "../hooks/usePortfolioData";
 import { usePortfolioTranslations } from "../hooks/usePortfolioTranslations";
-import { Code2, Database, Globe, Palette, FileCode2, FileJson, Box, Cpu, Layers, Network, GitBranch, DatabaseZap, FileCode, FileJson2 } from "lucide-react";
+import { Code2, Palette, FileCode2, FileJson, Box, Cpu, Layers, Network, DatabaseZap } from "lucide-react";
+import { NextJsIcon } from "./icons/NextJsIcon";
 import type { LucideIcon } from "lucide-react";
 
 const SkillBar = ({
@@ -116,7 +117,7 @@ const Skills = () => {
     { icon: Layers, name: "TailwindCSS", color: "from-teal-400 to-teal-600" },
     { icon: DatabaseZap, name: "SQL", color: "from-orange-400 to-orange-600" },
     { icon: Cpu, name: "NestJS", color: "from-red-400 to-red-600" },
-    { icon: FileCode, name: "Next.js", color: "from-gray-400 to-gray-600" },
+    { icon: NextJsIcon, name: "Next.js", color: "from-gray-400 to-gray-600" },
     { icon: Network, name: "Redux", color: "from-purple-400 to-indigo-600" },
   ];
 
