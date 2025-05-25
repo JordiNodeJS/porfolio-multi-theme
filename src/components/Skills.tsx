@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
 import { usePortfolioData } from "../hooks/usePortfolioData";
 import { usePortfolioTranslations } from "../hooks/usePortfolioTranslations";
-import { Code2, Palette, FileCode2, FileJson, Box, Cpu, Layers, Network, DatabaseZap } from "lucide-react";
+import { Palette, FileCode2, FileJson, Box, Cpu, Layers, Network, DatabaseZap } from "lucide-react";
 import { NextJsIcon } from "./icons/NextJsIcon";
+import { ReactIcon } from "./icons/ReactIcon";
 import type { LucideIcon } from "lucide-react";
 
 const SkillBar = ({
@@ -109,7 +110,7 @@ const Skills = () => {
   const { skills: skillsTranslations } = usePortfolioTranslations(); // Renamed for clarity
 
   const techStack = [
-    { icon: Code2, name: "React", color: "from-blue-400 to-blue-600" },
+    { icon: ReactIcon, name: "React", color: "from-blue-400 to-blue-600" },
     { icon: FileCode2, name: "JavaScript", color: "from-yellow-400 to-yellow-600" },
     { icon: FileJson, name: "TypeScript", color: "from-blue-500 to-blue-700" },
     { icon: Palette, name: "CSS/SASS", color: "from-pink-400 to-pink-600" },
