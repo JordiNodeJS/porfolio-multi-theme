@@ -1,12 +1,9 @@
 import { motion } from "framer-motion";
 import { usePortfolioData } from "../hooks/usePortfolioData";
 import { usePortfolioTranslations } from "../hooks/usePortfolioTranslations";
-import { Palette, Box, Cpu, Layers, Network, DatabaseZap } from "lucide-react";
-import { NextJsIcon } from "./icons/NextJsIcon";
-import { ReactIcon } from "./icons/ReactIcon";
-import { JavaScriptIcon } from "./icons/JavaScriptIcon";
-import { TypeScriptIcon } from "./icons/TypeScriptIcon";
-import type { LucideIcon } from "lucide-react";
+import type { IconType } from "react-icons"; 
+import { SiReact, SiJavascript, SiTypescript, SiSass, SiVite, SiTailwindcss, SiNestjs, SiNextdotjs, SiRedux } from "react-icons/si"; 
+import { TbSql } from "react-icons/tb"; 
 
 const SkillBar = ({
   skill,
@@ -79,7 +76,7 @@ const TechIcon = ({
   name,
   color,
 }: {
-  icon: LucideIcon;
+  icon: IconType; 
   name: string;
   color: string;
 }) => (
@@ -108,24 +105,24 @@ const TechIcon = ({
 );
 
 const Skills = () => {
-  const { skills: skillsDataFromHook } = usePortfolioData(); // Renamed to avoid conflict
-  const { skills: skillsTranslations } = usePortfolioTranslations(); // Renamed for clarity
+  const { skills: skillsDataFromHook } = usePortfolioData(); 
+  const { skills: skillsTranslations } = usePortfolioTranslations(); 
 
   const techStack = [
-    { icon: ReactIcon, name: "React", color: "from-blue-400 to-blue-600" },
-    { icon: JavaScriptIcon, name: "JavaScript", color: "from-yellow-400 to-yellow-600" },
-    { icon: TypeScriptIcon, name: "TypeScript", color: "from-blue-500 to-blue-700" },
-    { icon: Palette, name: "CSS/SASS", color: "from-pink-400 to-pink-600" },
-    { icon: Box, name: "Vite", color: "from-purple-400 to-purple-600" },
-    { icon: Layers, name: "TailwindCSS", color: "from-teal-400 to-teal-600" },
-    { icon: DatabaseZap, name: "SQL", color: "from-orange-400 to-orange-600" },
-    { icon: Cpu, name: "NestJS", color: "from-red-400 to-red-600" },
-    { icon: NextJsIcon, name: "Next.js", color: "from-gray-400 to-gray-600" },
-    { icon: Network, name: "Redux", color: "from-purple-400 to-indigo-600" },
+    { icon: SiReact, name: "React", color: "from-blue-400 to-blue-600" },
+    { icon: SiJavascript, name: "JavaScript", color: "from-yellow-400 to-yellow-600" },
+    { icon: SiTypescript, name: "TypeScript", color: "from-blue-500 to-blue-700" },
+    { icon: SiSass, name: "CSS/SASS", color: "from-pink-400 to-pink-600" },
+    { icon: SiVite, name: "Vite", color: "from-purple-400 to-purple-600" },
+    { icon: SiTailwindcss, name: "TailwindCSS", color: "from-teal-400 to-teal-600" },
+    { icon: TbSql, name: "SQL", color: "from-orange-400 to-orange-600" },
+    { icon: SiNestjs, name: "NestJS", color: "from-red-400 to-red-600" },
+    { icon: SiNextdotjs, name: "Next.js", color: "from-gray-400 to-gray-600" },
+    { icon: SiRedux, name: "Redux", color: "from-purple-400 to-indigo-600" },
   ];
 
   if (!skillsDataFromHook || !skillsTranslations) {
-    return <div>Loading skills data...</div>; // Or some other loading indicator
+    return <div>Loading skills data...</div>; 
   }
 
   return (
@@ -141,10 +138,10 @@ const Skills = () => {
         >
           {" "}
           <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-6">
-            {skillsTranslations.title} {/* Use translated title */}
+            {skillsTranslations.title} 
           </h2>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            {skillsTranslations.subtitle} {/* Use translated subtitle */}
+            {skillsTranslations.subtitle} 
           </p>
         </motion.div>
 
@@ -159,7 +156,6 @@ const Skills = () => {
             {" "}
             <h3 className="text-2xl font-bold text-white mb-8">
               {skillsTranslations.competenceLevel}{" "}
-              {/* Use translated competenceLevel */}
             </h3>
             <div className="space-y-4">
               {skillsDataFromHook.map((skill, index) => (
@@ -181,7 +177,7 @@ const Skills = () => {
           >
             {" "}
             <h3 className="text-2xl font-bold text-white mb-8">
-              {skillsTranslations.techStack} {/* Use translated techStack */}
+              {skillsTranslations.techStack} 
             </h3>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
               {techStack.map((tech, index) => (
@@ -206,7 +202,6 @@ const Skills = () => {
             >
               <h4 className="text-xl font-semibold text-white mb-4">
                 {skillsTranslations.methodologies}{" "}
-                {/* Corrected: Use skillsTranslations */}
               </h4>
               <ul className="space-y-2">
                 {[
