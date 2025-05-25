@@ -10,7 +10,7 @@ const ExperienceCard = ({
 }: {
   experience: any;
   index: number;
-  onCompanyClick?: (company: string) => void;
+  onCompanyClick?: (company: string, cardIndex: number) => void;
 }) => {
   const [isCardHovered, setIsCardHovered] = useState(false);
   const [isNodeHovered, setIsNodeHovered] = useState(false);
@@ -53,7 +53,7 @@ const ExperienceCard = ({
           }`}
           onClick={
             isClickableCard
-              ? () => onCompanyClick?.(getCompanyName())
+              ? () => onCompanyClick?.(getCompanyName(), index)
               : undefined
           }
           title={isClickableCard ? "Haz clic para ver logros destacados" : ""}
@@ -116,7 +116,11 @@ const ExperienceCard = ({
           {/* Main timeline node */}{" "}
           <motion.div
             className="w-6 h-6 bg-primary-500 rounded-full border-4 dark:border-slate-900 light:border-white relative overflow-hidden shadow-lg shadow-primary-500/50"
-            animate={isCardHovered || isNodeHovered ? { scale: 1.3, rotate: 180 } : { scale: 1, rotate: 0 }}
+            animate={
+              isCardHovered || isNodeHovered
+                ? { scale: 1.3, rotate: 180 }
+                : { scale: 1, rotate: 0 }
+            }
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
             onMouseEnter={() => setIsNodeHovered(true)}
             onMouseLeave={() => setIsNodeHovered(false)}
@@ -191,6 +195,14 @@ const ExperienceCard = ({
 const Experience = () => {
   const { experience, achievements } = usePortfolioData();
   const [activeModal, setActiveModal] = useState<string | null>(null);
+  const [modalDirection, setModalDirection] = useState<"left" | "right">(
+    "right"
+  );
+
+  const handleCompanyClick = (company: string, cardIndex: number) => {
+    setModalDirection(cardIndex % 2 === 0 ? "right" : "left");
+    setActiveModal(company);
+  };
 
   const getAchievements = (company: string) => {
     return achievements[company] || [];
@@ -253,7 +265,6 @@ const Experience = () => {
             viewport={{ once: true, margin: "-100px" }}
             className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-500 via-primary-400 to-transparent transform -translate-x-1/2 origin-top"
           />
-
           {/* Timeline glow effect */}
           <motion.div
             initial={{ scaleY: 0, opacity: 0 }}
@@ -261,14 +272,13 @@ const Experience = () => {
             transition={{ duration: 2, ease: "easeOut", delay: 0.3 }}
             viewport={{ once: true, margin: "-100px" }}
             className="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-primary-400/60 via-primary-300/40 to-transparent transform -translate-x-1/2 origin-top blur-sm"
-          />
-
+          />{" "}
           {experience.map((exp, index) => (
             <ExperienceCard
               key={index}
               experience={exp}
               index={index}
-              onCompanyClick={setActiveModal}
+              onCompanyClick={handleCompanyClick}
             />
           ))}
         </div>
@@ -330,11 +340,21 @@ const Experience = () => {
               />{" "}
               {/* Modal */}
               <motion.div
-                initial={{ opacity: 0, x: "100%" }}
+                initial={{
+                  opacity: 0,
+                  x: modalDirection === "right" ? "100%" : "-100%",
+                }}
                 animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: "100%" }}
+                exit={{
+                  opacity: 0,
+                  x: modalDirection === "right" ? "100%" : "-100%",
+                }}
                 transition={{ type: "spring", damping: 25, stiffness: 300 }}
-                className="fixed right-0 top-0 h-full w-full max-w-2xl modal-bg border-l border-primary-500/30 z-50 overflow-y-auto"
+                className={`fixed ${
+                  modalDirection === "right" ? "right-0" : "left-0"
+                } top-0 h-full w-full max-w-2xl modal-bg ${
+                  modalDirection === "right" ? "border-l" : "border-r"
+                } border-primary-500/30 z-50 overflow-y-auto`}
               >
                 {/* Header del Modal */}
                 <div className="sticky top-0 modal-bg/95 backdrop-blur-md border-b border-primary-500/30 p-6">
