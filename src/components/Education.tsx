@@ -121,11 +121,6 @@ const Education = () => {
 
   const stats = [
     {
-      label: educationTranslations.stats.trainings,
-      value: education.length,
-      icon: GraduationCap,
-    },
-    {
       label: educationTranslations.stats.technologies,
       value: "15+",
       icon: Star,
@@ -134,7 +129,7 @@ const Education = () => {
       label: educationTranslations.stats.projects,
       value: "10+",
       icon: Calendar,
-    },
+    }
   ];
 
   return (
@@ -160,7 +155,7 @@ const Education = () => {
           </p>
         </motion.div>
         {/* Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
           {stats.map((stat, index) => (
             <motion.div
               key={stat.label}
