@@ -1,16 +1,23 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { MapPin, ExternalLink, X } from "lucide-react";
+import { MapPin, ExternalLink, X, Calendar } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useState, useEffect } from "react";
 import { useTheme } from "../contexts/ThemeContext";
 import type { ExperienceType } from "../types";
+
+// Definición de propiedades adicionales para ExperienceType
+type ExtendedExperienceType = ExperienceType & {
+  position?: string;
+  period?: string;
+  location?: string;
+};
 
 const ExperienceCard = ({
   experience,
   index,
   onCompanyClick,
 }: {
-  experience: ExperienceType;
+  experience: ExtendedExperienceType;
   index: number;
   onCompanyClick?: (company: string, cardIndex: number) => void;
 }) => {
@@ -44,6 +51,7 @@ const ExperienceCard = ({
     if (experience.company.includes("Aula Magna")) return "Aula Magna";
     return "";
   };
+
   return (
     <motion.div
       initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
@@ -60,7 +68,6 @@ const ExperienceCard = ({
         index % 2 === 0 ? "flex-row" : "flex-row-reverse"
       } items-center mb-16 relative`}
     >
-      {" "}
       {/* Content */}
       <div className="w-5/12">
         <motion.div
@@ -79,7 +86,6 @@ const ExperienceCard = ({
           onMouseEnter={() => setIsCardHovered(true)}
           onMouseLeave={() => setIsCardHovered(false)}
         >
-          {" "}
           {/* Tooltip personalizado */}
           {isClickableCard && (
             <AnimatePresence>
@@ -127,36 +133,49 @@ const ExperienceCard = ({
               )}
             </AnimatePresence>
           )}
-          <h3 className="text-xl font-bold text-white mb-2 text-left">
-            {experience.company}
-          </h3>{" "}
-          <div className="flex items-center gap-2 mb-4 text-primary-400">
-            <MapPin className="w-4 h-4" />
-            <span className="text-sm">{t("experience.location")}</span>
-          </div>
-          <p className="text-gray-300 text-sm leading-relaxed mb-4 text-left">
-            {experience.experience}
-          </p>
-          {/* Links */}
-          {experience.links && (
-            <div className="flex gap-2 flex-wrap justify-start">
-              {experience.links.map((link: string, linkIndex: number) => (
-                <motion.a
-                  key={linkIndex}
-                  href={link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="flex items-center gap-1 text-xs text-primary-400 hover:text-primary-300 transition-colors"
-                >
-                  {" "}
-                  <ExternalLink className="w-3 h-3" />
-                  {t("experience.viewProject")}
-                </motion.a>
-              ))}
+          <div className="bg-gray-800/90 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-gray-700 mb-6">
+            <div className="flex justify-between items-start mb-4">
+              <div>
+                <h3 className="text-xl font-bold text-white mb-1">
+                  {experience.company}
+                </h3>
+                <p className="text-gray-300 mb-2">{experience.position || experience.experience}</p>
+                {experience.period && (
+                  <div className="flex items-center text-sm text-gray-400">
+                    <Calendar className="w-4 h-4 mr-1" />
+                    <span>{experience.period}</span>
+                  </div>
+                )}
+              </div>
+              {experience.location && (
+                <div className="flex items-center text-sm text-gray-300">
+                  <MapPin className="w-4 h-4 mr-1" />
+                  <span>{experience.location}</span>
+                </div>
+              )}
             </div>
-          )}
+            
+            <p className="text-gray-200 mb-4">{experience.description || experience.experience}</p>
+            
+            {experience.links && (
+              <div className="flex flex-wrap gap-2 mt-4">
+                {experience.links.map((link: string, linkIndex: number) => (
+                  <motion.a
+                    key={linkIndex}
+                    href={link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex items-center gap-1 text-xs text-primary-400 hover:text-primary-300 transition-colors"
+                  >
+                    <ExternalLink className="w-3 h-3" />
+                    {t("experience.viewProject")}
+                  </motion.a>
+                ))}
+              </div>
+            )}
+          </div>
         </motion.div>
       </div>
       {/* Timeline Node */}
@@ -262,7 +281,7 @@ const Experience = () => {
   );
 
   // Generate experience data from translations
-  const generateExperiencesFromTranslations = (): ExperienceType[] => {
+  const generateExperiencesFromTranslations = (): ExtendedExperienceType[] => {
     const companies = [
       {
         key: "flipo",
