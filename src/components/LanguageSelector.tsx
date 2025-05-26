@@ -34,15 +34,17 @@ const LanguageSelector = () => {
         className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors border h-10
           ${theme === 'retro-pastel' 
             ? 'bg-retroPastel-pink/20 hover:bg-retroPastel-pink/30 border-retroPastel-pink/30 hover:border-retroPastel-pink/50 text-retroPastel-text' 
-            : 'bg-white/10 hover:bg-white/20 border-white/20 hover:border-white/30 text-white'}`}
+            : theme === 'vintage'
+              ? 'bg-[#6e4c30]/20 hover:bg-[#6e4c30]/30 border-[#a78a21]/30 hover:border-[#a78a21]/50 text-[#f3ebd3]'
+              : 'bg-white/10 hover:bg-white/20 border-white/20 hover:border-white/30 text-white'}`}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         title={t("language.select")}
       >
         <div className="flex items-center gap-2">
-          <Globe className={`w-4 h-4 flex-shrink-0 ${theme === 'retro-pastel' ? 'text-retroPastel-text' : 'text-white'}`} />
+          <Globe className={`w-4 h-4 flex-shrink-0 ${theme === 'retro-pastel' ? 'text-retroPastel-text' : theme === 'vintage' ? 'text-[#f3ebd3]' : 'text-white'}`} />
           <span className="text-xl leading-none">{currentLanguage.flag}</span>
-          <span className={`text-sm hidden sm:block leading-none ${theme === 'retro-pastel' ? 'text-retroPastel-text' : 'text-white'}`}>
+          <span className={`text-sm hidden sm:block leading-none ${theme === 'retro-pastel' ? 'text-retroPastel-text' : theme === 'vintage' ? 'text-[#f3ebd3]' : 'text-white'}`}>
             {currentLanguage.name}
           </span>
         </div>
@@ -73,7 +75,9 @@ const LanguageSelector = () => {
                   ? 'bg-white/95 border-slate-200 text-slate-800' 
                   : theme === 'retro-pastel'
                     ? 'bg-retroPastel-background/95 border-retroPastel-pink/30 text-retroPastel-text'
-                    : 'bg-slate-900/95 border-white/20 text-white'}`}
+                    : theme === 'vintage'
+                      ? 'bg-[#6e4c30]/95 border-[#a78a21]/50 text-[#f3ebd3]'
+                      : 'bg-slate-900/95 border-white/20 text-white'}`}
             >
               {languages.map((language) => (
                 <motion.button
@@ -88,9 +92,13 @@ const LanguageSelector = () => {
                         ? i18n.language === language.code
                           ? 'bg-retroPastel-pink/30 text-retroPastel-text'
                           : 'text-retroPastel-text hover:bg-retroPastel-pink/20'
-                        : i18n.language === language.code
-                          ? 'bg-primary-500/20 text-primary-300'
-                          : 'text-white hover:bg-white/10'
+                        : theme === 'vintage'
+                          ? i18n.language === language.code
+                            ? 'bg-[#a78a21]/30 text-[#f3ebd3]'
+                            : 'text-[#f3ebd3] hover:bg-[#a78a21]/20'
+                          : i18n.language === language.code
+                            ? 'bg-primary-500/20 text-primary-300'
+                            : 'text-white hover:bg-white/10'
                   }`}
                   whileHover={{ x: 4 }}
                   transition={{ duration: 0.1 }}
@@ -103,7 +111,7 @@ const LanguageSelector = () => {
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
                         className={`w-2 h-2 rounded-full flex-shrink-0 mt-1.5 ${
-                          theme === 'retro-pastel' ? 'bg-retroPastel-pink' : 'bg-primary-400'
+                          theme === 'retro-pastel' ? 'bg-retroPastel-pink' : theme === 'vintage' ? 'bg-[#a78a21]' : 'bg-primary-400'
                         }`}
                       />
                     )}
