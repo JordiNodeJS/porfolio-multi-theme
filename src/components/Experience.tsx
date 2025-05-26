@@ -138,7 +138,7 @@ const ExperienceCard = ({
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className={`p-6 rounded-xl shadow-lg border mb-6 ${
+            className={`p-6 rounded-xl shadow-lg border mb-6 relative overflow-hidden ${
               theme === 'dark' 
                 ? 'bg-gray-800/90 backdrop-blur-sm border-gray-700' 
                 : theme === 'brutalism'
@@ -146,49 +146,59 @@ const ExperienceCard = ({
                 : 'bg-white/90 backdrop-blur-sm border-gray-200'
             }`}
           >
-            <div className="flex justify-between items-start mb-4">
-              <div>
-                <h3 className="text-xl font-bold text-white mb-1">
-                  {experience.company}
-                </h3>
-                <p className="text-gray-300 mb-2">{experience.position || experience.experience}</p>
-                {experience.period && (
-                  <div className="flex items-center text-sm text-gray-400">
-                    <Calendar className="w-4 h-4 mr-1" />
-                    <span>{experience.period}</span>
+            {theme === 'dark' && (
+              <div 
+                className="absolute inset-0 opacity-5 pointer-events-none"
+                style={{
+                  backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,0.1) 35px, rgba(255,255,255,0.1) 70px)'
+                }}
+              />
+            )}
+            <div className="relative z-10">
+              <div className="flex justify-between items-start mb-4">
+                <div>
+                  <h3 className="text-xl font-bold text-white mb-1">
+                    {experience.company}
+                  </h3>
+                  <p className="text-gray-300 mb-2">{experience.position || experience.experience}</p>
+                  {experience.period && (
+                    <div className="flex items-center text-sm text-gray-400">
+                      <Calendar className="w-4 h-4 mr-1" />
+                      <span>{experience.period}</span>
+                    </div>
+                  )}
+                </div>
+                {experience.location && (
+                  <div className="flex items-center text-sm text-gray-300">
+                    <MapPin className="w-4 h-4 mr-1" />
+                    <span>{experience.location}</span>
                   </div>
                 )}
               </div>
-              {experience.location && (
-                <div className="flex items-center text-sm text-gray-300">
-                  <MapPin className="w-4 h-4 mr-1" />
-                  <span>{experience.location}</span>
+              
+              <p className={`mb-4 text-base leading-relaxed ${theme === 'dark' ? 'text-gray-300' : theme === 'brutalism' ? 'text-black' : 'text-gray-700'}`} style={{fontWeight: 300}}>
+                {experience.description}
+              </p>
+              
+              {experience.links && (
+                <div className="flex flex-wrap gap-2 mt-4">
+                  {experience.links.map((link: string, linkIndex: number) => (
+                    <motion.a
+                      key={linkIndex}
+                      href={link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="flex items-center gap-1 text-xs text-primary-400 hover:text-primary-300 transition-colors"
+                    >
+                      <ExternalLink className="w-3 h-3" />
+                      {t("experience.viewProject")}
+                    </motion.a>
+                  ))}
                 </div>
               )}
             </div>
-            
-            <p className={`mb-4 text-base leading-relaxed ${theme === 'dark' ? 'text-gray-300' : theme === 'brutalism' ? 'text-black' : 'text-gray-700'}`} style={{fontWeight: 300}}>
-              {experience.description}
-            </p>
-            
-            {experience.links && (
-              <div className="flex flex-wrap gap-2 mt-4">
-                {experience.links.map((link: string, linkIndex: number) => (
-                  <motion.a
-                    key={linkIndex}
-                    href={link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="flex items-center gap-1 text-xs text-primary-400 hover:text-primary-300 transition-colors"
-                  >
-                    <ExternalLink className="w-3 h-3" />
-                    {t("experience.viewProject")}
-                  </motion.a>
-                ))}
-              </div>
-            )}
           </motion.div>
         </motion.div>
       </div>

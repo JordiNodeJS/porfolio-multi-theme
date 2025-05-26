@@ -7,15 +7,14 @@ const Hero = () => {
   const { theme } = useTheme();
   
   return (
-    <section className="relative overflow-hidden pt-32 pb-20">
-      {/* Fondo gradiente */}
+    <section className="relative py-20 overflow-hidden">
+      {/* Fondo gradiente - Simplificado */}
       <div 
-        className="absolute inset-0 hero-bg-gradient z-0"
-        style={{
-          background: theme === 'dark' 
-            ? 'linear-gradient(to bottom, #1a202c, #2d3748)' 
-            : 'linear-gradient(to bottom, #f7fafc, #e2e8f0)'
-        }}
+        className={`absolute inset-0 z-0 ${
+          theme === 'dark' 
+            ? 'bg-gradient-to-br from-slate-900 to-slate-800' 
+            : 'bg-gradient-to-br from-gray-50 to-white'
+        }`}
       />
       
       {/* Contenido */}
@@ -33,7 +32,10 @@ const Hero = () => {
               alt="Profile"
               className="w-full h-full object-cover"
             />
-            <div className={`absolute inset-0 rounded-full ${theme === 'dark' ? 'bg-black/20' : 'bg-white/20'}`}></div>
+            {/* Overlay simplificado */}
+            <div className={`absolute inset-0 rounded-full ${
+              theme === 'dark' ? 'bg-black/10' : 'bg-white/10'
+            }`} />
           </motion.div>
           
           {/* Texto */}
