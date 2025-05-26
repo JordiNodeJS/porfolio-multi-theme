@@ -222,15 +222,17 @@ const Hero = () => {
                   : "bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600"
               }`}
               style={{
-                lineHeight: "1.2",
-                textShadow:
-                  theme === "dark"
-                    ? "0 0 20px rgba(59, 130, 246, 0.3)"
-                    : theme === "brutalism"
-                    ? "2px 2px 0 #000, -1px -1px 0 #fff, 1px -1px 0 #000, -1px 1px 0 #fff, 1px 1px 0 #000"
-                    : "0 2px 8px rgba(147, 51, 234, 0.2)",
-                WebkitTextStroke: theme === "brutalism" ? "0.5px #000" : "none",
-                letterSpacing: theme === "brutalism" ? "-1px" : "normal",
+                fontSize: '4.5rem',
+                lineHeight: '1.1',
+                color: '#ef7574',
+                textShadow: 
+                  '2px 2px 0 #000, ' + 
+                  '-1px -1px 0 #f8d7da, ' +
+                  '-1px -2px 0 #f5b5b5, ' +
+                  '1px -1px 0 #000, ' +
+                  '-1px 1px 0 #000, ' +
+                  '1px 1px 0 #000',
+                WebkitTextStroke: '0.5px #000'
               }}
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}

@@ -1016,6 +1016,44 @@
 }
 
 @layer utilities {
+  /* Estilo brutalista mejorado para títulos */
+  .brutal-title {
+    @apply font-bold;
+    color: #ef7574; /* Color rojo suave */
+    text-shadow: 
+      /* Sombra negra abajo */
+      2px 2px 0 #000,
+      /* Sombra clara arriba */
+      -1px -1px 0 #f8d7da,
+      -1px -2px 0 #f5b5b5,
+      /* Contorno */
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+      1px 1px 0 #000;
+    -webkit-text-stroke: 0.5px #000;
+    letter-spacing: -0.5px;
+    position: relative;
+    display: inline-block;
+  }
+
+  .brutal-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #f56565, #1a365d);
+    transform: scaleX(0.8);
+    transform-origin: center;
+    transition: transform 0.3s ease, background 0.3s ease;
+  }
+
+  .brutal-title:hover::after {
+    transform: scaleX(1);
+    background: linear-gradient(90deg, #f56565, #1a365d);
+  }
+
   .text-shadow {
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
