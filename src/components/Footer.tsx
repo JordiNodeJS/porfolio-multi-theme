@@ -30,24 +30,28 @@ const Footer = () => {
     "Bun",
   ];
 
-  return (    <footer
+  return (
+    <footer
       className={`relative overflow-hidden border-t transition-all duration-300 ${
         theme === "dark"
           ? "bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border-slate-700/50"
           : theme === "light"
           ? "bg-gradient-to-br from-gray-50 via-white to-gray-100 border-gray-200/50"
           : theme === "vintage"
-          ? "bg-gradient-to-br from-[#6e4c30] via-[#8b5e3c] to-[#4a5240] border-[#a78a21]/50"          : theme === "brutalism"
+          ? "bg-gradient-to-br from-[#6e4c30] via-[#8b5e3c] to-[#4a5240] border-[#a78a21]/50"
+          : theme === "brutalism"
           ? "bg-gradient-to-br from-[#ff6b6b] via-[#4ecdc4] to-[#ffeaa7] border-[#000000] border-t-[6px] brutalism-card"
           : "bg-gradient-to-br from-[#fffaf0] via-[#ffaec0] to-[#ffe9a6] border-[#e56b81]/30"
       }`}
-    >      {/* Background Effects */}
+    >
+      {" "}
+      {/* Background Effects */}
       <div className="absolute inset-0">
         {theme === "brutalism" ? (
           // Brutal background pattern
           <>
-            <div 
-              className="absolute inset-0" 
+            <div
+              className="absolute inset-0"
               style={{
                 background: `repeating-linear-gradient(
                   45deg,
@@ -55,15 +59,15 @@ const Footer = () => {
                   transparent 15px,
                   rgba(0,0,0,0.1) 15px,
                   rgba(0,0,0,0.1) 30px
-                )`
+                )`,
               }}
             />
-            <div 
-              className="absolute top-0 left-1/4 w-32 h-32 bg-[#45b7d1] border-4 border-black transform rotate-45" 
+            <div
+              className="absolute top-0 left-1/4 w-32 h-32 bg-[#45b7d1] border-4 border-black transform rotate-45"
               style={{ zIndex: 1 }}
             />
-            <div 
-              className="absolute bottom-0 right-1/3 w-24 h-24 bg-[#96ceb4] border-4 border-black transform -rotate-12" 
+            <div
+              className="absolute bottom-0 right-1/3 w-24 h-24 bg-[#96ceb4] border-4 border-black transform -rotate-12"
               style={{ zIndex: 1 }}
             />
           </>
@@ -95,7 +99,6 @@ const Footer = () => {
           </>
         )}
       </div>
-
       <div className="relative z-10 max-w-6xl mx-auto px-4 py-12">
         {/* Brutal decorative elements */}
         {theme === "brutalism" && (
@@ -115,11 +118,16 @@ const Footer = () => {
             viewport={{ once: true }}
             className="text-center md:text-left"
           >
-            <h3 className={`text-2xl font-bold mb-3 ${
-              theme === "brutalism" 
-                ? "brutalism-heading-clean text-black font-black text-3xl" 
-                : "gradient-text"
-            }`}>JORGe</h3>            <p
+            <h3
+              className={`text-2xl font-bold mb-3 ${
+                theme === "brutalism"
+                  ? "brutalism-heading-clean text-black font-black text-3xl"
+                  : "gradient-text"
+              }`}
+            >
+              JORGe
+            </h3>{" "}
+            <p
               className={`text-sm leading-relaxed ${
                 theme === "dark"
                   ? "text-slate-400"
@@ -141,7 +149,8 @@ const Footer = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}            className="text-center"
+            viewport={{ once: true }}
+            className="text-center"
           >
             <h4
               className={`font-semibold mb-4 flex items-center justify-center md:justify-start gap-2 ${
@@ -166,7 +175,8 @@ const Footer = () => {
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.3, delay: index * 0.1 }}
-                  viewport={{ once: true }}                  className={`px-3 py-1 text-xs rounded-full border transition-all duration-300 hover:border-primary-500/50 ${
+                  viewport={{ once: true }}
+                  className={`px-3 py-1 text-xs rounded-full border transition-all duration-300 hover:border-primary-500/50 ${
                     theme === "dark"
                       ? "bg-slate-700/50 text-slate-300 border-slate-600/50"
                       : theme === "light"
@@ -189,7 +199,8 @@ const Footer = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            viewport={{ once: true }}            className="text-center md:text-right"
+            viewport={{ once: true }}
+            className="text-center md:text-right"
           >
             <h4
               className={`font-semibold mb-4 ${
@@ -218,7 +229,8 @@ const Footer = () => {
                   transition={{ duration: 0.4, delay: 0.1 * index }}
                   viewport={{ once: true }}
                   whileHover={{ scale: 1.1, y: -2 }}
-                  whileTap={{ scale: 0.95 }}                  className={`w-12 h-12 flex items-center justify-center transition-all duration-300 ${
+                  whileTap={{ scale: 0.95 }}
+                  className={`w-12 h-12 flex items-center justify-center transition-all duration-300 ${
                     theme === "dark"
                       ? `bg-slate-800/50 border-slate-700/50 text-slate-400 hover:bg-slate-700/50 rounded-xl hover:border-primary-500/50 ${social.color}`
                       : theme === "light"
@@ -236,7 +248,8 @@ const Footer = () => {
               ))}
             </div>
           </motion.div>
-        </div>        {/* Divider */}
+        </div>{" "}
+        {/* Divider */}
         <motion.div
           initial={{ scaleX: 0 }}
           whileInView={{ scaleX: 1 }}
@@ -254,13 +267,13 @@ const Footer = () => {
               : "h-px bg-gradient-to-r from-transparent via-[#e56b81]/40 to-transparent"
           }`}
         />
-
         {/* Bottom Bar */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          viewport={{ once: true }}          className={`flex flex-col md:flex-row items-center justify-between gap-4 text-sm ${
+          viewport={{ once: true }}
+          className={`flex flex-col md:flex-row items-center justify-between gap-4 text-sm ${
             theme === "dark"
               ? "text-slate-400"
               : theme === "light"
@@ -270,7 +283,8 @@ const Footer = () => {
               : theme === "brutalism"
               ? "text-black font-bold"
               : "text-[#3d2c2c]/90"
-          }`}        >
+          }`}
+        >
           <div className="flex items-center gap-2">
             <span>
               © {new Date().getFullYear()} Jorge Portfolio. {footer.rights}
@@ -293,7 +307,8 @@ const Footer = () => {
                 }`}
               />
             </span>
-          </div>          <motion.div
+          </div>{" "}
+          <motion.div
             whileHover={{ scale: 1.05 }}
             className={`text-xs transition-colors duration-300 ${
               theme === "dark"
