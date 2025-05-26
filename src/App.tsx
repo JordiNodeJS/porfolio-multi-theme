@@ -9,7 +9,6 @@ import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import FloatingParticles from "./components/FloatingParticles";
 import LoadingScreen from "./components/LoadingScreen";
-import BrutalismDemo from "./components/BrutalismDemo";
 import "./App.css";
 
 function App() {
@@ -82,9 +81,6 @@ function App() {
 
         {/* Scroll to top button */}
         <ScrollToTop />
-
-        {/* Brutalism Demo Modal */}
-        <BrutalismDemo />
       </div>
     </>
   );
