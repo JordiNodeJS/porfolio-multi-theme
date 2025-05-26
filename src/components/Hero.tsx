@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { useTheme } from "../contexts/ThemeContext";
 import { usePortfolioTranslations } from "../hooks/usePortfolioTranslations";
@@ -6,6 +6,8 @@ import { usePortfolioTranslations } from "../hooks/usePortfolioTranslations";
 const Hero = () => {
   const { theme } = useTheme();
   const { hero } = usePortfolioTranslations();
+  const circleControls = useAnimation();
+  const imageControls = useAnimation();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -154,11 +156,40 @@ const Hero = () => {
             {/* Profile Image - Centered and Enhanced */}
             <motion.div
               variants={itemVariants}
-              whileHover={{ scale: 1.05, rotate: 2 }}
+              whileHover={{
+                scale: 1.05,
+                rotate: 2
+              }}
+              onHoverStart={() => {
+                // Trigger the animation when hovering
+                circleControls.start({
+                  scale: 0.75,
+                  transition: { duration: 0.6, ease: "easeInOut" }
+                });
+                imageControls.start({
+                  scale: 1.35,
+                  y: -10, // Move the image slightly up for better effect
+                  transition: { duration: 0.6, ease: "easeInOut" }
+                });
+              }}
+              onHoverEnd={() => {
+                // Reset the animation when hover ends
+                circleControls.start({
+                  scale: 1,
+                  transition: { duration: 0.6, ease: "easeInOut" }
+                });
+                imageControls.start({
+                  scale: 1,
+                  y: 0,
+                  transition: { duration: 0.6, ease: "easeInOut" }
+                });
+              }}
               className="relative w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 mb-8 flex-shrink-0"
             >
               {/* Animated Border */}
-              <div
+              <motion.div
+                animate={circleControls}
+                initial={{ scale: 1 }}
                 className={`absolute inset-0 rounded-full animate-spin-slow ${
                   theme === "dark"
                     ? "bg-gradient-to-r from-primary-400 via-purple-500 to-primary-400"
@@ -166,7 +197,7 @@ const Hero = () => {
                     ? "bg-gradient-to-r from-primary-500 via-purple-600 to-primary-500"
                     : "bg-gradient-to-r from-[#e3b505] via-[#d27c54] to-[#e3b505]"
                 }`}
-              ></div>
+              ></motion.div>
 
               {/* Inner Container */}
               <div
@@ -178,14 +209,18 @@ const Hero = () => {
                     : "bg-gradient-to-br from-[#8b5e3c] to-[#6e4c30]"
                 }`}
               >
-                <div className="relative w-full h-full rounded-full overflow-hidden">
-                  <img
+                <motion.div 
+                  className="relative w-full h-full rounded-full overflow-visible"
+                  animate={imageControls}
+                  initial={{ scale: 1, y: 0 }}
+                >
+                  <motion.img
                     src="/src/assets/developer.png"
                     alt="Profile"
                     className="w-full h-full object-cover rounded-full"
                   />
                   {/* Subtle overlay for better integration */}
-                  <div
+                  <motion.div
                     className={`absolute inset-0 rounded-full ${
                       theme === "dark"
                         ? "bg-gradient-to-t from-slate-900/20 to-transparent"
@@ -193,20 +228,22 @@ const Hero = () => {
                         ? "bg-gradient-to-t from-gray-100/20 to-transparent"
                         : "bg-gradient-to-t from-[#4a5240]/20 to-transparent"
                     }`}
-                  ></div>
-                </div>
+                  ></motion.div>
+                </motion.div>
               </div>
 
               {/* Glow Effect */}
-              <div
-                className={`absolute inset-0 rounded-full blur-xl opacity-30 ${
-                  theme === "dark"
-                    ? "bg-gradient-to-r from-primary-400 to-purple-500"
-                    : theme === "light"
-                    ? "bg-gradient-to-r from-primary-500 to-purple-600"
-                    : "bg-gradient-to-r from-retroPastel-custard to-retroPastel-pink"
+              <motion.div 
+                className={`absolute inset-0 rounded-full blur-xl opacity-30 ${theme === "dark"
+                  ? "bg-gradient-to-r from-primary-400 to-purple-500"
+                  : theme === "light"
+                  ? "bg-gradient-to-r from-primary-500 to-purple-600"
+                  : "bg-gradient-to-r from-retroPastel-custard to-retroPastel-pink"
                 }`}
-              ></div>
+                animate={circleControls}
+                initial={{ scale: 1 }}
+                data-component-name="Hero"
+              ></motion.div>
             </motion.div>
 
             {/* Name and Title - Centered Layout */}
