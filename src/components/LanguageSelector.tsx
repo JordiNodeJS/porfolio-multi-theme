@@ -29,16 +29,18 @@ const LanguageSelector = () => {
     <div className="relative">
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors border border-white/20 hover:border-white/30"
+        className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors border border-white/20 hover:border-white/30 h-10"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         title={t("language.select")}
       >
-        <Globe className="w-4 h-4 text-white" />
-        <span className="text-xl">{currentLanguage.flag}</span>
-        <span className="text-white text-sm hidden sm:block">
-          {currentLanguage.name}
-        </span>
+        <div className="flex items-center gap-2">
+          <Globe className="w-4 h-4 text-white flex-shrink-0" />
+          <span className="text-xl leading-none">{currentLanguage.flag}</span>
+          <span className="text-white text-sm hidden sm:block leading-none">
+            {currentLanguage.name}
+          </span>
+        </div>
         <motion.div
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.2 }}
@@ -61,13 +63,13 @@ const LanguageSelector = () => {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -10, scale: 0.95 }}
               transition={{ duration: 0.2 }}
-              className="absolute top-full right-0 mt-2 w-48 bg-slate-900/95 backdrop-blur-md border border-white/20 rounded-lg shadow-xl overflow-hidden z-50"
+              className="absolute top-full right-0 mt-2 w-48 bg-slate-900/95 backdrop-blur-md border border-white/20 rounded-lg shadow-xl overflow-hidden z-50 py-1"
             >
               {languages.map((language) => (
                 <motion.button
                   key={language.code}
                   onClick={() => handleLanguageChange(language.code)}
-                  className={`w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-white/10 transition-colors ${
+                  className={`w-full flex items-center gap-3 px-4 py-2.5 text-left hover:bg-white/10 transition-colors ${
                     i18n.language === language.code
                       ? "bg-primary-500/20 text-primary-300"
                       : "text-white"
@@ -75,15 +77,17 @@ const LanguageSelector = () => {
                   whileHover={{ x: 4 }}
                   transition={{ duration: 0.1 }}
                 >
-                  <span className="text-xl">{language.flag}</span>
-                  <span className="text-sm font-medium">{language.name}</span>
-                  {i18n.language === language.code && (
-                    <motion.div
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      className="ml-auto w-2 h-2 bg-primary-400 rounded-full"
-                    />
-                  )}
+                  <div className="flex items-baseline gap-3 w-full">
+                    <span className="text-xl flex-shrink-0 relative top-0.5">{language.flag}</span>
+                    <span className="text-sm font-medium leading-none flex-grow">{language.name}</span>
+                    {i18n.language === language.code && (
+                      <motion.div
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        className="w-2 h-2 bg-primary-400 rounded-full flex-shrink-0 mt-1.5"
+                      />
+                    )}
+                  </div>
                 </motion.button>
               ))}
             </motion.div>

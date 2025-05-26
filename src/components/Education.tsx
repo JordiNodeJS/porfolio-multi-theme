@@ -26,7 +26,7 @@ const EducationCard = ({
     >
       {/* Header */}
       <div className="bg-gradient-to-r from-primary-600/50 to-purple-600/50 dark:from-primary-500/50 dark:to-purple-500/50 p-6 border-b border-themed/30 shadow-sm relative 
-        theme-vintage:from-vintage-brown-darker theme-vintage:to-vintage-brown-dark/95 theme-vintage:border-vintage-cream/40 
+        theme-vintage:from-vintage-brown-darker/95 theme-vintage:to-vintage-brown-dark theme-vintage:border-vintage-cream/40 theme-vintage:shadow-lg
         theme-retro-pastel:from-retroPastel-custard/70 theme-retro-pastel:to-retroPastel-peach/80 theme-retro-pastel:border-retroPastel-lavender/30">
         <div className="flex items-start justify-between">
           <div className="flex items-center gap-3 pr-12">
@@ -95,12 +95,12 @@ const EducationCard = ({
             <div>
               <h3 className="text-xl font-bold text-gray-900 dark:text-gray-50 
               group-hover:text-primary-800 dark:group-hover:text-white transition-colors duration-200
-              theme-vintage:text-vintage-mustard-light theme-vintage:group-hover:text-white 
+              theme-vintage:text-vintage-mustard-light theme-vintage:group-hover:text-vintage-mustard-light/90 
               theme-vintage:font-bold hover:drop-shadow-md hover:underline hover:underline-offset-4">
                 {education.title}
               </h3>
               <p className="text-primary-800 dark:text-primary-300 font-medium 
-              theme-vintage:text-vintage-cream theme-vintage:font-semibold 
+              theme-vintage:text-vintage-cream/95 theme-vintage:font-semibold theme-vintage:drop-shadow-sm
               theme-retro-pastel:text-retroPastel-text-dark">
                 {education.center}
               </p>
@@ -130,10 +130,10 @@ const EducationCard = ({
       </div>
       {/* Content */}
       <div className="p-6 bg-white/10 dark:bg-gray-900/20 
-        theme-vintage:bg-vintage-brown-darker/90 theme-vintage:border-t theme-vintage:border-vintage-cream/30 
+        theme-vintage:bg-vintage-brown-darker/95 theme-vintage:border-t theme-vintage:border-vintage-cream/40 
         theme-retro-pastel:bg-retroPastel-background/30 theme-retro-pastel:border-t theme-retro-pastel:border-retroPastel-lavender/40">
         <p className="text-gray-800 dark:text-gray-200 text-sm leading-relaxed mb-6 font-medium 
-          theme-vintage:text-vintage-cream theme-vintage:font-medium 
+          theme-vintage:text-vintage-cream/95 theme-vintage:font-medium theme-vintage:drop-shadow-sm
           theme-retro-pastel:text-retroPastel-text-dark/95">
           {education.description}
         </p>
@@ -143,7 +143,7 @@ const EducationCard = ({
             <span
               key={tag}
               className="px-3 py-1 bg-purple-600/30 dark:bg-purple-500/30 text-purple-800 dark:text-purple-200 text-xs rounded-full border border-purple-500/40 font-medium hover:bg-purple-600/40 dark:hover:bg-purple-500/40 transition-colors cursor-default
-                theme-vintage:bg-vintage-mustard/70 theme-vintage:text-vintage-brown-dark theme-vintage:border-vintage-mustard-dark/80 theme-vintage:hover:bg-vintage-mustard/90 theme-vintage:hover:border-vintage-mustard-light theme-vintage:font-bold theme-vintage:shadow-md"
+                theme-vintage:bg-vintage-mustard/80 theme-vintage:text-vintage-brown-darker/95 theme-vintage:border-vintage-mustard-dark/90 theme-vintage:hover:bg-vintage-mustard theme-vintage:hover:border-vintage-mustard-light theme-vintage:font-bold theme-vintage:shadow-md theme-vintage:drop-shadow-sm"
             >
               {tag}
             </span>
