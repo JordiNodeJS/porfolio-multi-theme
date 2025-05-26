@@ -12,6 +12,7 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@react-spring/web": "^10.0.1",
     "@tailwindcss/typography": "^0.5.16",
     "framer-motion": "^12.12.2",
     "i18next": "^25.2.1",

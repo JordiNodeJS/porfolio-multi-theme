@@ -3,6 +3,189 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  /* 3D Transform Utilities */
+  .perspective-500 {
+    perspective: 500px;
+  }
+
+  .perspective-800 {
+    perspective: 800px;
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .perspective-1200 {
+    perspective: 1200px;
+  }
+
+  .perspective-1500 {
+    perspective: 1500px;
+  }
+
+  .perspective-2000 {
+    perspective: 2000px;
+  }
+
+  .transform-style-3d {
+    transform-style: preserve-3d;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+
+  .transform-gpu {
+    transform: translateZ(0);
+  }
+
+  .will-change-transform {
+    will-change: transform;
+  }
+
+  /* Border Gradients */
+  .border-gradient-to-tr {
+    border-image: linear-gradient(
+        to top right,
+        var(--tw-gradient-from),
+        var(--tw-gradient-to)
+      )
+      1;
+  }
+
+  .border-gradient-to-br {
+    border-image: linear-gradient(
+        to bottom right,
+        var(--tw-gradient-from),
+        var(--tw-gradient-to)
+      )
+      1;
+  }
+
+  .border-gradient-to-r {
+    border-image: linear-gradient(
+        to right,
+        var(--tw-gradient-from),
+        var(--tw-gradient-to)
+      )
+      1;
+  }
+
+  .border-gradient-to-b {
+    border-image: linear-gradient(
+        to bottom,
+        var(--tw-gradient-from),
+        var(--tw-gradient-to)
+      )
+      1;
+  }
+
+  /* Glow Effects */
+  .glow-sm {
+    filter: drop-shadow(0 0 2px var(--glow-color, rgba(59, 130, 246, 0.5)));
+  }
+
+  .glow {
+    filter: drop-shadow(0 0 5px var(--glow-color, rgba(59, 130, 246, 0.5)));
+  }
+
+  .glow-md {
+    filter: drop-shadow(0 0 8px var(--glow-color, rgba(59, 130, 246, 0.5)));
+  }
+
+  .glow-lg {
+    filter: drop-shadow(0 0 12px var(--glow-color, rgba(59, 130, 246, 0.5)));
+  }
+
+  .glow-xl {
+    filter: drop-shadow(0 0 16px var(--glow-color, rgba(59, 130, 246, 0.5)));
+  }
+
+  .glow-2xl {
+    filter: drop-shadow(0 0 24px var(--glow-color, rgba(59, 130, 246, 0.5)));
+  }
+
+  /* Shimmer Effect */
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shimmer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.25),
+      transparent
+    );
+    animation: shimmer-animation 1.5s infinite;
+  }
+
+  @keyframes shimmer-animation {
+    100% {
+      left: 100%;
+    }
+  }
+
+  /* Rotation animation */
+  @keyframes spin {
+    100% {
+      transform: translateZ(5px) rotateZ(360deg);
+    }
+  }
+
+  /* Circle rotation animation */
+  @keyframes rotate {
+    0% {
+      transform: translateZ(5px) rotate(0deg);
+    }
+    100% {
+      transform: translateZ(5px) rotate(360deg);
+    }
+  }
+
+  /* Floating animation */
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  /* Breathing animation */
+  @keyframes breathe {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.03);
+    }
+  }
+
+  /* Pulsating glow animation */
+  @keyframes pulse-glow {
+    0%,
+    100% {
+      filter: drop-shadow(0 0 5px var(--glow-color, rgba(59, 130, 246, 0.3)));
+    }
+    50% {
+      filter: drop-shadow(0 0 15px var(--glow-color, rgba(59, 130, 246, 0.7)));
+    }
+  }
+}
+
 @layer base {
   * {
     box-sizing: border-box;

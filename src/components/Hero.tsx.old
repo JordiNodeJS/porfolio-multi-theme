@@ -1,0 +1,305 @@
+import { motion, useAnimation, AnimatePresence } from "framer-motion";
+import { useTheme } from "../contexts/ThemeContext";
+import { useRef, useEffect } from "react";
+import { useSpring, animated } from "@react-spring/web";
+import useEnhanced3DEffect from "../hooks/useEnhanced3DEffect";
+
+const Hero = () => {
+  const { theme } = useTheme();
+  const profileContainerRef = useRef<HTMLDivElement>(null);
+  const controls = useAnimation();
+  
+  // Using our enhanced 3D effect hook for better physics-based animations
+  const { springProps, isHovered, config } = useEnhanced3DEffect(profileContainerRef, {
+    strength: 25, 
+    rotateLimit: 15,
+    scaleFactor: 1.08,
+    zAxisMovement: 50,
+    tiltReverse: false,
+    resetOnLeave: true,
+    dampingFactor: 15, 
+    stiffnessFactor: 130,
+    breatheAnimation: true,
+    breatheScale: 1.04,
+    breatheDuration: 3000,
+    glowOnHover: true,
+    glowColor: theme === "dark" 
+      ? "rgba(56, 189, 248, 0.6)" // Cyan for dark mode
+      : "rgba(79, 70, 229, 0.5)", // Indigo for light mode
+    glowIntensity: 0.8
+  });
+  
+  // Additional animations for elements that appear when scrolling into view
+  useEffect(() => {
+    if (profileContainerRef.current) {
+      controls.start({ opacity: 1, y: 0, transition: { duration: 0.8 } });
+    }
+  }, [controls]);
+
+  // Manejadores para el efecto 3D interactivo
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!profileContainerRef.current) return;
+    
+    const { left, top, width, height } = profileContainerRef.current.getBoundingClientRect();
+    const x = (e.clientX - left) / width - 0.5;
+    const y = (e.clientY - top) / height - 0.5;
+    
+    // Detener la animación de respiración cuando hay interacción
+    controls.stop();
+    
+    mouseX.set(x);
+    mouseY.set(y);
+    rotateY.set(x * 20);
+    rotateX.set(y * -20);
+    
+    setTiltEffect({
+      rotateX: y * -20, // Invertir para efecto natural
+      rotateY: x * 20,
+      z: 60,
+      scale: 1.05
+    });
+  };
+  
+  const handleMouseLeave = () => {
+    setTiltEffect({ rotateX: 0, rotateY: 0, z: 30, scale: 1 });
+    
+    // Reanudar la animación de respiración suave
+    controls.start({
+      scale: 1,
+      rotateY: 0,
+      rotateX: 0,
+      transition: { duration: 0.8, ease: "easeOut" }
+    });
+  };
+
+  return (
+    <section className="relative py-20 overflow-hidden">
+      {/* Fondo gradiente - Simplificado */}
+      <div
+        className={`absolute inset-0 z-0 ${
+          theme === "dark"
+            ? "bg-gradient-to-br from-slate-900 to-slate-800"
+            : "bg-gradient-to-br from-gray-50 to-white"
+        }`}
+      />
+
+      {/* Contenido */}
+      <div className="relative z-10 container mx-auto px-4">
+        <div className="flex flex-col items-center">
+          {/* Imagen circular con efecto 3D avanzado */}
+          <div 
+            className="perspective-1000 mb-12 mt-12 cursor-pointer" 
+            ref={profileContainerRef}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+          >
+            <motion.div
+              className="relative w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full overflow-visible shadow-2xl"
+              initial={{ scale: 0.9, opacity: 0, rotateX: 0, rotateY: 0 }}
+              animate={controls}
+              style={{ 
+                rotateX: rotateX, 
+                rotateY: rotateY, 
+                transformStyle: "preserve-3d"
+              }}
+              whileHover={{
+                scale: 1.05,
+                transition: { duration: 0.3 }
+              }}
+            >
+              {/* Borde decorativo */}
+              <motion.div
+                className={`absolute -inset-[4px] rounded-full border-4 ${
+                  theme === "dark" 
+                    ? "border-gradient-to-tr from-cyan-500 to-blue-700 border-opacity-80" 
+                    : "border-gradient-to-tr from-blue-400 to-purple-500 border-opacity-70"
+                } z-10`}
+                style={{ transformStyle: "preserve-3d" }}
+                animate={{ 
+                  rotateZ: [0, 360],
+                  transition: { 
+                    duration: 20, 
+                    ease: "linear", 
+                    repeat: Infinity 
+                  }
+                }}
+              />
+
+              {/* Base circular con efecto de profundidad */}
+              <motion.div 
+                className={`absolute inset-0 rounded-full ${
+                  theme === "dark" 
+                    ? "bg-gradient-to-br from-slate-700 via-slate-800 to-slate-900" 
+                    : "bg-gradient-to-br from-gray-100 via-white to-gray-200"
+                } shadow-inner transform-gpu`}
+                style={{ transformStyle: "preserve-3d", z: -20 }}
+              />
+
+              {/* Efecto de sombra proyectada dinámica */}
+              <motion.div
+                className="absolute -inset-4 rounded-full blur-md opacity-70"
+                style={{
+                  background: theme === "dark" 
+                    ? "radial-gradient(circle, rgba(56,189,248,0.2) 0%, rgba(30,64,175,0.1) 70%, transparent 100%)" 
+                    : "radial-gradient(circle, rgba(59,130,246,0.2) 0%, rgba(147,51,234,0.1) 70%, transparent 100%)",
+                  z: -10,
+                  transformStyle: "preserve-3d",
+                  transform: `translateX(${tiltEffect.rotateY * -0.5}px) translateY(${tiltEffect.rotateX * 0.5}px)`,
+                }}
+              />
+
+              {/* Contenedor de la imagen con clip-path para crear el efecto "saliendo del círculo" */}
+              <motion.div
+                className="absolute inset-0 overflow-visible"
+                style={{ transformStyle: "preserve-3d" }}
+                animate={{ z: tiltEffect.z }}
+              >
+                {/* Imagen con efecto 3D para "salir" del círculo */}
+                <motion.img
+                  src="/assets/developer.png"
+                  alt="Profile"
+                  className="w-full h-full object-cover rounded-full transform-gpu"
+                  style={{ 
+                    transformStyle: "preserve-3d",
+                    scale: tiltEffect.scale,
+                    z: tiltEffect.z * 1.2
+                  }}
+                  initial={{ scale: 1.05 }}
+                  animate={{ 
+                    scale: [1.05, 1.08, 1.05],
+                    transition: { 
+                      duration: 6, 
+                      ease: "easeInOut", 
+                      repeat: Infinity,
+                      repeatType: "reverse" 
+                    }
+                  }}
+                  whileHover={{ scale: 1.15 }}
+                />
+              </motion.div>
+
+              {/* Efecto de brillo/luz dinámico */}
+              <motion.div
+                className={`absolute inset-0 rounded-full ${
+                  theme === "dark" 
+                    ? "bg-gradient-to-tr from-cyan-500/30 via-transparent to-purple-500/40" 
+                    : "bg-gradient-to-tr from-blue-300/30 via-transparent to-pink-300/30"
+                } mix-blend-overlay pointer-events-none`}
+                style={{
+                  transformStyle: "preserve-3d",
+                  transform: `translateZ(${tiltEffect.z * 0.5}px) rotateX(${-tiltEffect.rotateX * 0.5}deg) rotateY(${-tiltEffect.rotateY * 0.5}deg)`,
+                  zIndex: 20
+                }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+              />
+
+              {/* Efecto de brillo en el borde */}
+              <motion.div
+                className="absolute -inset-1 rounded-full opacity-60 pointer-events-none"
+                style={{
+                  background: theme === "dark"
+                    ? `conic-gradient(from ${Date.now() % 360}deg at 50% 50%, #60a5fa, #3b82f6, #2563eb, #1d4ed8, #1e40af, #1e3a8a, #1e3a8a, #1e40af, #1d4ed8, #2563eb, #3b82f6, #60a5fa)`
+                    : `conic-gradient(from ${Date.now() % 360}deg at 50% 50%, #93c5fd, #60a5fa, #3b82f6, #2563eb, #1d4ed8, #1e40af, #1e40af, #1d4ed8, #2563eb, #3b82f6, #60a5fa, #93c5fd)`,
+                  filter: "blur(8px)",
+                  transform: "translateZ(5px)",
+                  zIndex: 5
+                }}
+                animate={{
+                  background: theme === "dark"
+                    ? [`conic-gradient(from 0deg at 50% 50%, #60a5fa, #3b82f6, #2563eb, #1d4ed8, #1e40af, #1e3a8a, #1e3a8a, #1e40af, #1d4ed8, #2563eb, #3b82f6, #60a5fa)`,
+                       `conic-gradient(from 360deg at 50% 50%, #60a5fa, #3b82f6, #2563eb, #1d4ed8, #1e40af, #1e3a8a, #1e3a8a, #1e40af, #1d4ed8, #2563eb, #3b82f6, #60a5fa)`]
+                    : [`conic-gradient(from 0deg at 50% 50%, #93c5fd, #60a5fa, #3b82f6, #2563eb, #1d4ed8, #1e40af, #1e40af, #1d4ed8, #2563eb, #3b82f6, #60a5fa, #93c5fd)`,
+                       `conic-gradient(from 360deg at 50% 50%, #93c5fd, #60a5fa, #3b82f6, #2563eb, #1d4ed8, #1e40af, #1e40af, #1d4ed8, #2563eb, #3b82f6, #60a5fa, #93c5fd)`],
+                  transition: {
+                    duration: 10,
+                    ease: "linear",
+                    repeat: Infinity
+                  }
+                }}
+              />
+            </motion.div>
+          </div>
+
+          {/* Texto */}
+          <motion.div
+            className="text-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          >
+            <motion.h1
+              className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-4 bg-clip-text text-transparent ${
+                theme === "dark"
+                  ? "bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600"
+                  : "bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600"
+              }`}
+              style={{
+                lineHeight: "1.2",
+                textShadow:
+                  theme === "dark"
+                    ? "0 0 20px rgba(59, 130, 246, 0.3)"
+                    : "0 2px 8px rgba(147, 51, 234, 0.2)",
+              }}
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+            >
+              JORGE
+            </motion.h1>
+
+            <motion.h2
+              className={`text-xl md:text-2xl lg:text-3xl font-medium mb-6 ${
+                theme === "dark" ? "text-slate-200" : "text-gray-700"
+              }`}
+              style={{
+                textShadow:
+                  theme === "dark"
+                    ? "0 2px 8px rgba(0,0,0,0.4)"
+                    : "0 1px 4px rgba(0,0,0,0.1)",
+              }}
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
+              <span
+                className={`${
+                  theme === "dark" ? "text-emerald-400" : "text-emerald-600"
+                } font-semibold`}
+              >
+                Frontend
+              </span>{" "}
+              <span
+                className={`${
+                  theme === "dark" ? "text-blue-400" : "text-blue-600"
+                } font-semibold`}
+              >
+                React
+              </span>{" "}
+              <span
+                className={`${
+                  theme === "dark" ? "text-purple-400" : "text-purple-600"
+                } font-semibold`}
+              >
+                Engineer
+              </span>
+            </motion.h2>
+
+            <motion.div
+              className={`w-24 h-1 mx-auto rounded-full ${
+                theme === "dark"
+                  ? "bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600"
+                  : "bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
+              }`}
+              initial={{ width: 0 }}
+              animate={{ width: 96 }}
+              transition={{ duration: 1, delay: 0.6 }}
+            />
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Hero;

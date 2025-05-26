@@ -43,40 +43,52 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const title = "PORTFOLIO";
+    const titles = ["PORTFOLIO", "Frontend React Engineer"];
+    let currentTitleIndex = 0;
     let currentIndex = 0;
     let currentTitle = "";
     let isDeleting = false;
     const typingSpeed = 150; // ms
     const deletingSpeed = 100; // ms
-    const pauseEnd = 1500; // ms pause at the end of full title
+    const pauseBetweenTitles = 1000; // ms pause between titles
+    const pauseAtEnd = 2000; // ms pause at the end of full title
 
     const animateTitle = () => {
+      const currentTargetTitle = titles[currentTitleIndex];
+      
       if (isDeleting) {
-        currentTitle = title.substring(0, currentIndex);
+        currentTitle = currentTargetTitle.substring(0, currentIndex);
         currentIndex--;
+        
         if (currentIndex < 0) {
           isDeleting = false;
           currentIndex = 0;
-          // Optional: pause before re-typing or change direction
-        }
-      } else {
-        currentTitle = title.substring(0, currentIndex + 1);
-        currentIndex++;
-        if (currentIndex === title.length) {
-          document.title = currentTitle; // Display full title before pause
-          isDeleting = true;
-          // Pause at the end before deleting
+          // Move to next title or loop back to the first one
+          currentTitleIndex = (currentTitleIndex + 1) % titles.length;
+          // Pause before starting to type the next title
           setTimeout(() => {
             requestAnimationFrame(animateTitleLoop);
-          }, pauseEnd);
-          return; // Exit to wait for pause
+          }, pauseBetweenTitles);
+          return;
+        }
+      } else {
+        currentTitle = currentTargetTitle.substring(0, currentIndex + 1);
+        currentIndex++;
+        
+        if (currentIndex === currentTargetTitle.length) {
+          document.title = currentTitle; // Display full title before pause
+          // Pause at the end before deleting
+          setTimeout(() => {
+            isDeleting = true;
+            requestAnimationFrame(animateTitleLoop);
+          }, pauseAtEnd);
+          return;
         }
       }
-      document.title =
-        currentTitle +
-        (isDeleting ? "_" : currentIndex === title.length ? "" : "_"); // Add cursor effect
-
+      
+      // Add cursor effect
+      document.title = currentTitle + "_";
+      
       const speed = isDeleting ? deletingSpeed : typingSpeed;
       setTimeout(animateTitleLoop, speed);
     };
@@ -85,12 +97,12 @@ function App() {
       requestAnimationFrame(animateTitle);
     };
 
-    const timeoutId = setTimeout(animateTitleLoop, typingSpeed); // Start animation
+    const timeoutId = setTimeout(animateTitleLoop, 1000); // Initial delay before starting
 
     // Cleanup on component unmount
     return () => {
-      clearTimeout(timeoutId); // Use the correct variable name for the timeout ID
-      document.title = title; // Reset title to full
+      clearTimeout(timeoutId);
+      document.title = "PORTFOLIO"; // Reset title on unmount
     };
   }, []);
 
