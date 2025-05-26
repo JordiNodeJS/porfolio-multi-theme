@@ -76,11 +76,28 @@ export default {
           text: "#3d2c2c",
           background: "#fffaf0",
         },
+        brutalism: {
+          // Colores primarios brutalism
+          red: "#ff6b6b",
+          cyan: "#4ecdc4",
+          blue: "#45b7d1",
+          green: "#96ceb4",
+          yellow: "#ffeaa7",
+          black: "#000000",
+          white: "#ffffff",
+          // Sombras y efectos
+          shadow: {
+            primary: "#ff6b6b",
+            secondary: "#4ecdc4",
+            tertiary: "#45b7d1",
+          },
+        },
       },
     },
   },
   plugins: [require("@tailwindcss/typography")],
   darkMode: ["class", "[data-theme='dark']"],
-  // Asegúrate que el nuevo tema 'retro-pastel' sea reconocido por Tailwind
+  // Asegúrate que los nuevos temas sean reconocidos por Tailwind
   retroPastelMode: "[data-theme='retro-pastel']",
+  brutalismMode: "[data-theme='brutalism']",
 };

@@ -42,25 +42,53 @@
   }
 
   /* Vintage mode */
-  [data-theme='vintage'] body {
+  [data-theme="vintage"] body {
     background: linear-gradient(
       to bottom right,
-      #6e4c30, /* vintage.brown.dark */
-      #8b5e3c, /* vintage.brown.DEFAULT */
-      #4a5240  /* vintage.olive */
+      #6e4c30,
+      /* vintage.brown.dark */ #8b5e3c,
+      /* vintage.brown.DEFAULT */ #4a5240 /* vintage.olive */
     );
     color: #f3ebd3; /* vintage.cream */
   }
-  
+
   /* Retro-Pastel mode */
-  [data-theme='retro-pastel'] body {
+  [data-theme="retro-pastel"] body {
     background: linear-gradient(
       to bottom right,
-      #fffaf0, /* retroPastel.background */
-      #ffaec0, /* retroPastel.pink.light */
-      #ffe9a6  /* retroPastel.custard.light */
+      #fffaf0,
+      /* retroPastel.background */ #ffaec0,
+      /* retroPastel.pink.light */ #ffe9a6 /* retroPastel.custard.light */
     );
     color: #3d2c2c; /* retroPastel.text - Texto oscuro para mejor contraste */
+  }
+
+  /* Brutalism mode */
+  [data-theme="brutalism"] body {
+    background: linear-gradient(
+      45deg,
+      #ff6b6b 0%,
+      /* Bright red */ #4ecdc4 25%,
+      /* Cyan */ #45b7d1 50%,
+      /* Blue */ #96ceb4 75%,
+      /* Green */ #ffeaa7 100% /* Yellow */
+    );
+    background-size: 300% 300%;
+    animation: brutalGradient 15s ease infinite;
+    color: #000000;
+    font-weight: 700;
+  }
+
+  @keyframes brutalGradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
   }
 
   /* Custom scrollbar - Dark mode */
@@ -96,41 +124,62 @@
   .light ::-webkit-scrollbar-thumb:hover {
     @apply bg-primary-500;
   }
-  
+
   /* Custom scrollbar - Vintage mode */
-  [data-theme='vintage'] ::-webkit-scrollbar {
+  [data-theme="vintage"] ::-webkit-scrollbar {
     width: 8px;
   }
 
-  [data-theme='vintage'] ::-webkit-scrollbar-track {
+  [data-theme="vintage"] ::-webkit-scrollbar-track {
     background-color: #6e4c30; /* vintage.brown.dark */
   }
 
-  [data-theme='vintage'] ::-webkit-scrollbar-thumb {
+  [data-theme="vintage"] ::-webkit-scrollbar-thumb {
     background-color: #c69f26; /* vintage.mustard.DEFAULT */
     border-radius: 9999px;
   }
 
-  [data-theme='vintage'] ::-webkit-scrollbar-thumb:hover {
+  [data-theme="vintage"] ::-webkit-scrollbar-thumb:hover {
     background-color: #e3b505; /* vintage.mustard.light */
   }
-  
+
   /* Custom scrollbar - Retro-Pastel mode */
-  [data-theme='retro-pastel'] ::-webkit-scrollbar {
+  [data-theme="retro-pastel"] ::-webkit-scrollbar {
     width: 8px;
   }
 
-  [data-theme='retro-pastel'] ::-webkit-scrollbar-track {
+  [data-theme="retro-pastel"] ::-webkit-scrollbar-track {
     background-color: #ffaec0; /* retroPastel.pink.light */
   }
 
-  [data-theme='retro-pastel'] ::-webkit-scrollbar-thumb {
+  [data-theme="retro-pastel"] ::-webkit-scrollbar-thumb {
     background-color: #e56b81; /* retroPastel.pink.dark */
     border-radius: 9999px;
   }
 
-  [data-theme='retro-pastel'] ::-webkit-scrollbar-thumb:hover {
+  [data-theme="retro-pastel"] ::-webkit-scrollbar-thumb:hover {
     background-color: #ffd34d; /* retroPastel.custard.DEFAULT */
+  }
+
+  /* Custom scrollbar - Brutalism mode */
+  [data-theme="brutalism"] ::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  [data-theme="brutalism"] ::-webkit-scrollbar-track {
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    border: 3px solid #000000;
+  }
+
+  [data-theme="brutalism"] ::-webkit-scrollbar-thumb {
+    background: #000000;
+    border: 2px solid #ffffff;
+    border-radius: 0;
+  }
+
+  [data-theme="brutalism"] ::-webkit-scrollbar-thumb:hover {
+    background: #ffffff;
+    border: 2px solid #000000;
   }
 }
 
@@ -144,18 +193,39 @@
     @apply bg-white/70 backdrop-blur-md border border-gray-200/50 shadow-lg;
   }
 
-  [data-theme='vintage'] .glass-effect {
-    background-color: rgba(168, 126, 88, 0.3); /* vintage.brown.light with 30% opacity */
+  [data-theme="vintage"] .glass-effect {
+    background-color: rgba(
+      168,
+      126,
+      88,
+      0.3
+    ); /* vintage.brown.light with 30% opacity */
     backdrop-filter: blur(12px);
     border: 1px solid rgba(167, 138, 33, 0.3); /* vintage.mustard.dark with 30% opacity */
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+      0 4px 6px -2px rgba(0, 0, 0, 0.05);
   }
-  
-  [data-theme='retro-pastel'] .glass-effect {
-    background-color: rgba(255, 174, 192, 0.3); /* retroPastel.pink.light with 30% opacity */
+
+  [data-theme="retro-pastel"] .glass-effect {
+    background-color: rgba(
+      255,
+      174,
+      192,
+      0.3
+    ); /* retroPastel.pink.light with 30% opacity */
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 141, 163, 0.4); /* retroPastel.pink.DEFAULT with 40% opacity */
-    box-shadow: 0 8px 12px -2px rgba(0, 0, 0, 0.1), 0 3px 5px -1px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 8px 12px -2px rgba(0, 0, 0, 0.1),
+      0 3px 5px -1px rgba(0, 0, 0, 0.05);
+  }
+
+  [data-theme="brutalism"] .glass-effect {
+    background: linear-gradient(135deg, #ffffff80, #00000020);
+    backdrop-filter: none;
+    border: 4px solid #000000;
+    box-shadow: 8px 8px 0px #ff6b6b, 12px 12px 0px #4ecdc4;
+    border-radius: 0;
+    transform: skew(-2deg, 1deg);
   }
 
   /* Text colors - Theme aware */
@@ -166,13 +236,21 @@
   .light .text-white {
     color: rgb(17 24 39);
   }
-  
-  [data-theme='vintage'] .text-white {
+
+  [data-theme="vintage"] .text-white {
     color: rgb(243 235 211); /* vintage-cream */
   }
-  
-  [data-theme='retro-pastel'] .text-white {
-    color: rgb(61 44 44); /* retroPastel.text - Texto oscuro para mejor contraste */
+
+  [data-theme="retro-pastel"] .text-white {
+    color: rgb(
+      61 44 44
+    ); /* retroPastel.text - Texto oscuro para mejor contraste */
+  }
+
+  [data-theme="brutalism"] .text-white {
+    color: #000000;
+    font-weight: 900;
+    text-shadow: 3px 3px 0px #ffffff, 6px 6px 0px #ff6b6b;
   }
 
   .dark .text-gray-400 {
@@ -182,13 +260,19 @@
   .light .text-gray-400 {
     color: rgb(107 114 128);
   }
-  
-  [data-theme='vintage'] .text-gray-400 {
+
+  [data-theme="vintage"] .text-gray-400 {
     color: rgb(118 140 122); /* vintage-sage-DEFAULT */
   }
-  
-  [data-theme='retro-pastel'] .text-gray-400 {
+
+  [data-theme="retro-pastel"] .text-gray-400 {
     color: rgb(102 85 85); /* Tono marrón oscuro para mejor contraste */
+  }
+
+  [data-theme="brutalism"] .text-gray-400 {
+    color: #000000;
+    font-weight: 700;
+    text-shadow: 2px 2px 0px #45b7d1;
   }
 
   .dark .text-gray-300 {
@@ -198,13 +282,19 @@
   .light .text-gray-300 {
     color: rgb(75 85 99);
   }
-  
-  [data-theme='vintage'] .text-gray-300 {
+
+  [data-theme="vintage"] .text-gray-300 {
     color: rgb(148 161 151); /* vintage-sage-light */
   }
-  
-  [data-theme='retro-pastel'] .text-gray-300 {
+
+  [data-theme="retro-pastel"] .text-gray-300 {
     color: rgb(121 100 100); /* Tono marrón medio para mejor contraste */
+  }
+
+  [data-theme="brutalism"] .text-gray-300 {
+    color: #000000;
+    font-weight: 600;
+    text-shadow: 2px 2px 0px #96ceb4;
   }
 
   /* Primary colors - Theme aware */
@@ -215,9 +305,15 @@
   .light .text-primary-400 {
     color: rgb(37 99 235);
   }
-  
-  [data-theme='retro-pastel'] .text-primary-400 {
+
+  [data-theme="retro-pastel"] .text-primary-400 {
     color: rgb(229 107 129); /* retroPastel.pink.dark */
+  }
+
+  [data-theme="brutalism"] .text-primary-400 {
+    color: #000000;
+    font-weight: 800;
+    text-shadow: 3px 3px 0px #ffeaa7, 6px 6px 0px #ff6b6b;
   }
 
   .dark .text-primary-300 {
@@ -227,9 +323,15 @@
   .light .text-primary-300 {
     color: rgb(59 130 246);
   }
-  
-  [data-theme='retro-pastel'] .text-primary-300 {
+
+  [data-theme="retro-pastel"] .text-primary-300 {
     color: rgb(255 141 163); /* retroPastel.pink.DEFAULT */
+  }
+
+  [data-theme="brutalism"] .text-primary-300 {
+    color: #000000;
+    font-weight: 700;
+    text-shadow: 2px 2px 0px #4ecdc4, 4px 4px 0px #45b7d1;
   }
 
   /* Background gradients - Theme aware */
@@ -244,13 +346,46 @@
   .light .section-bg-gradient {
     background: linear-gradient(to bottom, rgb(249 250 251), rgb(255 255 255));
   }
-  
-  [data-theme='vintage'] .section-bg-gradient {
-    background: linear-gradient(to bottom, rgb(110 76 48), rgb(74 82 64)); /* brown-dark to olive */
+
+  [data-theme="vintage"] .section-bg-gradient {
+    background: linear-gradient(
+      to bottom,
+      rgb(110 76 48),
+      rgb(74 82 64)
+    ); /* brown-dark to olive */
   }
-  
-  [data-theme='retro-pastel'] .section-bg-gradient {
-    background: linear-gradient(to bottom, rgb(255 209 220), rgb(255 241 193)); /* pink-light to custard-DEFAULT */
+
+  [data-theme="retro-pastel"] .section-bg-gradient {
+    background: linear-gradient(
+      to bottom,
+      rgb(255 209 220),
+      rgb(255 241 193)
+    ); /* pink-light to custard-DEFAULT */
+  }
+
+  [data-theme="brutalism"] .section-bg-gradient {
+    background: linear-gradient(
+      135deg,
+      #ff6b6b 0%,
+      #4ecdc4 25%,
+      #45b7d1 50%,
+      #96ceb4 75%,
+      #ffeaa7 100%
+    );
+    border: 4px solid #000000;
+    position: relative;
+  }
+
+  [data-theme="brutalism"] .section-bg-gradient::before {
+    content: "";
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    right: -8px;
+    bottom: -8px;
+    background: linear-gradient(45deg, #000000, #333333);
+    z-index: -1;
+    border: 2px solid #ffffff;
   }
 
   .hero-bg-gradient {
@@ -268,21 +403,52 @@
       rgb(229 231 235)
     );
   }
-  
-  [data-theme='vintage'] .hero-bg-gradient {
+
+  [data-theme="vintage"] .hero-bg-gradient {
     background: linear-gradient(
       to bottom right,
       rgb(139 94 60),
       rgb(95 111 97)
     ); /* brown-DEFAULT to sage-dark */
   }
-  
-  [data-theme='retro-pastel'] .hero-bg-gradient {
+
+  [data-theme="retro-pastel"] .hero-bg-gradient {
     background: linear-gradient(
       to bottom right,
       rgb(255 141 163),
       rgb(255 211 77)
     ); /* retroPastel.pink.DEFAULT to retroPastel.custard.DEFAULT */
+  }
+
+  [data-theme="brutalism"] .hero-bg-gradient {
+    background: repeating-linear-gradient(
+      45deg,
+      #ff6b6b 0px,
+      #ff6b6b 20px,
+      #4ecdc4 20px,
+      #4ecdc4 40px,
+      #45b7d1 40px,
+      #45b7d1 60px,
+      #96ceb4 60px,
+      #96ceb4 80px,
+      #ffeaa7 80px,
+      #ffeaa7 100px
+    );
+    border: 6px solid #000000;
+    box-shadow: inset 0 0 0 4px #ffffff, 12px 12px 0px #000000;
+    position: relative;
+    overflow: hidden;
+  }
+
+  [data-theme="brutalism"] .hero-bg-gradient::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: contrast(1.2) saturate(1.3);
   }
 
   .dark .hero-bg-gradient {
@@ -310,15 +476,23 @@
   .light .gradient-text {
     @apply bg-gradient-to-r from-primary-600 to-primary-800 bg-clip-text text-transparent;
   }
-  
-  [data-theme='vintage'] .gradient-text {
-    background-image: linear-gradient(to right, #e3b505, #d27c54); /* vintage.mustard.light to vintage.terracotta */
+
+  [data-theme="vintage"] .gradient-text {
+    background-image: linear-gradient(
+      to right,
+      #e3b505,
+      #d27c54
+    ); /* vintage.mustard.light to vintage.terracotta */
     background-clip: text;
     color: transparent;
   }
-  
-  [data-theme='retro-pastel'] .gradient-text {
-    background-image: linear-gradient(to right, #e56b81, #e6b800); /* retroPastel.pink.dark to retroPastel.custard.dark */
+
+  [data-theme="retro-pastel"] .gradient-text {
+    background-image: linear-gradient(
+      to right,
+      #e56b81,
+      #e6b800
+    ); /* retroPastel.pink.dark to retroPastel.custard.dark */
     background-clip: text;
     color: transparent;
   }
@@ -330,23 +504,23 @@
   .light .card-hover {
     @apply transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary-600/30;
   }
-  
-  [data-theme='vintage'] .card-hover {
+
+  [data-theme="vintage"] .card-hover {
     transition-property: all;
     transition-duration: 300ms;
   }
-  
-  [data-theme='vintage'] .card-hover:hover {
+
+  [data-theme="vintage"] .card-hover:hover {
     transform: scale(1.05);
     box-shadow: 0 25px 50px -12px rgba(198, 159, 38, 0.4); /* vintage.mustard.DEFAULT with 40% opacity */
   }
-  
-  [data-theme='retro-pastel'] .card-hover {
+
+  [data-theme="retro-pastel"] .card-hover {
     transition-property: all;
     transition-duration: 300ms;
   }
-  
-  [data-theme='retro-pastel'] .card-hover:hover {
+
+  [data-theme="retro-pastel"] .card-hover:hover {
     transform: scale(1.05);
     box-shadow: 0 25px 50px -12px rgba(229, 107, 129, 0.5); /* retroPastel.pink.dark with 50% opacity */
   }
@@ -354,36 +528,54 @@
   .btn-primary {
     @apply bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg;
   }
-  
-  [data-theme='vintage'] .btn-primary {
-    background-image: linear-gradient(to right, #c69f26, #d27c54); /* vintage.mustard.DEFAULT to vintage.terracotta */
+
+  [data-theme="vintage"] .btn-primary {
+    background-image: linear-gradient(
+      to right,
+      #c69f26,
+      #d27c54
+    ); /* vintage.mustard.DEFAULT to vintage.terracotta */
     color: #f3ebd3; /* vintage.cream */
     font-weight: 600;
     padding: 0.75rem 1.5rem;
     border-radius: 0.5rem;
     transition-property: all;
     transition-duration: 300ms;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+      0 4px 6px -2px rgba(0, 0, 0, 0.05);
   }
-  
-  [data-theme='vintage'] .btn-primary:hover {
-    background-image: linear-gradient(to right, #a78a21, #8b5e3c); /* vintage.mustard.dark to vintage.brown.DEFAULT */
+
+  [data-theme="vintage"] .btn-primary:hover {
+    background-image: linear-gradient(
+      to right,
+      #a78a21,
+      #8b5e3c
+    ); /* vintage.mustard.dark to vintage.brown.DEFAULT */
     transform: scale(1.05);
   }
-  
-  [data-theme='retro-pastel'] .btn-primary {
-    background-image: linear-gradient(to right, #ff8da3, #ffd34d); /* retroPastel.pink.DEFAULT to retroPastel.custard.DEFAULT */
+
+  [data-theme="retro-pastel"] .btn-primary {
+    background-image: linear-gradient(
+      to right,
+      #ff8da3,
+      #ffd34d
+    ); /* retroPastel.pink.DEFAULT to retroPastel.custard.DEFAULT */
     color: #3d2c2c; /* retroPastel.text - Texto oscuro para mejor contraste */
     font-weight: 600;
     padding: 0.75rem 1.5rem;
     border-radius: 0.5rem;
     transition-property: all;
     transition-duration: 300ms;
-    box-shadow: 0 8px 12px -2px rgba(0, 0, 0, 0.1), 0 3px 5px -1px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 8px 12px -2px rgba(0, 0, 0, 0.1),
+      0 3px 5px -1px rgba(0, 0, 0, 0.05);
   }
-  
-  [data-theme='retro-pastel'] .btn-primary:hover {
-    background-image: linear-gradient(to right, #e56b81, #e6b800); /* retroPastel.pink.dark to retroPastel.custard.dark */
+
+  [data-theme="retro-pastel"] .btn-primary:hover {
+    background-image: linear-gradient(
+      to right,
+      #e56b81,
+      #e6b800
+    ); /* retroPastel.pink.dark to retroPastel.custard.dark */
     transform: scale(1.05);
   }
 
@@ -403,24 +595,79 @@
   .light .nav-bg {
     @apply bg-white/80;
   }
-  
-  [data-theme='vintage'] .nav-bg {
-    background-color: rgba(110, 76, 48, 0.8); /* vintage.brown.dark with 80% opacity */
+
+  [data-theme="vintage"] .nav-bg {
+    background-color: rgba(
+      110,
+      76,
+      48,
+      0.8
+    ); /* vintage.brown.dark with 80% opacity */
   }
-  
-  [data-theme='retro-pastel'] .nav-bg {
-    background-color: rgba(255, 174, 192, 0.85); /* retroPastel.pink.light with 85% opacity */
+
+  [data-theme="retro-pastel"] .nav-bg {
+    background-color: rgba(
+      255,
+      174,
+      192,
+      0.85
+    ); /* retroPastel.pink.light with 85% opacity */
     border-bottom: 1px solid rgba(229, 107, 129, 0.2); /* retroPastel.pink.dark with 20% opacity */
   }
 
-  [data-theme='retro-pastel'] button[aria-label="Toggle theme"] {
+  [data-theme="brutalism"] .nav-bg {
+    background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1);
+    border-bottom: 6px solid #000000;
+    border-top: 4px solid #ffffff;
+    box-shadow: 0 4px 0px #000000;
+    position: relative;
+  }
+
+  [data-theme="brutalism"] .nav-bg::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(0, 0, 0, 0.1) 10px,
+      rgba(0, 0, 0, 0.1) 20px
+    );
+    pointer-events: none;
+  }
+
+  [data-theme="retro-pastel"] button[aria-label="Toggle theme"] {
     background-color: rgba(255, 174, 192, 0.3);
     border-color: rgba(229, 107, 129, 0.3);
     color: #3d2c2c;
   }
-  
-  [data-theme='retro-pastel'] button[aria-label="Toggle theme"]:hover {
+
+  [data-theme="retro-pastel"] button[aria-label="Toggle theme"]:hover {
     color: #e56b81;
+  }
+
+  [data-theme="brutalism"] button[aria-label="Toggle theme"] {
+    background: linear-gradient(45deg, #ffeaa7, #96ceb4);
+    border: 4px solid #000000;
+    color: #000000;
+    font-weight: 900;
+    text-shadow: 2px 2px 0px #ffffff;
+    box-shadow: 4px 4px 0px #ff6b6b;
+    border-radius: 0;
+    transform: skew(-5deg);
+    transition: all 0.2s ease;
+  }
+
+  [data-theme="brutalism"] button[aria-label="Toggle theme"]:hover {
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    box-shadow: 6px 6px 0px #45b7d1;
+    transform: skew(-5deg) translate(-2px, -2px);
+    color: #ffffff;
+    text-shadow: 2px 2px 0px #000000;
   }
 
   /* Modal theme support */
@@ -431,14 +678,86 @@
   .light .modal-bg {
     @apply bg-white;
   }
-  
-  [data-theme='vintage'] .modal-bg {
+
+  [data-theme="vintage"] .modal-bg {
     background-color: #8b5e3c; /* vintage.brown.DEFAULT */
   }
-  
-  [data-theme='retro-pastel'] .modal-bg {
+
+  [data-theme="retro-pastel"] .modal-bg {
     background-color: #fffaf0; /* retroPastel.background */
     border: 1px solid rgba(229, 107, 129, 0.3); /* retroPastel.pink.dark with 30% opacity */
+  }
+
+  /* Base brutalism modal styles */
+  [data-theme="brutalism"] .modal-bg {
+    background: linear-gradient(135deg, #ffeaa7, #96ceb4, #4ecdc4);
+    border: 6px solid #000000;
+    border-radius: 0;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto !important; /* Allow vertical scrolling */
+    max-width: calc(100% - 50px) !important; /* Allow space for shadows */
+    transform: skew(0deg) !important; /* Reset any skew transformations */
+    top: 0 !important; /* Ensure modal starts from the top */
+    margin-top: 0 !important; /* Remove any unwanted margin */
+    max-height: 100vh !important; /* Ensure modal can't grow beyond viewport height */
+    height: 100% !important; /* Take full height */
+    -webkit-overflow-scrolling: touch !important; /* Smooth scrolling on iOS */
+  }
+
+  /* Right side modal - appears from right */
+  [data-theme="brutalism"] .modal-bg:not(.modal-left) {
+    box-shadow: inset 0 0 0 4px #ffffff, -8px 8px 0px #ff6b6b,
+      -12px 12px 0px #000000;
+    right: 20px !important; /* Pull back from the edge for shadows */
+    padding-bottom: 40px !important; /* Extra padding at bottom for scrolling */
+  }
+
+  /* Left side modal - appears from left */
+  [data-theme="brutalism"] .modal-bg.modal-left {
+    box-shadow: inset 0 0 0 4px #ffffff, 8px 8px 0px #ff6b6b,
+      12px 12px 0px #000000;
+    left: 20px !important; /* Pull back from the edge for shadows */
+    padding-bottom: 40px !important; /* Extra padding at bottom for scrolling */
+  }
+
+  /* Special class for brutalism modals */
+  .brutalism-modal {
+    transform: translateZ(0) !important; /* Force hardware acceleration */
+    will-change: transform; /* Optimize animations */
+    top: 0 !important; /* Force modal to the top */
+    height: 100vh !important; /* Full viewport height */
+    margin-bottom: 0 !important; /* No bottom margin */
+    padding-bottom: max(
+      env(safe-area-inset-bottom, 20px),
+      20px
+    ) !important; /* Mobile safe area with extra padding */
+    margin-top: 0 !important; /* No top margin */
+    position: fixed !important; /* Ensure proper positioning */
+    overflow-y: auto !important; /* Explicitly allow vertical scrolling */
+    overscroll-behavior: contain; /* Prevent scroll chaining */
+    overflow-anchor: none; /* Improve scroll behavior */
+    display: flex !important; /* Use flexbox for better content distribution */
+    flex-direction: column !important; /* Stack content vertically */
+    -webkit-overflow-scrolling: touch !important; /* Smooth scrolling on iOS */
+    scroll-behavior: smooth; /* Smooth scrolling for all browsers */
+  }
+
+  [data-theme="brutalism"] .modal-bg::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 15px,
+      rgba(0, 0, 0, 0.05) 15px,
+      rgba(0, 0, 0, 0.05) 30px
+    );
+    pointer-events: none;
   }
 
   /* Border colors - Theme aware */
@@ -449,13 +768,19 @@
   .light .border-primary-500 {
     border-color: rgb(37 99 235);
   }
-  
-  [data-theme='vintage'] .border-primary-500 {
+
+  [data-theme="vintage"] .border-primary-500 {
     border-color: #c69f26; /* vintage.mustard.DEFAULT */
   }
-  
-  [data-theme='retro-pastel'] .border-primary-500 {
+
+  [data-theme="retro-pastel"] .border-primary-500 {
     border-color: #ff8da3; /* retroPastel.pink.DEFAULT */
+  }
+
+  [data-theme="brutalism"] .border-primary-500 {
+    border-color: #000000;
+    border-width: 4px;
+    border-style: solid;
   }
 
   .dark .border-primary-400 {
@@ -465,13 +790,20 @@
   .light .border-primary-400 {
     border-color: rgb(59 130 246);
   }
-  
-  [data-theme='vintage'] .border-primary-400 {
+
+  [data-theme="vintage"] .border-primary-400 {
     border-color: #e3b505; /* vintage.mustard.light */
   }
-  
-  [data-theme='retro-pastel'] .border-primary-400 {
+
+  [data-theme="retro-pastel"] .border-primary-400 {
     border-color: #ffaec0; /* retroPastel.pink.light */
+  }
+
+  [data-theme="brutalism"] .border-primary-400 {
+    border-color: #ffffff;
+    border-width: 3px;
+    border-style: solid;
+    box-shadow: 0 0 0 6px #000000;
   }
 
   /* Timeline node borders */
@@ -500,6 +832,15 @@
 
   .light .text-shadow-lg {
     text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Brutalism text shadows */
+  [data-theme="brutalism"] .text-shadow {
+    text-shadow: 3px 3px 0px #000000, 6px 6px 0px #ff6b6b;
+  }
+
+  [data-theme="brutalism"] .text-shadow-lg {
+    text-shadow: 4px 4px 0px #000000, 8px 8px 0px #ff6b6b;
   }
 
   /* Tooltips personalizados */
@@ -534,5 +875,208 @@
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+  }
+
+  /* Brutalism specific utilities */
+  [data-theme="brutalism"] .brutalism-card {
+    background: linear-gradient(45deg, #ffeaa7, #96ceb4);
+    border: 4px solid #000000;
+    box-shadow: 8px 8px 0px #ff6b6b, 12px 12px 0px #000000;
+    transform: skew(-1deg, 1deg);
+    position: relative;
+    overflow: hidden;
+  }
+
+  [data-theme="brutalism"] .brutalism-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(0, 0, 0, 0.05) 10px,
+      rgba(0, 0, 0, 0.05) 20px
+    );
+    pointer-events: none;
+  }
+
+  [data-theme="brutalism"] .brutalism-button {
+    background: linear-gradient(45deg, #4ecdc4, #45b7d1);
+    border: 3px solid #000000;
+    color: #000000;
+    font-weight: 900;
+    text-shadow: 2px 2px 0px #ffffff;
+    box-shadow: 4px 4px 0px #ff6b6b;
+    border-radius: 0;
+    transform: skew(-3deg);
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  [data-theme="brutalism"] .brutalism-button:hover {
+    background: linear-gradient(45deg, #ff6b6b, #ffeaa7);
+    box-shadow: 6px 6px 0px #4ecdc4;
+    transform: skew(-3deg) translate(-2px, -2px);
+  }
+
+  [data-theme="brutalism"] .brutalism-heading {
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    /* More legible text shadow - less layers, better contrast */
+    text-shadow: 2px 2px 0px #ffffff, 4px 4px 0px #ff6b6b;
+    transform: skew(-1deg);
+    /* Ensure high contrast */
+    color: #000000 !important;
+  }
+
+  /* Enhanced legibility for smaller text */
+  [data-theme="brutalism"] .brutalism-heading-large {
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 3px 3px 0px #ffffff, 6px 6px 0px #ff6b6b;
+    transform: skew(-2deg);
+    color: #000000 !important;
+    font-size: clamp(2rem, 5vw, 4rem);
+  }
+
+  /* Subtle brutalism for body text */
+  [data-theme="brutalism"] .brutalism-text {
+    font-weight: 700;
+    text-shadow: 1px 1px 0px #ffffff;
+    color: #000000 !important;
+  }
+
+  /* Alternative heading style - cleaner but still brutal */
+  [data-theme="brutalism"] .brutalism-heading-clean {
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-shadow: 2px 2px 0px #ff6b6b;
+    color: #000000 !important;
+    background: linear-gradient(45deg, #ffeaa7, #ffffff);
+    padding: 0.5rem 1rem;
+    border: 3px solid #000000;
+    display: inline-block;
+    transform: skew(-1deg);
+  }
+
+  /* Brutalism animations and effects */
+  [data-theme="brutalism"] .brutalism-glow {
+    animation: brutalGlow 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes brutalGlow {
+    from {
+      box-shadow: 0 0 20px #ff6b6b, 0 0 40px #4ecdc4,
+        inset 0 0 20px rgba(255, 255, 255, 0.1);
+    }
+    to {
+      box-shadow: 0 0 40px #4ecdc4, 0 0 80px #ff6b6b,
+        inset 0 0 40px rgba(255, 255, 255, 0.2);
+    }
+  }
+
+  [data-theme="brutalism"] .brutalism-shake {
+    animation: brutalShake 0.5s ease-in-out;
+  }
+
+  @keyframes brutalShake {
+    0%,
+    100% {
+      transform: skew(-1deg, 1deg) translateX(0);
+    }
+    25% {
+      transform: skew(-1deg, 1deg) translateX(-2px);
+    }
+    75% {
+      transform: skew(-1deg, 1deg) translateX(2px);
+    }
+  }
+
+  [data-theme="brutalism"] .brutalism-pulse {
+    animation: brutalPulse 1s ease-in-out infinite;
+  }
+
+  @keyframes brutalPulse {
+    0% {
+      transform: scale(1) skew(-1deg, 1deg);
+      filter: hue-rotate(0deg);
+    }
+    50% {
+      transform: scale(1.02) skew(-2deg, 2deg);
+      filter: hue-rotate(10deg);
+    }
+    100% {
+      transform: scale(1) skew(-1deg, 1deg);
+      filter: hue-rotate(0deg);
+    }
+  }
+
+  /* Enhanced brutalism card variants */
+  [data-theme="brutalism"] .brutalism-card-alt {
+    background: linear-gradient(45deg, #45b7d1, #ffeaa7, #96ceb4);
+    border: 5px solid #000000;
+    box-shadow: inset 0 0 0 3px #ffffff, 10px 10px 0px #4ecdc4,
+      15px 15px 0px #000000;
+    transform: skew(1deg, -1deg);
+    position: relative;
+    overflow: hidden;
+  }
+
+  [data-theme="brutalism"] .brutalism-card-alt::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+      135deg,
+      transparent,
+      transparent 8px,
+      rgba(0, 0, 0, 0.1) 8px,
+      rgba(0, 0, 0, 0.1) 16px
+    );
+    pointer-events: none;
+  }
+
+  /* Brutalism navigation effects */
+  [data-theme="brutalism"] .nav-link-brutal {
+    position: relative;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #000000;
+    text-shadow: 2px 2px 0px #ffffff;
+    transition: all 0.2s ease;
+  }
+
+  [data-theme="brutalism"] .nav-link-brutal:hover {
+    color: #ffffff;
+    text-shadow: 2px 2px 0px #000000, 4px 4px 0px #ff6b6b;
+    transform: translateY(-2px);
+  }
+
+  [data-theme="brutalism"] .nav-link-brutal::before {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+
+  [data-theme="brutalism"] .nav-link-brutal:hover::before {
+    transform: scaleX(1);
   }
 }

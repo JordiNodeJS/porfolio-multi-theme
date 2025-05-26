@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MapPin, ExternalLink, X } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useState, useEffect } from "react";
+import { useTheme } from "../contexts/ThemeContext";
 import type { ExperienceType } from "../types";
 
 const ExperienceCard = ({
@@ -17,10 +18,9 @@ const ExperienceCard = ({
   const [isCardHovered, setIsCardHovered] = useState(false);
   const [isNodeHovered, setIsNodeHovered] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
-  
   useEffect(() => {
-    let timer: NodeJS.Timeout;
-    
+    let timer: number;
+
     if (isCardHovered) {
       setShowTooltip(true);
       // Ocultar el tooltip después de 3 segundos
@@ -30,7 +30,7 @@ const ExperienceCard = ({
     } else {
       setShowTooltip(false);
     }
-    
+
     return () => clearTimeout(timer);
   }, [isCardHovered]);
   const isClickableCard =
@@ -84,43 +84,43 @@ const ExperienceCard = ({
           {isClickableCard && (
             <AnimatePresence>
               {showTooltip && (
-                <motion.div 
+                <motion.div
                   className="absolute -top-12 glass-effect text-white text-xs px-3 py-2 rounded-lg pointer-events-none whitespace-nowrap z-10 border border-primary-500/30"
                   style={{
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                    width: 'max-content',
-                    maxWidth: '90%'
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                    width: "max-content",
+                    maxWidth: "90%",
                   }}
-                  initial={{ opacity: 0, y: 20, scale: 0.8, x: '-50%' }}
-                  animate={{ 
-                    opacity: 1, 
-                    y: 0, 
+                  initial={{ opacity: 0, y: 20, scale: 0.8, x: "-50%" }}
+                  animate={{
+                    opacity: 1,
+                    y: 0,
                     scale: 1,
-                    transition: { 
-                      type: 'spring',
+                    transition: {
+                      type: "spring",
                       damping: 20,
-                      stiffness: 300
-                    }
+                      stiffness: 300,
+                    },
                   }}
-                  exit={{ 
-                    opacity: 0, 
-                    y: 20, 
+                  exit={{
+                    opacity: 0,
+                    y: 20,
                     scale: 0.8,
-                    x: '-50%',
-                    transition: { 
-                      duration: 0.3 
-                    }
+                    x: "-50%",
+                    transition: {
+                      duration: 0.3,
+                    },
                   }}
                 >
                   {t("experience.clickTooltip")}
-                  <motion.div 
+                  <motion.div
                     className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-current"
                     initial={{ y: -4, opacity: 0 }}
-                    animate={{ 
-                      y: 0, 
+                    animate={{
+                      y: 0,
                       opacity: 1,
-                      transition: { delay: 0.1 }
+                      transition: { delay: 0.1 },
                     }}
                   />
                 </motion.div>
@@ -255,6 +255,7 @@ const ExperienceCard = ({
 
 const Experience = () => {
   const { t } = useTranslation();
+  const { theme } = useTheme();
   const [activeModal, setActiveModal] = useState<string | null>(null);
   const [modalDirection, setModalDirection] = useState<"left" | "right">(
     "right"
@@ -289,8 +290,16 @@ const Experience = () => {
 
   const experience = generateExperiencesFromTranslations();
   const handleCompanyClick = (company: string, cardIndex: number) => {
-    setModalDirection(cardIndex % 2 === 0 ? "right" : "left");
+    // Determine modal direction based on card position
+    // Even index cards (0, 2, 4) are on the left, so modal comes from right
+    // Odd index cards (1, 3, 5) are on the right, so modal comes from left
+    const direction = cardIndex % 2 === 0 ? "right" : "left";
+    setModalDirection(direction);
     setActiveModal(company);
+
+    console.log(
+      `Card clicked: ${company}, index: ${cardIndex}, direction: ${direction}`
+    );
 
     // Ocultar el menú de navegación cuando se abre el modal
     window.dispatchEvent(new CustomEvent("hideNavigation"));
@@ -302,20 +311,26 @@ const Experience = () => {
     window.dispatchEvent(new CustomEvent("showNavigation"));
   };
   const getAchievements = (company: string) => {
-    const companiesConfig = {
-      FLiPO: 7, // 7 logros para FLiPO
-      "IT Academy": 7, // 7 logros para IT Academy
-      "Aula Magna": 2, // 2 logros para Aula Magna
-    };
+    // Get achievements directly from translations as arrays
+    const achievementsArray = t(`achievements.${company}`, {
+      returnObjects: true,
+    }) as Array<{
+      title: string;
+      description: string;
+      impact: string;
+    }>;
 
-    const achievementCount =
-      companiesConfig[company as keyof typeof companiesConfig] || 0;
+    // If achievementsArray is not an array, return empty array
+    if (!Array.isArray(achievementsArray)) {
+      console.warn(`No achievements found for company: ${company}`);
+      return [];
+    }
 
-    // Generar logros basados en las traducciones únicamente
-    return Array.from({ length: achievementCount }, (_, index) => ({
-      title: t(`achievements.${company}.${index}.title`),
-      description: t(`achievements.${company}.${index}.description`),
-      impact: t(`achievements.${company}.${index}.impact`),
+    // Map the achievements with icons
+    return achievementsArray.map((achievement, index) => ({
+      title: achievement.title,
+      description: achievement.description,
+      impact: achievement.impact,
       icon: getAchievementIcon(company, index),
     }));
   };
@@ -464,41 +479,81 @@ const Experience = () => {
                   opacity: 0,
                   x: modalDirection === "right" ? "100%" : "-100%",
                 }}
-                animate={{ opacity: 1, x: 0 }}
+                animate={{
+                  opacity: 1,
+                  x: 0,
+                }}
                 exit={{
                   opacity: 0,
                   x: modalDirection === "right" ? "100%" : "-100%",
                 }}
-                transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                transition={{
+                  type: "spring",
+                  damping: theme === "brutalism" ? 30 : 25,
+                  stiffness: theme === "brutalism" ? 350 : 300,
+                  mass: theme === "brutalism" ? 1.2 : 1,
+                }}
                 className={`fixed ${
                   modalDirection === "right" ? "right-0" : "left-0"
                 } top-0 h-full w-full max-w-2xl modal-bg ${
                   modalDirection === "right" ? "border-l" : "border-r"
-                } border-primary-500/30 z-50 overflow-y-auto`}
+                } border-primary-500/30 z-50 ${
+                  theme === "brutalism" ? "" : "overflow-y-auto"
+                } ${theme === "brutalism" ? "brutalism-modal" : ""} ${
+                  modalDirection === "left" ? "modal-left" : ""
+                }`}
               >
-                {/* Header del Modal */}
-                <div className="sticky top-0 modal-bg/95 backdrop-blur-md border-b border-primary-500/30 p-6">
+                {" "}
+                {/* Header del Modal */}{" "}
+                <div
+                  className={`sticky top-0 z-10 ${
+                    theme === "brutalism"
+                      ? "bg-gradient-to-r from-brutalism-yellow to-brutalism-green border-b-4 border-black backdrop-blur-sm"
+                      : "modal-bg/95 backdrop-blur-md border-b border-primary-500/30"
+                  } p-6`}
+                >
                   <div className="flex items-center justify-between">
                     <div>
                       {" "}
-                      <h2 className="text-2xl font-bold gradient-text">
+                      <h2
+                        className={`text-2xl font-bold ${
+                          theme === "brutalism"
+                            ? "brutalism-heading"
+                            : "gradient-text"
+                        }`}
+                      >
                         {t("experience.achievements")}
                       </h2>
-                      <p className="text-primary-400 mt-1">
+                      <p
+                        className={`${
+                          theme === "brutalism"
+                            ? "brutalism-text"
+                            : "text-primary-400"
+                        } mt-1`}
+                      >
                         {getCompanyInfo(activeModal).title}
                       </p>
                     </div>{" "}
                     <button
                       onClick={handleCloseModal}
-                      className="p-2 text-gray-400 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
+                      className={`p-2 ${
+                        theme === "brutalism"
+                          ? "brutalism-button text-black hover:text-black"
+                          : "text-gray-400 hover:text-white hover:bg-white/10 rounded-lg"
+                      } transition-colors`}
                     >
                       <X className="w-6 h-6" />
                     </button>
                   </div>
-                </div>
-
+                </div>{" "}
                 {/* Contenido del Modal */}
-                <div className="p-6 space-y-6">
+                <div
+                  className={`p-6 space-y-6 ${
+                    theme === "brutalism"
+                      ? "flex-1 overflow-y-auto overscroll-behavior-contain pb-12"
+                      : ""
+                  }`}
+                >
                   {getAchievements(activeModal).map((achievement, index) => (
                     <motion.div
                       key={index}
