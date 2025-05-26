@@ -55,11 +55,11 @@ function App() {
 
     const animateTitle = () => {
       const currentTargetTitle = titles[currentTitleIndex];
-      
+
       if (isDeleting) {
         currentTitle = currentTargetTitle.substring(0, currentIndex);
         currentIndex--;
-        
+
         if (currentIndex < 0) {
           isDeleting = false;
           currentIndex = 0;
@@ -74,7 +74,7 @@ function App() {
       } else {
         currentTitle = currentTargetTitle.substring(0, currentIndex + 1);
         currentIndex++;
-        
+
         if (currentIndex === currentTargetTitle.length) {
           document.title = currentTitle; // Display full title before pause
           // Pause at the end before deleting
@@ -85,10 +85,10 @@ function App() {
           return;
         }
       }
-      
+
       // Add cursor effect
       document.title = currentTitle + "_";
-      
+
       const speed = isDeleting ? deletingSpeed : typingSpeed;
       setTimeout(animateTitleLoop, speed);
     };

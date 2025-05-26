@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { useTheme } from "../contexts/ThemeContext";
+import { useTheme } from "../hooks/useTheme";
 import { animated } from "@react-spring/web";
 import useEnhanced3DEffect from "../hooks/useEnhanced3DEffect";
 import type { IconType } from "react-icons";

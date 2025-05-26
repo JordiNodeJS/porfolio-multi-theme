@@ -2,7 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MapPin, ExternalLink, X, Calendar } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useState, useEffect } from "react";
-import { useTheme } from "../contexts/ThemeContext";
+import { useTheme } from "../hooks/useTheme";
 import type { ExperienceType } from "../types";
 
 // Definición de propiedades adicionales para ExperienceType
