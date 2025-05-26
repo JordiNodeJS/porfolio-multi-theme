@@ -12,8 +12,15 @@ import {
   SiNestjs,
   SiNextdotjs,
   SiRedux,
+  SiJest,
+  SiGithub,
+  SiGit,
+  SiJenkins,
+  SiScrumalliance,
+  SiTestinglibrary
 } from "react-icons/si";
-import { TbSql } from "react-icons/tb";
+import { TbSql, TbBrandVscode } from "react-icons/tb";
+import { FaCodeBranch, FaTasks } from "react-icons/fa";
 import Skill3DCard from "./Skill3DCard";
 import {
   getLevelNameForTechStack,
@@ -316,52 +323,95 @@ const Skills = () => {
           </motion.div>
         </div>
 
-        {/* Methodologies & Tools - ahora como una sección independiente */}
+        {/* Methodologies & Tools - Estilo Brutalista */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="glass-effect p-6 rounded-xl border-t-4 border-t-primary-500/50 dark:border-t-primary-400/50 max-w-3xl mx-auto"
+          className="bg-white dark:bg-black p-6 border-4 border-black dark:border-white max-w-4xl mx-auto"
+          style={{
+            boxShadow: '8px 8px 0 0 #000000',
+            fontFamily: "'Courier New', monospace"
+          }}
         >
-          <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-8 border-b pb-2 border-primary-500/30 dark:border-primary-400/30">
-            {skillsTranslations.methodologies}{" "}
+          <h3 
+            className="text-3xl font-black mb-8 pb-2 border-b-4 border-black dark:border-white uppercase tracking-wider"
+            style={{ letterSpacing: '2px' }}
+          >
+            {skillsTranslations.methodologies}
           </h3>
-          <div className="bg-gradient-to-br from-primary-600/30 to-purple-600/30 dark:from-primary-700/40 dark:to-purple-800/40 backdrop-blur-sm p-6 rounded-xl border border-primary-500/30 dark:border-primary-400/20">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {[
-                "Agile/SCRUM",
-                "Git/GitHub",
-                "Testing (Jest/Vitest)",
-                "CI/CD",
-              ].map((method) => (
-                <motion.div
-                  key={method}
-                  whileHover={{ y: -5 }}
-                  className="flex flex-col items-center group p-3 rounded-lg hover:bg-white/10 transition-colors"
-                >
-                  <div className="w-12 h-12 flex items-center justify-center bg-primary-500/30 dark:bg-primary-400/30 rounded-full group-hover:bg-primary-500/50 dark:group-hover:bg-primary-300/40 transition-colors border border-primary-500/20 dark:border-primary-400/20 mb-3">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-6 h-6 text-primary-700 dark:text-primary-300"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={2}
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M9 12h6m-3-3v6m6.364-9.364a9 9 0 10-12.728 12.728A9 9 0 0018.364 2.636z"
-                      />
-                    </svg>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              { 
+                name: "Agile/SCRUM", 
+                color: "bg-yellow-400",
+                icon: <SiScrumalliance className="w-8 h-8 text-black" />,
+                description: "Metodologías ágiles y gestión de proyectos"
+              },
+              { 
+                name: "Git/GitHub", 
+                color: "bg-cyan-400",
+                icon: <SiGithub className="w-8 h-8 text-black" />,
+                description: "Control de versiones y colaboración"
+              },
+              { 
+                name: "Testing", 
+                color: "bg-pink-400",
+                icon: <SiTestinglibrary className="w-8 h-8 text-black" />,
+                description: "Pruebas unitarias y de integración"
+              },
+              { 
+                name: "CI/CD", 
+                color: "bg-green-400",
+                icon: <SiJenkins className="w-8 h-8 text-black" />,
+                description: "Integración y despliegue continuo"
+              },
+            ].map((method, index) => (
+              <motion.div
+                key={method.name}
+                initial={{ scale: 0.9, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                whileHover={{ 
+                  y: -8,
+                  boxShadow: '4px 4px 0 0 #000000',
+                  transition: { duration: 0.2 }
+                }}
+                viewport={{ once: true }}
+                transition={{ 
+                  duration: 0.4, 
+                  delay: index * 0.1,
+                  type: 'spring',
+                  stiffness: 200,
+                  damping: 10
+                }}
+                className={`relative p-4 border-2 border-black dark:border-white ${method.color} group`}
+                style={{
+                  boxShadow: '4px 4px 0 0 #000000',
+                  transformStyle: 'preserve-3d',
+                }}
+              >
+                <div className="absolute inset-0 bg-white/20 group-hover:bg-black/10 transition-colors"></div>
+                <div className="relative z-10 flex flex-col items-center">
+                  <div className={`w-16 h-16 flex items-center justify-center border-2 border-black dark:border-white mb-3 ${method.color} group-hover:bg-opacity-90 transition-all`}>
+                    {method.icon}
                   </div>
-                  <span className="text-gray-800 dark:text-gray-100 font-medium group-hover:text-primary-600 dark:group-hover:text-primary-300 transition-colors text-center">
-                    {method}
+                  <p className="text-black text-xs text-center mt-1 opacity-80">
+                    {method.description}
+                  </p>
+                  <span className="text-black font-black uppercase text-center text-sm tracking-wider">
+                    {method.name}
                   </span>
-                </motion.div>
-              ))}
-            </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+          
+          <div className="mt-6 pt-4 border-t-2 border-black dark:border-white">
+            <p className="text-black dark:text-white text-sm font-mono uppercase tracking-widest">
+              {skillsTranslations.methodologiesSubtitle || "MÉTODOS EFICIENTES, RESULTADOS EXCEPCIONALES"}
+            </p>
           </div>
         </motion.div>
       </div>
