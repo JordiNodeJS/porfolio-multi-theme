@@ -262,7 +262,7 @@ const Skills = () => {
               theme === "brutalism"
                 ? "brutal-title"
                 : theme === "vintage"
-                ? "font-serif font-bold text-amber-800 border-b-2 border-amber-700/60 pb-2 tracking-wide"
+                ? "font-sans font-bold text-amber-800 border-b-2 border-amber-700/60 pb-2 tracking-wide"
                 : theme === "retro-pastel"
                 ? "font-medium text-pink-600 text-shadow"
                 : "font-bold text-gray-800 dark:text-gray-100"
@@ -299,7 +299,7 @@ const Skills = () => {
                 theme === "brutalism"
                   ? "font-black uppercase border-b-4 border-black dark:border-white pb-2"
                   : theme === "vintage"
-                  ? "font-serif font-bold text-amber-700 border-b-2 border-amber-600/50 pb-2"
+                  ? "font-sans font-bold text-amber-700 border-b-2 border-amber-600/50 pb-2"
                   : theme === "retro-pastel"
                   ? "font-medium text-pink-500 border-b border-pink-300 pb-2"
                   : "font-bold text-gray-800 dark:text-gray-100 border-b pb-2 border-primary-500/30 dark:border-primary-400/30"
@@ -331,7 +331,7 @@ const Skills = () => {
                 theme === "brutalism"
                   ? "font-black uppercase border-b-4 border-black dark:border-white pb-2"
                   : theme === "vintage"
-                  ? "font-serif font-bold text-purple-800 border-b-2 border-purple-700/50 pb-2"
+                  ? "font-sans font-bold text-purple-800 border-b-2 border-purple-700/50 pb-2"
                   : theme === "retro-pastel"
                   ? "font-medium text-purple-500 border-b border-purple-300 pb-2"
                   : "font-bold text-gray-800 dark:text-gray-100 border-b pb-2 border-purple-500/30 dark:border-purple-400/30"
@@ -397,6 +397,10 @@ const Skills = () => {
                 : "font-bold text-gray-800 dark:text-gray-100 border-b-2 border-primary-500/30 dark:border-primary-400/30"
             }`}
             style={{
+              fontFamily:
+                theme === "vintage"
+                  ? '"Inter", system-ui, sans-serif'
+                  : undefined,
               letterSpacing:
                 theme === "brutalism"
                   ? "2px"
