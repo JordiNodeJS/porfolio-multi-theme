@@ -25,6 +25,8 @@ const getLevelValue = (levelStr: string): number => {
       return 50;
     case "b2":
       return 75;
+    case "b1":
+      return 60; // Valor numérico para B1
     default:
       return 60;
   }

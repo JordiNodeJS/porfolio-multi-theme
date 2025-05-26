@@ -24,10 +24,11 @@ const SkillBar = ({
   index: number;
 }) => {
   const getSkillLevelText = (level: number): string => {
+    if (level === 75) return "B2";
+    if (level === 60) return "B1"; // Nivel de inglés B1
     if (level >= 85) return "Avanzado";
     if (level >= 65) return "Intermedio";
     if (level >= 40) return "Básico";
-    if (level === 75) return "B2"; // Special case for language proficiency
     return "Intermedio";
   };
 
