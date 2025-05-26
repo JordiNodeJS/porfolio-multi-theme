@@ -135,51 +135,97 @@ const ExperienceCard = ({
               )}
             </AnimatePresence>
           )}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className={`p-6 rounded-xl shadow-lg border mb-6 relative overflow-hidden ${
-              theme === 'dark' 
-                ? 'bg-gray-800/90 backdrop-blur-sm border-gray-700' 
-                : theme === 'brutalism'
-                ? 'bg-white border-4 border-black'
-                : 'bg-white/90 backdrop-blur-sm border-gray-200'
+              theme === "dark"
+                ? "bg-gray-800/90 backdrop-blur-sm border-gray-700"
+                : theme === "brutalism"
+                ? "bg-white border-4 border-black"
+                : theme === "vintage"
+                ? "bg-amber-50/95 border-amber-200 shadow-md backdrop-blur-sm"
+                : "bg-white/90 backdrop-blur-sm border-gray-200"
             }`}
           >
-            {theme === 'dark' && (
-              <div 
+            {theme === "dark" && (
+              <div
                 className="absolute inset-0 opacity-5 pointer-events-none"
                 style={{
-                  backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,0.1) 35px, rgba(255,255,255,0.1) 70px)'
+                  backgroundImage:
+                    "repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,0.1) 35px, rgba(255,255,255,0.1) 70px)",
                 }}
               />
             )}
             <div className="relative z-10">
               <div className="flex justify-between items-start mb-4">
                 <div>
-                  <h3 className="text-xl font-bold text-white mb-1">
+                  <h3 className={`text-xl font-bold mb-1 ${
+                    theme === 'dark' 
+                      ? 'text-white' 
+                      : theme === 'vintage'
+                        ? 'text-amber-900'
+                        : 'text-gray-900'
+                  }`}>
                     {experience.company}
                   </h3>
-                  <p className="text-gray-300 mb-2">{experience.position || experience.experience}</p>
+                  <p
+                    className={`mb-2 ${
+                      theme === "dark"
+                        ? "text-gray-300"
+                        : theme === "vintage"
+                        ? "text-amber-900/80"
+                        : "text-gray-600"
+                    }`}
+                  >
+                    {experience.position || experience.experience}
+                  </p>
                   {experience.period && (
-                    <div className="flex items-center text-sm text-gray-400">
+                    <div
+                      className={`flex items-center text-sm ${
+                        theme === "dark"
+                          ? "text-gray-400"
+                          : theme === "vintage"
+                          ? "text-amber-800/70"
+                          : "text-gray-500"
+                      }`}
+                    >
                       <Calendar className="w-4 h-4 mr-1" />
                       <span>{experience.period}</span>
                     </div>
                   )}
                 </div>
                 {experience.location && (
-                  <div className="flex items-center text-sm text-gray-300">
+                  <div
+                    className={`flex items-center text-sm ${
+                      theme === "dark"
+                        ? "text-gray-300"
+                        : theme === "vintage"
+                        ? "text-amber-900/80"
+                        : "text-gray-600"
+                    }`}
+                  >
                     <MapPin className="w-4 h-4 mr-1" />
                     <span>{experience.location}</span>
                   </div>
                 )}
               </div>
-              
-              <p className={`mb-4 text-base leading-relaxed ${theme === 'dark' ? 'text-gray-300' : theme === 'brutalism' ? 'text-black' : 'text-gray-700'}`} style={{fontWeight: 300}}>
+
+              <p
+                className={`mb-4 text-base leading-relaxed ${
+                  theme === "dark"
+                    ? "text-gray-300"
+                    : theme === "brutalism"
+                    ? "text-black"
+                    : theme === "vintage"
+                    ? "text-amber-900/90"
+                    : "text-gray-700"
+                }`}
+                style={{ fontWeight: 300 }}
+              >
                 {experience.description}
               </p>
-              
+
               {experience.links && (
                 <div className="flex flex-wrap gap-2 mt-4">
                   {experience.links.map((link: string, linkIndex: number) => (
@@ -190,7 +236,11 @@ const ExperienceCard = ({
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="flex items-center gap-1 text-xs text-primary-400 hover:text-primary-300 transition-colors"
+                      className={`flex items-center gap-1 text-xs transition-colors ${
+                        theme === "vintage"
+                          ? "text-amber-700 hover:text-amber-600"
+                          : "text-primary-400 hover:text-primary-300"
+                      }`}
                     >
                       <ExternalLink className="w-3 h-3" />
                       {t("experience.viewProject")}
@@ -344,14 +394,18 @@ const Experience = () => {
       `Card clicked: ${company}, index: ${cardIndex}, direction: ${direction}`
     );
 
-    // Ocultar el menú de navegación cuando se abre el modal
-    window.dispatchEvent(new CustomEvent("hideNavigation"));
+    // Ocultar el menú de navegación cuando se abre el modal, excepto en tema brutalism
+    if (theme !== "brutalism") {
+      window.dispatchEvent(new CustomEvent("hideNavigation"));
+    }
   };
 
   const handleCloseModal = () => {
     setActiveModal(null);
-    // Mostrar el menú de navegación cuando se cierra el modal
-    window.dispatchEvent(new CustomEvent("showNavigation"));
+    // Mostrar el menú de navegación cuando se cierra el modal, excepto en tema brutalism
+    if (theme !== "brutalism") {
+      window.dispatchEvent(new CustomEvent("showNavigation"));
+    }
   };
   const getAchievements = (company: string) => {
     // Get achievements directly from translations as arrays
