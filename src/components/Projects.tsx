@@ -300,8 +300,11 @@ const Projects = () => {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
           className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl mb-8 brutal-title">
+        >          <h2 className="text-4xl md:text-5xl mb-8 font-bold text-gray-900 dark:text-white
+            theme-brutalism:brutal-title
+            theme-vintage:text-vintage-mustard-light theme-vintage:font-bold theme-vintage:text-shadow-lg
+            theme-retro-pastel:text-retroPastel-text-dark theme-retro-pastel:font-bold
+            transition-colors duration-300">
             {projectsTranslationsHook.title}
           </h2>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">
