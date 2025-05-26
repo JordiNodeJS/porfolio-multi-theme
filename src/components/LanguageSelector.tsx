@@ -71,7 +71,9 @@ const LanguageSelector = () => {
               className={`absolute top-full right-0 mt-2 w-48 backdrop-blur-md rounded-lg shadow-xl overflow-hidden z-50 py-1
                 ${theme === 'light' 
                   ? 'bg-white/95 border-slate-200 text-slate-800' 
-                  : 'bg-slate-900/95 border-white/20 text-white'}`}
+                  : theme === 'retro-pastel'
+                    ? 'bg-retroPastel-background/95 border-retroPastel-pink/30 text-retroPastel-text'
+                    : 'bg-slate-900/95 border-white/20 text-white'}`}
             >
               {languages.map((language) => (
                 <motion.button
