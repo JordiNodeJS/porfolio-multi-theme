@@ -46,29 +46,72 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.3 }}
           >
             <motion.h1
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4"
+              className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-4 bg-clip-text text-transparent ${
+                theme === "dark"
+                  ? "bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600"
+                  : "bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600"
+              }`}
               style={{
-                color: theme === "dark" ? "#ffffff" : "#1a202c",
                 lineHeight: "1.2",
+                textShadow:
+                  theme === "dark"
+                    ? "0 0 20px rgba(59, 130, 246, 0.3)"
+                    : "0 2px 8px rgba(147, 51, 234, 0.2)",
               }}
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
             >
               JORGE
             </motion.h1>
 
             <motion.h2
-              className="text-xl md:text-2xl lg:text-3xl font-medium mb-6"
+              className={`text-xl md:text-2xl lg:text-3xl font-medium mb-6 ${
+                theme === "dark" ? "text-slate-200" : "text-gray-700"
+              }`}
               style={{
-                color: theme === "dark" ? "#e2e8f0" : "#4a5568",
                 textShadow:
                   theme === "dark"
-                    ? "0 2px 4px rgba(0,0,0,0.3)"
-                    : "0 1px 2px rgba(0,0,0,0.1)",
+                    ? "0 2px 8px rgba(0,0,0,0.4)"
+                    : "0 1px 4px rgba(0,0,0,0.1)",
               }}
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
             >
-              Frontend React Engineer
+              <span
+                className={`${
+                  theme === "dark" ? "text-emerald-400" : "text-emerald-600"
+                } font-semibold`}
+              >
+                Frontend
+              </span>{" "}
+              <span
+                className={`${
+                  theme === "dark" ? "text-blue-400" : "text-blue-600"
+                } font-semibold`}
+              >
+                React
+              </span>{" "}
+              <span
+                className={`${
+                  theme === "dark" ? "text-purple-400" : "text-purple-600"
+                } font-semibold`}
+              >
+                Engineer
+              </span>
             </motion.h2>
 
-            <motion.div className="w-24 h-1 mx-auto rounded-full bg-gradient-to-r from-blue-500 to-purple-500" />
+            <motion.div
+              className={`w-24 h-1 mx-auto rounded-full ${
+                theme === "dark"
+                  ? "bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600"
+                  : "bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
+              }`}
+              initial={{ width: 0 }}
+              animate={{ width: 96 }}
+              transition={{ duration: 1, delay: 0.6 }}
+            />
           </motion.div>
         </div>
       </div>
