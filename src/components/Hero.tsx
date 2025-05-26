@@ -228,7 +228,9 @@ const Hero = () => {
                         ? "bg-gradient-to-t from-slate-900/20 to-transparent"
                         : theme === "light"
                         ? "bg-gradient-to-t from-gray-100/20 to-transparent"
-                        : "bg-gradient-to-t from-[#4a5240]/20 to-transparent"
+                        : theme === "vintage"
+                        ? "bg-gradient-to-t from-[#4a5240]/20 to-transparent"
+                        : "bg-gradient-to-t from-retroPastel-pink/30 via-retroPastel-lavender/15 to-transparent"
                     }`}
                   ></motion.div>
                 </motion.div>
@@ -236,11 +238,14 @@ const Hero = () => {
 
               {/* Glow Effect */}
               <motion.div 
-                className={`absolute inset-0 rounded-full opacity-30 ${theme === "dark"
-                  ? "bg-gradient-to-r from-primary-400 to-purple-500"
-                  : theme === "light"
-                  ? "bg-gradient-to-r from-primary-500 to-purple-600"
-                  : "bg-gradient-to-r from-retroPastel-custard to-retroPastel-pink"
+                className={`absolute inset-0 rounded-full opacity-30 ${
+                  theme === "dark"
+                    ? "bg-gradient-to-r from-primary-400 to-purple-500"
+                    : theme === "light"
+                    ? "bg-gradient-to-r from-primary-500 to-purple-600"
+                    : theme === "vintage"
+                    ? "bg-gradient-to-r from-[#e3b505] to-[#d27c54]"
+                    : "bg-gradient-to-r from-retroPastel-custard to-retroPastel-pink"
                 }`}
                 animate={circleControls}
                 initial={{ scale: 1 }}
