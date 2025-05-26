@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { usePortfolioData } from "../hooks/usePortfolioData";
 import { usePortfolioTranslations } from "../hooks/usePortfolioTranslations";
+import { useTheme } from "../contexts/ThemeContext";
 import type { IconType } from "react-icons";
 import {
   SiReact,
@@ -30,13 +31,51 @@ const SkillBar = ({
     return "Intermedio";
   };
 
+  const { theme } = useTheme();
+
   const getSkillColor = (level: number) => {
-    // Colores retro inspirados en paletas de los 80s/90s
-    if (level >= 85) return { gradient: "from-yellow-400 to-yellow-600", bg: "bg-yellow-500" }; // Amarillo mostaza retro
-    if (level >= 65) return { gradient: "from-cyan-400 to-cyan-600", bg: "bg-cyan-500" }; // Cian brillante
-    if (level >= 40) return { gradient: "from-pink-400 to-pink-600", bg: "bg-pink-500" }; // Rosa neón
-    if (level === 75) return { gradient: "from-purple-400 to-purple-600", bg: "bg-purple-500" }; // Púrpura retro
-    return { gradient: "from-green-400 to-green-600", bg: "bg-green-500" }; // Verde neón
+    // Colores para el tema vintage
+    if (theme === 'vintage') {
+      if (level >= 85) return { gradient: 'from-amber-600 to-amber-800', bg: 'bg-amber-700' };
+      if (level >= 65) return { gradient: 'from-teal-600 to-teal-800', bg: 'bg-teal-700' };
+      if (level >= 40) return { gradient: 'from-rose-600 to-rose-800', bg: 'bg-rose-700' };
+      if (level === 75) return { gradient: 'from-violet-600 to-violet-800', bg: 'bg-violet-700' };
+      return { gradient: 'from-emerald-600 to-emerald-800', bg: 'bg-emerald-700' };
+    }
+    
+    // Colores para el tema retro-pastel
+    if (theme === 'retro-pastel') {
+      if (level >= 85) return { gradient: 'from-amber-300 to-amber-500', bg: 'bg-amber-400' };
+      if (level >= 65) return { gradient: 'from-cyan-300 to-cyan-500', bg: 'bg-cyan-400' };
+      if (level >= 40) return { gradient: 'from-pink-300 to-pink-500', bg: 'bg-pink-400' };
+      if (level === 75) return { gradient: 'from-purple-300 to-purple-500', bg: 'bg-purple-400' };
+      return { gradient: 'from-green-300 to-green-500', bg: 'bg-green-400' };
+    }
+    
+    // Colores para el tema brutalism
+    if (theme === 'brutalism') {
+      if (level >= 85) return { gradient: 'from-yellow-400 to-yellow-600', bg: 'bg-yellow-500' };
+      if (level >= 65) return { gradient: 'from-cyan-400 to-cyan-600', bg: 'bg-cyan-500' };
+      if (level >= 40) return { gradient: 'from-pink-400 to-pink-600', bg: 'bg-pink-500' };
+      if (level === 75) return { gradient: 'from-purple-400 to-purple-600', bg: 'bg-purple-500' };
+      return { gradient: 'from-green-400 to-green-600', bg: 'bg-green-500' };
+    }
+    
+    // Colores para los temas claro/oscuro por defecto
+    if (theme === 'light') {
+      if (level >= 85) return { gradient: 'from-blue-500 to-blue-700', bg: 'bg-blue-600' };
+      if (level >= 65) return { gradient: 'from-emerald-500 to-emerald-700', bg: 'bg-emerald-600' };
+      if (level >= 40) return { gradient: 'from-amber-500 to-amber-700', bg: 'bg-amber-600' };
+      if (level === 75) return { gradient: 'from-indigo-500 to-indigo-700', bg: 'bg-indigo-600' };
+      return { gradient: 'from-green-500 to-green-700', bg: 'bg-green-600' };
+    }
+    
+    // Tema oscuro por defecto
+    if (level >= 85) return { gradient: 'from-blue-400 to-blue-600', bg: 'bg-blue-500' };
+    if (level >= 65) return { gradient: 'from-emerald-400 to-emerald-600', bg: 'bg-emerald-500' };
+    if (level >= 40) return { gradient: 'from-amber-400 to-amber-600', bg: 'bg-amber-500' };
+    if (level === 75) return { gradient: 'from-indigo-400 to-indigo-600', bg: 'bg-indigo-500' };
+    return { gradient: 'from-green-400 to-green-600', bg: 'bg-green-500' };
   };
 
   const progress = skill.level; // Level is already a number
@@ -54,18 +93,34 @@ const SkillBar = ({
           {skill.name}
         </h3>
         <motion.span
-          className={`text-xs font-bold uppercase tracking-wider px-3 py-1 ${getSkillColor(skill.level).bg} text-white`}
+          className={`text-xs font-bold uppercase tracking-wider px-3 py-1 ${
+            getSkillColor(skill.level).bg
+          } ${
+            theme === 'brutalism' 
+              ? 'text-black border-2 border-black' 
+              : theme === 'retro-pastel'
+              ? 'text-gray-900 border border-white/30'
+              : theme === 'vintage'
+              ? 'text-white border border-amber-900/30'
+              : theme === 'light'
+              ? 'text-white border border-white/30'
+              : 'text-white border border-white/30'
+          }`}
           style={{
-            border: "2px solid #000",
-            fontFamily: "'Courier New', monospace",
-            letterSpacing: "1px",
-            boxShadow: "2px 2px 0 rgba(0,0,0,0.2)",
-            transform: "skew(-10deg)",
-            display: "inline-block",
+            fontFamily: theme === 'brutalism' ? "'Courier New', monospace" : 'inherit',
+            letterSpacing: theme === 'brutalism' ? '1px' : '0.5px',
+            boxShadow: theme === 'brutalism' ? '2px 2px 0 rgba(0,0,0,0.2)' : 'none',
+            transform: theme === 'brutalism' ? 'skew(-10deg)' : 'none',
+            display: 'inline-block',
+            borderRadius: theme === 'brutalism' ? '0' : '0.375rem',
           }}
-          whileHover={{ 
-            scale: 1.05,
-            boxShadow: "3px 3px 0 rgba(0,0,0,0.3)",
+          whileHover={{
+            scale: theme === 'brutalism' ? 1.05 : 1.02,
+            boxShadow: theme === 'brutalism' 
+              ? '3px 3px 0 rgba(0,0,0,0.3)' 
+              : theme === 'retro-pastel' || theme === 'vintage'
+              ? '0 4px 12px -2px rgba(0,0,0,0.1)'
+              : '0 4px 12px -2px rgba(255,255,255,0.1)',
             transition: { duration: 0.2 }
           }}
         >
