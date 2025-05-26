@@ -1,3 +1,4 @@
+import React from "react";
 import { motion } from "framer-motion";
 import { usePortfolioData } from "../hooks/usePortfolioData";
 import { usePortfolioTranslations } from "../hooks/usePortfolioTranslations";
@@ -15,7 +16,7 @@ import {
   SiGithub,
   SiJenkins,
   SiScrumalliance,
-  SiTestinglibrary
+  SiTestinglibrary,
 } from "react-icons/si";
 import { TbSql } from "react-icons/tb";
 import Skill3DCard from "./Skill3DCard";
@@ -256,16 +257,25 @@ const Skills = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 
-            className={`text-4xl md:text-5xl mb-8 ${theme === "brutalism" ? "brutal-title" : 
-              theme === "vintage" ? "font-serif font-bold text-amber-800 border-b-2 border-amber-700 pb-2" : 
-              theme === "retro-pastel" ? "font-medium text-pink-600 text-shadow" : 
-              "font-bold text-gray-800 dark:text-gray-100"}`}
+          <h2
+            className={`text-4xl md:text-5xl mb-8 ${
+              theme === "brutalism"
+                ? "brutal-title"
+                : theme === "vintage"
+                ? "font-serif font-bold text-amber-800 border-b-2 border-amber-700/60 pb-2 tracking-wide"
+                : theme === "retro-pastel"
+                ? "font-medium text-pink-600 text-shadow"
+                : "font-bold text-gray-800 dark:text-gray-100"
+            }`}
             style={{
-              textShadow: theme === "vintage" ? "1px 1px 0 rgba(120, 53, 15, 0.3)" : 
-                        theme === "retro-pastel" ? "2px 2px 0 rgba(255, 182, 193, 0.4)" : 
-                        theme === "brutalism" ? undefined : 
-                        "0 2px 4px rgba(0, 0, 0, 0.1)"
+              textShadow:
+                theme === "vintage"
+                  ? "1px 1px 0 rgba(120, 53, 15, 0.3)"
+                  : theme === "retro-pastel"
+                  ? "2px 2px 0 rgba(255, 182, 193, 0.4)"
+                  : theme === "brutalism"
+                  ? undefined
+                  : "0 2px 4px rgba(0, 0, 0, 0.1)",
             }}
           >
             {skillsTranslations.title}
@@ -284,14 +294,16 @@ const Skills = () => {
             viewport={{ once: true }}
             className="glass-effect p-6 rounded-xl border-t-4 border-t-primary-500/50 dark:border-t-primary-400/50"
           >
-            <h3 
-              className={`text-2xl mb-8 ${theme === "brutalism" ? 
-                "font-black uppercase border-b-4 border-black dark:border-white pb-2" : 
-                theme === "vintage" ? 
-                "font-serif font-bold text-amber-700 border-b-2 border-amber-600/50 pb-2" : 
-                theme === "retro-pastel" ? 
-                "font-medium text-pink-500 border-b border-pink-300 pb-2" : 
-                "font-bold text-gray-800 dark:text-gray-100 border-b pb-2 border-primary-500/30 dark:border-primary-400/30"}`}
+            <h3
+              className={`text-2xl mb-8 ${
+                theme === "brutalism"
+                  ? "font-black uppercase border-b-4 border-black dark:border-white pb-2"
+                  : theme === "vintage"
+                  ? "font-serif font-bold text-amber-700 border-b-2 border-amber-600/50 pb-2"
+                  : theme === "retro-pastel"
+                  ? "font-medium text-pink-500 border-b border-pink-300 pb-2"
+                  : "font-bold text-gray-800 dark:text-gray-100 border-b pb-2 border-primary-500/30 dark:border-primary-400/30"
+              }`}
             >
               {skillsTranslations.competenceLevel}{" "}
             </h3>
@@ -314,14 +326,16 @@ const Skills = () => {
             viewport={{ once: true }}
             className="glass-effect p-6 rounded-xl border-t-4 border-t-purple-500/50 dark:border-t-purple-400/50"
           >
-            <h3 
-              className={`text-2xl mb-8 ${theme === "brutalism" ? 
-                "font-black uppercase border-b-4 border-black dark:border-white pb-2" : 
-                theme === "vintage" ? 
-                "font-serif font-bold text-purple-800 border-b-2 border-purple-700/50 pb-2" : 
-                theme === "retro-pastel" ? 
-                "font-medium text-purple-500 border-b border-purple-300 pb-2" : 
-                "font-bold text-gray-800 dark:text-gray-100 border-b pb-2 border-purple-500/30 dark:border-purple-400/30"}`}
+            <h3
+              className={`text-2xl mb-8 ${
+                theme === "brutalism"
+                  ? "font-black uppercase border-b-4 border-black dark:border-white pb-2"
+                  : theme === "vintage"
+                  ? "font-serif font-bold text-purple-800 border-b-2 border-purple-700/50 pb-2"
+                  : theme === "retro-pastel"
+                  ? "font-medium text-purple-500 border-b border-purple-300 pb-2"
+                  : "font-bold text-gray-800 dark:text-gray-100 border-b pb-2 border-purple-500/30 dark:border-purple-400/30"
+              }`}
             >
               {skillsTranslations.techStack}
             </h3>
@@ -348,104 +362,207 @@ const Skills = () => {
           </motion.div>
         </div>
 
-        {/* Methodologies & Tools - Estilo Brutalista */}
+        {/* Methodologies & Tools - Ahora adaptativo por tema */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="bg-white dark:bg-black p-6 border-4 border-black dark:border-white max-w-4xl mx-auto font-sans"
+          className={`p-6 max-w-4xl mx-auto ${
+            theme === "brutalism"
+              ? "bg-white dark:bg-black border-4 border-black dark:border-white font-sans"
+              : theme === "vintage"
+              ? "glass-effect rounded-xl border-t-4 border-t-amber-500/50"
+              : theme === "retro-pastel"
+              ? "glass-effect rounded-xl border-t-4 border-t-pink-400/50"
+              : "glass-effect rounded-xl border-t-4 border-t-primary-500/50 dark:border-t-primary-400/50"
+          }`}
           style={{
-            boxShadow: '8px 8px 0 0 #000000',
-            fontFamily: '"Inter", system-ui, sans-serif'
+            boxShadow:
+              theme === "brutalism" ? "8px 8px 0 0 #000000" : undefined,
+            fontFamily:
+              theme === "brutalism"
+                ? '"Inter", system-ui, sans-serif'
+                : undefined,
           }}
         >
-          <h3 
-            className={`text-3xl mb-8 pb-2 ${theme === "brutalism" ? 
-              "font-black uppercase border-b-4 border-black dark:border-white tracking-wider" : 
-              theme === "vintage" ? 
-              "font-serif font-bold text-amber-700 border-b-2 border-amber-600/50" : 
-              theme === "retro-pastel" ? 
-              "font-medium text-pink-500 border-b border-pink-300" : 
-              "font-bold text-gray-800 dark:text-gray-100 border-b-2 border-primary-500/30 dark:border-primary-400/30"}`}
-            style={{ 
-              letterSpacing: theme === "brutalism" ? '2px' : 
-                           theme === "vintage" ? '1px' : 
-                           theme === "retro-pastel" ? '0.5px' : '0.5px'
+          <h3
+            className={`text-3xl mb-8 pb-2 ${
+              theme === "brutalism"
+                ? "font-black uppercase border-b-4 border-black dark:border-white tracking-wider"
+                : theme === "vintage"
+                ? "font-serif font-bold text-amber-700 border-b-2 border-amber-600/50"
+                : theme === "retro-pastel"
+                ? "font-medium text-pink-500 border-b border-pink-300"
+                : "font-bold text-gray-800 dark:text-gray-100 border-b-2 border-primary-500/30 dark:border-primary-400/30"
+            }`}
+            style={{
+              letterSpacing:
+                theme === "brutalism"
+                  ? "2px"
+                  : theme === "vintage"
+                  ? "1px"
+                  : theme === "retro-pastel"
+                  ? "0.5px"
+                  : "0.5px",
             }}
           >
             {skillsTranslations.methodologies}
           </h3>
-          
+
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              { 
-                name: "Agile/SCRUM", 
+              {
+                name: "Agile/SCRUM",
                 color: "bg-yellow-400",
                 icon: <SiScrumalliance className="w-8 h-8 text-black" />,
-                description: "Metodologías ágiles y gestión de proyectos"
+                description: "Metodologías ágiles y gestión de proyectos",
               },
-              { 
-                name: "Git/GitHub", 
+              {
+                name: "Git/GitHub",
                 color: "bg-cyan-400",
                 icon: <SiGithub className="w-8 h-8 text-black" />,
-                description: "Control de versiones y colaboración"
+                description: "Control de versiones y colaboración",
               },
-              { 
-                name: "Testing", 
+              {
+                name: "Testing",
                 color: "bg-pink-400",
                 icon: <SiTestinglibrary className="w-8 h-8 text-black" />,
-                description: "Pruebas unitarias y de integración"
+                description: "Pruebas unitarias y de integración",
               },
-              { 
-                name: "CI/CD", 
+              {
+                name: "CI/CD",
                 color: "bg-green-400",
                 icon: <SiJenkins className="w-8 h-8 text-black" />,
-                description: "Integración y despliegue continuo"
+                description: "Integración y despliegue continuo",
               },
             ].map((method, index) => (
               <motion.div
                 key={method.name}
                 initial={{ scale: 0.9, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
-                whileHover={{ 
-                  y: -8,
-                  boxShadow: '4px 4px 0 0 #000000',
-                  transition: { duration: 0.2 }
+                whileHover={{
+                  y: theme === "brutalism" ? -8 : -4,
+                  boxShadow:
+                    theme === "brutalism" ? "4px 4px 0 0 #000000" : undefined,
+                  transition: { duration: 0.2 },
                 }}
                 viewport={{ once: true }}
-                transition={{ 
-                  duration: 0.4, 
+                transition={{
+                  duration: 0.4,
                   delay: index * 0.1,
-                  type: 'spring',
+                  type: "spring",
                   stiffness: 200,
-                  damping: 10
+                  damping: 10,
                 }}
-                className={`relative p-4 border-2 border-black dark:border-white ${method.color} group`}
+                className={`relative p-4 group ${
+                  theme === "brutalism"
+                    ? `border-2 border-black dark:border-white ${method.color}`
+                    : theme === "vintage"
+                    ? "glass-effect bg-amber-50/80 border border-amber-200 rounded-lg"
+                    : theme === "retro-pastel"
+                    ? "glass-effect bg-pink-50/80 border border-pink-200 rounded-lg"
+                    : "glass-effect bg-white/80 dark:bg-gray-800/80 border border-gray-200 dark:border-gray-700 rounded-lg"
+                }`}
                 style={{
-                  boxShadow: '4px 4px 0 0 #000000',
-                  transformStyle: 'preserve-3d',
+                  boxShadow:
+                    theme === "brutalism" ? "4px 4px 0 0 #000000" : undefined,
+                  transformStyle: "preserve-3d",
                 }}
               >
-                <div className="absolute inset-0 bg-white/20 group-hover:bg-black/10 transition-colors"></div>
+                <div
+                  className={`absolute inset-0 ${
+                    theme === "brutalism"
+                      ? "bg-white/20 group-hover:bg-black/10"
+                      : "bg-gradient-to-br from-transparent to-black/5 group-hover:to-black/10"
+                  } transition-colors`}
+                ></div>
                 <div className="relative z-10 flex flex-col items-center">
-                  <div className={`w-16 h-16 flex items-center justify-center border-2 border-black dark:border-white mb-3 ${method.color} group-hover:bg-opacity-90 transition-all`}>
-                    {method.icon}
+                  <div
+                    className={`w-16 h-16 flex items-center justify-center mb-3 ${
+                      theme === "brutalism"
+                        ? `border-2 border-black dark:border-white ${method.color} group-hover:bg-opacity-90`
+                        : theme === "vintage"
+                        ? "bg-amber-100 border border-amber-300 rounded-lg"
+                        : theme === "retro-pastel"
+                        ? "bg-pink-100 border border-pink-300 rounded-lg"
+                        : "bg-primary-50 dark:bg-primary-900/20 border border-primary-200 dark:border-primary-700 rounded-lg"
+                    } transition-all`}
+                  >
+                    {React.cloneElement(method.icon, {
+                      className: `w-8 h-8 ${
+                        theme === "brutalism"
+                          ? "text-black"
+                          : theme === "vintage"
+                          ? "text-amber-700"
+                          : theme === "retro-pastel"
+                          ? "text-pink-600"
+                          : "text-primary-600 dark:text-primary-400"
+                      }`,
+                    })}
                   </div>
-                  <p className="text-black text-sm text-center mt-2 font-bold uppercase tracking-wider">
+                  <p
+                    className={`text-sm text-center mt-2 ${
+                      theme === "brutalism"
+                        ? "text-black font-bold uppercase tracking-wider"
+                        : theme === "vintage"
+                        ? "text-amber-800 font-medium"
+                        : theme === "retro-pastel"
+                        ? "text-pink-700 font-medium"
+                        : "text-gray-600 dark:text-gray-300"
+                    }`}
+                  >
                     {method.description}
                   </p>
-                  <span className="text-black font-extrabold uppercase text-center text-base tracking-widest mt-1">
+                  <span
+                    className={`text-center text-base mt-1 ${
+                      theme === "brutalism"
+                        ? "text-black font-extrabold uppercase tracking-widest"
+                        : theme === "vintage"
+                        ? "text-amber-900 font-bold"
+                        : theme === "retro-pastel"
+                        ? "text-pink-800 font-semibold"
+                        : "text-gray-800 dark:text-gray-100 font-semibold"
+                    }`}
+                  >
                     {method.name}
                   </span>
                 </div>
               </motion.div>
             ))}
           </div>
-          
-          <div className="mt-8 pt-5 border-t-4 border-black">
-            <p className="text-black text-lg font-black uppercase tracking-widest text-center" style={{ letterSpacing: '3px' }}>
-              MÉTODOS EFICIENTES, RESULTADOS EXCEPCIONALES
+
+          <div
+            className={`mt-8 pt-5 ${
+              theme === "brutalism"
+                ? "border-t-4 border-black"
+                : theme === "vintage"
+                ? "border-t-2 border-amber-300"
+                : theme === "retro-pastel"
+                ? "border-t-2 border-pink-300"
+                : "border-t-2 border-primary-300/30 dark:border-primary-400/30"
+            }`}
+          >
+            <p
+              className={`text-lg text-center ${
+                theme === "brutalism"
+                  ? "text-black font-black uppercase tracking-widest"
+                  : theme === "vintage"
+                  ? "text-amber-800 font-bold"
+                  : theme === "retro-pastel"
+                  ? "text-pink-700 font-semibold"
+                  : "text-gray-700 dark:text-gray-300 font-semibold"
+              }`}
+              style={{
+                letterSpacing: theme === "brutalism" ? "3px" : "1px",
+              }}
+            >
+              {theme === "brutalism"
+                ? "MÉTODOS EFICIENTES, RESULTADOS EXCEPCIONALES"
+                : skillsTranslations.methodologies &&
+                  skillsTranslations.methodologies.includes("Metodologías")
+                ? "Metodologías eficientes para resultados excepcionales"
+                : "Efficient methodologies for exceptional results"}
             </p>
           </div>
         </motion.div>
