@@ -69,22 +69,26 @@ const LanguageSelector = () => {
               exit={{ opacity: 0, y: -10, scale: 0.95 }}
               transition={{ duration: 0.2 }}
               className={`absolute top-full right-0 mt-2 w-48 backdrop-blur-md rounded-lg shadow-xl overflow-hidden z-50 py-1
-                ${theme === 'retro-pastel'
-                  ? 'bg-retroPastel-background/95 border border-retroPastel-pink/30'
-                  : 'bg-slate-900/95 border border-white/20'}`}
+                ${theme === 'light' 
+                  ? 'bg-white/95 border-slate-200 text-slate-800' 
+                  : 'bg-slate-900/95 border-white/20 text-white'}`}
             >
               {languages.map((language) => (
                 <motion.button
                   key={language.code}
                   onClick={() => handleLanguageChange(language.code)}
                   className={`w-full flex items-center gap-3 px-4 py-2.5 text-left transition-colors ${
-                    theme === 'retro-pastel'
+                    theme === 'light'
                       ? i18n.language === language.code
-                        ? 'bg-retroPastel-pink/30 text-retroPastel-text'
-                        : 'text-retroPastel-text hover:bg-retroPastel-pink/20'
-                      : i18n.language === language.code
-                        ? 'bg-primary-500/20 text-primary-300'
-                        : 'text-white hover:bg-white/10'
+                        ? 'bg-slate-100 text-slate-800'
+                        : 'text-slate-800 hover:bg-slate-100/50'
+                      : theme === 'retro-pastel'
+                        ? i18n.language === language.code
+                          ? 'bg-retroPastel-pink/30 text-retroPastel-text'
+                          : 'text-retroPastel-text hover:bg-retroPastel-pink/20'
+                        : i18n.language === language.code
+                          ? 'bg-primary-500/20 text-primary-300'
+                          : 'text-white hover:bg-white/10'
                   }`}
                   whileHover={{ x: 4 }}
                   transition={{ duration: 0.1 }}
