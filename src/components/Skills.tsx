@@ -12,15 +12,12 @@ import {
   SiNestjs,
   SiNextdotjs,
   SiRedux,
-  SiJest,
   SiGithub,
-  SiGit,
   SiJenkins,
   SiScrumalliance,
   SiTestinglibrary
 } from "react-icons/si";
-import { TbSql, TbBrandVscode } from "react-icons/tb";
-import { FaCodeBranch, FaTasks } from "react-icons/fa";
+import { TbSql } from "react-icons/tb";
 import Skill3DCard from "./Skill3DCard";
 import {
   getLevelNameForTechStack,
@@ -397,10 +394,10 @@ const Skills = () => {
                   <div className={`w-16 h-16 flex items-center justify-center border-2 border-black dark:border-white mb-3 ${method.color} group-hover:bg-opacity-90 transition-all`}>
                     {method.icon}
                   </div>
-                  <p className="text-black text-xs text-center mt-1 opacity-80 font-medium">
+                  <p className="text-black text-sm text-center mt-2 font-bold uppercase tracking-wider">
                     {method.description}
                   </p>
-                  <span className="text-black font-bold uppercase text-center text-sm tracking-wider">
+                  <span className="text-black font-extrabold uppercase text-center text-base tracking-widest mt-1">
                     {method.name}
                   </span>
                 </div>
@@ -408,9 +405,9 @@ const Skills = () => {
             ))}
           </div>
           
-          <div className="mt-6 pt-4 border-t-2 border-black dark:border-white">
-            <p className="text-black dark:text-white text-sm font-mono uppercase tracking-widest">
-              {skillsTranslations.methodologiesSubtitle || "MÉTODOS EFICIENTES, RESULTADOS EXCEPCIONALES"}
+          <div className="mt-8 pt-5 border-t-4 border-black">
+            <p className="text-black text-lg font-black uppercase tracking-widest text-center" style={{ letterSpacing: '3px' }}>
+              MÉTODOS EFICIENTES, RESULTADOS EXCEPCIONALES
             </p>
           </div>
         </motion.div>
