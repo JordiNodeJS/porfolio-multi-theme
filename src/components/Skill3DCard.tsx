@@ -78,42 +78,77 @@ const Skill3DCard = ({
     <div ref={cardRef} className="relative cursor-pointer perspective-1000">
       {" "}
       <animated.div
-        className={`p-4 rounded-xl transform-style-3d ${
-          theme === "dark" ? "bg-slate-800/80" : "bg-white/90"
-        } backdrop-blur-sm`}
+        className={`p-4 transform-style-3d ${
+          theme === "dark"
+            ? "bg-slate-800/80"
+            : theme === "brutalism"
+            ? "bg-[#fff4d3] border-2 border-black"
+            : "bg-white/90"
+        } ${
+          theme === "brutalism" ? "rounded-none" : "rounded-xl backdrop-blur-sm"
+        }`}
         style={{
           rotateX: springProps.rotateX,
           rotateY: springProps.rotateY,
           scale: springProps.scale,
           translateZ: springProps.zIndex,
-          boxShadow: isHovered
-            ? `0 10px 25px -5px ${config.glowColor}, 0 8px 10px -6px ${config.glowColor}`
-            : theme === "dark"
-            ? "0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -4px rgba(0, 0, 0, 0.2)"
-            : "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)",
+          boxShadow:
+            theme === "brutalism"
+              ? isHovered
+                ? "4px 4px 0 #000, 0 0 0 1px #000"
+                : "3px 3px 0 #000, 0 0 0 1px #000"
+              : isHovered
+              ? `0 10px 25px -5px ${config.glowColor}, 0 8px 10px -6px ${config.glowColor}`
+              : theme === "dark"
+              ? "0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -4px rgba(0, 0, 0, 0.2)"
+              : "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)",
+          transform: theme === "brutalism" ? "translateZ(10px)" : "none",
+          transition: theme === "brutalism" ? "all 0.2s ease" : "none",
         }}
       >
         {/* Card content */}
         <div className="flex flex-col items-center p-2">
           {/* Icon */}
           <div
-            className={`w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-br ${color} mb-3`}
+            className={`w-16 h-16 flex items-center justify-center ${
+              theme === "brutalism" ? "border border-black" : "rounded-full"
+            } bg-gradient-to-br ${color} mb-3`}
           >
-            <Icon className="w-8 h-8 text-white" />
+            <Icon
+              className={`w-8 h-8 ${
+                theme === "brutalism" ? "text-black" : "text-white"
+              }`}
+            />
           </div>
 
           {/* Skill name */}
           <h3
-            className={`text-lg font-semibold mb-1 ${
-              theme === "dark" ? "text-white" : "text-gray-800"
+            className={`text-lg font-bold mb-1 ${
+              theme === "dark"
+                ? "text-white"
+                : theme === "brutalism"
+                ? "text-black"
+                : "text-gray-800"
             }`}
+            style={{
+              WebkitTextStroke: theme === "brutalism" ? "0.3px #000" : "none",
+              textShadow: theme === "brutalism" ? "0.5px 0.5px 0 #000" : "none",
+            }}
           >
             {name}
           </h3>
 
           {/* Level indicator */}
           {level && (
-            <div className="w-full bg-gray-200 dark:bg-gray-700/50 rounded-full h-1.5">
+            <div
+              className={`w-full ${
+                theme === "dark"
+                  ? "bg-gray-700/50"
+                  : theme === "brutalism"
+? "bg-gray-300 border-t border-b border-l-2 border-r-2 border-black"
+                  : "bg-gray-200"
+              } ${theme === "brutalism" ? "h-2" : "h-1.5 rounded-full"}`}
+            >
               <div className={getLevelStyles()}></div>
             </div>
           )}

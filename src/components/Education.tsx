@@ -212,7 +212,7 @@ const Education = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-6 drop-shadow-sm theme-vintage:text-vintage-mustard-light theme-vintage:drop-shadow-lg">
+          <h2 className="text-4xl md:text-5xl mb-8 brutal-title">
             {educationTranslations.title}
           </h2>
           <p className="text-xl text-gray-700 dark:text-gray-300 max-w-2xl mx-auto font-medium leading-relaxed theme-vintage:text-vintage-cream theme-vintage:font-semibold theme-vintage:text-shadow theme-retro-pastel:text-retroPastel-text/90">

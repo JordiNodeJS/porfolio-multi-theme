@@ -479,13 +479,7 @@ const Experience = () => {
           className="text-center mb-16"
         >
           {" "}
-          <h2
-            className={`text-4xl md:text-5xl font-bold mb-6 ${
-              theme === "brutalism"
-                ? "text-black [text-shadow:4px_4px_0_#00000020]"
-                : "gradient-text"
-            }`}
-          >
+          <h2 className="text-4xl md:text-5xl mb-8 brutal-title">
             {t("experience.title")}
           </h2>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">

@@ -210,17 +210,29 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.3 }}
           >
             <motion.h1
-              className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-4 bg-clip-text text-transparent ${
+              className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-4 ${
+                theme === "brutalism"
+                  ? "text-black"
+                  : "bg-clip-text text-transparent"
+              } ${
                 theme === "dark"
                   ? "bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600"
+                  : theme === "brutalism"
+                  ? ""
                   : "bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600"
               }`}
               style={{
-                lineHeight: "1.2",
-                textShadow:
-                  theme === "dark"
-                    ? "0 0 20px rgba(59, 130, 246, 0.3)"
-                    : "0 2px 8px rgba(147, 51, 234, 0.2)",
+                fontSize: '4.5rem',
+                lineHeight: '1.1',
+                color: '#ef7574',
+                textShadow: 
+                  '2px 2px 0 #000, ' + 
+                  '-1px -1px 0 #f8d7da, ' +
+                  '-1px -2px 0 #f5b5b5, ' +
+                  '1px -1px 0 #000, ' +
+                  '-1px 1px 0 #000, ' +
+                  '1px 1px 0 #000',
+                WebkitTextStroke: '0.5px #000'
               }}
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
@@ -231,13 +243,20 @@ const Hero = () => {
 
             <motion.h2
               className={`text-xl md:text-2xl lg:text-3xl font-medium mb-6 ${
-                theme === "dark" ? "text-slate-200" : "text-gray-700"
+                theme === "dark"
+                  ? "text-slate-200"
+                  : theme === "brutalism"
+                  ? "text-black font-bold"
+                  : "text-gray-700"
               }`}
               style={{
                 textShadow:
                   theme === "dark"
                     ? "0 2px 8px rgba(0,0,0,0.4)"
+                    : theme === "brutalism"
+                    ? "1px 1px 0 #000, -0.5px -0.5px 0 #fff, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #fff, 0.5px 0.5px 0 #000"
                     : "0 1px 4px rgba(0,0,0,0.1)",
+                WebkitTextStroke: theme === "brutalism" ? "0.3px #000" : "none",
               }}
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
