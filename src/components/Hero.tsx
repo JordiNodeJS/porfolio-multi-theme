@@ -27,22 +27,38 @@ const Hero = () => {
       glowColor:
         theme === "dark"
           ? "rgba(56, 189, 248, 0.6)" // Cyan for dark mode
-          : "rgba(79, 70, 229, 0.5)", // Indigo for light mode
-      glowIntensity: 0.8,
+          : theme === "light"
+          ? "rgba(79, 70, 229, 0.5)" // Indigo for light mode
+          : theme === "vintage"
+          ? "rgba(227, 181, 5, 0.6)" // Dorado para vintage
+          : theme === "retro-pastel"
+          ? "rgba(229, 107, 129, 0.5)" // Rosa para retro-pastel
+          : theme === "brutalism"
+          ? "rgba(255, 107, 107, 0.7)" // Rojo brillante para brutalism
+          : "rgba(79, 70, 229, 0.5)",
+      glowIntensity: theme === "brutalism" ? 1 : 0.8,
     }
   );
 
   return (
     <section className="relative py-20 overflow-hidden">
+      {" "}
       {/* Background gradient */}
       <div
         className={`absolute inset-0 z-0 ${
           theme === "dark"
             ? "bg-gradient-to-br from-slate-900 to-slate-800"
+            : theme === "light"
+            ? "bg-gradient-to-br from-gray-50 to-white"
+            : theme === "vintage"
+            ? "bg-gradient-to-br from-[#6e4c30] to-[#543825]"
+            : theme === "retro-pastel"
+            ? "bg-gradient-to-br from-[#f9f1f0] to-[#fadcd9]"
+            : theme === "brutalism"
+            ? "bg-[#ffeaa7]" // Color sólido para brutalism
             : "bg-gradient-to-br from-gray-50 to-white"
         }`}
       />
-
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4">
         <div className="flex flex-col items-center">
@@ -64,11 +80,20 @@ const Hero = () => {
                 transform: `perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) scale(var(--scale, 1)) translateZ(var(--z, 0px))`,
               }}
             >
+              {" "}
               {/* Base circular with depth effect */}
               <animated.div
                 className={`absolute inset-0 rounded-full ${
                   theme === "dark"
                     ? "bg-gradient-to-br from-slate-700 via-slate-800 to-slate-900"
+                    : theme === "light"
+                    ? "bg-gradient-to-br from-gray-100 via-white to-gray-200"
+                    : theme === "vintage"
+                    ? "bg-gradient-to-br from-[#a87e58] via-[#9b714c] to-[#8a6440]"
+                    : theme === "retro-pastel"
+                    ? "bg-gradient-to-br from-[#ffb5b5] via-[#ffaec0] to-[#f59cb0]"
+                    : theme === "brutalism"
+                    ? "bg-[#ff6b6b] border-4 border-black"
                     : "bg-gradient-to-br from-gray-100 via-white to-gray-200"
                 } shadow-inner transform-gpu transform-style-3d`}
                 style={{ transform: "translateZ(-20px)" }}
@@ -80,10 +105,29 @@ const Hero = () => {
                   background:
                     theme === "dark"
                       ? "radial-gradient(circle, rgba(56,189,248,0.2) 0%, rgba(30,64,175,0.1) 70%, transparent 100%)"
+                      : theme === "light"
+                      ? "radial-gradient(circle, rgba(59,130,246,0.2) 0%, rgba(147,51,234,0.1) 70%, transparent 100%)"
+                      : theme === "vintage"
+                      ? "radial-gradient(circle, rgba(227,181,5,0.3) 0%, rgba(168,126,88,0.2) 70%, transparent 100%)"
+                      : theme === "retro-pastel"
+                      ? "radial-gradient(circle, rgba(229,107,129,0.25) 0%, rgba(248,177,149,0.15) 70%, transparent 100%)"
+                      : theme === "brutalism"
+                      ? "none" // Sin sombra para el tema brutalism
                       : "radial-gradient(circle, rgba(59,130,246,0.2) 0%, rgba(147,51,234,0.1) 70%, transparent 100%)",
-                  transform: "translateZ(-10px)",
-                  translateX: springProps.rotateY.to((val) => -val * 0.5),
-                  translateY: springProps.rotateX.to((val) => val * 0.5),
+                  transform:
+                    theme === "brutalism"
+                      ? "translateZ(-10px) translateX(0) translateY(0)"
+                      : "translateZ(-10px)",
+                  translateX:
+                    theme === "brutalism"
+                      ? 0
+                      : springProps.rotateY.to((val) => -val * 0.5),
+                  translateY:
+                    theme === "brutalism"
+                      ? 0
+                      : springProps.rotateX.to((val) => val * 0.5),
+                  boxShadow:
+                    theme === "brutalism" ? "5px 5px 0px #000" : "none",
                 }}
               />{" "}
               {/* Container for the image with clip-path for the "popping out of circle" effect */}
@@ -110,22 +154,50 @@ const Hero = () => {
               </animated.div>{" "}
               {/* Border glow effect */}
               <animated.div
-                className="absolute -inset-1 rounded-full pointer-events-none transform-style-3d"
+                className={`absolute -inset-1 rounded-full pointer-events-none transform-style-3d ${
+                  theme === "brutalism" ? "border-4 border-black" : ""
+                }`}
                 style={{
                   background:
                     theme === "dark"
                       ? `conic-gradient(from ${
                           Date.now() % 360
                         }deg at 50% 50%, #60a5fa, #3b82f6, #2563eb, #1d4ed8, #1e40af, #1e3a8a, #1e3a8a, #1e40af, #1d4ed8, #2563eb, #3b82f6, #60a5fa)`
+                      : theme === "light"
+                      ? `conic-gradient(from ${
+                          Date.now() % 360
+                        }deg at 50% 50%, #93c5fd, #60a5fa, #3b82f6, #2563eb, #1d4ed8, #1e40af, #1e40af, #1d4ed8, #2563eb, #3b82f6, #60a5fa, #93c5fd)`
+                      : theme === "vintage"
+                      ? `conic-gradient(from ${
+                          Date.now() % 360
+                        }deg at 50% 50%, #e3b505, #c89e31, #a87e58, #967043, #826036, #6e4c30, #6e4c30, #826036, #967043, #a87e58, #c89e31, #e3b505)`
+                      : theme === "retro-pastel"
+                      ? `conic-gradient(from ${
+                          Date.now() % 360
+                        }deg at 50% 50%, #ffb5b5, #ffaec0, #f59cb0, #e56b81, #cf6279, #b85671, #b85671, #cf6279, #e56b81, #f59cb0, #ffaec0, #ffb5b5)`
+                      : theme === "brutalism"
+                      ? `conic-gradient(from ${
+                          Date.now() % 360
+                        }deg at 50% 50%, #4ecdc4, #45b7d1, #3b82f6, #ff6b6b, #ffeaa7, #ffeaa7, #ff6b6b, #3b82f6, #45b7d1, #4ecdc4)`
                       : `conic-gradient(from ${
                           Date.now() % 360
                         }deg at 50% 50%, #93c5fd, #60a5fa, #3b82f6, #2563eb, #1d4ed8, #1e40af, #1e40af, #1d4ed8, #2563eb, #3b82f6, #60a5fa, #93c5fd)`,
-                  filter: isHovered ? "blur(10px)" : "blur(8px)",
-                  transform: "translateZ(5px)",
+                  filter:
+                    theme === "brutalism"
+                      ? "none"
+                      : isHovered
+                      ? "blur(10px)"
+                      : "blur(8px)",
+                  transform:
+                    theme === "brutalism"
+                      ? "translateZ(5px) skew(-3deg)"
+                      : "translateZ(5px)",
                   zIndex: 5,
                   opacity: isHovered ? 0.85 : 0.6,
                   animation: "rotate 10s linear infinite",
                   transition: "filter 0.3s ease, opacity 0.3s ease",
+                  boxShadow:
+                    theme === "brutalism" ? "4px 4px 0px #000" : "none",
                 }}
               />
             </animated.div>
