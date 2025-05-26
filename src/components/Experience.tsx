@@ -166,6 +166,8 @@ const ExperienceCard = ({
                         ? "text-white"
                         : theme === "vintage"
                         ? "text-amber-900"
+                        : theme === "brutalism"
+                        ? "text-black [text-shadow:3px_3px_0_#00000020]"
                         : "text-gray-900"
                     }`}
                   >
@@ -477,7 +479,11 @@ const Experience = () => {
           className="text-center mb-16"
         >
           {" "}
-          <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-6">
+          <h2 className={`text-4xl md:text-5xl font-bold mb-6 ${
+            theme === 'brutalism' 
+              ? 'text-black [text-shadow:4px_4px_0_#00000020]' 
+              : 'gradient-text'
+          }`}>
             {t("experience.title")}
           </h2>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">
