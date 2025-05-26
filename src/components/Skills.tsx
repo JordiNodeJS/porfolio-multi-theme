@@ -1,15 +1,25 @@
 import { motion } from "framer-motion";
 import { usePortfolioData } from "../hooks/usePortfolioData";
 import { usePortfolioTranslations } from "../hooks/usePortfolioTranslations";
-import type { IconType } from "react-icons"; 
-import { SiReact, SiJavascript, SiTypescript, SiSass, SiVite, SiTailwindcss, SiNestjs, SiNextdotjs, SiRedux } from "react-icons/si"; 
-import { TbSql } from "react-icons/tb"; 
+import type { IconType } from "react-icons";
+import {
+  SiReact,
+  SiJavascript,
+  SiTypescript,
+  SiSass,
+  SiVite,
+  SiTailwindcss,
+  SiNestjs,
+  SiNextdotjs,
+  SiRedux,
+} from "react-icons/si";
+import { TbSql } from "react-icons/tb";
 
 const SkillBar = ({
   skill,
   index,
 }: {
-  skill: { name: string; level: number; };
+  skill: { name: string; level: number };
   index: number;
 }) => {
   const getSkillLevelText = (level: number): string => {
@@ -40,14 +50,16 @@ const SkillBar = ({
     >
       {" "}
       <div className="flex justify-between items-center mb-2">
-        <h3 className="text-lg font-semibold text-white">{skill.name}</h3>{" "}
+        <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-100">
+          {skill.name}
+        </h3>{" "}
         {/* Changed from nombre to name */}
-        <span className="text-sm text-gray-400 capitalize">
+        <span className="text-sm text-gray-700 dark:text-gray-300 capitalize font-medium px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded-full">
           {getSkillLevelText(skill.level)}
         </span>{" "}
         {/* Changed from nivel to level */}
       </div>
-      <div className="w-full dark:bg-gray-700 light:bg-gray-300 rounded-full h-3 overflow-hidden">
+      <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3 overflow-hidden shadow-inner">
         <motion.div
           initial={{ width: 0 }}
           whileInView={{ width: `${progress}%` }}
@@ -55,7 +67,7 @@ const SkillBar = ({
           viewport={{ once: true }}
           className={`h-full bg-gradient-to-r ${getSkillColor(
             skill.level // Changed from nivel to level
-          )} rounded-full relative`}
+          )} rounded-full relative shadow-sm`}
         >
           <motion.div
             animate={{
@@ -76,7 +88,7 @@ const TechIcon = ({
   name,
   color,
 }: {
-  icon: IconType; 
+  icon: IconType;
   name: string;
   color: string;
 }) => (
@@ -91,30 +103,42 @@ const TechIcon = ({
       rotate: { duration: 0.3, ease: "easeInOut" },
     }}
     whileTap={{ scale: 0.95 }}
-    className="flex flex-col items-center p-4 glass-effect rounded-xl dark:hover:bg-white/10 light:hover:bg-black/5 transition-all duration-300 group"
+    className="flex flex-col items-center p-4 glass-effect rounded-xl border-t-2 border-t-primary-500/30 dark:hover:bg-white/10 light:hover:bg-black/5 transition-all duration-300 group shadow-md hover:shadow-lg"
   >
     <div
       className={`p-3 rounded-lg bg-gradient-to-br ${color} mb-3 group-hover:shadow-lg transition-shadow`}
     >
-      <Icon className="w-8 h-8 text-white" />
+      <Icon className="w-8 h-8 text-white drop-shadow-md" />
     </div>
-    <span className="text-sm text-gray-300 group-hover:text-white transition-colors">
+    <span className="text-sm text-gray-700 dark:text-gray-200 font-medium group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
       {name}
     </span>
   </motion.div>
 );
 
 const Skills = () => {
-  const { skills: skillsDataFromHook } = usePortfolioData(); 
-  const { skills: skillsTranslations } = usePortfolioTranslations(); 
+  const { skills: skillsDataFromHook } = usePortfolioData();
+  const { skills: skillsTranslations } = usePortfolioTranslations();
 
   const techStack = [
     { icon: SiReact, name: "React", color: "from-blue-400 to-blue-600" },
-    { icon: SiJavascript, name: "JavaScript", color: "from-yellow-400 to-yellow-600" },
-    { icon: SiTypescript, name: "TypeScript", color: "from-blue-500 to-blue-700" },
+    {
+      icon: SiJavascript,
+      name: "JavaScript",
+      color: "from-yellow-400 to-yellow-600",
+    },
+    {
+      icon: SiTypescript,
+      name: "TypeScript",
+      color: "from-blue-500 to-blue-700",
+    },
     { icon: SiSass, name: "CSS/SASS", color: "from-pink-400 to-pink-600" },
     { icon: SiVite, name: "Vite", color: "from-purple-400 to-purple-600" },
-    { icon: SiTailwindcss, name: "TailwindCSS", color: "from-teal-400 to-teal-600" },
+    {
+      icon: SiTailwindcss,
+      name: "TailwindCSS",
+      color: "from-teal-400 to-teal-600",
+    },
     { icon: TbSql, name: "SQL", color: "from-orange-400 to-orange-600" },
     { icon: SiNestjs, name: "NestJS", color: "from-red-400 to-red-600" },
     { icon: SiNextdotjs, name: "Next.js", color: "from-gray-400 to-gray-600" },
@@ -122,7 +146,7 @@ const Skills = () => {
   ];
 
   if (!skillsDataFromHook || !skillsTranslations) {
-    return <div>Loading skills data...</div>; 
+    return <div>Loading skills data...</div>;
   }
 
   return (
@@ -137,11 +161,11 @@ const Skills = () => {
           className="text-center mb-16"
         >
           {" "}
-          <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-6">
-            {skillsTranslations.title} 
+          <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-6 drop-shadow-sm">
+            {skillsTranslations.title}
           </h2>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            {skillsTranslations.subtitle} 
+          <p className="text-xl text-gray-700 dark:text-gray-300 max-w-2xl mx-auto font-medium leading-relaxed">
+            {skillsTranslations.subtitle}
           </p>
         </motion.div>
 
@@ -154,7 +178,7 @@ const Skills = () => {
             viewport={{ once: true }}
           >
             {" "}
-            <h3 className="text-2xl font-bold text-white mb-8">
+            <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-8 drop-shadow-sm">
               {skillsTranslations.competenceLevel}{" "}
             </h3>
             <div className="space-y-4">
@@ -176,8 +200,8 @@ const Skills = () => {
             viewport={{ once: true }}
           >
             {" "}
-            <h3 className="text-2xl font-bold text-white mb-8">
-              {skillsTranslations.techStack} 
+            <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-8 drop-shadow-sm">
+              {skillsTranslations.techStack}
             </h3>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
               {techStack.map((tech, index) => (
@@ -187,6 +211,7 @@ const Skills = () => {
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
+                  className={tech.name === "Redux" ? "sm:col-start-2" : ""}
                 >
                   <TechIcon {...tech} />
                 </motion.div>
@@ -198,34 +223,38 @@ const Skills = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
               viewport={{ once: true }}
-              className="mt-8 p-6 bg-gray-800/50 dark:bg-opacity-50 light:bg-opacity-20 backdrop-blur-sm rounded-xl shadow-lg"
+              className="mt-8 p-6 bg-gradient-to-br from-blue-600/25 to-purple-600/25 dark:from-blue-900/30 dark:to-purple-900/30 backdrop-blur-sm rounded-xl shadow-lg border border-primary-500/20"
             >
-              <h4 className="text-xl font-semibold text-white mb-4">
+              <h4 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-4 drop-shadow-sm">
                 {skillsTranslations.methodologies}{" "}
               </h4>
-              <ul className="space-y-2">
+              <ul className="space-y-3 grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {[
                   "Agile/SCRUM",
                   "Git/GitHub",
                   "Testing (Jest/Vitest)",
                   "CI/CD",
                 ].map((method) => (
-                  <li key={method} className="flex items-center">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-4 h-4 mr-2 text-primary-400"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={2}
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M9 12h6m-3-3v6m6.364-9.364a9 9 0 10-12.728 12.728A9 9 0 0018.364 2.636z"
-                      />
-                    </svg>
-                    <span className="text-gray-300">{method}</span>
+                  <li key={method} className="flex items-center group">
+                    <div className="w-8 h-8 mr-3 flex items-center justify-center bg-primary-600/20 dark:bg-primary-500/20 rounded-full group-hover:bg-primary-600/30 dark:group-hover:bg-primary-500/30 transition-colors">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="w-4 h-4 text-primary-600 dark:text-primary-400"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={2}
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M9 12h6m-3-3v6m6.364-9.364a9 9 0 10-12.728 12.728A9 9 0 0018.364 2.636z"
+                        />
+                      </svg>
+                    </div>
+                    <span className="text-gray-700 dark:text-gray-200 font-medium group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                      {method}
+                    </span>
                   </li>
                 ))}
               </ul>

@@ -47,37 +47,39 @@ const Hero = () => {
           ? "bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"
           : theme === "light"
           ? "bg-gradient-to-br from-gray-50 via-white to-gray-100"
-          : "bg-gradient-to-br from-[#6e4c30] via-[#8b5e3c] to-[#4a5240]"
+          : "bg-gradient-to-br from-retroPastel-background to-retroPastel-background/90"
       }`}
     >
       {/* Animated Background */}
       <div className="absolute inset-0 z-0">
         <div
-          className={`absolute inset-0 opacity-20 ${
+          className={`absolute inset-0 ${
             theme === "dark"
               ? "hero-bg-gradient"
               : theme === "light"
               ? "bg-gradient-to-br from-blue-50/50 to-purple-50/50"
-              : "bg-gradient-to-br from-[#a78a21]/30 to-[#d27c54]/30"
+              : "bg-gradient-to-br from-retroPastel-custard/5 via-retroPastel-background/95 to-retroPastel-lavender/5"
           }`}
         ></div>
-        <div
-          className={`absolute inset-0 opacity-10 ${
-            theme === "dark"
-              ? "hero-bg-gradient"
-              : theme === "light"
-              ? "bg-gradient-to-br from-primary-50/30 to-purple-50/30"
-              : "bg-gradient-to-br from-[#e3b505]/20 to-[#94a197]/20"
-          }`}
-        ></div>
+        {theme === "retro-pastel" && (
+          <div 
+            className="absolute inset-0 opacity-5"
+            style={{
+              backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'%233d2c2c\' fill-opacity=\'0.08\' fill-rule=\'evenodd\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34H0v-2h6v-4H4v-2h2v4h2v2zm10-24V4h-2v4h-4v2h4v4h2V6h4V4h-4zM6 24H0v-2h6v-4H4v-2h2v4h2v2zm30-4v2h6v-2h-6z\'/%3E%3C/g%3E%3C/svg%3E")'
+            }}
+          >
+          </div>
+        )}
       </div>
       {/* Floating Elements */}
       <motion.div
         animate={floatingAnimation}
         className={`absolute top-20 left-10 w-20 h-20 rounded-full blur-xl ${
-          theme === "dark" ? "bg-primary-500/10" : 
-          theme === "light" ? "bg-primary-400/20" :
-          "bg-[#e3b505]/20"
+          theme === "dark" 
+            ? "bg-primary-500/10" 
+            : theme === "light" 
+            ? "bg-primary-400/20"
+            : "bg-retroPastel-custard/20"
         }`}
       />
       <motion.div
@@ -86,9 +88,11 @@ const Hero = () => {
           transition: { ...floatingAnimation.transition, delay: 1 },
         }}
         className={`absolute bottom-20 right-20 w-32 h-32 rounded-full blur-xl ${
-          theme === "dark" ? "bg-purple-500/10" : 
-          theme === "light" ? "bg-purple-400/20" :
-          "bg-[#d27c54]/20"
+          theme === "dark" 
+            ? "bg-purple-500/10" 
+            : theme === "light" 
+            ? "bg-purple-400/20"
+            : "bg-retroPastel-pink/20"
         }`}
       />
       <motion.div
@@ -97,9 +101,11 @@ const Hero = () => {
           transition: { ...floatingAnimation.transition, delay: 2 },
         }}
         className={`absolute top-1/2 right-10 w-16 h-16 rounded-full blur-xl ${
-          theme === "dark" ? "bg-pink-500/10" : 
-          theme === "light" ? "bg-pink-400/20" :
-          "bg-[#a78a21]/20"
+          theme === "dark" 
+            ? "bg-pink-500/10" 
+            : theme === "light" 
+            ? "bg-pink-400/20"
+            : "bg-retroPastel-lavender/20"
         }`}
       />
       <div className="container-custom relative z-10">
@@ -115,9 +121,11 @@ const Hero = () => {
           <motion.div variants={itemVariants} className="text-center mb-8">
             <span
               className={`font-medium text-lg md:text-xl ${
-                theme === "dark" ? "text-primary-400" : 
-                theme === "light" ? "text-primary-600" :
-                "text-[#e3b505]"
+                theme === "dark" 
+                  ? "text-primary-400" 
+                  : theme === "light" 
+                  ? "text-primary-600"
+                  : "text-retroPastel-text/90"
               }`}
             >
               👋 {hero.greeting}
@@ -178,7 +186,7 @@ const Hero = () => {
                     ? "bg-gradient-to-r from-primary-400 to-purple-500"
                     : theme === "light"
                     ? "bg-gradient-to-r from-primary-500 to-purple-600"
-                    : "bg-gradient-to-r from-[#e3b505] to-[#d27c54]"
+                    : "bg-gradient-to-r from-retroPastel-custard to-retroPastel-pink"
                 }`}
               ></div>
             </motion.div>
@@ -194,18 +202,19 @@ const Hero = () => {
                   "text-[#f3ebd3]"
                 }`}
               >
-                <span className="gradient-text">{hero.name}</span>
+                <span className={theme === "retro-pastel" ? "text-retroPastel-text font-black tracking-tight" : "gradient-text"}>
+                {hero.name}
+              </span>
               </motion.h1>
-              <motion.h2
-                variants={itemVariants}
+              <h2
                 className={`text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold mb-4 ${
                   theme === "dark" ? "text-gray-300" : 
                   theme === "light" ? "text-gray-700" :
-                  "text-[#f3ebd3]/90"
+                  "text-retroPastel-text/90"
                 }`}
               >
                 {hero.title}
-              </motion.h2>
+              </h2>
               {/* Decorative Line */}
               <motion.div
                 variants={itemVariants}
@@ -225,7 +234,7 @@ const Hero = () => {
             className={`text-lg md:text-xl mb-16 max-w-4xl mx-auto leading-relaxed text-center ${
               theme === "dark" ? "text-gray-400" : 
               theme === "light" ? "text-gray-600" :
-              "text-[#f3ebd3]/80"
+              "text-retroPastel-text/90"
             }`}
           >
             {hero.subtitle}
@@ -241,7 +250,7 @@ const Hero = () => {
                   ? "text-gray-400 hover:text-primary-400"
                   : theme === "light"
                   ? "text-gray-600 hover:text-primary-600"
-                  : "text-[#f3ebd3] hover:text-[#e3b505]"
+                  : "text-retroPastel-text hover:text-retroPastel-custard-dark"
               }`}
             >
               <span className="text-sm mb-2 font-medium">
@@ -253,7 +262,7 @@ const Hero = () => {
                     ? "bg-slate-800/50 group-hover:bg-primary-500/20"
                     : theme === "light"
                     ? "bg-gray-100 group-hover:bg-primary-100"
-                    : "bg-[#6e4c30]/50 group-hover:bg-[#e3b505]/30"
+                    : "bg-retroPastel-text/10 group-hover:bg-retroPastel-custard/30"
                 }`}
               >
                 <ChevronDown className="w-5 h-5" />

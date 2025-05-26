@@ -79,15 +79,25 @@ const Navigation = () => {
       }}
       transition={{ duration: 0.3 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out ${
-        scrolled ? "glass-effect shadow-2xl backdrop-blur-md nav-bg" : "bg-transparent"
+        scrolled 
+          ? "glass-effect shadow-2xl backdrop-blur-md nav-bg" 
+          : theme === "vintage" 
+            ? "bg-[#6e4c30]" 
+            : "bg-transparent"
       } ${isHidden ? "pointer-events-none" : ""}`}
     >
-      <div className="container-custom">
+      <div className={`container-custom ${theme === "vintage" ? "border-b border-[#a78a21]/30" : ""}`}>
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="text-2xl font-bold gradient-text"
+            className={`text-2xl font-bold ${
+              theme === "vintage"
+                ? "text-[#a87e58] hover:text-[#e3b505]"
+                : theme === "retro-pastel"
+                ? "text-[#3d2c2c] hover:text-[#e56b81]"
+                : "text-white hover:text-primary-400"
+            } transition-colors duration-300`}
           >
             JORGe
           </motion.div>
@@ -112,7 +122,19 @@ const Navigation = () => {
             ))}
           </div>{" "}
           {/* Social Links & Theme Toggle */}
-          <div className="hidden lg:flex items-center space-x-4">
+          <div className="flex items-center space-x-4">
+            {/* Language Selector - Visible en móvil */}
+            <div className="lg:hidden">
+              <LanguageSelector />
+            </div>
+            
+            {/* Theme Toggle - Visible en móvil */}
+            <div className="lg:hidden">
+              <ThemeToggle />
+            </div>
+            
+            {/* Social Links - Oculto en móvil */}
+            <div className="hidden lg:flex items-center space-x-4">
             {socialLinks.map((social) => (
               <motion.a
                 key={social.label}
@@ -137,9 +159,9 @@ const Navigation = () => {
             {/* Language Selector */}
             <LanguageSelector />
 
-            {/* Theme Toggle */}
-            <ThemeToggle />
-          </div>
+                <ThemeToggle />
+              </div>
+            </div>
           {/* Mobile Menu Button */}
           <motion.button
             whileTap={{ scale: 0.95 }}
@@ -192,6 +214,28 @@ const Navigation = () => {
                 {item.name}
               </motion.button>
             ))}{" "}
+            <div className="flex items-center justify-center space-x-4 py-4 lg:hidden">
+              {socialLinks.map((social) => (
+                <motion.a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.2, rotate: 5 }}
+                  whileTap={{ scale: 0.9 }}
+                  className={`p-2 transition-colors duration-300 ${
+                    theme === "vintage" 
+                      ? "text-[#f3ebd3]/80 hover:text-[#f3ebd3]" 
+                      : theme === "retro-pastel"
+                      ? "text-[#3d2c2c]/80 hover:text-[#e56b81]" 
+                      : "text-gray-400 hover:text-white"
+                  }`}
+                  aria-label={social.label}
+                >
+                  <social.icon className="w-5 h-5" />
+                </motion.a>
+              ))}
+            </div>
             <div className={`flex items-center justify-between pt-4 border-t ${
               theme === "vintage" 
                 ? "border-[#a78a21]/30" 
