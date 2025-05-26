@@ -141,17 +141,17 @@ const Navigation = () => {
 
           {/* Social Links & Theme Toggle */}
           <div className="flex items-center space-x-4">
-            {/* Language Selector - Visible en móvil */}
-            <div className="lg:hidden">
+            {/* Language Selector - Visible en móvil y tablet */}
+            <div className="block lg:hidden">
               <LanguageSelector />
             </div>
 
-            {/* Theme Toggle - Visible en móvil */}
-            <div className="lg:hidden">
+            {/* Theme Toggle - Visible en móvil y tablet */}
+            <div className="block lg:hidden">
               <ThemeToggle />
             </div>
 
-            {/* Social Links - Oculto en móvil */}
+            {/* Social Links - Solo en desktop */}
             <div className="hidden lg:flex items-center space-x-4">
               {socialLinks.map((social) => (
                 <motion.a
@@ -176,9 +176,11 @@ const Navigation = () => {
                 </motion.a>
               ))}
 
-              {/* Language Selector */}
-              <LanguageSelector />
-              <ThemeToggle />
+              {/* Language Selector y Theme Toggle en desktop */}
+              <div className="flex items-center space-x-2">
+                <LanguageSelector />
+                <ThemeToggle />
+              </div>
             </div>
           </div>
 

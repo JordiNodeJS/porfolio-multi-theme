@@ -823,23 +823,52 @@
   }
 
   [data-theme="brutalism"] button[aria-label="Toggle theme"] {
-    background: linear-gradient(45deg, #ffeaa7, #96ceb4);
-    border: 4px solid #000000;
-    color: #000000;
-    font-weight: 900;
-    text-shadow: none;
-    box-shadow: none;
-    border-radius: 0;
-    transform: skew(-5deg);
-    transition: all 0.2s ease;
+    background-color: #ff6b6b !important;
+    border: 4px solid #000000 !important;
+    color: #ffffff !important;
+    font-weight: 900 !important;
+    text-shadow: 2px 2px 0px #000000 !important;
+    box-shadow: 4px 4px 0px 0px #000000 !important;
+    border-radius: 0 !important;
+    transform: skew(-3deg) !important;
+    transition: all 0.2s ease !important;
+    min-width: 48px !important;
+    min-height: 48px !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: flex !important;
+    position: relative !important;
+    z-index: 50 !important;
   }
 
   [data-theme="brutalism"] button[aria-label="Toggle theme"]:hover {
-    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-    box-shadow: none;
-    transform: skew(-5deg) translate(-2px, -2px);
-    color: #ffffff;
-    text-shadow: none;
+    background-color: #4ecdc4 !important;
+    box-shadow: 6px 6px 0px 0px #ffeaa7 !important;
+    transform: skew(-3deg) translate(-2px, -2px) rotate(2deg) !important;
+    color: #000000 !important;
+    text-shadow: 1px 1px 0px #ffffff !important;
+  }
+
+  [data-theme="brutalism"] button[aria-label="Toggle theme"] svg {
+    display: block !important;
+    width: 24px !important;
+    height: 24px !important;
+    stroke-width: 3px !important;
+    filter: drop-shadow(1px 1px 0 #000) !important;
+  }
+
+  /* Brutalism theme toggle específico */
+  [data-theme="brutalism"] .brutalism-theme-toggle {
+    background-color: #ff6b6b !important;
+    border: 4px solid black !important;
+    border-radius: 0 !important;
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    z-index: 100 !important;
+    box-shadow: 4px 4px 0 #000 !important;
+    transform: skew(-3deg) !important;
   }
 
   /* Modal theme support */
