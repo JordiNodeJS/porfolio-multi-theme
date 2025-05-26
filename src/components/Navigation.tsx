@@ -4,7 +4,8 @@ import { Menu, X, Github, Linkedin, Mail } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import ThemeToggle from "./ThemeToggle";
 import LanguageSelector from "./LanguageSelector";
-import { useTheme } from "../contexts/ThemeContext";
+import PreferencesManager from "./PreferencesManager";
+import { useTheme } from "../hooks/useTheme";
 
 const Navigation = () => {
   const { t } = useTranslation();
@@ -180,6 +181,7 @@ const Navigation = () => {
               <div className="flex items-center space-x-2">
                 <LanguageSelector />
                 <ThemeToggle />
+                <PreferencesManager />
               </div>
             </div>
           </div>
@@ -283,6 +285,9 @@ const Navigation = () => {
               </div>
               <div className="lg:hidden">
                 <ThemeToggle />
+              </div>
+              <div className="lg:hidden">
+                <PreferencesManager />
               </div>
             </div>
           </div>

@@ -2,7 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Globe, ChevronDown } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
-import { useTheme } from "../contexts/ThemeContext";
+import { useTheme } from "../hooks/useTheme";
 
 const languages = [
   { code: "es", name: "Español", flag: "🇪🇸", shortCode: "ES" },

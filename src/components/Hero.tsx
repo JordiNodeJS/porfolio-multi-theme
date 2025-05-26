@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useTheme } from "../contexts/ThemeContext";
+import { useTheme } from "../hooks/useTheme";
 import { useRef } from "react";
 import { animated } from "@react-spring/web";
 import useEnhanced3DEffect from "../hooks/useEnhanced3DEffect";
@@ -39,9 +39,8 @@ const Hero = () => {
       glowIntensity: theme === "brutalism" ? 1 : 0.8,
     }
   );
-
   return (
-    <section className="relative py-20 overflow-hidden">
+    <section id="hero" className="relative py-20 overflow-hidden">
       {" "}
       {/* Background gradient */}
       <div

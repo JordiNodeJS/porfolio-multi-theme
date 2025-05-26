@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useTheme } from "../contexts/ThemeContext";
+import { useTheme } from "./useTheme";
 
 export const useBrutalismEffects = () => {
   const { theme } = useTheme();

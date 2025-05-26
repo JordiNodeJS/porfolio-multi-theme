@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Github, Linkedin, Heart, Code, Coffee } from "lucide-react";
-import { useTheme } from "../contexts/ThemeContext";
+import { useTheme } from "../hooks/useTheme";
 import { usePortfolioTranslations } from "../hooks/usePortfolioTranslations";
 
 const Footer = () => {
@@ -46,18 +46,24 @@ const Footer = () => {
       <div className="absolute inset-0">
         <div
           className={`absolute top-0 left-1/4 w-96 h-96 rounded-full blur-3xl ${
-            theme === "dark" ? "bg-blue-500/5" : 
-            theme === "light" ? "bg-blue-500/10" :
-            theme === "vintage" ? "bg-[#e3b505]/10" :
-            "bg-[#e56b81]/15"
+            theme === "dark"
+              ? "bg-blue-500/5"
+              : theme === "light"
+              ? "bg-blue-500/10"
+              : theme === "vintage"
+              ? "bg-[#e3b505]/10"
+              : "bg-[#e56b81]/15"
           }`}
         ></div>
         <div
           className={`absolute bottom-0 right-1/4 w-96 h-96 rounded-full blur-3xl ${
-            theme === "dark" ? "bg-purple-500/5" : 
-            theme === "light" ? "bg-purple-500/10" :
-            theme === "vintage" ? "bg-[#d27c54]/10" :
-            "bg-[#ffd34d]/15"
+            theme === "dark"
+              ? "bg-purple-500/5"
+              : theme === "light"
+              ? "bg-purple-500/10"
+              : theme === "vintage"
+              ? "bg-[#d27c54]/10"
+              : "bg-[#ffd34d]/15"
           }`}
         ></div>
       </div>
@@ -76,10 +82,13 @@ const Footer = () => {
             <h3 className="text-2xl font-bold gradient-text mb-3">JORGe</h3>{" "}
             <p
               className={`text-sm leading-relaxed ${
-                theme === "dark" ? "text-slate-400" : 
-                theme === "light" ? "text-gray-600" :
-                theme === "vintage" ? "text-[#f3ebd3]" :
-                "text-[#3d2c2c]"
+                theme === "dark"
+                  ? "text-slate-400"
+                  : theme === "light"
+                  ? "text-gray-600"
+                  : theme === "vintage"
+                  ? "text-[#f3ebd3]"
+                  : "text-[#3d2c2c]"
               }`}
             >
               {footer.description}
@@ -97,10 +106,13 @@ const Footer = () => {
             {" "}
             <h4
               className={`font-semibold mb-4 flex items-center justify-center md:justify-start gap-2 ${
-                theme === "dark" ? "text-white" : 
-                theme === "light" ? "text-gray-900" :
-                theme === "vintage" ? "text-[#f3ebd3]" :
-                "text-[#3d2c2c]"
+                theme === "dark"
+                  ? "text-white"
+                  : theme === "light"
+                  ? "text-gray-900"
+                  : theme === "vintage"
+                  ? "text-[#f3ebd3]"
+                  : "text-[#3d2c2c]"
               }`}
             >
               <Code className="w-4 h-4" />
@@ -141,10 +153,13 @@ const Footer = () => {
             {" "}
             <h4
               className={`font-semibold mb-4 ${
-                theme === "dark" ? "text-white" : 
-                theme === "light" ? "text-gray-900" :
-                theme === "vintage" ? "text-[#f3ebd3]" :
-                "text-[#3d2c2c]"
+                theme === "dark"
+                  ? "text-white"
+                  : theme === "light"
+                  ? "text-gray-900"
+                  : theme === "vintage"
+                  ? "text-[#f3ebd3]"
+                  : "text-[#3d2c2c]"
               }`}
             >
               {footer.connectWithMe}
@@ -204,10 +219,13 @@ const Footer = () => {
           transition={{ duration: 0.6, delay: 0.6 }}
           viewport={{ once: true }}
           className={`flex flex-col md:flex-row items-center justify-between gap-4 text-sm ${
-            theme === "dark" ? "text-slate-400" : 
-            theme === "light" ? "text-gray-600" :
-            theme === "vintage" ? "text-[#f3ebd3]/80" :
-            "text-[#3d2c2c]/90"
+            theme === "dark"
+              ? "text-slate-400"
+              : theme === "light"
+              ? "text-gray-600"
+              : theme === "vintage"
+              ? "text-[#f3ebd3]/80"
+              : "text-[#3d2c2c]/90"
           }`}
         >
           {" "}
@@ -221,10 +239,13 @@ const Footer = () => {
               {footer.and}
               <Coffee
                 className={`w-4 h-4 ${
-                  theme === "dark" ? "text-amber-400" : 
-                  theme === "light" ? "text-amber-600" :
-                  theme === "vintage" ? "text-[#e3b505]" :
-                  "text-[#ffd34d]"
+                  theme === "dark"
+                    ? "text-amber-400"
+                    : theme === "light"
+                    ? "text-amber-600"
+                    : theme === "vintage"
+                    ? "text-[#e3b505]"
+                    : "text-[#ffd34d]"
                 }`}
               />
             </span>

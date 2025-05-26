@@ -1,5 +1,4 @@
 // Helper functions for the Skills component
-import type { IconType } from "react-icons";
 
 // Helper function to determine skill level for tech stack items
 export const getLevelNameForTechStack = (
