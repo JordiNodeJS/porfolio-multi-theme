@@ -11,6 +11,7 @@ const Navigation = () => {
   const { theme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
 
   useEffect(() => {
     let ticking = false;
@@ -25,10 +26,23 @@ const Navigation = () => {
       }
     };
 
+    const handleHideNavigation = () => {
+      setIsHidden(true);
+      setIsOpen(false);
+    };
+
+    const handleShowNavigation = () => {
+      setIsHidden(false);
+    };
+
     window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("hideNavigation", handleHideNavigation);
+    window.addEventListener("showNavigation", handleShowNavigation);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("hideNavigation", handleHideNavigation);
+      window.removeEventListener("showNavigation", handleShowNavigation);
     };
   }, []);
 
@@ -62,8 +76,8 @@ const Navigation = () => {
     <motion.nav
       initial={{ y: -100 }}
       animate={{
-        y: 0,
-        opacity: 1,
+        y: isHidden ? -100 : 0,
+        opacity: isHidden ? 0 : 1,
       }}
       transition={{ duration: 0.3 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out ${
@@ -74,7 +88,7 @@ const Navigation = () => {
           : theme === "vintage"
           ? "bg-[#6e4c30]"
           : "bg-transparent"
-      }`}
+      } ${isHidden ? "pointer-events-none" : ""}`}
     >
       <div
         className={`container-custom ${

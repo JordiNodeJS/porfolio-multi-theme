@@ -395,10 +395,15 @@ const Experience = () => {
     console.log(
       `Card clicked: ${company}, index: ${cardIndex}, direction: ${direction}`
     );
+
+    // Ocultar el menú de navegación cuando se abre el modal
+    window.dispatchEvent(new CustomEvent("hideNavigation"));
   };
 
   const handleCloseModal = () => {
     setActiveModal(null);
+    // Mostrar el menú de navegación cuando se cierra el modal
+    window.dispatchEvent(new CustomEvent("showNavigation"));
   };
   const getAchievements = (company: string) => {
     // Get achievements directly from translations as arrays
