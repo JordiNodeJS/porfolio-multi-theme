@@ -160,13 +160,15 @@ const ExperienceCard = ({
             <div className="relative z-10">
               <div className="flex justify-between items-start mb-4">
                 <div>
-                  <h3 className={`text-xl font-bold mb-1 ${
-                    theme === 'dark' 
-                      ? 'text-white' 
-                      : theme === 'vintage'
-                        ? 'text-amber-900'
-                        : 'text-gray-900'
-                  }`}>
+                  <h3
+                    className={`text-xl font-bold mb-1 ${
+                      theme === "dark"
+                        ? "text-white"
+                        : theme === "vintage"
+                        ? "text-amber-900"
+                        : "text-gray-900"
+                    }`}
+                  >
                     {experience.company}
                   </h3>
                   <p
@@ -393,19 +395,10 @@ const Experience = () => {
     console.log(
       `Card clicked: ${company}, index: ${cardIndex}, direction: ${direction}`
     );
-
-    // Ocultar el menú de navegación cuando se abre el modal, excepto en tema brutalism
-    if (theme !== "brutalism") {
-      window.dispatchEvent(new CustomEvent("hideNavigation"));
-    }
   };
 
   const handleCloseModal = () => {
     setActiveModal(null);
-    // Mostrar el menú de navegación cuando se cierra el modal, excepto en tema brutalism
-    if (theme !== "brutalism") {
-      window.dispatchEvent(new CustomEvent("showNavigation"));
-    }
   };
   const getAchievements = (company: string) => {
     // Get achievements directly from translations as arrays
