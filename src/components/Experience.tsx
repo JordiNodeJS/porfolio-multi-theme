@@ -6,11 +6,12 @@ import { useTheme } from "../contexts/ThemeContext";
 import type { ExperienceType } from "../types";
 
 // Definición de propiedades adicionales para ExperienceType
-type ExtendedExperienceType = ExperienceType & {
+interface ExtendedExperienceType extends ExperienceType {
   position?: string;
   period?: string;
   location?: string;
-};
+  description?: string;
+}
 
 const ExperienceCard = ({
   experience,
@@ -22,6 +23,7 @@ const ExperienceCard = ({
   onCompanyClick?: (company: string, cardIndex: number) => void;
 }) => {
   const { t } = useTranslation();
+  const { theme } = useTheme();
   const [isCardHovered, setIsCardHovered] = useState(false);
   const [isNodeHovered, setIsNodeHovered] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
@@ -133,7 +135,17 @@ const ExperienceCard = ({
               )}
             </AnimatePresence>
           )}
-          <div className="bg-gray-800/90 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-gray-700 mb-6">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className={`p-6 rounded-xl shadow-lg border mb-6 ${
+              theme === 'dark' 
+                ? 'bg-gray-800/90 backdrop-blur-sm border-gray-700' 
+                : theme === 'brutalism'
+                ? 'bg-white border-4 border-black'
+                : 'bg-white/90 backdrop-blur-sm border-gray-200'
+            }`}
+          >
             <div className="flex justify-between items-start mb-4">
               <div>
                 <h3 className="text-xl font-bold text-white mb-1">
@@ -155,7 +167,9 @@ const ExperienceCard = ({
               )}
             </div>
             
-            <p className="text-gray-200 mb-4">{experience.description || experience.experience}</p>
+            <p className={`mb-4 text-base leading-relaxed ${theme === 'dark' ? 'text-gray-300' : theme === 'brutalism' ? 'text-black' : 'text-gray-700'}`} style={{fontWeight: 300}}>
+              {experience.description}
+            </p>
             
             {experience.links && (
               <div className="flex flex-wrap gap-2 mt-4">
@@ -175,7 +189,7 @@ const ExperienceCard = ({
                 ))}
               </div>
             )}
-          </div>
+          </motion.div>
         </motion.div>
       </div>
       {/* Timeline Node */}

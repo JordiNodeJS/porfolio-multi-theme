@@ -56,7 +56,10 @@ const Hero = () => {
             <motion.h2 
               className="text-xl md:text-2xl lg:text-3xl font-medium mb-6"
               style={{
-                color: theme === 'dark' ? '#e2e8f0' : '#4a5568'
+                color: theme === 'dark' ? '#e2e8f0' : '#4a5568',
+                textShadow: theme === 'dark' 
+                  ? '0 2px 4px rgba(0,0,0,0.3)' 
+                  : '0 1px 2px rgba(0,0,0,0.1)'
               }}
             >
               Frontend React Engineer
