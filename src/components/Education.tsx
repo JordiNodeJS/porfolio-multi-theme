@@ -3,7 +3,7 @@ import { GraduationCap, Calendar, ExternalLink, Star } from "lucide-react";
 import { usePortfolioTranslations } from "../hooks/usePortfolioTranslations";
 import type { Education as EducationType } from "../types";
 import educationData from "../db/education.json";
-import { useEffect, useState, useRef } from "react";
+import { TextRevealAnimation } from "./TextRevealAnimation";
 
 const EducationCard = ({
   education,
@@ -280,66 +280,17 @@ const Education = () => {
             <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-4 theme-vintage:text-vintage-mustard-light">
               {educationTranslations.learningPhilosophy.title}
             </h3>
-            <TypewriterText 
-              text={`"${educationTranslations.learningPhilosophy.description}"`} 
+            <TextRevealAnimation
+              text={`"${educationTranslations.learningPhilosophy.description}"`}
               className="text-gray-700 dark:text-gray-300 leading-relaxed font-medium italic theme-vintage:text-vintage-cream theme-vintage:font-medium theme-retro-pastel:text-retroPastel-text/90"
+              charDelay={0.03}
+              animationStyle="fade"
+              once={false}
             />
           </div>
         </motion.div>
       </div>
     </section>
-  );
-};
-
-// TypewriterText component with AI-like typing animation
-const TypewriterText = ({ text, className }: { text: string; className: string }) => {
-  const [displayText, setDisplayText] = useState('');
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isTyping, setIsTyping] = useState(true);
-  const containerRef = useRef<HTMLParagraphElement>(null);
-
-  useEffect(() => {
-    if (currentIndex < text.length && isTyping) {
-      const typingSpeed = Math.random() * (80 - 20) + 20; // Random speed between 20ms and 80ms
-      
-      const timeout = setTimeout(() => {
-        setDisplayText(prev => prev + text[currentIndex]);
-        setCurrentIndex(prev => prev + 1);
-        
-        // Add a longer pause at punctuation
-        if (['.', ',', '!', '?', ';', ':'].includes(text[currentIndex])) {
-          setIsTyping(false);
-          setTimeout(() => setIsTyping(true), 200);
-        }
-      }, typingSpeed);
-      
-      return () => clearTimeout(timeout);
-    }
-  }, [currentIndex, text, isTyping]);
-  
-  // Cursor blinking effect
-  const cursorVariants = {
-    blinking: {
-      opacity: [1, 0, 1],
-      transition: {
-        duration: 0.8,
-        repeat: Infinity,
-        repeatType: 'loop' as const
-      }
-    }
-  };
-
-  return (
-    <p className={className} ref={containerRef}>
-      {displayText}
-      {currentIndex < text.length && (
-        <motion.span
-          variants={cursorVariants}
-          animate="blinking"
-          className="inline-block w-0.5 h-4 ml-0.5 bg-current align-middle"
-        ></motion.span>
-      )}
-    </p>
   );
 };
 

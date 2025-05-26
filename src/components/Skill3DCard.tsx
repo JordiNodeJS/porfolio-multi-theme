@@ -75,7 +75,7 @@ const Skill3DCard = ({
   };
 
   return (
-    <div ref={cardRef} className="relative cursor-pointer perspective-1000">
+    <div ref={cardRef} className="relative perspective-1000">
       {" "}
       <animated.div
         className={`p-4 transform-style-3d ${

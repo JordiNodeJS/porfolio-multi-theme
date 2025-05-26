@@ -9,6 +9,7 @@ import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import FloatingParticles from "./components/FloatingParticles";
 import LoadingScreen from "./components/LoadingScreen";
+
 import "./App.css";
 
 function App() {

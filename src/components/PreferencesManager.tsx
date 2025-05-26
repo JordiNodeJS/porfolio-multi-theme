@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Settings, Download, Upload, RotateCcw, Check, X } from "lucide-react";
 import { useUserPreferences } from "../hooks/useUserPreferences";
@@ -24,6 +24,25 @@ const PreferencesManager: React.FC<PreferencesManagerProps> = ({
     type: "success" | "error";
     text: string;
   } | null>(null);
+  
+  const panelRef = useRef<HTMLDivElement>(null);
+  
+  // Cerrar el panel al hacer clic fuera de él
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (isOpen && panelRef.current && !panelRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+    
+    // Agregar el manejador de eventos
+    document.addEventListener('mousedown', handleClickOutside);
+    
+    // Limpiar el manejador de eventos al desmontar el componente
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]); // Solo se vuelve a crear si cambia isOpen
 
   const showMessage = (type: "success" | "error", text: string) => {
     setMessage({ type, text });
@@ -90,7 +109,7 @@ const PreferencesManager: React.FC<PreferencesManagerProps> = ({
   ];
 
   return (
-    <div className={`relative z-50 ${className}`}>
+    <div className={`relative z-50 ${className}`} ref={panelRef}>
       {/* Settings Button */}{" "}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}

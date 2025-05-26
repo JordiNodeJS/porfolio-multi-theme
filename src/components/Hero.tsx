@@ -3,6 +3,7 @@ import { useTheme } from "../hooks/useTheme";
 import { useRef } from "react";
 import { animated } from "@react-spring/web";
 import useEnhanced3DEffect from "../hooks/useEnhanced3DEffect";
+import { TextRevealAnimation } from "./TextRevealAnimation";
 
 const Hero = () => {
   const { theme } = useTheme();
@@ -209,7 +210,7 @@ const Hero = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            <motion.h1
+            <div
               className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-4 ${
                 theme === "brutalism"
                   ? "text-black"
@@ -234,14 +235,17 @@ const Hero = () => {
                   '1px 1px 0 #000',
                 WebkitTextStroke: '0.5px #000'
               }}
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.1 }}
             >
-              JORGE
-            </motion.h1>
+              <TextRevealAnimation 
+                text="JORGE" 
+                charDelay={0.08}
+                animationStyle="scale"
+                once={false}
+                replay={false}
+              />
+            </div>
 
-            <motion.h2
+            <div
               className={`text-xl md:text-2xl lg:text-3xl font-medium mb-6 ${
                 theme === "dark"
                   ? "text-slate-200"
@@ -258,32 +262,13 @@ const Hero = () => {
                     : "0 1px 4px rgba(0,0,0,0.1)",
                 WebkitTextStroke: theme === "brutalism" ? "0.3px #000" : "none",
               }}
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
             >
-              <span
-                className={`${
-                  theme === "dark" ? "text-emerald-400" : "text-emerald-600"
-                } font-semibold`}
-              >
-                Frontend
-              </span>{" "}
-              <span
-                className={`${
-                  theme === "dark" ? "text-blue-400" : "text-blue-600"
-                } font-semibold`}
-              >
-                React
-              </span>{" "}
-              <span
-                className={`${
-                  theme === "dark" ? "text-purple-400" : "text-purple-600"
-                } font-semibold`}
-              >
-                Engineer
-              </span>
-            </motion.h2>
+              <TextRevealAnimation 
+                text="Frontend React Engineer" 
+                charDelay={0.05}
+                once={false}
+              />
+            </div>
 
             <motion.div
               className={`w-24 h-1 mx-auto rounded-full ${

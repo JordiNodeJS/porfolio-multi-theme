@@ -214,6 +214,7 @@ const SkillBar = ({
 const Skills = () => {
   const { skills: skillsDataFromHook } = usePortfolioData();
   const { skills: skillsTranslations } = usePortfolioTranslations();
+  const { theme } = useTheme();
 
   const techStack = [
     { icon: SiReact, name: "React", color: "from-blue-500 to-blue-700" },
@@ -255,7 +256,18 @@ const Skills = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl mb-8 brutal-title">
+          <h2 
+            className={`text-4xl md:text-5xl mb-8 ${theme === "brutalism" ? "brutal-title" : 
+              theme === "vintage" ? "font-serif font-bold text-amber-800 border-b-2 border-amber-700 pb-2" : 
+              theme === "retro-pastel" ? "font-medium text-pink-600 text-shadow" : 
+              "font-bold text-gray-800 dark:text-gray-100"}`}
+            style={{
+              textShadow: theme === "vintage" ? "1px 1px 0 rgba(120, 53, 15, 0.3)" : 
+                        theme === "retro-pastel" ? "2px 2px 0 rgba(255, 182, 193, 0.4)" : 
+                        theme === "brutalism" ? undefined : 
+                        "0 2px 4px rgba(0, 0, 0, 0.1)"
+            }}
+          >
             {skillsTranslations.title}
           </h2>
           <p className="text-xl text-gray-800 dark:text-gray-200 max-w-2xl mx-auto font-medium leading-relaxed">
@@ -272,7 +284,15 @@ const Skills = () => {
             viewport={{ once: true }}
             className="glass-effect p-6 rounded-xl border-t-4 border-t-primary-500/50 dark:border-t-primary-400/50"
           >
-            <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-8 border-b pb-2 border-primary-500/30 dark:border-primary-400/30">
+            <h3 
+              className={`text-2xl mb-8 ${theme === "brutalism" ? 
+                "font-black uppercase border-b-4 border-black dark:border-white pb-2" : 
+                theme === "vintage" ? 
+                "font-serif font-bold text-amber-700 border-b-2 border-amber-600/50 pb-2" : 
+                theme === "retro-pastel" ? 
+                "font-medium text-pink-500 border-b border-pink-300 pb-2" : 
+                "font-bold text-gray-800 dark:text-gray-100 border-b pb-2 border-primary-500/30 dark:border-primary-400/30"}`}
+            >
               {skillsTranslations.competenceLevel}{" "}
             </h3>
             <div className="space-y-4">
@@ -294,7 +314,15 @@ const Skills = () => {
             viewport={{ once: true }}
             className="glass-effect p-6 rounded-xl border-t-4 border-t-purple-500/50 dark:border-t-purple-400/50"
           >
-            <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-8 border-b pb-2 border-purple-500/30 dark:border-purple-400/30">
+            <h3 
+              className={`text-2xl mb-8 ${theme === "brutalism" ? 
+                "font-black uppercase border-b-4 border-black dark:border-white pb-2" : 
+                theme === "vintage" ? 
+                "font-serif font-bold text-purple-800 border-b-2 border-purple-700/50 pb-2" : 
+                theme === "retro-pastel" ? 
+                "font-medium text-purple-500 border-b border-purple-300 pb-2" : 
+                "font-bold text-gray-800 dark:text-gray-100 border-b pb-2 border-purple-500/30 dark:border-purple-400/30"}`}
+            >
               {skillsTranslations.techStack}
             </h3>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
@@ -333,8 +361,18 @@ const Skills = () => {
           }}
         >
           <h3 
-            className="text-3xl font-black mb-8 pb-2 border-b-4 border-black dark:border-white uppercase tracking-wider"
-            style={{ letterSpacing: '2px' }}
+            className={`text-3xl mb-8 pb-2 ${theme === "brutalism" ? 
+              "font-black uppercase border-b-4 border-black dark:border-white tracking-wider" : 
+              theme === "vintage" ? 
+              "font-serif font-bold text-amber-700 border-b-2 border-amber-600/50" : 
+              theme === "retro-pastel" ? 
+              "font-medium text-pink-500 border-b border-pink-300" : 
+              "font-bold text-gray-800 dark:text-gray-100 border-b-2 border-primary-500/30 dark:border-primary-400/30"}`}
+            style={{ 
+              letterSpacing: theme === "brutalism" ? '2px' : 
+                           theme === "vintage" ? '1px' : 
+                           theme === "retro-pastel" ? '0.5px' : '0.5px'
+            }}
           >
             {skillsTranslations.methodologies}
           </h3>
