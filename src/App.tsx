@@ -42,6 +42,58 @@ function App() {
     };
   }, []);
 
+  useEffect(() => {
+    const title = "PORTFOLIO";
+    let currentIndex = 0;
+    let currentTitle = "";
+    let isDeleting = false;
+    const typingSpeed = 150; // ms
+    const deletingSpeed = 100; // ms
+    const pauseEnd = 1500; // ms pause at the end of full title
+
+    const animateTitle = () => {
+      if (isDeleting) {
+        currentTitle = title.substring(0, currentIndex);
+        currentIndex--;
+        if (currentIndex < 0) {
+          isDeleting = false;
+          currentIndex = 0;
+          // Optional: pause before re-typing or change direction
+        }
+      } else {
+        currentTitle = title.substring(0, currentIndex + 1);
+        currentIndex++;
+        if (currentIndex === title.length) {
+          document.title = currentTitle; // Display full title before pause
+          isDeleting = true;
+          // Pause at the end before deleting
+          setTimeout(() => {
+            requestAnimationFrame(animateTitleLoop);
+          }, pauseEnd);
+          return; // Exit to wait for pause
+        }
+      }
+      document.title =
+        currentTitle +
+        (isDeleting ? "_" : currentIndex === title.length ? "" : "_"); // Add cursor effect
+
+      const speed = isDeleting ? deletingSpeed : typingSpeed;
+      setTimeout(animateTitleLoop, speed);
+    };
+
+    const animateTitleLoop = () => {
+      requestAnimationFrame(animateTitle);
+    };
+
+    const timeoutId = setTimeout(animateTitleLoop, typingSpeed); // Start animation
+
+    // Cleanup on component unmount
+    return () => {
+      clearTimeout(timeoutId); // Use the correct variable name for the timeout ID
+      document.title = title; // Reset title to full
+    };
+  }, []);
+
   return (
     <>
       <LoadingScreen />
