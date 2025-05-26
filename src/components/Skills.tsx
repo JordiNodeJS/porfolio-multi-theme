@@ -32,11 +32,11 @@ const SkillBar = ({
 
   const getSkillColor = (level: number) => {
     // Colores retro inspirados en paletas de los 80s/90s
-    if (level >= 85) return "from-yellow-400 to-yellow-600"; // Amarillo mostaza retro
-    if (level >= 65) return "from-cyan-400 to-cyan-600"; // Cian brillante
-    if (level >= 40) return "from-pink-400 to-pink-600"; // Rosa neón
-    if (level === 75) return "from-purple-400 to-purple-600"; // Púrpura retro
-    return "from-green-400 to-green-600"; // Verde neón
+    if (level >= 85) return { gradient: "from-yellow-400 to-yellow-600", bg: "bg-yellow-500" }; // Amarillo mostaza retro
+    if (level >= 65) return { gradient: "from-cyan-400 to-cyan-600", bg: "bg-cyan-500" }; // Cian brillante
+    if (level >= 40) return { gradient: "from-pink-400 to-pink-600", bg: "bg-pink-500" }; // Rosa neón
+    if (level === 75) return { gradient: "from-purple-400 to-purple-600", bg: "bg-purple-500" }; // Púrpura retro
+    return { gradient: "from-green-400 to-green-600", bg: "bg-green-500" }; // Verde neón
   };
 
   const progress = skill.level; // Level is already a number
@@ -53,21 +53,24 @@ const SkillBar = ({
         <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-100">
           {skill.name}
         </h3>
-        <span
-          className="text-xs font-bold uppercase tracking-wider px-3 py-1"
+        <motion.span
+          className={`text-xs font-bold uppercase tracking-wider px-3 py-1 ${getSkillColor(skill.level).bg} text-white`}
           style={{
-            color: "#000",
-            backgroundColor: "#fde047", // Amarillo mostaza retro
             border: "2px solid #000",
             fontFamily: "'Courier New', monospace",
             letterSpacing: "1px",
-            boxShadow: "none",
+            boxShadow: "2px 2px 0 rgba(0,0,0,0.2)",
             transform: "skew(-10deg)",
             display: "inline-block",
           }}
+          whileHover={{ 
+            scale: 1.05,
+            boxShadow: "3px 3px 0 rgba(0,0,0,0.3)",
+            transition: { duration: 0.2 }
+          }}
         >
           {getSkillLevelText(skill.level)}
-        </span>
+        </motion.span>
       </div>
       <div className="w-full bg-gray-200/80 dark:bg-gray-700/80 h-4 overflow-hidden border-2 border-gray-400 dark:border-gray-600 relative">
         <div
@@ -85,7 +88,7 @@ const SkillBar = ({
           viewport={{ once: true }}
           className={`h-full bg-gradient-to-r ${getSkillColor(
             skill.level
-          )} relative`}
+          ).gradient} relative`}
           style={{
             boxShadow: "none",
             borderRight: "2px solid rgba(255,255,255,0.5)",
