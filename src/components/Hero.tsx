@@ -184,13 +184,14 @@ const Hero = () => {
                   transition: { duration: 0.6, ease: "easeInOut" }
                 });
               }}
-              className="relative w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 mb-8 flex-shrink-0"
+              className="relative w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 mb-8 flex-shrink-0 z-10"
             >
               {/* Animated Border */}
               <motion.div
                 animate={circleControls}
                 initial={{ scale: 1 }}
-                className={`absolute inset-0 rounded-full animate-spin-slow ${
+                style={{ willChange: 'transform', backfaceVisibility: 'hidden' }}
+                className={`absolute inset-0 rounded-full animate-spin-slow z-10 ${
                   theme === "dark"
                     ? "bg-gradient-to-r from-primary-400 via-purple-500 to-primary-400"
                     : theme === "light"
@@ -210,9 +211,10 @@ const Hero = () => {
                 }`}
               >
                 <motion.div 
-                  className="relative w-full h-full rounded-full overflow-visible"
+                  className="relative w-full h-full rounded-full overflow-visible z-20"
                   animate={imageControls}
                   initial={{ scale: 1, y: 0 }}
+                  style={{ willChange: 'transform' }}
                 >
                   <motion.img
                     src="/src/assets/developer.png"
@@ -234,7 +236,7 @@ const Hero = () => {
 
               {/* Glow Effect */}
               <motion.div 
-                className={`absolute inset-0 rounded-full blur-xl opacity-30 ${theme === "dark"
+                className={`absolute inset-0 rounded-full opacity-30 ${theme === "dark"
                   ? "bg-gradient-to-r from-primary-400 to-purple-500"
                   : theme === "light"
                   ? "bg-gradient-to-r from-primary-500 to-purple-600"
@@ -242,7 +244,8 @@ const Hero = () => {
                 }`}
                 animate={circleControls}
                 initial={{ scale: 1 }}
-                data-component-name="Hero"
+                data-component-name="MotionComponent"
+                style={{ filter: 'blur(1rem)', backfaceVisibility: 'hidden' }}
               ></motion.div>
             </motion.div>
 
