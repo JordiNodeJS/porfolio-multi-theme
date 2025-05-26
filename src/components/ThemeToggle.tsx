@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Sun, Moon, Coffee, Heart } from "lucide-react";
+import { Sun, Moon, Coffee, Heart, Zap } from "lucide-react";
 import { useTheme } from "../contexts/ThemeContext";
 
 const ThemeToggle = () => {
@@ -38,7 +38,7 @@ const ThemeToggle = () => {
       >
         <Sun className="w-5 h-5" />
       </motion.div>
-      
+
       <motion.div
         initial={false}
         animate={{
@@ -51,7 +51,6 @@ const ThemeToggle = () => {
       >
         <Coffee className="w-5 h-5" />
       </motion.div>
-      
       <motion.div
         initial={false}
         animate={{
@@ -63,6 +62,22 @@ const ThemeToggle = () => {
         className="absolute inset-0 flex items-center justify-center"
       >
         <Heart className="w-5 h-5 text-[#e56b81]" />
+      </motion.div>
+
+      <motion.div
+        initial={false}
+        animate={{
+          scale: theme === "brutalism" ? 1 : 0,
+          opacity: theme === "brutalism" ? 1 : 0,
+          rotate: theme === "brutalism" ? 0 : 180,
+        }}
+        transition={{ duration: 0.3 }}
+        className="absolute inset-0 flex items-center justify-center"
+      >
+        <Zap
+          className="w-5 h-5 text-black font-black"
+          style={{ filter: "drop-shadow(2px 2px 0px #ff6b6b)" }}
+        />
       </motion.div>
     </motion.button>
   );

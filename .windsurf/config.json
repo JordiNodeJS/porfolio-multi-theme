@@ -1,0 +1,64 @@
+{
+  "project": {
+    "name": "Portfolio Worktree",
+    "description": "Portfolio personal con múltiples temas y estilos",
+    "version": "1.0.0",
+    "packageManager": "bun",
+    "packageManagerVersion": "^1.0.0",
+    "nodeVersion": ">=18.0.0"
+  },
+  "rules": {
+    "useBun": true,
+    "preferTypeScript": true,
+    "enforceCodeStyle": {
+      "semicolons": true,
+      "quotes": "single",
+      "trailingComma": "es5"
+    },
+    "fileNaming": {
+      "components": "PascalCase",
+      "pages": "PascalCase",
+      "hooks": "camelCase",
+      "utils": "camelCase",
+      "styles": "kebab-case"
+    },
+    "imports": {
+      "sortImports": true,
+      "groupImports": ["react", "next", "@/components", "@/lib", "@/styles", "@/types", "@/contexts", "@/hooks", "@/utils"]
+    },
+    "testing": {
+      "preferTestingLibrary": true,
+      "testFileNaming": "*.test.tsx",
+      "coverageThreshold": 80
+    },
+    "git": {
+      "branchNaming": "(feature|bugfix|hotfix|chore)/[a-z0-9-]+",
+      "commitMessage": {
+        "format": "type(scope): subject",
+        "types": ["feat", "fix", "docs", "style", "refactor", "test", "chore"],
+        "maxLineLength": 100
+      }
+    }
+  },
+  "scripts": {
+    "dev": "bun dev --port 5173",
+    "build": "bun run build",
+    "start": "bun start",
+    "test": "bun test",
+    "lint": "bun run lint",
+    "format": "bun run format",
+    "typecheck": "tsc --noEmit"
+  },
+  "recommendedExtensions": [
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "bradlc.vscode-tailwindcss",
+    "bun.vbun-vscode"
+  ],
+  "notes": [
+    "Este proyecto utiliza Bun como gestor de paquetes.",
+    "Asegúrate de tener Bun instalado globalmente: `npm install -g bun` o `curl -fsSL https://bun.sh/install | bash`",
+    "Para instalar dependencias: `bun install`",
+    "Para ejecutar el servidor de desarrollo: `bun run dev`"
+  ]
+}

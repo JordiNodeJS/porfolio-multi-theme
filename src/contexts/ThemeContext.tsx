@@ -6,7 +6,7 @@ import {
   type ReactNode,
 } from "react";
 
-type Theme = "dark" | "light" | "vintage" | "retro-pastel";
+type Theme = "dark" | "light" | "vintage" | "retro-pastel" | "brutalism";
 
 interface ThemeContextType {
   theme: Theme;
@@ -29,29 +29,40 @@ interface ThemeProviderProps {
 
 export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   const [theme, setTheme] = useState<Theme>("dark");
-
   useEffect(() => {
     // Check for saved theme preference or default to 'dark'
     const savedTheme = localStorage.getItem("theme") as Theme;
-    if (savedTheme && (savedTheme === "dark" || savedTheme === "light" || savedTheme === "vintage" || savedTheme === "retro-pastel")) {
+    if (
+      savedTheme &&
+      (savedTheme === "dark" ||
+        savedTheme === "light" ||
+        savedTheme === "vintage" ||
+        savedTheme === "retro-pastel" ||
+        savedTheme === "brutalism")
+    ) {
       setTheme(savedTheme);
     }
   }, []);
-
   useEffect(() => {
     // Apply theme to document and save to localStorage
-    document.documentElement.setAttribute('data-theme', theme);
+    document.documentElement.setAttribute("data-theme", theme);
     // Also keep class for compatibility with existing code
-    document.documentElement.classList.remove("dark", "light", "vintage", "retro-pastel");
+    document.documentElement.classList.remove(
+      "dark",
+      "light",
+      "vintage",
+      "retro-pastel",
+      "brutalism"
+    );
     document.documentElement.classList.add(theme);
     localStorage.setItem("theme", theme);
   }, [theme]);
-
   const toggleTheme = () => {
-    setTheme((prevTheme) => {
+    setTheme((prevTheme: Theme) => {
       if (prevTheme === "dark") return "light";
       if (prevTheme === "light") return "vintage";
       if (prevTheme === "vintage") return "retro-pastel";
+      if (prevTheme === "retro-pastel") return "brutalism";
       return "dark";
     });
   };

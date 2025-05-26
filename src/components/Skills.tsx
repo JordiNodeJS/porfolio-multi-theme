@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { usePortfolioData } from "../hooks/usePortfolioData";
 import { usePortfolioTranslations } from "../hooks/usePortfolioTranslations";
+import { useTheme } from "../contexts/ThemeContext";
 import type { IconType } from "react-icons";
 import {
   SiReact,
@@ -30,12 +31,51 @@ const SkillBar = ({
     return "Intermedio";
   };
 
+  const { theme } = useTheme();
+
   const getSkillColor = (level: number) => {
-    if (level >= 85) return "from-green-500 to-emerald-600"; // Más intenso para mejorar contraste
-    if (level >= 65) return "from-blue-500 to-blue-600"; // Más intenso para mejorar contraste
-    if (level >= 40) return "from-amber-500 to-orange-600"; // Cambiado de yellow a amber para mejor contraste
-    if (level === 75) return "from-purple-500 to-purple-600"; // Más intenso para mejorar contraste
-    return "from-primary-500 to-primary-600"; // Más intenso para mejorar contraste
+    // Colores para el tema vintage
+    if (theme === 'vintage') {
+      if (level >= 85) return { gradient: 'from-amber-600 to-amber-800', bg: 'bg-amber-700' };
+      if (level >= 65) return { gradient: 'from-teal-600 to-teal-800', bg: 'bg-teal-700' };
+      if (level >= 40) return { gradient: 'from-rose-600 to-rose-800', bg: 'bg-rose-700' };
+      if (level === 75) return { gradient: 'from-violet-600 to-violet-800', bg: 'bg-violet-700' };
+      return { gradient: 'from-emerald-600 to-emerald-800', bg: 'bg-emerald-700' };
+    }
+    
+    // Colores para el tema retro-pastel
+    if (theme === 'retro-pastel') {
+      if (level >= 85) return { gradient: 'from-amber-300 to-amber-500', bg: 'bg-amber-400' };
+      if (level >= 65) return { gradient: 'from-cyan-300 to-cyan-500', bg: 'bg-cyan-400' };
+      if (level >= 40) return { gradient: 'from-pink-300 to-pink-500', bg: 'bg-pink-400' };
+      if (level === 75) return { gradient: 'from-purple-300 to-purple-500', bg: 'bg-purple-400' };
+      return { gradient: 'from-green-300 to-green-500', bg: 'bg-green-400' };
+    }
+    
+    // Colores para el tema brutalism
+    if (theme === 'brutalism') {
+      if (level >= 85) return { gradient: 'from-yellow-400 to-yellow-600', bg: 'bg-yellow-500' };
+      if (level >= 65) return { gradient: 'from-cyan-400 to-cyan-600', bg: 'bg-cyan-500' };
+      if (level >= 40) return { gradient: 'from-pink-400 to-pink-600', bg: 'bg-pink-500' };
+      if (level === 75) return { gradient: 'from-purple-400 to-purple-600', bg: 'bg-purple-500' };
+      return { gradient: 'from-green-400 to-green-600', bg: 'bg-green-500' };
+    }
+    
+    // Colores para los temas claro/oscuro por defecto
+    if (theme === 'light') {
+      if (level >= 85) return { gradient: 'from-blue-500 to-blue-700', bg: 'bg-blue-600' };
+      if (level >= 65) return { gradient: 'from-emerald-500 to-emerald-700', bg: 'bg-emerald-600' };
+      if (level >= 40) return { gradient: 'from-amber-500 to-amber-700', bg: 'bg-amber-600' };
+      if (level === 75) return { gradient: 'from-indigo-500 to-indigo-700', bg: 'bg-indigo-600' };
+      return { gradient: 'from-green-500 to-green-700', bg: 'bg-green-600' };
+    }
+    
+    // Tema oscuro por defecto
+    if (level >= 85) return { gradient: 'from-blue-400 to-blue-600', bg: 'bg-blue-500' };
+    if (level >= 65) return { gradient: 'from-emerald-400 to-emerald-600', bg: 'bg-emerald-500' };
+    if (level >= 40) return { gradient: 'from-amber-400 to-amber-600', bg: 'bg-amber-500' };
+    if (level === 75) return { gradient: 'from-indigo-400 to-indigo-600', bg: 'bg-indigo-500' };
+    return { gradient: 'from-green-400 to-green-600', bg: 'bg-green-500' };
   };
 
   const progress = skill.level; // Level is already a number
@@ -52,11 +92,50 @@ const SkillBar = ({
         <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-100">
           {skill.name}
         </h3>
-        <span className="text-sm text-gray-800 dark:text-gray-100 capitalize font-medium px-2 py-1 bg-gray-200/80 dark:bg-gray-700/80 rounded-full shadow-sm">
+        <motion.span
+          className={`text-xs font-bold uppercase tracking-wider px-3 py-1 ${
+            getSkillColor(skill.level).bg
+          } ${
+            theme === 'brutalism' 
+              ? 'text-black border-2 border-black' 
+              : theme === 'retro-pastel'
+              ? 'text-gray-900 border border-white/30'
+              : theme === 'vintage'
+              ? 'text-white border border-amber-900/30'
+              : theme === 'light'
+              ? 'text-white border border-white/30'
+              : 'text-white border border-white/30'
+          }`}
+          style={{
+            fontFamily: theme === 'brutalism' ? "'Courier New', monospace" : 'inherit',
+            letterSpacing: theme === 'brutalism' ? '1px' : '0.5px',
+            boxShadow: theme === 'brutalism' ? '2px 2px 0 rgba(0,0,0,0.2)' : 'none',
+            transform: theme === 'brutalism' ? 'skew(-10deg)' : 'none',
+            display: 'inline-block',
+            borderRadius: theme === 'brutalism' ? '0' : '0.375rem',
+          }}
+          whileHover={{
+            scale: theme === 'brutalism' ? 1.05 : 1.02,
+            boxShadow: theme === 'brutalism' 
+              ? '3px 3px 0 rgba(0,0,0,0.3)' 
+              : theme === 'retro-pastel' || theme === 'vintage'
+              ? '0 4px 12px -2px rgba(0,0,0,0.1)'
+              : '0 4px 12px -2px rgba(255,255,255,0.1)',
+            transition: { duration: 0.2 }
+          }}
+        >
           {getSkillLevelText(skill.level)}
-        </span>
+        </motion.span>
       </div>
-      <div className="w-full bg-gray-200/80 dark:bg-gray-700/80 rounded-full h-3 overflow-hidden shadow-inner">
+      <div className="w-full bg-gray-200/80 dark:bg-gray-700/80 h-4 overflow-hidden border-2 border-gray-400 dark:border-gray-600 relative">
+        <div
+          className="absolute inset-0 bg-gray-300/30 dark:bg-gray-800/30"
+          style={{
+            backgroundImage:
+              "linear-gradient(45deg, rgba(0,0,0,0.1) 25%, transparent 25%, transparent 50%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.1) 75%, transparent 75%, transparent)",
+            backgroundSize: "10px 10px",
+          }}
+        />
         <motion.div
           initial={{ width: 0 }}
           whileInView={{ width: `${progress}%` }}
@@ -64,15 +143,19 @@ const SkillBar = ({
           viewport={{ once: true }}
           className={`h-full bg-gradient-to-r ${getSkillColor(
             skill.level
-          )} rounded-full relative shadow-sm group-hover:brightness-110 transition-all`}
+          ).gradient} relative`}
+          style={{
+            boxShadow: "none",
+            borderRight: "2px solid rgba(255,255,255,0.5)",
+          }}
         >
-          <motion.div
-            animate={{
-              opacity: [0.6, 1, 0.6],
-              scale: [1, 1.05, 1],
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(to bottom, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 100%)",
+              borderTop: "1px solid rgba(255,255,255,0.4)",
             }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="absolute inset-0 bg-white/30 rounded-full"
           />
         </motion.div>
       </div>
@@ -91,7 +174,6 @@ const TechIcon = ({
 }) => (
   <motion.div
     whileHover={{
-      scale: 1.1,
       y: -5,
       rotate: [0, -1, 1, -1, 1, 0],
     }}
@@ -100,12 +182,12 @@ const TechIcon = ({
       rotate: { duration: 0.3, ease: "easeInOut" },
     }}
     whileTap={{ scale: 0.95 }}
-    className="flex flex-col items-center p-4 glass-effect rounded-xl border-t-2 border-t-primary-500/40 dark:border-t-primary-400/40 backdrop-blur-sm shadow-md hover:shadow-xl dark:hover:bg-white/10 light:hover:bg-black/5 transition-all duration-300 group"
+    className="flex flex-col items-center p-4 glass-effect rounded-xl border-t-2 border-t-primary-500/40 dark:border-t-primary-400/40 backdrop-blur-sm hover:bg-white/10 dark:hover:bg-white/10 light:hover:bg-black/5 transition-all duration-300 group"
   >
     <div
-      className={`p-3 rounded-lg bg-gradient-to-br ${color} mb-3 group-hover:shadow-lg transition-shadow border border-white/20 dark:border-white/10`}
+      className={`p-3 rounded-lg bg-gradient-to-br ${color} mb-3 transition-colors border border-white/20 dark:border-white/10`}
     >
-      <Icon className="w-8 h-8 text-white drop-shadow-lg" />
+      <Icon className="w-8 h-8 text-white" />
     </div>
     <span className="text-sm text-gray-800 dark:text-gray-100 font-medium group-hover:text-primary-600 dark:group-hover:text-primary-300 transition-colors">
       {name}
@@ -157,7 +239,7 @@ const Skills = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-6 drop-shadow-md">
+          <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-6">
             {skillsTranslations.title}
           </h2>
           <p className="text-xl text-gray-800 dark:text-gray-200 max-w-2xl mx-auto font-medium leading-relaxed">
@@ -172,9 +254,9 @@ const Skills = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="glass-effect p-6 rounded-xl border-t-4 border-t-primary-500/50 dark:border-t-primary-400/50 shadow-md"
+            className="glass-effect p-6 rounded-xl border-t-4 border-t-primary-500/50 dark:border-t-primary-400/50"
           >
-            <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-8 drop-shadow-sm border-b pb-2 border-primary-500/30 dark:border-primary-400/30">
+            <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-8 border-b pb-2 border-primary-500/30 dark:border-primary-400/30">
               {skillsTranslations.competenceLevel}{" "}
             </h3>
             <div className="space-y-4">
@@ -194,9 +276,9 @@ const Skills = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="glass-effect p-6 rounded-xl border-t-4 border-t-purple-500/50 dark:border-t-purple-400/50 shadow-md"
+            className="glass-effect p-6 rounded-xl border-t-4 border-t-purple-500/50 dark:border-t-purple-400/50"
           >
-            <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-8 drop-shadow-sm border-b pb-2 border-purple-500/30 dark:border-purple-400/30">
+            <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-8 border-b pb-2 border-purple-500/30 dark:border-purple-400/30">
               {skillsTranslations.techStack}
             </h3>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
@@ -222,12 +304,12 @@ const Skills = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="glass-effect p-6 rounded-xl border-t-4 border-t-primary-500/50 dark:border-t-primary-400/50 shadow-md max-w-3xl mx-auto"
+          className="glass-effect p-6 rounded-xl border-t-4 border-t-primary-500/50 dark:border-t-primary-400/50 max-w-3xl mx-auto"
         >
-          <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-8 drop-shadow-sm border-b pb-2 border-primary-500/30 dark:border-primary-400/30">
+          <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-8 border-b pb-2 border-primary-500/30 dark:border-primary-400/30">
             {skillsTranslations.methodologies}{" "}
           </h3>
-          <div className="bg-gradient-to-br from-primary-600/30 to-purple-600/30 dark:from-primary-700/40 dark:to-purple-800/40 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-primary-500/30 dark:border-primary-400/20">
+          <div className="bg-gradient-to-br from-primary-600/30 to-purple-600/30 dark:from-primary-700/40 dark:to-purple-800/40 backdrop-blur-sm p-6 rounded-xl border border-primary-500/30 dark:border-primary-400/20">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {[
                 "Agile/SCRUM",
@@ -240,7 +322,7 @@ const Skills = () => {
                   whileHover={{ y: -5 }}
                   className="flex flex-col items-center group p-3 rounded-lg hover:bg-white/10 transition-colors"
                 >
-                  <div className="w-12 h-12 flex items-center justify-center bg-primary-500/30 dark:bg-primary-400/30 rounded-full group-hover:bg-primary-500/50 dark:group-hover:bg-primary-300/40 transition-colors shadow-sm border border-primary-500/20 dark:border-primary-400/20 mb-3">
+                  <div className="w-12 h-12 flex items-center justify-center bg-primary-500/30 dark:bg-primary-400/30 rounded-full group-hover:bg-primary-500/50 dark:group-hover:bg-primary-300/40 transition-colors border border-primary-500/20 dark:border-primary-400/20 mb-3">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="w-6 h-6 text-primary-700 dark:text-primary-300"

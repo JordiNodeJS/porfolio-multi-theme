@@ -1,26 +1,35 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { MapPin, ExternalLink, X } from "lucide-react";
+import { MapPin, ExternalLink, X, Calendar } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useState, useEffect } from "react";
+import { useTheme } from "../contexts/ThemeContext";
 import type { ExperienceType } from "../types";
+
+// Definición de propiedades adicionales para ExperienceType
+interface ExtendedExperienceType extends ExperienceType {
+  position?: string;
+  period?: string;
+  location?: string;
+  description?: string;
+}
 
 const ExperienceCard = ({
   experience,
   index,
   onCompanyClick,
 }: {
-  experience: ExperienceType;
+  experience: ExtendedExperienceType;
   index: number;
   onCompanyClick?: (company: string, cardIndex: number) => void;
 }) => {
   const { t } = useTranslation();
+  const { theme } = useTheme();
   const [isCardHovered, setIsCardHovered] = useState(false);
   const [isNodeHovered, setIsNodeHovered] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
-  
   useEffect(() => {
-    let timer: NodeJS.Timeout;
-    
+    let timer: number;
+
     if (isCardHovered) {
       setShowTooltip(true);
       // Ocultar el tooltip después de 3 segundos
@@ -30,7 +39,7 @@ const ExperienceCard = ({
     } else {
       setShowTooltip(false);
     }
-    
+
     return () => clearTimeout(timer);
   }, [isCardHovered]);
   const isClickableCard =
@@ -44,6 +53,7 @@ const ExperienceCard = ({
     if (experience.company.includes("Aula Magna")) return "Aula Magna";
     return "";
   };
+
   return (
     <motion.div
       initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
@@ -60,7 +70,6 @@ const ExperienceCard = ({
         index % 2 === 0 ? "flex-row" : "flex-row-reverse"
       } items-center mb-16 relative`}
     >
-      {" "}
       {/* Content */}
       <div className="w-5/12">
         <motion.div
@@ -79,84 +88,172 @@ const ExperienceCard = ({
           onMouseEnter={() => setIsCardHovered(true)}
           onMouseLeave={() => setIsCardHovered(false)}
         >
-          {" "}
           {/* Tooltip personalizado */}
           {isClickableCard && (
             <AnimatePresence>
               {showTooltip && (
-                <motion.div 
+                <motion.div
                   className="absolute -top-12 glass-effect text-white text-xs px-3 py-2 rounded-lg pointer-events-none whitespace-nowrap z-10 border border-primary-500/30"
                   style={{
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                    width: 'max-content',
-                    maxWidth: '90%'
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                    width: "max-content",
+                    maxWidth: "90%",
                   }}
-                  initial={{ opacity: 0, y: 20, scale: 0.8, x: '-50%' }}
-                  animate={{ 
-                    opacity: 1, 
-                    y: 0, 
+                  initial={{ opacity: 0, y: 20, scale: 0.8, x: "-50%" }}
+                  animate={{
+                    opacity: 1,
+                    y: 0,
                     scale: 1,
-                    transition: { 
-                      type: 'spring',
+                    transition: {
+                      type: "spring",
                       damping: 20,
-                      stiffness: 300
-                    }
+                      stiffness: 300,
+                    },
                   }}
-                  exit={{ 
-                    opacity: 0, 
-                    y: 20, 
+                  exit={{
+                    opacity: 0,
+                    y: 20,
                     scale: 0.8,
-                    x: '-50%',
-                    transition: { 
-                      duration: 0.3 
-                    }
+                    x: "-50%",
+                    transition: {
+                      duration: 0.3,
+                    },
                   }}
                 >
                   {t("experience.clickTooltip")}
-                  <motion.div 
+                  <motion.div
                     className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-current"
                     initial={{ y: -4, opacity: 0 }}
-                    animate={{ 
-                      y: 0, 
+                    animate={{
+                      y: 0,
                       opacity: 1,
-                      transition: { delay: 0.1 }
+                      transition: { delay: 0.1 },
                     }}
                   />
                 </motion.div>
               )}
             </AnimatePresence>
           )}
-          <h3 className="text-xl font-bold text-white mb-2 text-left">
-            {experience.company}
-          </h3>{" "}
-          <div className="flex items-center gap-2 mb-4 text-primary-400">
-            <MapPin className="w-4 h-4" />
-            <span className="text-sm">{t("experience.location")}</span>
-          </div>
-          <p className="text-gray-300 text-sm leading-relaxed mb-4 text-left">
-            {experience.experience}
-          </p>
-          {/* Links */}
-          {experience.links && (
-            <div className="flex gap-2 flex-wrap justify-start">
-              {experience.links.map((link: string, linkIndex: number) => (
-                <motion.a
-                  key={linkIndex}
-                  href={link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="flex items-center gap-1 text-xs text-primary-400 hover:text-primary-300 transition-colors"
-                >
-                  {" "}
-                  <ExternalLink className="w-3 h-3" />
-                  {t("experience.viewProject")}
-                </motion.a>
-              ))}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className={`p-6 rounded-xl shadow-lg border mb-6 relative overflow-hidden ${
+              theme === "dark"
+                ? "bg-gray-800/90 backdrop-blur-sm border-gray-700"
+                : theme === "brutalism"
+                ? "bg-white border-4 border-black"
+                : theme === "vintage"
+                ? "bg-amber-50/95 border-amber-200 shadow-md backdrop-blur-sm"
+                : "bg-white/90 backdrop-blur-sm border-gray-200"
+            }`}
+          >
+            {theme === "dark" && (
+              <div
+                className="absolute inset-0 opacity-5 pointer-events-none"
+                style={{
+                  backgroundImage:
+                    "repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,0.1) 35px, rgba(255,255,255,0.1) 70px)",
+                }}
+              />
+            )}
+            <div className="relative z-10">
+              <div className="flex justify-between items-start mb-4">
+                <div>
+                  <h3
+                    className={`text-xl font-bold mb-1 ${
+                      theme === "dark"
+                        ? "text-white"
+                        : theme === "vintage"
+                        ? "text-amber-900"
+                        : theme === "brutalism"
+                        ? "text-black [text-shadow:3px_3px_0_#00000020]"
+                        : "text-gray-900"
+                    }`}
+                  >
+                    {experience.company}
+                  </h3>
+                  <p
+                    className={`mb-2 ${
+                      theme === "dark"
+                        ? "text-gray-300"
+                        : theme === "vintage"
+                        ? "text-amber-900/80"
+                        : "text-gray-600"
+                    }`}
+                  >
+                    {experience.position || experience.experience}
+                  </p>
+                  {experience.period && (
+                    <div
+                      className={`flex items-center text-sm ${
+                        theme === "dark"
+                          ? "text-gray-400"
+                          : theme === "vintage"
+                          ? "text-amber-800/70"
+                          : "text-gray-500"
+                      }`}
+                    >
+                      <Calendar className="w-4 h-4 mr-1" />
+                      <span>{experience.period}</span>
+                    </div>
+                  )}
+                </div>
+                {experience.location && (
+                  <div
+                    className={`flex items-center text-sm ${
+                      theme === "dark"
+                        ? "text-gray-300"
+                        : theme === "vintage"
+                        ? "text-amber-900/80"
+                        : "text-gray-600"
+                    }`}
+                  >
+                    <MapPin className="w-4 h-4 mr-1" />
+                    <span>{experience.location}</span>
+                  </div>
+                )}
+              </div>
+
+              <p
+                className={`mb-4 text-base leading-relaxed ${
+                  theme === "dark"
+                    ? "text-gray-300"
+                    : theme === "brutalism"
+                    ? "text-black"
+                    : theme === "vintage"
+                    ? "text-amber-900/90"
+                    : "text-gray-700"
+                }`}
+                style={{ fontWeight: 300 }}
+              >
+                {experience.description}
+              </p>
+
+              {experience.links && (
+                <div className="flex flex-wrap gap-2 mt-4">
+                  {experience.links.map((link: string, linkIndex: number) => (
+                    <motion.a
+                      key={linkIndex}
+                      href={link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className={`flex items-center gap-1 text-xs transition-colors ${
+                        theme === "vintage"
+                          ? "text-amber-700 hover:text-amber-600"
+                          : "text-primary-400 hover:text-primary-300"
+                      }`}
+                    >
+                      <ExternalLink className="w-3 h-3" />
+                      {t("experience.viewProject")}
+                    </motion.a>
+                  ))}
+                </div>
+              )}
             </div>
-          )}
+          </motion.div>
         </motion.div>
       </div>
       {/* Timeline Node */}
@@ -255,13 +352,14 @@ const ExperienceCard = ({
 
 const Experience = () => {
   const { t } = useTranslation();
+  const { theme } = useTheme();
   const [activeModal, setActiveModal] = useState<string | null>(null);
   const [modalDirection, setModalDirection] = useState<"left" | "right">(
     "right"
   );
 
   // Generate experience data from translations
-  const generateExperiencesFromTranslations = (): ExperienceType[] => {
+  const generateExperiencesFromTranslations = (): ExtendedExperienceType[] => {
     const companies = [
       {
         key: "flipo",
@@ -289,8 +387,16 @@ const Experience = () => {
 
   const experience = generateExperiencesFromTranslations();
   const handleCompanyClick = (company: string, cardIndex: number) => {
-    setModalDirection(cardIndex % 2 === 0 ? "right" : "left");
+    // Determine modal direction based on card position
+    // Even index cards (0, 2, 4) are on the left, so modal comes from right
+    // Odd index cards (1, 3, 5) are on the right, so modal comes from left
+    const direction = cardIndex % 2 === 0 ? "right" : "left";
+    setModalDirection(direction);
     setActiveModal(company);
+
+    console.log(
+      `Card clicked: ${company}, index: ${cardIndex}, direction: ${direction}`
+    );
 
     // Ocultar el menú de navegación cuando se abre el modal
     window.dispatchEvent(new CustomEvent("hideNavigation"));
@@ -302,20 +408,26 @@ const Experience = () => {
     window.dispatchEvent(new CustomEvent("showNavigation"));
   };
   const getAchievements = (company: string) => {
-    const companiesConfig = {
-      FLiPO: 7, // 7 logros para FLiPO
-      "IT Academy": 7, // 7 logros para IT Academy
-      "Aula Magna": 2, // 2 logros para Aula Magna
-    };
+    // Get achievements directly from translations as arrays
+    const achievementsArray = t(`achievements.${company}`, {
+      returnObjects: true,
+    }) as Array<{
+      title: string;
+      description: string;
+      impact: string;
+    }>;
 
-    const achievementCount =
-      companiesConfig[company as keyof typeof companiesConfig] || 0;
+    // If achievementsArray is not an array, return empty array
+    if (!Array.isArray(achievementsArray)) {
+      console.warn(`No achievements found for company: ${company}`);
+      return [];
+    }
 
-    // Generar logros basados en las traducciones únicamente
-    return Array.from({ length: achievementCount }, (_, index) => ({
-      title: t(`achievements.${company}.${index}.title`),
-      description: t(`achievements.${company}.${index}.description`),
-      impact: t(`achievements.${company}.${index}.impact`),
+    // Map the achievements with icons
+    return achievementsArray.map((achievement, index) => ({
+      title: achievement.title,
+      description: achievement.description,
+      impact: achievement.impact,
       icon: getAchievementIcon(company, index),
     }));
   };
@@ -367,7 +479,11 @@ const Experience = () => {
           className="text-center mb-16"
         >
           {" "}
-          <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-6">
+          <h2 className={`text-4xl md:text-5xl font-bold mb-6 ${
+            theme === 'brutalism' 
+              ? 'text-black [text-shadow:4px_4px_0_#00000020]' 
+              : 'gradient-text'
+          }`}>
             {t("experience.title")}
           </h2>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">
@@ -464,41 +580,81 @@ const Experience = () => {
                   opacity: 0,
                   x: modalDirection === "right" ? "100%" : "-100%",
                 }}
-                animate={{ opacity: 1, x: 0 }}
+                animate={{
+                  opacity: 1,
+                  x: 0,
+                }}
                 exit={{
                   opacity: 0,
                   x: modalDirection === "right" ? "100%" : "-100%",
                 }}
-                transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                transition={{
+                  type: "spring",
+                  damping: theme === "brutalism" ? 30 : 25,
+                  stiffness: theme === "brutalism" ? 350 : 300,
+                  mass: theme === "brutalism" ? 1.2 : 1,
+                }}
                 className={`fixed ${
                   modalDirection === "right" ? "right-0" : "left-0"
                 } top-0 h-full w-full max-w-2xl modal-bg ${
                   modalDirection === "right" ? "border-l" : "border-r"
-                } border-primary-500/30 z-50 overflow-y-auto`}
+                } border-primary-500/30 z-50 ${
+                  theme === "brutalism" ? "" : "overflow-y-auto"
+                } ${theme === "brutalism" ? "brutalism-modal" : ""} ${
+                  modalDirection === "left" ? "modal-left" : ""
+                }`}
               >
-                {/* Header del Modal */}
-                <div className="sticky top-0 modal-bg/95 backdrop-blur-md border-b border-primary-500/30 p-6">
+                {" "}
+                {/* Header del Modal */}{" "}
+                <div
+                  className={`sticky top-0 z-10 ${
+                    theme === "brutalism"
+                      ? "bg-gradient-to-r from-brutalism-yellow to-brutalism-green border-b-4 border-black backdrop-blur-sm"
+                      : "modal-bg/95 backdrop-blur-md border-b border-primary-500/30"
+                  } p-6`}
+                >
                   <div className="flex items-center justify-between">
                     <div>
                       {" "}
-                      <h2 className="text-2xl font-bold gradient-text">
+                      <h2
+                        className={`text-2xl font-bold ${
+                          theme === "brutalism"
+                            ? "brutalism-heading"
+                            : "gradient-text"
+                        }`}
+                      >
                         {t("experience.achievements")}
                       </h2>
-                      <p className="text-primary-400 mt-1">
+                      <p
+                        className={`${
+                          theme === "brutalism"
+                            ? "brutalism-text"
+                            : "text-primary-400"
+                        } mt-1`}
+                      >
                         {getCompanyInfo(activeModal).title}
                       </p>
                     </div>{" "}
                     <button
                       onClick={handleCloseModal}
-                      className="p-2 text-gray-400 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
+                      className={`p-2 ${
+                        theme === "brutalism"
+                          ? "brutalism-button text-black hover:text-black"
+                          : "text-gray-400 hover:text-white hover:bg-white/10 rounded-lg"
+                      } transition-colors`}
                     >
                       <X className="w-6 h-6" />
                     </button>
                   </div>
-                </div>
-
+                </div>{" "}
                 {/* Contenido del Modal */}
-                <div className="p-6 space-y-6">
+                <div
+                  className={`p-6 space-y-6 ${
+                    theme === "brutalism"
+                      ? "flex-1 overflow-y-auto overscroll-behavior-contain pb-12"
+                      : ""
+                  }`}
+                >
                   {getAchievements(activeModal).map((achievement, index) => (
                     <motion.div
                       key={index}
