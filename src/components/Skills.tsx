@@ -329,10 +329,10 @@ const Skills = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="bg-white dark:bg-black p-6 border-4 border-black dark:border-white max-w-4xl mx-auto"
+          className="bg-white dark:bg-black p-6 border-4 border-black dark:border-white max-w-4xl mx-auto font-sans"
           style={{
             boxShadow: '8px 8px 0 0 #000000',
-            fontFamily: "'Courier New', monospace"
+            fontFamily: '"Inter", system-ui, sans-serif'
           }}
         >
           <h3 
@@ -397,10 +397,10 @@ const Skills = () => {
                   <div className={`w-16 h-16 flex items-center justify-center border-2 border-black dark:border-white mb-3 ${method.color} group-hover:bg-opacity-90 transition-all`}>
                     {method.icon}
                   </div>
-                  <p className="text-black text-xs text-center mt-1 opacity-80">
+                  <p className="text-black text-xs text-center mt-1 opacity-80 font-medium">
                     {method.description}
                   </p>
-                  <span className="text-black font-black uppercase text-center text-sm tracking-wider">
+                  <span className="text-black font-bold uppercase text-center text-sm tracking-wider">
                     {method.name}
                   </span>
                 </div>
