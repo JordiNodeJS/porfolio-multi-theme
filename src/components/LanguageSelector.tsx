@@ -5,13 +5,13 @@ import { useState } from "react";
 import { useTheme } from "../contexts/ThemeContext";
 
 const languages = [
-  { code: "es", name: "Español", flag: "🇪🇸" },
-  { code: "en", name: "English", flag: "🇺🇸" },
-  { code: "fr", name: "Français", flag: "🇫🇷" },
-  { code: "de", name: "Deutsch", flag: "🇩🇪" },
-  { code: "it", name: "Italiano", flag: "🇮🇹" },
-  { code: "pt", name: "Português", flag: "🇵🇹" },
-  { code: "ca", name: "Català", flag: "🇪🇸" },
+  { code: "es", name: "Español", flag: "🇪🇸", shortCode: "ES" },
+  { code: "en", name: "English", flag: "🇺🇸", shortCode: "US" },
+  { code: "fr", name: "Français", flag: "🇫🇷", shortCode: "FR" },
+  { code: "de", name: "Deutsch", flag: "🇩🇪", shortCode: "DE" },
+  { code: "it", name: "Italiano", flag: "🇮🇹", shortCode: "IT" },
+  { code: "pt", name: "Português", flag: "🇵🇹", shortCode: "PT" },
+  { code: "ca", name: "Català", flag: "🇪🇸", shortCode: "ES" },
 ];
 
 const LanguageSelector = () => {
@@ -41,9 +41,9 @@ const LanguageSelector = () => {
         whileTap={{ scale: 0.95 }}
         title={t("language.select")}
       >
-        <div className="flex items-center gap-2">
+        <div className="flex items-center w-full">
           <Globe className={`w-4 h-4 flex-shrink-0 ${theme === 'retro-pastel' ? 'text-retroPastel-text' : theme === 'brutalism' ? 'text-black' : 'text-white'}`} />
-          <span className="text-xl leading-none">{currentLanguage.flag}</span>
+          <span className="w-6 text-xs text-center font-medium opacity-80">{currentLanguage.shortCode}</span>
           <span className={`text-sm hidden sm:block leading-none ${theme === 'retro-pastel' ? 'text-retroPastel-text' : theme === 'brutalism' ? 'text-black' : 'text-white'}`}>
             {currentLanguage.name}
           </span>
@@ -75,7 +75,9 @@ const LanguageSelector = () => {
                   ? 'bg-white border-4 border-black shadow-[0_4px_0_black]'
                   : theme === 'retro-pastel'
                     ? 'backdrop-blur-md rounded-lg shadow-xl bg-retroPastel-background/95 border border-retroPastel-pink/30'
-                    : 'backdrop-blur-md shadow-xl bg-slate-900/95 border border-white/20'
+                    : theme === 'vintage'
+                      ? 'bg-amber-50/95 border border-amber-200 shadow-xl backdrop-blur-md'
+                      : 'backdrop-blur-md shadow-xl bg-white/95 border border-gray-200 dark:bg-slate-900/95 dark:border-white/20'
               }`}
             >
               {languages.map((language) => (
@@ -89,15 +91,19 @@ const LanguageSelector = () => {
                         ? i18n.language === language.code
                           ? 'bg-retroPastel-pink/30 text-retroPastel-text'
                           : 'text-retroPastel-text hover:bg-retroPastel-pink/20'
-                        : i18n.language === language.code
-                          ? 'bg-primary-500/20 text-primary-300'
-                          : 'text-white hover:bg-white/10'
+                        : theme === 'vintage'
+                          ? i18n.language === language.code
+                            ? 'bg-amber-200/70 text-amber-900 font-medium'
+                            : 'text-amber-900/80 hover:bg-amber-100/60'
+                          : i18n.language === language.code
+                            ? 'bg-primary-500/20 text-primary-600 dark:text-primary-300'
+                            : 'text-gray-700 hover:bg-gray-100 dark:text-white dark:hover:bg-white/10'
                   }`}
                   whileHover={{ x: 4 }}
                   transition={{ duration: 0.1 }}
                 >
-                  <div className="flex items-baseline gap-3 w-full">
-                    <span className="text-xl flex-shrink-0 relative top-0.5">{language.flag}</span>
+                  <div className="flex items-center w-full">
+                    <span className="w-6 text-xs text-center font-medium opacity-80 flex-shrink-0">{language.shortCode}</span>
                     <span className={`text-sm font-medium leading-none flex-grow ${
                       theme === 'brutalism' ? 'font-bold' : ''
                     }`}>
