@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { MapPin, ExternalLink, X } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { ExperienceType } from "../types";
 
 const ExperienceCard = ({
@@ -16,6 +16,23 @@ const ExperienceCard = ({
   const { t } = useTranslation();
   const [isCardHovered, setIsCardHovered] = useState(false);
   const [isNodeHovered, setIsNodeHovered] = useState(false);
+  const [showTooltip, setShowTooltip] = useState(false);
+  
+  useEffect(() => {
+    let timer: NodeJS.Timeout;
+    
+    if (isCardHovered) {
+      setShowTooltip(true);
+      // Ocultar el tooltip después de 3 segundos
+      timer = setTimeout(() => {
+        setShowTooltip(false);
+      }, 3000);
+    } else {
+      setShowTooltip(false);
+    }
+    
+    return () => clearTimeout(timer);
+  }, [isCardHovered]);
   const isClickableCard =
     experience.company.includes("FLiPO") ||
     experience.company.includes("IT Academy") ||
@@ -65,10 +82,50 @@ const ExperienceCard = ({
           {" "}
           {/* Tooltip personalizado */}
           {isClickableCard && (
-            <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 glass-effect text-white text-xs px-3 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap z-10 border border-primary-500/30">
-              {t("experience.clickTooltip")}
-              <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-current"></div>
-            </div>
+            <AnimatePresence>
+              {showTooltip && (
+                <motion.div 
+                  className="absolute -top-12 glass-effect text-white text-xs px-3 py-2 rounded-lg pointer-events-none whitespace-nowrap z-10 border border-primary-500/30"
+                  style={{
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    width: 'max-content',
+                    maxWidth: '90%'
+                  }}
+                  initial={{ opacity: 0, y: 20, scale: 0.8, x: '-50%' }}
+                  animate={{ 
+                    opacity: 1, 
+                    y: 0, 
+                    scale: 1,
+                    transition: { 
+                      type: 'spring',
+                      damping: 20,
+                      stiffness: 300
+                    }
+                  }}
+                  exit={{ 
+                    opacity: 0, 
+                    y: 20, 
+                    scale: 0.8,
+                    x: '-50%',
+                    transition: { 
+                      duration: 0.3 
+                    }
+                  }}
+                >
+                  {t("experience.clickTooltip")}
+                  <motion.div 
+                    className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-current"
+                    initial={{ y: -4, opacity: 0 }}
+                    animate={{ 
+                      y: 0, 
+                      opacity: 1,
+                      transition: { delay: 0.1 }
+                    }}
+                  />
+                </motion.div>
+              )}
+            </AnimatePresence>
           )}
           <h3 className="text-xl font-bold text-white mb-2 text-left">
             {experience.company}
