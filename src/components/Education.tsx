@@ -26,83 +26,92 @@ const EducationCard = ({
       className="glass-effect rounded-xl overflow-hidden card-hover group shadow-md hover:shadow-lg border-t-4 border-t-primary-500 theme-vintage:border-t-vintage-terracotta theme-vintage:shadow-lg theme-retro-pastel:border-t-retroPastel-pink"
     >
       {/* Header */}
-      <div className="bg-gradient-to-r from-primary-600/50 to-purple-600/50 dark:from-primary-500/50 dark:to-purple-500/50 p-6 border-b border-themed/30 shadow-sm relative 
+      <div
+        className="bg-gradient-to-r from-primary-600/50 to-purple-600/50 dark:from-primary-500/50 dark:to-purple-500/50 p-6 border-b border-themed/30 shadow-sm relative 
         theme-vintage:from-vintage-brown-darker/95 theme-vintage:to-vintage-brown-dark theme-vintage:border-vintage-cream/40 theme-vintage:shadow-lg
-        theme-retro-pastel:from-retroPastel-custard/70 theme-retro-pastel:to-retroPastel-peach/80 theme-retro-pastel:border-retroPastel-lavender/30">
+        theme-retro-pastel:from-retroPastel-custard/70 theme-retro-pastel:to-retroPastel-peach/80 theme-retro-pastel:border-retroPastel-lavender/30"
+      >
         <div className="flex items-start justify-between">
           <div className="flex items-center gap-3 pr-12">
             {/* Added padding-right to prevent overlap */}
             <motion.div
               initial={{ scale: 0.9, opacity: 0.9, y: 10 }}
-              whileInView={{ 
-                scale: 1, 
+              whileInView={{
+                scale: 1,
                 opacity: 1,
                 y: 0,
-                transition: { 
+                transition: {
                   duration: 0.8,
-                  ease: [0.2, 0.8, 0.2, 1]
-                }
+                  ease: [0.2, 0.8, 0.2, 1],
+                },
               }}
               animate={{
                 y: [0, -5, 0],
                 transition: {
                   duration: 4,
                   repeat: Infinity,
-                  repeatType: 'reverse',
-                  ease: 'easeInOut'
-                }
+                  repeatType: "reverse",
+                  ease: "easeInOut",
+                },
               }}
               whileHover={{
                 rotate: [0, 15, -15, 15, 0],
                 scale: 1.1,
                 y: -2,
-                transition: { 
-                  duration: 1, 
-                  type: 'spring', 
+                transition: {
+                  duration: 1,
+                  type: "spring",
                   bounce: 0.5,
-                  y: { duration: 0.3 }
-                }
+                  y: { duration: 0.3 },
+                },
               }}
-              whileTap={{ 
+              whileTap={{
                 scale: 0.95,
                 rotate: 360,
-                transition: { 
+                transition: {
                   duration: 0.5,
-                  rotate: { type: 'spring', stiffness: 200 }
-                }
+                  rotate: { type: "spring", stiffness: 200 },
+                },
               }}
-              viewport={{ once: true, margin: '-20% 0px' }}
+              viewport={{ once: true, margin: "-20% 0px" }}
               transition={{
-                default: { 
+                default: {
                   duration: 0.5,
-                  ease: [0.2, 0.8, 0.2, 1]
+                  ease: [0.2, 0.8, 0.2, 1],
                 },
                 opacity: { duration: 0.8 },
-                scale: { 
-                  type: 'spring', 
-                  damping: 10, 
+                scale: {
+                  type: "spring",
+                  damping: 10,
                   stiffness: 300,
-                  mass: 0.5
-                }
+                  mass: 0.5,
+                },
               }}
               className="p-3 bg-primary-600/50 dark:bg-primary-500/50 rounded-xl shadow-lg 
                 hover:shadow-xl transition-all duration-300 cursor-pointer
                 theme-vintage:bg-vintage-cream/80 theme-vintage:shadow-vintage-mustard/40
-                theme-vintage:hover:bg-vintage-mustard-light/90">
-              <GraduationCap className="w-6 h-6 text-white dark:text-white 
+                theme-vintage:hover:bg-vintage-mustard-light/90"
+            >
+              <GraduationCap
+                className="w-6 h-6 text-white dark:text-white 
                 theme-vintage:text-vintage-brown-darker theme-vintage:group-hover:text-vintage-brown-dark
-                transition-all duration-300 group-hover:scale-110" />
+                transition-all duration-300 group-hover:scale-110"
+              />
             </motion.div>
             <div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-gray-50 
+              <h3
+                className="text-xl font-bold text-gray-900 dark:text-gray-50 
               group-hover:text-primary-800 dark:group-hover:text-white transition-colors duration-200
               theme-vintage:text-vintage-mustard-light theme-vintage:group-hover:text-vintage-mustard-light/90 
-              theme-vintage:font-bold hover:drop-shadow-md hover:underline hover:underline-offset-4">
+              theme-vintage:font-bold hover:drop-shadow-md hover:underline hover:underline-offset-4"
+              >
                 {education.title}
               </h3>
-              <p className="text-primary-800 dark:text-primary-300 font-medium 
+              <p
+                className="text-primary-800 dark:text-primary-300 font-medium 
               theme-vintage:text-vintage-cream/95 theme-vintage:font-semibold theme-vintage:drop-shadow-sm
-              theme-retro-pastel:text-retroPastel-text-dark">
+              theme-retro-pastel:text-retroPastel-text-dark"
+              >
                 {education.center}
               </p>
             </div>
@@ -130,12 +139,16 @@ const EducationCard = ({
         </div>
       </div>
       {/* Content */}
-      <div className="p-6 bg-white/10 dark:bg-gray-900/20 
+      <div
+        className="p-6 bg-white/10 dark:bg-gray-900/20 
         theme-vintage:bg-vintage-brown-darker/95 theme-vintage:border-t theme-vintage:border-vintage-cream/40 
-        theme-retro-pastel:bg-retroPastel-background/30 theme-retro-pastel:border-t theme-retro-pastel:border-retroPastel-lavender/40">
-        <p className="text-gray-800 dark:text-gray-200 text-sm leading-relaxed mb-6 font-medium 
+        theme-retro-pastel:bg-retroPastel-background/30 theme-retro-pastel:border-t theme-retro-pastel:border-retroPastel-lavender/40"
+      >
+        <p
+          className="text-gray-800 dark:text-gray-200 text-sm leading-relaxed mb-6 font-medium 
           theme-vintage:text-vintage-cream/95 theme-vintage:font-medium theme-vintage:drop-shadow-sm
-          theme-retro-pastel:text-retroPastel-text-dark/95">
+          theme-retro-pastel:text-retroPastel-text-dark/95"
+        >
           {education.description}
         </p>
         {/* Tags */}
@@ -150,9 +163,11 @@ const EducationCard = ({
             </span>
           ))}
           {education.tags.length > 6 && (
-            <span className="px-3 py-1 bg-gray-300/50 dark:bg-gray-500/30 text-gray-800 dark:text-gray-200 text-xs rounded-full border border-gray-500/30 font-medium hover:bg-gray-300/60 dark:hover:bg-gray-500/40 transition-all duration-200 cursor-default
+            <span
+              className="px-3 py-1 bg-gray-300/50 dark:bg-gray-500/30 text-gray-800 dark:text-gray-200 text-xs rounded-full border border-gray-500/30 font-medium hover:bg-gray-300/60 dark:hover:bg-gray-500/40 transition-all duration-200 cursor-default
                 theme-vintage:bg-vintage-cream/30 theme-vintage:text-vintage-cream theme-vintage:border-vintage-cream/50 theme-vintage:hover:bg-vintage-cream/40 theme-vintage:hover:border-vintage-cream theme-vintage:font-bold theme-vintage:shadow-sm
-                theme-retro-pastel:bg-retroPastel-mint/40 theme-retro-pastel:text-retroPastel-text theme-retro-pastel:border-retroPastel-mint/50 theme-retro-pastel:hover:bg-retroPastel-mint/50">
+                theme-retro-pastel:bg-retroPastel-mint/40 theme-retro-pastel:text-retroPastel-text theme-retro-pastel:border-retroPastel-mint/50 theme-retro-pastel:hover:bg-retroPastel-mint/50"
+            >
               +{education.tags.length - 6}
             </span>
           )}
@@ -265,7 +280,6 @@ const Education = () => {
             />
           ))}
         </div>
-        
         {/* Learning Philosophy */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -274,9 +288,11 @@ const Education = () => {
           viewport={{ once: true }}
           className="mt-16 text-center"
         >
-          <div className="glass-effect p-8 rounded-xl max-w-4xl mx-auto shadow-md border-l-4 border-l-primary-500 bg-white/10 dark:bg-white/5 
+          <div
+            className="glass-effect p-8 rounded-xl max-w-4xl mx-auto shadow-md border-l-4 border-l-primary-500 bg-white/10 dark:bg-white/5 
               theme-vintage:border-l-vintage-mustard theme-vintage:bg-gradient-to-br theme-vintage:from-vintage-brown-dark/40 theme-vintage:to-vintage-olive/30 theme-vintage:shadow-lg
-              theme-retro-pastel:border-l-retroPastel-lavender">
+              theme-retro-pastel:border-l-retroPastel-lavender"
+          >
             <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-4 theme-vintage:text-vintage-mustard-light">
               {educationTranslations.learningPhilosophy.title}
             </h3>

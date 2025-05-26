@@ -223,21 +223,21 @@ const Hero = () => {
                   : "bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600"
               }`}
               style={{
-                fontSize: '4.5rem',
-                lineHeight: '1.1',
-                color: '#ef7574',
-                textShadow: 
-                  '2px 2px 0 #000, ' + 
-                  '-1px -1px 0 #f8d7da, ' +
-                  '-1px -2px 0 #f5b5b5, ' +
-                  '1px -1px 0 #000, ' +
-                  '-1px 1px 0 #000, ' +
-                  '1px 1px 0 #000',
-                WebkitTextStroke: '0.5px #000'
+                fontSize: "4.5rem",
+                lineHeight: "1.1",
+                color: "#ef7574",
+                textShadow:
+                  "2px 2px 0 #000, " +
+                  "-1px -1px 0 #f8d7da, " +
+                  "-1px -2px 0 #f5b5b5, " +
+                  "1px -1px 0 #000, " +
+                  "-1px 1px 0 #000, " +
+                  "1px 1px 0 #000",
+                WebkitTextStroke: "0.5px #000",
               }}
             >
-              <TextRevealAnimation 
-                text="JORGE" 
+              <TextRevealAnimation
+                text="JORGE"
                 charDelay={0.08}
                 animationStyle="scale"
                 once={false}
@@ -263,8 +263,8 @@ const Hero = () => {
                 WebkitTextStroke: theme === "brutalism" ? "0.3px #000" : "none",
               }}
             >
-              <TextRevealAnimation 
-                text="Frontend React Engineer" 
+              <TextRevealAnimation
+                text="Frontend React Engineer"
                 charDelay={0.05}
                 once={false}
               />
