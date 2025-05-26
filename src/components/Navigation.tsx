@@ -28,7 +28,7 @@ const Navigation = () => {
 
     const handleHideNavigation = () => {
       setIsHidden(true);
-      setIsOpen(false); // También cerrar el menú móvil si está abierto
+      setIsOpen(false);
     };
 
     const handleShowNavigation = () => {
@@ -45,6 +45,7 @@ const Navigation = () => {
       window.removeEventListener("showNavigation", handleShowNavigation);
     };
   }, []);
+
   const navItems = [
     { name: t("navigation.home"), href: "#hero" },
     { name: t("navigation.experience"), href: "#experience" },
@@ -55,12 +56,12 @@ const Navigation = () => {
 
   const handleNavClick = (href: string) => {
     setIsOpen(false);
-    // Smooth scroll to section
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
+
   const socialLinks = [
     { icon: Github, href: "https://github.com/JordiNodeJS", label: "GitHub" },
     {
@@ -70,6 +71,7 @@ const Navigation = () => {
     },
     { icon: Mail, href: "mailto:your-email@example.com", label: "Email" },
   ];
+
   return (
     <motion.nav
       initial={{ y: -100 }}
@@ -101,7 +103,8 @@ const Navigation = () => {
           >
             JORGe
           </motion.div>
-          {/* Desktop Navigation */}{" "}
+
+          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
               <motion.button
@@ -111,7 +114,7 @@ const Navigation = () => {
                 whileTap={{ scale: 0.95 }}
                 className={`transition-colors duration-300 font-medium bg-transparent border-none cursor-pointer ${
                   theme === "vintage" 
-                    ? "text-[#f3ebd3]/80 hover:text-[#f3ebd3]" 
+                    ? "text-[#f3ebd3] hover:text-[#e3b505] font-medium" 
                     : theme === "retro-pastel"
                     ? "text-[#3d2c2c]/80 hover:text-[#e56b81]" 
                     : "text-gray-400 hover:text-white"
@@ -120,7 +123,8 @@ const Navigation = () => {
                 {item.name}
               </motion.button>
             ))}
-          </div>{" "}
+          </div>
+
           {/* Social Links & Theme Toggle */}
           <div className="flex items-center space-x-4">
             {/* Language Selector - Visible en móvil */}
@@ -135,40 +139,40 @@ const Navigation = () => {
             
             {/* Social Links - Oculto en móvil */}
             <div className="hidden lg:flex items-center space-x-4">
-            {socialLinks.map((social) => (
-              <motion.a
-                key={social.label}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.2, rotate: 5 }}
-                whileTap={{ scale: 0.9 }}
-                className={`p-2 transition-colors duration-300 ${
-                  theme === "vintage" 
-                    ? "text-[#f3ebd3]/80 hover:text-[#f3ebd3]" 
-                    : theme === "retro-pastel"
-                    ? "text-[#3d2c2c]/80 hover:text-[#e56b81]" 
-                    : "text-gray-400 hover:text-white"
-                }`}
-                aria-label={social.label}
-              >
-                <social.icon className="w-5 h-5" />
-              </motion.a>
-            ))}
+              {socialLinks.map((social) => (
+                <motion.a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.2, rotate: 5 }}
+                  whileTap={{ scale: 0.9 }}
+                  className={`p-2 transition-colors duration-300 ${
+                    theme === "vintage" 
+                      ? "text-[#f3ebd3] hover:text-[#e3b505]" 
+                      : theme === "retro-pastel"
+                      ? "text-[#3d2c2c]/80 hover:text-[#e56b81]" 
+                      : "text-gray-400 hover:text-white"
+                  }`}
+                  aria-label={social.label}
+                >
+                  <social.icon className="w-5 h-5" />
+                </motion.a>
+              ))}
 
-            {/* Language Selector */}
-            <LanguageSelector />
-
-                <ThemeToggle />
-              </div>
+              {/* Language Selector */}
+              <LanguageSelector />
+              <ThemeToggle />
             </div>
+          </div>
+
           {/* Mobile Menu Button */}
           <motion.button
             whileTap={{ scale: 0.95 }}
             onClick={() => setIsOpen(!isOpen)}
             className={`md:hidden p-2 ${
               theme === "vintage" 
-                ? "text-[#f3ebd3]/80 hover:text-[#f3ebd3]" 
+                ? "text-[#f3ebd3] hover:text-[#e3b505]" 
                 : theme === "retro-pastel"
                 ? "text-[#3d2c2c]/80 hover:text-[#e56b81]" 
                 : "text-gray-400 hover:text-white"
@@ -189,14 +193,13 @@ const Navigation = () => {
         transition={{ duration: 0.3 }}
         className={`md:hidden glass-effect border-t ${
           theme === "vintage" 
-            ? "border-[#a78a21]/30" 
+            ? "border-[#a78a21]/30 bg-[#6e4c30]" 
             : theme === "retro-pastel"
             ? "border-[#e56b81]/30" 
             : "border-white/10"
         }`}
       >
         <div className="container-custom py-4">
-          {" "}
           <div className="flex flex-col space-y-4">
             {navItems.map((item) => (
               <motion.button
@@ -205,7 +208,7 @@ const Navigation = () => {
                 whileTap={{ scale: 0.95 }}
                 className={`transition-colors duration-300 font-medium py-2 text-left bg-transparent border-none cursor-pointer ${
                   theme === "vintage" 
-                    ? "text-[#f3ebd3]/90 hover:text-[#f3ebd3]" 
+                    ? "text-[#f3ebd3] hover:text-[#e3b505]" 
                     : theme === "retro-pastel"
                     ? "text-[#3d2c2c]/90 hover:text-[#e56b81]" 
                     : "text-gray-300 hover:text-white"
@@ -213,7 +216,8 @@ const Navigation = () => {
               >
                 {item.name}
               </motion.button>
-            ))}{" "}
+            ))}
+            
             <div className="flex items-center justify-center space-x-4 py-4 lg:hidden">
               {socialLinks.map((social) => (
                 <motion.a
@@ -225,7 +229,7 @@ const Navigation = () => {
                   whileTap={{ scale: 0.9 }}
                   className={`p-2 transition-colors duration-300 ${
                     theme === "vintage" 
-                      ? "text-[#f3ebd3]/80 hover:text-[#f3ebd3]" 
+                      ? "text-[#f3ebd3] hover:text-[#e3b505]" 
                       : theme === "retro-pastel"
                       ? "text-[#3d2c2c]/80 hover:text-[#e56b81]" 
                       : "text-gray-400 hover:text-white"
@@ -236,6 +240,7 @@ const Navigation = () => {
                 </motion.a>
               ))}
             </div>
+            
             <div className={`flex items-center justify-between pt-4 border-t ${
               theme === "vintage" 
                 ? "border-[#a78a21]/30" 
@@ -243,30 +248,10 @@ const Navigation = () => {
                 ? "border-[#e56b81]/30" 
                 : "border-white/10"
             }`}>
-              <div className="flex items-center space-x-4">
-                {socialLinks.map((social) => (
-                  <motion.a
-                    key={social.label}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.2 }}
-                    whileTap={{ scale: 0.9 }}
-                    className={`p-2 transition-colors duration-300 ${
-                      theme === "vintage" 
-                        ? "text-[#f3ebd3]/80 hover:text-[#f3ebd3]" 
-                        : theme === "retro-pastel"
-                        ? "text-[#3d2c2c]/80 hover:text-[#e56b81]" 
-                        : "text-gray-400 hover:text-white"
-                    }`}
-                    aria-label={social.label}
-                  >
-                    <social.icon className="w-5 h-5" />
-                  </motion.a>
-                ))}
-              </div>
-              <div className="flex items-center space-x-2">
+              <div className="lg:hidden">
                 <LanguageSelector />
+              </div>
+              <div className="lg:hidden">
                 <ThemeToggle />
               </div>
             </div>

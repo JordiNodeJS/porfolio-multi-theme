@@ -119,17 +119,35 @@ const Hero = () => {
           {" "}
           {/* Greeting */}
           <motion.div variants={itemVariants} className="text-center mb-8">
-            <span
-              className={`font-medium text-lg md:text-xl ${
-                theme === "dark" 
-                  ? "text-primary-400" 
-                  : theme === "light" 
-                  ? "text-primary-600"
-                  : "text-retroPastel-text/90"
-              }`}
-            >
-              👋 {hero.greeting}
-            </span>
+            <div className="flex items-center justify-center gap-2">
+              <motion.span
+                animate={{
+                  rotate: [0, 14, -8, 14, -8, 14, 0, 14, -8, 14, 0],
+                  y: [0, -10, 0, -10, 0, -10, 0],
+                }}
+                transition={{
+                  duration: 3.5,
+                  ease: "easeInOut",
+                  times: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
+                  repeat: 0,
+                  repeatDelay: 0.5
+                }}
+                className="inline-block text-2xl origin-[70%_80%]"
+              >
+                👋
+              </motion.span>
+              <span
+                className={`font-medium text-lg md:text-xl ${
+                  theme === "dark" 
+                    ? "text-primary-400" 
+                    : theme === "light" 
+                    ? "text-primary-600"
+                    : "text-retroPastel-text/90"
+                }`}
+              >
+                {hero.greeting}
+              </span>
+            </div>
           </motion.div>
           {/* Main Content with Photo and Title - Improved Layout */}
           <div className="flex flex-col items-center justify-center mb-12">
