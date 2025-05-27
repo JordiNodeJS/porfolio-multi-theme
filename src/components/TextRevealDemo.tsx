@@ -6,15 +6,10 @@ import { useTheme } from "../hooks/useTheme";
 const TextRevealDemo = () => {
   const { theme } = useTheme();
   const [replay, setReplay] = useState(false);
-  const [animationCount, setAnimationCount] = useState(0);
-  const [selectedAnimationStyle, setSelectedAnimationStyle] = useState<
-    "scale" | "slide" | "fade" | "bounce" | "random"
-  >("scale");
 
   // Force re-render to replay animations
   const handleReplay = () => {
     setReplay(true);
-    setAnimationCount((prev) => prev + 1);
     setTimeout(() => setReplay(false), 100);
   };
 
@@ -24,15 +19,6 @@ const TextRevealDemo = () => {
     "This is a letter-by-letter animation with staggered reveal.";
   const longText =
     "Each character appears with a subtle scale effect and 80ms delay between them.";
-
-  // Handle animation style change
-  const handleAnimationStyleChange = (
-    style: "scale" | "slide" | "fade" | "bounce" | "random"
-  ) => {
-    setSelectedAnimationStyle(style);
-    // Trigger replay with new style
-    handleReplay();
-  };
 
   if (replay) {
     return (
