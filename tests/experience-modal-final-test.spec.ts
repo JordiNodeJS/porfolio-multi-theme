@@ -144,8 +144,14 @@ test.describe("Experience Cards Modal Test - Final", () => {
             // Try closing with Escape
             await page.keyboard.press('Escape');
           }
-          
           await page.waitForTimeout(500);
+          // Wait for modal/overlay to disappear (up to 5s)
+          try {
+            await page.waitForSelector('[role="dialog"], .modal, .overlay, .backdrop, div[class*="modal"], div[class*="backdrop"]', { state: 'detached', timeout: 5000 });
+          } catch {
+            const overlays = await page.locator('[role="dialog"], .modal, .overlay, .backdrop, div[class*="modal"], div[class*="backdrop"]').count();
+            console.log(`⚠️  Overlays still present after close: ${overlays}`);
+          }
         } else {
           console.log(`❌ PROBLEM: Modal does NOT appear for card ${i + 1}`);
           console.log(`   Title: ${cardInfo.title}`);
