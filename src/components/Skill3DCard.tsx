@@ -75,15 +75,17 @@ const Skill3DCard = ({
   };
 
   return (
-    <div ref={cardRef} className="relative cursor-pointer perspective-1000">
+    <div ref={cardRef} className="relative perspective-1000">
       {" "}
       <animated.div
         className={`p-4 transform-style-3d ${
           theme === "dark"
-            ? "bg-slate-800/80"
+            ? "bg-slate-800/90"
             : theme === "brutalism"
             ? "bg-[#fff4d3] border-2 border-black"
-            : "bg-white/90"
+            : theme === "vintage"
+            ? "bg-gradient-to-br from-amber-50 to-amber-100 border border-amber-200/60"
+            : "bg-white/95"
         } ${
           theme === "brutalism" ? "rounded-none" : "rounded-xl backdrop-blur-sm"
         }`}

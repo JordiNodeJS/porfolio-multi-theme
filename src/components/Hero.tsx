@@ -3,6 +3,8 @@ import { useTheme } from "../hooks/useTheme";
 import { useRef } from "react";
 import { animated } from "@react-spring/web";
 import useEnhanced3DEffect from "../hooks/useEnhanced3DEffect";
+import { TextRevealAnimation } from "./TextRevealAnimation";
+import ProgressiveTextReveal from "./ProgressiveTextReveal";
 
 const Hero = () => {
   const { theme } = useTheme();
@@ -209,88 +211,156 @@ const Hero = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            <motion.h1
-              className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-4 ${
-                theme === "brutalism"
-                  ? "text-black"
-                  : "bg-clip-text text-transparent"
-              } ${
-                theme === "dark"
-                  ? "bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600"
-                  : theme === "brutalism"
-                  ? ""
-                  : "bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600"
-              }`}
-              style={{
-                fontSize: '4.5rem',
-                lineHeight: '1.1',
-                color: '#ef7574',
-                textShadow: 
-                  '2px 2px 0 #000, ' + 
-                  '-1px -1px 0 #f8d7da, ' +
-                  '-1px -2px 0 #f5b5b5, ' +
-                  '1px -1px 0 #000, ' +
-                  '-1px 1px 0 #000, ' +
-                  '1px 1px 0 #000',
-                WebkitTextStroke: '0.5px #000'
-              }}
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-            >
-              JORGE
-            </motion.h1>
+            {/* Progressive text reveal for dark, light, retro-pastel themes */}
+            {theme === "dark" ||
+            theme === "light" ||
+            theme === "retro-pastel" ? (
+              <ProgressiveTextReveal
+                text="JORGE"
+                duration={4000}
+                className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-4 bg-clip-text text-transparent ${
+                  theme === "dark"
+                    ? "bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600"
+                    : theme === "light"
+                    ? "bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600"
+                    : theme === "retro-pastel"
+                    ? "bg-gradient-to-r from-pink-300 via-rose-200 to-orange-200"
+                    : ""
+                }`}
+                style={{
+                  fontSize: "4.5rem",
+                  lineHeight: "1.1",
+                  ...(theme === "retro-pastel" && {
+                    fontFamily: '"Comfortaa", cursive, sans-serif',
+                    fontWeight: "600",
+                    letterSpacing: "0.02em",
+                  }),
+                }}
+              />
+            ) : (
+              /* Regular text for brutalism and vintage themes */
+              <div
+                className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-4 ${
+                  theme === "brutalism"
+                    ? "text-black"
+                    : theme === "vintage"
+                    ? "bg-clip-text text-transparent"
+                    : "bg-clip-text text-transparent"
+                } ${
+                  theme === "vintage"
+                    ? "bg-gradient-to-r from-yellow-600 via-amber-500 to-orange-600"
+                    : theme === "brutalism"
+                    ? ""
+                    : "bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600"
+                }`}
+                style={{
+                  fontSize: "4.5rem",
+                  lineHeight: "1.1",
+                  ...(theme === "brutalism" && {
+                    color: "#ef7574",
+                    textShadow:
+                      "2px 2px 0 #000, " +
+                      "-1px -1px 0 #f8d7da, " +
+                      "-1px -2px 0 #f5b5b5, " +
+                      "1px -1px 0 #000, " +
+                      "-1px 1px 0 #000, " +
+                      "1px 1px 0 #000",
+                    WebkitTextStroke: "0.5px #000",
+                  }),
+                  ...(theme === "vintage" && {
+                    textShadow:
+                      "2px 2px 4px rgba(0, 0, 0, 0.3), 0 0 20px rgba(251, 191, 36, 0.5)",
+                    fontFamily: '"Playfair Display", serif',
+                    fontWeight: "700",
+                    letterSpacing: "0.05em",
+                    filter: "drop-shadow(0 4px 8px rgba(139, 94, 60, 0.4))",
+                  }),
+                }}
+              >
+                <TextRevealAnimation
+                  text="JORGE"
+                  charDelay={0.08}
+                  animationStyle="scale"
+                  once={false}
+                  replay={false}
+                />
+              </div>
+            )}
 
-            <motion.h2
+            <div
               className={`text-xl md:text-2xl lg:text-3xl font-medium mb-6 ${
                 theme === "dark"
                   ? "text-slate-200"
                   : theme === "brutalism"
                   ? "text-black font-bold"
+                  : theme === "vintage"
+                  ? "text-amber-700 font-medium"
+                  : theme === "retro-pastel"
+                  ? "text-rose-400 font-light"
+                  : theme === "light"
+                  ? "text-gray-700"
                   : "text-gray-700"
               }`}
               style={{
-                textShadow:
-                  theme === "dark"
-                    ? "0 2px 8px rgba(0,0,0,0.4)"
-                    : theme === "brutalism"
-                    ? "1px 1px 0 #000, -0.5px -0.5px 0 #fff, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #fff, 0.5px 0.5px 0 #000"
-                    : "0 1px 4px rgba(0,0,0,0.1)",
-                WebkitTextStroke: theme === "brutalism" ? "0.3px #000" : "none",
+                ...(theme === "dark" && {
+                  textShadow: "0 2px 8px rgba(0,0,0,0.4)",
+                }),
+                ...(theme === "brutalism" && {
+                  textShadow:
+                    "1px 1px 0 #000, -0.5px -0.5px 0 #fff, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #fff, 0.5px 0.5px 0 #000",
+                  WebkitTextStroke: "0.3px #000",
+                }),
+                ...(theme === "vintage" && {
+                  textShadow:
+                    "1px 1px 2px rgba(0, 0, 0, 0.2), 0 0 10px rgba(251, 191, 36, 0.3)",
+                  fontFamily: '"Playfair Display", serif',
+                  fontStyle: "italic",
+                  letterSpacing: "0.02em",
+                }),
+                ...(theme === "retro-pastel" && {
+                  textShadow:
+                    "0 2px 4px rgba(255, 182, 193, 0.3), 0 0 8px rgba(255, 218, 185, 0.2)",
+                  fontFamily: '"Comfortaa", cursive, sans-serif',
+                  letterSpacing: "0.01em",
+                  fontWeight: "300",
+                }),
+                ...(theme === "light" && {
+                  textShadow: "0 1px 4px rgba(0,0,0,0.1)",
+                }),
               }}
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
             >
-              <span
-                className={`${
-                  theme === "dark" ? "text-emerald-400" : "text-emerald-600"
-                } font-semibold`}
-              >
-                Frontend
-              </span>{" "}
-              <span
-                className={`${
-                  theme === "dark" ? "text-blue-400" : "text-blue-600"
-                } font-semibold`}
-              >
-                React
-              </span>{" "}
-              <span
-                className={`${
-                  theme === "dark" ? "text-purple-400" : "text-purple-600"
-                } font-semibold`}
-              >
-                Engineer
-              </span>
-            </motion.h2>
+              <TextRevealAnimation
+                text="Frontend React Engineer"
+                charDelay={0.05}
+                once={false}
+              />
+            </div>
 
             <motion.div
               className={`w-24 h-1 mx-auto rounded-full ${
                 theme === "dark"
                   ? "bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600"
+                  : theme === "light"
+                  ? "bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
+                  : theme === "vintage"
+                  ? "bg-gradient-to-r from-yellow-500 via-amber-400 to-orange-500 shadow-lg shadow-amber-400/50"
+                  : theme === "retro-pastel"
+                  ? "bg-gradient-to-r from-pink-200 via-rose-100 to-orange-100 shadow-md shadow-pink-200/60"
+                  : theme === "brutalism"
+                  ? "bg-black border-2 border-white shadow-[2px_2px_0px_#ff6b6b]"
                   : "bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
               }`}
+              style={{
+                ...(theme === "vintage" && {
+                  filter: "drop-shadow(0 2px 4px rgba(251, 191, 36, 0.6))",
+                  height: "3px",
+                }),
+                ...(theme === "retro-pastel" && {
+                  filter: "drop-shadow(0 1px 3px rgba(255, 182, 193, 0.4))",
+                  height: "2px",
+                  borderRadius: "1px",
+                }),
+              }}
               initial={{ width: 0 }}
               animate={{ width: 96 }}
               transition={{ duration: 1, delay: 0.6 }}

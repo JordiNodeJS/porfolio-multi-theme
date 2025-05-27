@@ -81,7 +81,7 @@ const Navigation = () => {
         opacity: isHidden ? 0 : 1,
       }}
       transition={{ duration: 0.3 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out pointer-events-none ${
         theme === "brutalism"
           ? "bg-white border-b-4 border-black shadow-[4px_4px_0px_0px_#ff6b6b,8px_8px_0px_0px_#4ecdc4]"
           : scrolled
@@ -92,7 +92,7 @@ const Navigation = () => {
       } ${isHidden ? "pointer-events-none" : ""}`}
     >
       <div
-        className={`container-custom ${
+        className={`container-custom pointer-events-auto ${
           theme === "vintage"
             ? "border-b border-[#a78a21]/30"
             : theme === "brutalism"
@@ -142,13 +142,17 @@ const Navigation = () => {
 
           {/* Social Links & Theme Toggle */}
           <div className="flex items-center space-x-4">
-            {/* Language Selector - Visible en móvil y tablet */}
-            <div className="block lg:hidden">
+            {/* Language Selector - Hidden when mobile menu is open to prevent overlay issues */}
+            <div
+              className={`block lg:hidden ${isOpen ? "invisible" : "visible"}`}
+            >
               <LanguageSelector />
             </div>
 
-            {/* Theme Toggle - Visible en móvil y tablet */}
-            <div className="block lg:hidden">
+            {/* Theme Toggle - Hidden when mobile menu is open to prevent overlay issues */}
+            <div
+              className={`block lg:hidden ${isOpen ? "invisible" : "visible"}`}
+            >
               <ThemeToggle />
             </div>
 
@@ -214,6 +218,8 @@ const Navigation = () => {
         }}
         transition={{ duration: 0.3 }}
         className={`md:hidden ${
+          isOpen ? "pointer-events-auto" : "pointer-events-none"
+        } ${
           theme === "vintage"
             ? "glass-effect border-t border-[#a78a21]/30 bg-[#6e4c30]"
             : theme === "retro-pastel"
@@ -280,7 +286,7 @@ const Navigation = () => {
                   : "border-white/10"
               }`}
             >
-              <div className="lg:hidden">
+              <div className="lg:hidden pointer-events-none">
                 <LanguageSelector />
               </div>
               <div className="lg:hidden">
