@@ -809,221 +809,226 @@ const Experience = () => {
   };
 
   return (
-    <section id="experience" className="section-padding section-bg-gradient">
-      <div className="container-custom">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          {" "}
-          <h2
-            className="text-4xl md:text-5xl mb-8 font-bold text-gray-900 dark:text-white
+    <>
+      <section id="experience" className="section-padding section-bg-gradient">
+        <div className="container-custom">
+          {/* Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            {" "}
+            <h2
+              className="text-4xl md:text-5xl mb-8 font-bold text-gray-900 dark:text-white
             theme-brutalism:brutal-title
             theme-vintage:text-vintage-mustard-light theme-vintage:font-bold theme-vintage:text-shadow-lg
             theme-retro-pastel:text-retroPastel-text-dark theme-retro-pastel:font-bold
             transition-colors duration-300"
-          >
-            {t("experience.title")}
-          </h2>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            {t("experience.subtitle")}
-          </p>
-        </motion.div>{" "}
-        {/* Timeline */}
-        <div className="relative max-w-6xl mx-auto">
-          {/* Desktop Timeline central line */}
-          <motion.div
-            initial={{ scaleY: 0 }}
-            whileInView={{ scaleY: 1 }}
-            transition={{ duration: 2, ease: "easeOut" }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-500 via-primary-400 to-transparent transform -translate-x-1/2 origin-top"
-          />
-          {/* Desktop Timeline glow effect */}
-          <motion.div
-            initial={{ scaleY: 0, opacity: 0 }}
-            whileInView={{ scaleY: 1, opacity: 0.4 }}
-            transition={{ duration: 2, ease: "easeOut", delay: 0.3 }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-primary-400/60 via-primary-300/40 to-transparent transform -translate-x-1/2 origin-top blur-sm"
-          />
-
-          {/* Desktop Experience Cards */}
-          {experience.map((exp, index) => (
-            <ExperienceCard
-              key={`desktop-${index}`}
-              experience={exp}
-              index={index}
-              onCompanyClick={handleCompanyClick}
+            >
+              {t("experience.title")}
+            </h2>
+            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+              {t("experience.subtitle")}
+            </p>
+          </motion.div>{" "}
+          {/* Timeline */}
+          <div className="relative max-w-6xl mx-auto">
+            {/* Desktop Timeline central line */}
+            <motion.div
+              initial={{ scaleY: 0 }}
+              whileInView={{ scaleY: 1 }}
+              transition={{ duration: 2, ease: "easeOut" }}
+              viewport={{ once: true, margin: "-100px" }}
+              className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-500 via-primary-400 to-transparent transform -translate-x-1/2 origin-top"
             />
-          ))}
+            {/* Desktop Timeline glow effect */}
+            <motion.div
+              initial={{ scaleY: 0, opacity: 0 }}
+              whileInView={{ scaleY: 1, opacity: 0.4 }}
+              transition={{ duration: 2, ease: "easeOut", delay: 0.3 }}
+              viewport={{ once: true, margin: "-100px" }}
+              className="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-primary-400/60 via-primary-300/40 to-transparent transform -translate-x-1/2 origin-top blur-sm"
+            />
 
-          {/* Mobile Experience Cards */}
-          <div className="md:hidden space-y-0">
+            {/* Desktop Experience Cards */}
             {experience.map((exp, index) => (
-              <MobileExperienceCard
-                key={`mobile-${index}`}
+              <ExperienceCard
+                key={`desktop-${index}`}
                 experience={exp}
                 index={index}
                 onCompanyClick={handleCompanyClick}
               />
             ))}
-          </div>
-        </div>
-        {/* Skills Summary */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          viewport={{ once: true }}
-          className="mt-16 text-center"
-        >
-          <div className="glass-effect p-6 md:p-8 rounded-xl max-w-4xl mx-auto">
-            <h3 className="text-xl md:text-2xl font-bold text-white mb-4 md:mb-6">
-              {t("experience.technologiesUsed")}
-            </h3>
-            <div className="flex flex-wrap justify-center gap-2 md:gap-3">
-              {[
-                "React",
-                "TypeScript",
-                "JavaScript",
-                "Redux Toolkit",
-                "Vite",
-                "Vitest/Jest",
-                "React Testing Library",
-                "Styled Components",
-                "TailwindCSS",
-                "SCRUM",
-                "Git/GitHub",
-                "PHP",
-                "WordPress",
-              ].map((tech) => (
-                <motion.span
-                  key={tech}
-                  className="bg-primary-500/20 text-primary-300 px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-medium border border-primary-500/30 shadow-sm hover:bg-primary-500/30 transition-colors cursor-default"
-                  whileHover={{
-                    rotate: [0, -2, 2, -2, 2, 0],
-                  }}
-                  transition={{
-                    rotate: { duration: 0.3, ease: "easeInOut" },
-                  }}
-                >
-                  {tech}
-                </motion.span>
+
+            {/* Mobile Experience Cards */}
+            <div className="md:hidden space-y-0">
+              {experience.map((exp, index) => (
+                <MobileExperienceCard
+                  key={`mobile-${index}`}
+                  experience={exp}
+                  index={index}
+                  onCompanyClick={handleCompanyClick}
+                />
               ))}
             </div>
           </div>
-        </motion.div>
-        {/* Modal de Logros Dinámico */}
-        <AnimatePresence>
-          {activeModal && (
-            <>
-              {/* Overlay */}{" "}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50"
-                onClick={handleCloseModal}
-                onTouchStart={(e) => e.preventDefault()}
-                onTouchMove={(e) => e.preventDefault()}
-                style={{
-                  touchAction: "none",
-                  overscrollBehavior: "none",
-                }}
-              />{" "}
-              {/* Modal */}
-              <motion.div
-                initial={{
-                  opacity: 0,
-                  x: modalDirection === "right" ? "100%" : "-100%",
-                }}
-                animate={{
-                  opacity: 1,
-                  x: 0,
-                }}
-                exit={{
-                  opacity: 0,
-                  x: modalDirection === "right" ? "100%" : "-100%",
-                }}
-                transition={{
-                  type: "spring",
-                  damping: theme === "brutalism" ? 30 : 25,
-                  stiffness: theme === "brutalism" ? 350 : 300,
-                  mass: theme === "brutalism" ? 1.2 : 1,
-                }}
-                className={`fixed ${
-                  modalDirection === "right" ? "right-0" : "left-0"
-                } top-0 h-full w-full max-w-xl md:max-w-2xl modal-bg ${
-                  modalDirection === "right" ? "border-l" : "border-r"
-                } border-primary-500/30 z-50 ${
-                  theme === "brutalism" ? "" : "overflow-y-auto"
-                } ${theme === "brutalism" ? "brutalism-modal" : ""} ${
-                  modalDirection === "left" ? "modal-left" : ""
-                }`}
-                style={{
-                  touchAction: "pan-y",
-                  overscrollBehavior: "contain",
-                }}
-                onTouchStart={(e) => e.stopPropagation()}
-                onTouchMove={(e) => e.stopPropagation()}
+          {/* Skills Summary */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="mt-16 text-center"
+          >
+            <div className="glass-effect p-6 md:p-8 rounded-xl max-w-4xl mx-auto">
+              <h3 className="text-xl md:text-2xl font-bold text-white mb-4 md:mb-6">
+                {t("experience.technologiesUsed")}
+              </h3>
+              <div className="flex flex-wrap justify-center gap-2 md:gap-3">
+                {[
+                  "React",
+                  "TypeScript",
+                  "JavaScript",
+                  "Redux Toolkit",
+                  "Vite",
+                  "Vitest/Jest",
+                  "React Testing Library",
+                  "Styled Components",
+                  "TailwindCSS",
+                  "SCRUM",
+                  "Git/GitHub",
+                  "PHP",
+                  "WordPress",
+                ].map((tech) => (
+                  <motion.span
+                    key={tech}
+                    className="bg-primary-500/20 text-primary-300 px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-medium border border-primary-500/30 shadow-sm hover:bg-primary-500/30 transition-colors cursor-default"
+                    whileHover={{
+                      rotate: [0, -2, 2, -2, 2, 0],
+                    }}
+                    transition={{
+                      rotate: { duration: 0.3, ease: "easeInOut" },
+                    }}
+                  >
+                    {tech}
+                  </motion.span>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+      {/* Modal de Logros Dinámico - Rendered only once at root */}
+      <AnimatePresence mode="wait">
+        {activeModal && (
+          <>
+            {/* Overlay */}
+            <ModalOverlayDebug />
+            <motion.div
+              key="modal-overlay"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 pointer-events-auto"
+              onClick={handleCloseModal}
+              onTouchStart={(e) => e.preventDefault()}
+              onTouchMove={(e) => e.preventDefault()}
+              style={{
+                touchAction: "none",
+                overscrollBehavior: "none",
+              }}
+            />
+            {/* Modal */}
+            <motion.div
+              key={activeModal}
+              initial={{
+                opacity: 0,
+                x: modalDirection === "right" ? "100%" : "-100%",
+              }}
+              animate={{
+                opacity: 1,
+                x: 0,
+              }}
+              exit={{
+                opacity: 0,
+                x: modalDirection === "right" ? "100%" : "-100%",
+              }}
+              transition={{
+                type: "spring",
+                damping: theme === "brutalism" ? 30 : 25,
+                stiffness: theme === "brutalism" ? 350 : 300,
+                mass: theme === "brutalism" ? 1.2 : 1,
+              }}
+              className={`fixed ${
+                modalDirection === "right" ? "right-0" : "left-0"
+              } top-0 h-full w-full max-w-xl md:max-w-2xl modal-bg ${
+                modalDirection === "right" ? "border-l" : "border-r"
+              } border-primary-500/30 z-50 ${
+                theme === "brutalism" ? "" : "overflow-y-auto"
+              } ${theme === "brutalism" ? "brutalism-modal" : ""} ${
+                modalDirection === "left" ? "modal-left" : ""
+              }`}
+              style={{
+                touchAction: "pan-y",
+                overscrollBehavior: "contain",
+              }}
+              onTouchStart={(e) => e.stopPropagation()}
+              onTouchMove={(e) => e.stopPropagation()}
+            >
+              {/* Header del Modal */}
+              <div
+                className={`sticky top-0 z-10 ${
+                  theme === "brutalism"
+                    ? "bg-gradient-to-r from-brutalism-yellow to-brutalism-green border-b-4 border-black backdrop-blur-sm"
+                    : "modal-bg/95 backdrop-blur-md border-b border-primary-500/30"
+                } p-4 md:p-6`}
               >
-                {" "}
-                {/* Header del Modal */}{" "}
-                <div
-                  className={`sticky top-0 z-10 ${
-                    theme === "brutalism"
-                      ? "bg-gradient-to-r from-brutalism-yellow to-brutalism-green border-b-4 border-black backdrop-blur-sm"
-                      : "modal-bg/95 backdrop-blur-md border-b border-primary-500/30"
-                  } p-4 md:p-6`}
-                >
-                  <div className="flex items-center justify-between">
-                    <div>
-                      {" "}
-                      <h2
-                        className={`text-xl md:text-2xl font-bold ${
-                          theme === "brutalism"
-                            ? "brutalism-heading"
-                            : "gradient-text"
-                        }`}
-                      >
-                        {t("experience.achievements")}
-                      </h2>
-                      <p
-                        className={`${
-                          theme === "brutalism"
-                            ? "brutalism-text"
-                            : "text-primary-400"
-                        } mt-1 text-sm md:text-base`}
-                      >
-                        {getCompanyInfo(activeModal).title}
-                      </p>
-                    </div>{" "}
-                    <button
-                      onClick={handleCloseModal}
-                      className={`p-2 ${
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h2
+                      className={`text-xl md:text-2xl font-bold ${
                         theme === "brutalism"
-                          ? "brutalism-button text-black hover:text-black"
-                          : "text-gray-400 hover:text-white hover:bg-white/10 rounded-lg"
-                      } transition-colors`}
+                          ? "brutalism-heading"
+                          : "gradient-text"
+                      }`}
                     >
-                      <X className="w-6 h-6" />
-                    </button>
+                      {t("experience.achievements")}
+                    </h2>
+                    <p
+                      className={`$ {
+                        theme === "brutalism"
+                          ? "brutalism-text"
+                          : "text-primary-400"
+                      } mt-1 text-sm md:text-base`}
+                    >
+                      {getCompanyInfo(activeModal || "").title}
+                    </p>
                   </div>
-                </div>{" "}
-                {/* Contenido del Modal */}
-                <div
-                  className={`p-4 md:p-6 space-y-4 md:space-y-6 ${
-                    theme === "brutalism"
-                      ? "flex-1 overflow-y-auto overscroll-behavior-contain pb-12"
-                      : ""
-                  }`}
-                >
-                  {getAchievements(activeModal).map((achievement, index) => (
+                  <button
+                    onClick={handleCloseModal}
+                    className={`p-2 ${
+                      theme === "brutalism"
+                        ? "brutalism-button text-black hover:text-black"
+                        : "text-gray-400 hover:text-white hover:bg-white/10 rounded-lg"
+                    } transition-colors`}
+                  >
+                    <X className="w-6 h-6" />
+                  </button>
+                </div>
+              </div>
+              {/* Contenido del Modal */}
+              <div
+                className={`p-4 md:p-6 space-y-4 md:space-y-6 ${
+                  theme === "brutalism"
+                    ? "flex-1 overflow-y-auto overscroll-behavior-contain pb-12"
+                    : ""
+                }`}
+              >
+                {getAchievements(activeModal || "").map(
+                  (achievement, index) => (
                     <motion.div
                       key={index}
                       initial={{ opacity: 0, y: 20 }}
@@ -1061,94 +1066,102 @@ const Experience = () => {
                         </div>
                       </div>
                     </motion.div>
-                  ))}
-
-                  {/* Footer del Modal */}
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.6 }}
-                    className="mt-6 md:mt-8 p-4 md:p-6 bg-primary-500/10 rounded-xl border border-primary-500/30"
-                  >
-                    <h3 className="text-base md:text-lg font-bold text-white mb-2">
-                      {t("experience.period")}{" "}
-                      {getCompanyInfo(activeModal).period}
-                    </h3>
-                    <p className="text-gray-300 text-xs md:text-sm">
-                      {getCompanyInfo(activeModal).description}
-                    </p>
-                    {/* Tecnologías específicas según la empresa */}
-                    {activeModal === "IT Academy" && (
-                      <div className="mt-3 md:mt-4">
-                        <h4 className="text-sm md:text-md font-bold text-white mb-2 md:mb-3">
-                          {t("experience.technologiesAndMethodologies")}
-                        </h4>
-                        <div className="grid grid-cols-1 gap-3 md:gap-4 text-xs md:text-sm">
-                          <div>
-                            <p className="text-primary-400 font-semibold mb-1">
-                              {t("experience.frontend")}
-                            </p>
-                            <p className="text-gray-300">
-                              {t("experience.companies.itacademy.frontend")}
-                            </p>
-                          </div>
-                          <div>
-                            <p className="text-primary-400 font-semibold mb-1">
-                              {t("experience.testing")}
-                            </p>
-                            <p className="text-gray-300">
-                              {t("experience.companies.itacademy.testing")}
-                            </p>
-                          </div>
-                          <div>
-                            <p className="text-primary-400 font-semibold mb-1">
-                              {t("experience.methodologies")}
-                            </p>
-                            <p className="text-gray-300">
-                              {t(
-                                "experience.companies.itacademy.methodologies"
-                              )}
-                            </p>
-                          </div>
-                          <div>
-                            <p className="text-primary-400 font-semibold mb-1">
-                              {t("experience.tools")}
-                            </p>
-                            <p className="text-gray-300">
-                              {t("experience.companies.itacademy.tools")}
-                            </p>
-                          </div>
-                        </div>
-                        <div className="mt-3 md:mt-4">
-                          <p className="text-primary-400 font-semibold mb-2">
-                            {t("experience.featuredProjects")}
+                  )
+                )}
+                {/* Footer del Modal */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.6 }}
+                  className="mt-6 md:mt-8 p-4 md:p-6 bg-primary-500/10 rounded-xl border border-primary-500/30"
+                >
+                  <h3 className="text-base md:text-lg font-bold text-white mb-2">
+                    {t("experience.period")}{" "}
+                    {getCompanyInfo(activeModal || "").period}
+                  </h3>
+                  <p className="text-gray-300 text-xs md:text-sm">
+                    {getCompanyInfo(activeModal || "").description}
+                  </p>
+                  {/* Tecnologías específicas según la empresa */}
+                  {activeModal === "IT Academy" && (
+                    <div className="mt-3 md:mt-4">
+                      <h4 className="text-sm md:text-md font-bold text-white mb-2 md:mb-3">
+                        {t("experience.technologiesAndMethodologies")}
+                      </h4>
+                      <div className="grid grid-cols-1 gap-3 md:gap-4 text-xs md:text-sm">
+                        <div>
+                          <p className="text-primary-400 font-semibold mb-1">
+                            {t("experience.frontend")}
                           </p>
-                          <div className="space-y-1">
-                            <p className="text-gray-300 text-xs md:text-sm">
-                              • <strong>ITA Directory:</strong>{" "}
-                              {t(
-                                "experience.companies.itacademy.projects.itaDirectory"
-                              )}
-                            </p>
-                            <p className="text-gray-300 text-xs md:text-sm">
-                              • <strong>ITA Game:</strong>{" "}
-                              {t(
-                                "experience.companies.itacademy.projects.itaGame"
-                              )}
-                            </p>
-                          </div>
+                          <p className="text-gray-300">
+                            {t("experience.companies.itacademy.frontend")}
+                          </p>
+                        </div>
+                        <div>
+                          <p className="text-primary-400 font-semibold mb-1">
+                            {t("experience.testing")}
+                          </p>
+                          <p className="text-gray-300">
+                            {t("experience.companies.itacademy.testing")}
+                          </p>
+                        </div>
+                        <div>
+                          <p className="text-primary-400 font-semibold mb-1">
+                            {t("experience.methodologies")}
+                          </p>
+                          <p className="text-gray-300">
+                            {t("experience.companies.itacademy.methodologies")}
+                          </p>
+                        </div>
+                        <div>
+                          <p className="text-primary-400 font-semibold mb-1">
+                            {t("experience.tools")}
+                          </p>
+                          <p className="text-gray-300">
+                            {t("experience.companies.itacademy.tools")}
+                          </p>
                         </div>
                       </div>
-                    )}
-                  </motion.div>
-                </div>
-              </motion.div>
-            </>
-          )}
-        </AnimatePresence>
-      </div>
-    </section>
+                      <div className="mt-3 md:mt-4">
+                        <p className="text-primary-400 font-semibold mb-2">
+                          {t("experience.featuredProjects")}
+                        </p>
+                        <div className="space-y-1">
+                          <p className="text-gray-300 text-xs md:text-sm">
+                            • <strong>ITA Directory:</strong>{" "}
+                            {t(
+                              "experience.companies.itacademy.projects.itaDirectory"
+                            )}
+                          </p>
+                          <p className="text-gray-300 text-xs md:text-sm">
+                            • <strong>ITA Game:</strong>{" "}
+                            {t(
+                              "experience.companies.itacademy.projects.itaGame"
+                            )}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </motion.div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 
 export default Experience;
+
+// Debug component to log overlay mount/unmount
+function ModalOverlayDebug() {
+  useEffect(() => {
+    console.log("[ModalOverlay] mounted");
+    return () => {
+      console.log("[ModalOverlay] unmounted");
+    };
+  }, []);
+  return null;
+}

@@ -14,12 +14,15 @@ test.describe("Experience Section Mobile Issues - Spanish", () => {
     page,
   }) => {
     // First open mobile menu by clicking hamburger button
-    const hamburgerButton = page.locator('button').filter({ has: page.locator('svg') }).first();
+    const hamburgerButton = page
+      .locator("button")
+      .filter({ has: page.locator("svg") })
+      .first();
     await hamburgerButton.click();
     await page.waitForTimeout(500);
-      // Wait for mobile menu to be visible and then click Experience button
-    await page.waitForSelector('nav div:last-child', { state: 'visible' });
-    
+    // Wait for mobile menu to be visible and then click Experience button
+    await page.waitForSelector("nav div:last-child", { state: "visible" });
+
     // Use nth(1) to get the second Experience button (mobile version)
     await page
       .locator("button")
@@ -76,10 +79,14 @@ test.describe("Experience Section Mobile Issues - Spanish", () => {
     console.log("Initial theme classes:", initialThemeClasses);
 
     // Open mobile menu and navigate to experience
-    const hamburgerButton = page.locator('button').filter({ has: page.locator('svg') }).first();
-    await hamburgerButton.click();    await page.waitForTimeout(500);
-    
-    await page.waitForSelector('nav div:last-child', { state: 'visible' });
+    const hamburgerButton = page
+      .locator("button")
+      .filter({ has: page.locator("svg") })
+      .first();
+    await hamburgerButton.click();
+    await page.waitForTimeout(500);
+
+    await page.waitForSelector("nav div:last-child", { state: "visible" });
     await page
       .locator("button")
       .filter({ hasText: "Experiencia" })
@@ -114,10 +121,13 @@ test.describe("Experience Section Mobile Issues - Spanish", () => {
     page,
   }) => {
     // Open mobile menu and navigate to experience
-    const hamburgerButton = page.locator('button').filter({ has: page.locator('svg') }).first();
+    const hamburgerButton = page
+      .locator("button")
+      .filter({ has: page.locator("svg") })
+      .first();
     await hamburgerButton.click();
     await page.waitForTimeout(500);
-      await page.waitForSelector('nav div:last-child', { state: 'visible' });
+    await page.waitForSelector("nav div:last-child", { state: "visible" });
     await page
       .locator("button")
       .filter({ hasText: "Experiencia" })
@@ -172,11 +182,15 @@ test.describe("Experience Section Mobile Issues - Spanish", () => {
     });
 
     // Open mobile menu and navigate to experience
-    const hamburgerButton = page.locator('button').filter({ has: page.locator('svg') }).first();
+    const hamburgerButton = page
+      .locator("button")
+      .filter({ has: page.locator("svg") })
+      .first();
     await hamburgerButton.click();
     await page.waitForTimeout(500);
-    
-    await page.waitForSelector('nav div:last-child', { state: 'visible' });    await page
+
+    await page.waitForSelector("nav div:last-child", { state: "visible" });
+    await page
       .locator("button")
       .filter({ hasText: "Experiencia" })
       .nth(1)
@@ -211,13 +225,17 @@ test.describe("Experience Section Mobile Issues - Spanish", () => {
   });
   test("should not have overlapping clickable elements", async ({ page }) => {
     // Open mobile menu and navigate to experience
-    const hamburgerButton = page.locator('button').filter({ has: page.locator('svg') }).first();
+    const hamburgerButton = page
+      .locator("button")
+      .filter({ has: page.locator("svg") })
+      .first();
     await hamburgerButton.click();
     await page.waitForTimeout(500);
-    
-    await page.waitForSelector('nav div:last-child', { state: 'visible' });
+
+    await page.waitForSelector("nav div:last-child", { state: "visible" });
     await page
-      .locator("button")      .filter({ hasText: "Experiencia" })
+      .locator("button")
+      .filter({ hasText: "Experiencia" })
       .nth(1)
       .click();
     await page.waitForTimeout(1000);
@@ -279,10 +297,13 @@ test.describe("Experience Section Mobile Issues - Spanish", () => {
     expect(viewport?.height).toBe(667);
 
     // Open mobile menu and navigate to experience
-    const hamburgerButton = page.locator('button').filter({ has: page.locator('svg') }).first();
+    const hamburgerButton = page
+      .locator("button")
+      .filter({ has: page.locator("svg") })
+      .first();
     await hamburgerButton.click();
     await page.waitForTimeout(500);
-      await page.waitForSelector('nav div:last-child', { state: 'visible' });
+    await page.waitForSelector("nav div:last-child", { state: "visible" });
     await page
       .locator("button")
       .filter({ hasText: "Experiencia" })

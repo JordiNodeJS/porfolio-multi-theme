@@ -143,12 +143,16 @@ const Navigation = () => {
           {/* Social Links & Theme Toggle */}
           <div className="flex items-center space-x-4">
             {/* Language Selector - Hidden when mobile menu is open to prevent overlay issues */}
-            <div className={`block lg:hidden ${isOpen ? 'invisible' : 'visible'}`}>
+            <div
+              className={`block lg:hidden ${isOpen ? "invisible" : "visible"}`}
+            >
               <LanguageSelector />
             </div>
 
             {/* Theme Toggle - Hidden when mobile menu is open to prevent overlay issues */}
-            <div className={`block lg:hidden ${isOpen ? 'invisible' : 'visible'}`}>
+            <div
+              className={`block lg:hidden ${isOpen ? "invisible" : "visible"}`}
+            >
               <ThemeToggle />
             </div>
 
@@ -213,7 +217,9 @@ const Navigation = () => {
           height: isOpen ? "auto" : 0,
         }}
         transition={{ duration: 0.3 }}
-        className={`md:hidden ${isOpen ? 'pointer-events-auto' : 'pointer-events-none'} ${
+        className={`md:hidden ${
+          isOpen ? "pointer-events-auto" : "pointer-events-none"
+        } ${
           theme === "vintage"
             ? "glass-effect border-t border-[#a78a21]/30 bg-[#6e4c30]"
             : theme === "retro-pastel"
