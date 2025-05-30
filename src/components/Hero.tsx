@@ -1,8 +1,7 @@
 import { motion } from "framer-motion";
 import { useTheme } from "../hooks/useTheme";
 import { useRef } from "react";
-import { animated } from "@react-spring/web";
-import useEnhanced3DEffect from "../hooks/useEnhanced3DEffect";
+import useMotion3DEffect from "../hooks/useMotion3DEffect";
 import { TextRevealAnimation } from "./TextRevealAnimation";
 import ProgressiveTextReveal from "./ProgressiveTextReveal";
 
@@ -11,7 +10,7 @@ const Hero = () => {
   const profileContainerRef = useRef<HTMLDivElement>(null);
 
   // Using our enhanced 3D effect hook for better physics-based animations
-  const { springProps, isHovered, config } = useEnhanced3DEffect(
+  const { springProps, isHovered, config } = useMotion3DEffect(
     profileContainerRef as React.RefObject<HTMLElement>,
     {
       strength: 25,
@@ -69,21 +68,21 @@ const Hero = () => {
             ref={profileContainerRef}
           >
             {" "}
-            <animated.div
+            <motion.div
               className="relative w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full overflow-visible shadow-2xl transform-style-3d"
               style={{
                 // Apply transform directly from spring props
                 rotateX: springProps.rotateX,
                 rotateY: springProps.rotateY,
                 scale: springProps.scale,
-                zIndex: springProps.zIndex,
+                z: springProps.zIndex,
                 // Use CSS custom property for perspective
-                transform: `perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) scale(var(--scale, 1)) translateZ(var(--z, 0px))`,
+                transform: `perspective(1000px)`,
               }}
             >
               {" "}
               {/* Base circular with depth effect */}
-              <animated.div
+              <motion.div
                 className={`absolute inset-0 rounded-full ${
                   theme === "dark"
                     ? "bg-gradient-to-br from-slate-700 via-slate-800 to-slate-900"
@@ -97,10 +96,10 @@ const Hero = () => {
                     ? "bg-[#ff6b6b] border-4 border-black"
                     : "bg-gradient-to-br from-gray-100 via-white to-gray-200"
                 } shadow-inner transform-gpu transform-style-3d`}
-                style={{ transform: "translateZ(-20px)" }}
+                style={{ z: -20 }}
               />{" "}
               {/* Dynamic shadow effect */}
-              <animated.div
+              <motion.div
                 className="absolute -inset-4 rounded-full blur-md opacity-70"
                 style={{
                   background:
@@ -119,28 +118,22 @@ const Hero = () => {
                     theme === "brutalism"
                       ? "translateZ(-10px) translateX(0) translateY(0)"
                       : "translateZ(-10px)",
-                  translateX:
-                    theme === "brutalism"
-                      ? 0
-                      : springProps.rotateY.to((val) => -val * 0.5),
-                  translateY:
-                    theme === "brutalism"
-                      ? 0
-                      : springProps.rotateX.to((val) => val * 0.5),
+                  x: theme === "brutalism" ? 0 : springProps.rotateY,
+                  y: theme === "brutalism" ? 0 : springProps.rotateX,
                   boxShadow:
                     theme === "brutalism" ? "5px 5px 0px #000" : "none",
                 }}
               />{" "}
               {/* Container for the image with clip-path for the "popping out of circle" effect */}
-              <animated.div
+              <motion.div
                 className="absolute inset-0 overflow-visible transform-style-3d"
                 style={{
-                  translateZ: springProps.zIndex,
+                  z: springProps.zIndex,
                 }}
               >
                 {" "}
                 {/* 3D Image that "pops out" of the circle */}
-                <animated.img
+                <motion.img
                   src="/assets/developer.png"
                   alt="Profile"
                   className="w-full h-full object-cover rounded-full transform-gpu transform-style-3d"
@@ -152,9 +145,9 @@ const Hero = () => {
                     transition: "filter 0.3s ease",
                   }}
                 />{" "}
-              </animated.div>{" "}
+              </motion.div>{" "}
               {/* Border glow effect */}
-              <animated.div
+              <motion.div
                 className={`absolute -inset-1 rounded-full pointer-events-none transform-style-3d ${
                   theme === "brutalism" ? "border-4 border-black" : ""
                 }`}
@@ -201,7 +194,7 @@ const Hero = () => {
                     theme === "brutalism" ? "4px 4px 0px #000" : "none",
                 }}
               />
-            </animated.div>
+            </motion.div>
           </div>
 
           {/* Text content with animations */}

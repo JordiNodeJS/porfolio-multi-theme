@@ -11,7 +11,7 @@
 - **Build Tool**: Vite
 - **Styling**: TailwindCSS
 - **Animations**: Framer Motion
-- **Icons**: Lucide React
+- **Icons**: Lucide React (reemplaza a `react-icons`)
 
 ### Commands to Remember
 
