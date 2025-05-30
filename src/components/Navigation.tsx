@@ -6,10 +6,12 @@ import ThemeToggle from "./ThemeToggle";
 import LanguageSelector from "./LanguageSelector";
 import PreferencesManager from "./PreferencesManager";
 import { useTheme } from "../hooks/useTheme";
+import { useScrollToSection } from "../hooks/useScrollToSection";
 
 const Navigation = () => {
   const { t } = useTranslation();
   const { theme } = useTheme();
+  const { scrollToSection } = useScrollToSection();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
@@ -57,10 +59,7 @@ const Navigation = () => {
 
   const handleNavClick = (href: string) => {
     setIsOpen(false);
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+    scrollToSection(href);
   };
 
   const socialLinks = [

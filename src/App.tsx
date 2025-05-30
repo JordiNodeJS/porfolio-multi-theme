@@ -10,24 +10,21 @@ import ScrollToTop from "./components/ScrollToTop";
 import FloatingParticles from "./components/FloatingParticles";
 import LoadingScreen from "./components/LoadingScreen";
 import { usePortfolioDataFromLocales } from "./hooks/usePortfolioDataFromLocales";
+import { useScrollToSection } from "./hooks/useScrollToSection";
 
 import "./App.css";
 
 function App() {
   const { data: portfolioData } = usePortfolioDataFromLocales();
+  const { scrollToSection } = useScrollToSection();
+  
   useEffect(() => {
-    // Smooth scroll behavior for anchor links
+    // Smooth scroll behavior for anchor links with navigation offset
     const handleSmoothScroll = (e: Event) => {
       const target = e.target as HTMLAnchorElement;
       if (target.hash) {
         e.preventDefault();
-        const element = document.querySelector(target.hash);
-        if (element) {
-          element.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-          });
-        }
+        scrollToSection(target.hash);
       }
     };
 
