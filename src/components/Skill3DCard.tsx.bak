@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { useTheme } from "../hooks/useTheme";
-import { motion } from "framer-motion";
-import useMotion3DEffect from "../hooks/useMotion3DEffect";
+import { animated } from "@react-spring/web";
+import useEnhanced3DEffect from "../hooks/useEnhanced3DEffect";
 import type { IconType } from "react-icons";
 
 interface Skill3DCardProps {
@@ -23,7 +23,7 @@ const Skill3DCard = ({
   const cardRef = useRef<HTMLDivElement>(null);
 
   // Use our enhanced 3D effect with custom settings for skill cards
-  const { springProps, isHovered, config } = useMotion3DEffect(
+  const { springProps, isHovered, config } = useEnhanced3DEffect(
     cardRef as React.RefObject<HTMLElement>,
     {
       strength: 15,
@@ -77,7 +77,7 @@ const Skill3DCard = ({
   return (
     <div ref={cardRef} className="relative perspective-1000">
       {" "}
-      <motion.div
+      <animated.div
         className={`p-4 transform-style-3d ${
           theme === "dark"
             ? "bg-slate-800/90"
@@ -93,7 +93,7 @@ const Skill3DCard = ({
           rotateX: springProps.rotateX,
           rotateY: springProps.rotateY,
           scale: springProps.scale,
-          z: springProps.zIndex,
+          translateZ: springProps.zIndex,
           boxShadow:
             theme === "brutalism"
               ? isHovered
@@ -147,7 +147,7 @@ const Skill3DCard = ({
                 theme === "dark"
                   ? "bg-gray-700/50"
                   : theme === "brutalism"
-                  ? "bg-gray-300 border-t border-b border-l-2 border-r-2 border-black"
+? "bg-gray-300 border-t border-b border-l-2 border-r-2 border-black"
                   : "bg-gray-200"
               } ${theme === "brutalism" ? "h-2" : "h-1.5 rounded-full"}`}
             >
@@ -168,7 +168,7 @@ const Skill3DCard = ({
         </div>
 
         {/* Extra glow effect when hovered */}
-        <motion.div
+        <animated.div
           className="absolute inset-0 rounded-xl opacity-0 pointer-events-none"
           style={{
             background: `radial-gradient(circle at center, ${config.glowColor} 0%, transparent 70%)`,
@@ -178,7 +178,7 @@ const Skill3DCard = ({
             zIndex: -1,
           }}
         />
-      </motion.div>
+      </animated.div>
     </div>
   );
 };
