@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { usePortfolioData } from "../hooks/usePortfolioData";
+import { usePortfolioDataFromLocales } from "../hooks/usePortfolioDataFromLocales";
 import { usePortfolioTranslations } from "../hooks/usePortfolioTranslations";
 import { useTheme } from "../hooks/useTheme";
 import {
@@ -213,7 +213,7 @@ const SkillBar = ({
 };
 
 const Skills = () => {
-  const { skills: skillsDataFromHook } = usePortfolioData();
+  const { skills: skillsDataFromHook } = usePortfolioDataFromLocales();
   const { skills: skillsTranslations } = usePortfolioTranslations();
   const { theme } = useTheme();
 

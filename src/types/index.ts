@@ -95,7 +95,8 @@ export interface Skill {
 
 // Placeholder for DatabaseData if it's a complex type, adjust as needed
 export interface DatabaseData {
-  projects: Project[];
-  skills: Skill[];
+  presentation?: Presentation;
+  projects?: Project[];
+  skills?: Skill[];
   // Add other data types if they are part of DatabaseData
 }

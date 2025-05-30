@@ -164,7 +164,7 @@ Migrar completamente la librería de animaciones de `@react-spring/web` a `frame
 ✅ **Z-axis movement** - Movimiento en profundidad  
 ✅ **Glow effects** - Efectos de brillo en hover  
 ✅ **Configuración flexible** - Todos los parámetros personalizables mantenidos  
-✅ **Compatibilidad con temas** - Funciona con todos los temas (dark, light, vintage, retro-pastel, brutalism)  
+✅ **Compatibilidad con temas** - Funciona con todos los temas (dark, light, vintage, retro-pastel, brutalism)
 
 ### 🎯 Beneficios de la Migración
 
@@ -180,3 +180,45 @@ Migrar completamente la librería de animaciones de `@react-spring/web` a `frame
 - **Browser support**: Mantiene el mismo soporte de navegadores que Framer Motion
 
 **Estado**: ✅ **COMPLETADO - LISTO PARA PRODUCCIÓN**
+
+---
+
+## 📂 Análisis de Estructura de Datos del Proyecto
+
+### Corrección Importante: Carpetas `db` vs `locales`
+
+Durante el proceso de investigación post-migración, se verificó el uso de las carpetas de datos:
+
+#### ✅ Carpeta `src/db/` (ACTIVAMENTE UTILIZADA)
+
+**Propósito**: Datos de contenido del portafolio
+
+- `db.json` - Información personal y presentación
+- `skills.json` - Datos de habilidades técnicas
+- `education.json` - Información educativa
+
+**Archivos que la usan**:
+
+- `src/hooks/usePortfolioData.ts` - Importa `db.json` y `skills.json`
+- `src/components/Education.tsx` - Importa `education.json`
+
+#### ✅ Carpeta `src/i18n/locales/` (ACTIVAMENTE UTILIZADA)
+
+**Propósito**: Traducciones de la interfaz de usuario
+
+- `en.json`, `es.json`, `ca.json`, `de.json`, `fr.json`, `it.json`, `pt.json` - Textos de UI en múltiples idiomas
+
+**Archivos que la usan**:
+
+- Sistema de internacionalización i18n
+
+#### 🎯 Conclusión
+
+**❌ Hipótesis inicial incorrecta**: Se había asumido que la carpeta `db` no se usaba y era redundante con `locales`.
+
+**✅ Realidad**: Ambas carpetas tienen propósitos completamente diferentes y son esenciales:
+
+- `db/` = Datos de contenido del portafolio
+- `locales/` = Traducciones de la interfaz
+
+**🏁 Resultado**: No se requiere eliminar ninguna carpeta. La estructura actual es correcta y funcional.
