@@ -4,9 +4,11 @@ import { useRef } from "react";
 import useMotion3DEffect from "../hooks/useMotion3DEffect";
 import { TextRevealAnimation } from "./TextRevealAnimation";
 import ProgressiveTextReveal from "./ProgressiveTextReveal";
+import { usePortfolioDataFromLocales } from "../hooks/usePortfolioDataFromLocales";
 
 const Hero = () => {
   const { theme } = useTheme();
+  const { data: portfolioData } = usePortfolioDataFromLocales();
   const profileContainerRef = useRef<HTMLDivElement>(null);
 
   // Using our enhanced 3D effect hook for better physics-based animations
@@ -209,7 +211,7 @@ const Hero = () => {
             theme === "light" ||
             theme === "retro-pastel" ? (
               <ProgressiveTextReveal
-                text="JORGE"
+                text={portfolioData?.presentation?.name || "JORGE"}
                 duration={4000}
                 className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-4 bg-clip-text text-transparent ${
                   theme === "dark"
@@ -271,7 +273,7 @@ const Hero = () => {
                 }}
               >
                 <TextRevealAnimation
-                  text="JORGE"
+                  text={portfolioData?.presentation?.name || "JORGE"}
                   charDelay={0.08}
                   animationStyle="scale"
                   once={false}
@@ -323,7 +325,10 @@ const Hero = () => {
               }}
             >
               <TextRevealAnimation
-                text="Frontend React Engineer"
+                text={
+                  portfolioData?.presentation?.title ||
+                  "Frontend React Engineer"
+                }
                 charDelay={0.05}
                 once={false}
               />

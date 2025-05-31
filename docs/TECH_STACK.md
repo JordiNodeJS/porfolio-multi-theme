@@ -424,6 +424,77 @@ bun lint     # Linting código
 
 ---
 
+## 📂 Estructura de Datos
+
+### Content Data (`src/db/`)
+
+- **`db.json`** - Información personal y presentación
+- **`skills.json`** - Habilidades técnicas organizadas por categorías
+- **`education.json`** - Background educativo y certificaciones
+
+### Internationalization (`src/i18n/`)
+
+- **Idiomas soportados**: EN, ES, CA, DE, FR, IT, PT
+- **Estructura de traducciones**: Organizadas por secciones de la UI
+- **Estrategia**: Client-side i18n con hooks personalizados
+
+---
+
+## 🏁 Estado del Proyecto
+
+### ✅ Migraciones Completadas
+
+- **Framer Motion Migration** (Mayo 2025)
+  - Migración completa de `@react-spring/web` a `framer-motion`
+  - Preservación de todas las funcionalidades 3D
+  - Eliminación de dependencias redundantes
+  - Documentación completa en `SPRING_TO_MOTION_MIGRATION.md`
+
+### 🎯 Características Destacadas
+
+1. **Sistema de Temas Avanzado**
+
+   - 5 temas únicos con paletas de colores personalizadas
+   - Dark/Light mode automático
+   - Transiciones suaves entre temas
+
+2. **Efectos 3D Immersivos**
+
+   - Mouse tracking en tiempo real
+   - Animaciones de breathing y glow
+   - Transformaciones 3D suaves con Framer Motion
+
+3. **Arquitectura Escalable**
+
+   - Hooks personalizados reutilizables
+   - Context providers bien organizados
+   - Separación clara de responsabilidades
+
+4. **Performance Optimizada**
+   - Bun para velocidad de desarrollo
+   - Vite para builds ultrarrápidos
+   - Lazy loading y code splitting estratégico
+
+### 📊 Métricas
+
+- **Tiempo de build**: < 3 segundos (Vite + Bun)
+- **Tiempo de instalación**: < 10 segundos (Bun)
+- **Bundle size**: Optimizado con tree-shaking automático
+- **Idiomas**: 7 idiomas completamente soportados
+
+---
+
+## 🔗 Enlaces de Interés
+
+- [Documentación de migración](./SPRING_TO_MOTION_MIGRATION.md)
+- [Sistema de temas](./BRUTALISM_THEME.md)
+- [Sistema de preferencias](./PREFERENCES_SYSTEM.md)
+
+**Última actualización**: Mayo 31, 2025  
+**Estado**: ✅ Producción Ready
+
+---
+
 ## 🏆 Conclusión
 
 Este portfolio representa un stack tecnológico moderno, performante y escalable que aprovecha las mejores prácticas de desarrollo frontend en 2024. La combinación de React 18, TypeScript, Framer Motion y TailwindCSS, junto con Bun como package manager, crea una base sólida para un portfolio profesional que no solo impresiona visualmente, sino que también mantiene un código limpio y mantenible.

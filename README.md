@@ -61,18 +61,49 @@ bun run build
 bun run preview
 ```
 
+## 🌐 Internacionalización (i18n)
+
+El portfolio ahora utiliza **i18n** para la gestión de idiomas y traducciones. Todo el contenido textual y los datos de secciones como Skills, Experience, Education y Contact están centralizados en archivos de localización:
+
+- `src/i18n/locales/es.json` — Español
+- `src/i18n/locales/en.json` — Inglés
+- (y otros idiomas disponibles)
+
+Puedes agregar o modificar textos y datos directamente en estos archivos para personalizar el contenido en cada idioma.
+
+### 🛠️ Migración de datos
+
+- Los antiguos archivos JSON en `src/db/` han sido migrados a los archivos de localización.
+- Ahora toda la información de habilidades, experiencia, educación y textos de UI se gestiona desde los archivos de localización.
+
 ## 📝 Personalización
 
-Edita los archivos JSON en `src/db/` para personalizar el contenido:
+Edita los archivos de localización en `src/i18n/locales/` para personalizar el contenido y las traducciones:
 
-- `db.json`: Información personal
-- `projects.json`: Tus proyectos
-- `skills.json`: Habilidades técnicas
-- `experience.json`: Experiencia laboral
-- `education.json`: Formación académica
+- `es.json`: Español
+- `en.json`: Inglés
+- (otros idiomas disponibles)
+
+Ejemplo de estructura para la sección Skills:
+
+```json
+"skills": {
+  "title": "Habilidades Técnicas",
+  "subtitle": "Tecnologías y herramientas con las que trabajo",
+  "competenceLevel": "Nivel de Competencia",
+  "techStack": "Stack Tecnológico",
+  "methodologies": "Metodologías y Herramientas",
+  "categories": {
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "tools": "Herramientas",
+    "databases": "Bases de Datos"
+  }
+}
+```
 
 ---
 
-⭐ **Portfolio completamente funcional con animaciones modernas!**
+⭐ **Portfolio completamente funcional, multilenguaje y con animaciones modernas!**
 
-🚀 **Servidor corriendo en: http://localhost:5174**
+🚀 **Servidor corriendo en:** http://localhost:5173/

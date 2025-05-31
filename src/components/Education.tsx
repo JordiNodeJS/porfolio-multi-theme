@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import { GraduationCap, Calendar, ExternalLink, Star } from "lucide-react";
 import { usePortfolioTranslations } from "../hooks/usePortfolioTranslations";
+import { usePortfolioDataFromLocales } from "../hooks/usePortfolioDataFromLocales";
 import type { Education as EducationType } from "../types";
-import educationData from "../db/education.json";
 import { TextRevealAnimation } from "./TextRevealAnimation";
 
 const EducationCard = ({
@@ -196,9 +196,10 @@ const EducationCard = ({
 
 const Education = () => {
   const { education: educationTranslations } = usePortfolioTranslations();
+  const { education: educationDataFromLocales } = usePortfolioDataFromLocales();
 
-  // Use education data directly from JSON file
-  const education = educationData as EducationType[];
+  // Use education data from locales instead of JSON file
+  const education = educationDataFromLocales || [];
 
   const stats = [
     {

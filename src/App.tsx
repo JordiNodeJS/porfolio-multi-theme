@@ -9,10 +9,12 @@ import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import FloatingParticles from "./components/FloatingParticles";
 import LoadingScreen from "./components/LoadingScreen";
+import { usePortfolioDataFromLocales } from "./hooks/usePortfolioDataFromLocales";
 
 import "./App.css";
 
 function App() {
+  const { data: portfolioData } = usePortfolioDataFromLocales();
   useEffect(() => {
     // Smooth scroll behavior for anchor links
     const handleSmoothScroll = (e: Event) => {
@@ -44,7 +46,10 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const titles = ["PORTFOLIO", "Frontend React Engineer"];
+    const titles = [
+      "PORTFOLIO",
+      portfolioData?.presentation?.title || "Frontend React Engineer",
+    ];
     let currentTitleIndex = 0;
     let currentIndex = 0;
     let currentTitle = "";
@@ -105,7 +110,7 @@ function App() {
       clearTimeout(timeoutId);
       document.title = "PORTFOLIO"; // Reset title on unmount
     };
-  }, []);
+  }, [portfolioData]);
 
   return (
     <>
