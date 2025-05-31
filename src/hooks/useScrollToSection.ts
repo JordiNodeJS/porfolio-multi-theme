@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback } from "react";
 
 /**
  * Hook personalizado para manejar navegación con offset de la barra de navegación
@@ -9,21 +9,22 @@ export const useScrollToSection = () => {
     const element = document.querySelector(sectionId);
     if (element) {
       // Calcular la altura de la navegación dinámicamente
-      const navigation = document.querySelector('nav');
+      const navigation = document.querySelector("nav");
       const navHeight = navigation?.getBoundingClientRect().height || 80;
-      
+
       // Agregar un offset adicional para padding visual
       const extraPadding = 20;
       const totalOffset = navHeight + extraPadding;
-      
+
       // Obtener la posición del elemento
-      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      const elementPosition =
+        element.getBoundingClientRect().top + window.pageYOffset;
       const offsetPosition = elementPosition - totalOffset;
-      
+
       // Scroll suave a la posición con offset
       window.scrollTo({
         top: offsetPosition,
-        behavior: "smooth"
+        behavior: "smooth",
       });
     }
   }, []);

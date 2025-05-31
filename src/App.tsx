@@ -17,7 +17,7 @@ import "./App.css";
 function App() {
   const { data: portfolioData } = usePortfolioDataFromLocales();
   const { scrollToSection } = useScrollToSection();
-  
+
   useEffect(() => {
     // Smooth scroll behavior for anchor links with navigation offset
     const handleSmoothScroll = (e: Event) => {
