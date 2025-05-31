@@ -118,7 +118,7 @@ const Skill3DCard = ({
           >
             <Icon
               className={`w-8 h-8 ${
-                theme === "brutalism" ? "text-black" : "text-white"
+                theme === "brutalism" ? "text-black" : "tech-icon"
               }`}
             />
           </div>

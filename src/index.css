@@ -476,6 +476,11 @@
     color: rgb(17 24 39);
   }
 
+  /* Exception for tech icons - they should remain white for visibility */
+  .light .tech-icon {
+    color: rgb(255 255 255) !important;
+  }
+
   [data-theme="vintage"] .text-white {
     color: rgb(243 235 211); /* vintage-cream */
   }
