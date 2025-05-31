@@ -117,8 +117,8 @@ const Skill3DCard = ({
             } bg-gradient-to-br ${color} mb-3`}
           >
             <Icon
-              className={`w-8 h-8 ${
-                theme === "brutalism" ? "text-black" : "tech-icon"
+              className={`w-8 h-8 tech-icon ${
+                theme === "brutalism" ? "text-black" : ""
               }`}
             />
           </div>

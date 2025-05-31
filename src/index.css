@@ -480,6 +480,18 @@
   .light .tech-icon {
     color: rgb(255 255 255) !important;
   }
+  [data-theme="vintage"] .tech-icon {
+    color: #f3ebd3 !important; /* beige vintage-cream */
+  }
+  [data-theme="retro-pastel"] .tech-icon {
+    color: #ffe9f3 !important; /* rosa-blanco pastel */
+  }
+  [data-theme="brutalism"] .tech-icon,
+  [data-theme="brutalism"] .tech-icon.text-white,
+  [data-theme="brutalism"] .tech-icon.text-black,
+  [data-theme="brutalism"] .tech-icon.text-gray-900 {
+    color: #a0d6db !important;
+  }
 
   [data-theme="vintage"] .text-white {
     color: rgb(243 235 211); /* vintage-cream */
