@@ -228,29 +228,35 @@
   [data-theme="vintage"] body {
     background: linear-gradient(
       to bottom right,
-      #f8f3e6,  /* Fondo más claro para mejor contraste */
-      #f0e6cc,  /* Tono crema suave */
-      #e6d9b5   /* Tono crema ligeramente más cálido */
+      #f8f3e6,
+      /* Fondo más claro para mejor contraste */ #f0e6cc,
+      /* Tono crema suave */ #e6d9b5 /* Tono crema ligeramente más cálido */
     );
     color: #4a3c2a; /* Texto más oscuro para mejor legibilidad */
   }
-  
+
   /* Ajustes de contraste para el tema vintage */
   [data-theme="vintage"] .text-gray-800 {
     color: #4a3c2a; /* Texto principal más oscuro */
   }
-  
+
   [data-theme="vintage"] .text-gray-600 {
     color: #5d4f3d; /* Texto secundario más oscuro */
   }
-  
+
   [data-theme="vintage"] .glass-effect {
-    background-color: rgba(255, 253, 245, 0.9); /* Fondo más claro para mejor contraste */
+    background-color: rgba(
+      255,
+      253,
+      245,
+      0.9
+    ); /* Fondo más claro para mejor contraste */
     border: 1px solid rgba(187, 165, 121, 0.3); /* Borde sutil */
     color: #4a3c2a; /* Color de texto principal */
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
   }
-  
+
   /* Mejoras para títulos y encabezados */
   [data-theme="vintage"] h1,
   [data-theme="vintage"] h2,
@@ -261,18 +267,18 @@
     color: #3a2e1f; /* Color más oscuro para mejor contraste */
     font-weight: 600; /* Peso de fuente ligeramente más grueso */
   }
-  
+
   /* Mejoras para enlaces */
   [data-theme="vintage"] a {
     color: #8b5e3c; /* Color marrón cálido para enlaces */
     font-weight: 500;
     transition: color 0.2s ease;
   }
-  
+
   [data-theme="vintage"] a:hover {
     color: #6e4c30; /* Color más oscuro al pasar el ratón */
   }
-  
+
   /* Mejoras para botones */
   [data-theme="vintage"] .btn-primary {
     background-color: #8b5e3c; /* Color marrón cálido */
@@ -280,7 +286,7 @@
     border: 1px solid #6e4c30;
     transition: all 0.2s ease;
   }
-  
+
   [data-theme="vintage"] .btn-primary:hover {
     background-color: #6e4c30; /* Color más oscuro al pasar el ratón */
   }
@@ -806,7 +812,7 @@
   }
 
   .container-custom {
-    @apply max-w-7xl mx-auto;
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
 
   /* Navigation theme support */
@@ -1071,15 +1077,9 @@
     @apply font-bold;
     color: #ef7574; /* Color rojo suave */
     text-shadow: 
-      /* Sombra negra abajo */
-      2px 2px 0 #000,
-      /* Sombra clara arriba */
-      -1px -1px 0 #f8d7da,
-      -1px -2px 0 #f5b5b5,
-      /* Contorno */
-      1px -1px 0 #000,
-      -1px 1px 0 #000,
-      1px 1px 0 #000;
+      /* Sombra negra abajo */ 2px 2px 0 #000,
+      /* Sombra clara arriba */ -1px -1px 0 #f8d7da, -1px -2px 0 #f5b5b5,
+      /* Contorno */ 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
     -webkit-text-stroke: 0.5px #000;
     letter-spacing: -0.5px;
     position: relative;
@@ -1087,7 +1087,7 @@
   }
 
   .brutal-title::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: -8px;
     left: 0;
