@@ -23,7 +23,7 @@ const Hero = () => {
       resetOnLeave: true,
       dampingFactor: 15,
       stiffnessFactor: 130,
-      breatheAnimation: true,
+      breatheAnimation: false, // Disable breathing animation for specific themes
       breatheScale: 1.04,
       breatheDuration: 3000,
       glowOnHover: true,
@@ -43,7 +43,12 @@ const Hero = () => {
     }
   );
   return (
-    <section id="hero" className="relative py-20 overflow-hidden">
+    <section 
+      id="hero" 
+      className={`relative py-20 ${
+        theme === "brutalism" ? "overflow-visible" : "overflow-hidden"
+      }`}
+    >
       {" "}
       {/* Background gradient */}
       <div
@@ -205,6 +210,14 @@ const Hero = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
+            style={{
+              // Ensure text container doesn't clip content
+              overflow: "visible",
+              ...(theme === "brutalism" && {
+                minWidth: "100%",
+                width: "auto",
+              }),
+            }}
           >
             {/* Progressive text reveal for dark, light, retro-pastel themes */}
             {theme === "dark" ||
@@ -251,6 +264,7 @@ const Hero = () => {
                 style={{
                   fontSize: "4.5rem",
                   lineHeight: "1.1",
+                  // Ensure proper display for brutalism theme
                   ...(theme === "brutalism" && {
                     color: "#ef7574",
                     textShadow:
@@ -261,6 +275,8 @@ const Hero = () => {
                       "-1px 1px 0 #000, " +
                       "1px 1px 0 #000",
                     WebkitTextStroke: "0.5px #000",
+                    overflow: "visible", // Ensure text is not clipped
+                    whiteSpace: "nowrap", // Prevent text wrapping that might cause issues
                   }),
                   ...(theme === "vintage" && {
                     textShadow:
@@ -273,8 +289,8 @@ const Hero = () => {
                 }}
               >
                 <TextRevealAnimation
-                  text={portfolioData?.presentation?.name || "JORGE"}
-                  charDelay={0.08}
+                  text={portfolioData?.presentation?.name || "JORGe's web"}
+                  charDelay={theme === "brutalism" ? 0.12 : 0.08} // Slower animation for brutalism to ensure all chars appear
                   animationStyle="scale"
                   once={false}
                   replay={false}
@@ -297,6 +313,16 @@ const Hero = () => {
                   : "text-gray-700"
               }`}
               style={{
+                // Force absolute centering - override any conflicting styles
+                textAlign: "center !important" as any,
+                display: "flex !important" as any,
+                justifyContent: "center !important" as any,
+                alignItems: "center !important" as any,
+                width: "100% !important" as any,
+                margin: "0 auto !important" as any,
+                position: "relative",
+                left: "50%",
+                transform: "translateX(-50%)",
                 ...(theme === "dark" && {
                   textShadow: "0 2px 8px rgba(0,0,0,0.4)",
                 }),
@@ -324,18 +350,24 @@ const Hero = () => {
                 }),
               }}
             >
-              <TextRevealAnimation
-                text={
-                  portfolioData?.presentation?.title ||
-                  "Frontend React Engineer"
-                }
-                charDelay={0.05}
-                once={false}
-              />
+              <div 
+                style={{ 
+                  textAlign: "center",
+                  width: "100%",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center"
+                }}
+              >
+                {/* Simple text without animation to ensure centering */}
+                <span style={{ textAlign: "center", display: "inline-block" }}>
+                  {portfolioData?.presentation?.title || "Frontend React Engineer"}
+                </span>
+              </div>
             </div>
 
             <motion.div
-              className={`w-24 h-1 mx-auto rounded-full ${
+              className={`w-24 h-1 mx-auto rounded-full mt-4 ${
                 theme === "dark"
                   ? "bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600"
                   : theme === "light"
@@ -349,6 +381,8 @@ const Hero = () => {
                   : "bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
               }`}
               style={{
+                // Additional spacing from subtitle
+                marginTop: "1rem",
                 ...(theme === "vintage" && {
                   filter: "drop-shadow(0 2px 4px rgba(251, 191, 36, 0.6))",
                   height: "3px",

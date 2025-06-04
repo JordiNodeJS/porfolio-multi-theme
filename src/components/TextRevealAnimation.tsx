@@ -162,17 +162,49 @@ export const TextRevealAnimation = ({
       variants={containerVariants}
       key={key} // Force re-render when key changes
       onAnimationComplete={() => onAnimationComplete?.()}
+      style={{
+        // Ensure container doesn't clip text, especially for brutalism theme
+        overflow: "visible",
+        // Force centering when text-center class is present
+        ...(className?.includes("text-center") ? {
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "100%",
+          textAlign: "center",
+        } : {
+          display: "inline-block",
+          width: "auto",
+        }),
+        ...(theme === "brutalism" && {
+          width: className?.includes("text-center") ? "100%" : "auto",
+        }),
+      }}
     >
-      {characters.map((char, index) => (
-        <motion.span
-          key={`${index}-${char}`}
-          custom={index}
-          variants={charVariants}
-          style={getCharacterStyle(char)}
-        >
-          {char}
-        </motion.span>
-      ))}
+      <span 
+        style={{ 
+          display: "inline-block",
+          textAlign: "inherit",
+        }}
+      >
+        {characters.map((char, index) => (
+          <motion.span
+            key={`${index}-${char}`}
+            custom={index}
+            variants={charVariants}
+            style={{
+              ...getCharacterStyle(char),
+              // Ensure each character is properly displayed
+              ...(theme === "brutalism" && {
+                position: "relative",
+                zIndex: 1,
+              }),
+            }}
+          >
+            {char}
+          </motion.span>
+        ))}
+      </span>
     </motion.span>
   );
 };
