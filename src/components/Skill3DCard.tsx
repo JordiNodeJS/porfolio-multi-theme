@@ -32,8 +32,7 @@ const Skill3DCard = ({
       zAxisMovement: 20,
       tiltReverse: false,
       resetOnLeave: true,
-      dampingFactor: 18,
-      stiffnessFactor: 150,
+
       breatheAnimation: false,
       glowOnHover: true,
       glowColor:

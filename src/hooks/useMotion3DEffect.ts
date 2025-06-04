@@ -10,8 +10,6 @@ interface Motion3DOptions {
   zAxisMovement?: number;
   tiltReverse?: boolean;
   resetOnLeave?: boolean;
-  dampingFactor?: number;
-  stiffnessFactor?: number;
   breatheAnimation?: boolean;
   breatheScale?: number;
   breatheDuration?: number;
@@ -33,8 +31,7 @@ export const useMotion3DEffect = (
     zAxisMovement = 15, // Reduced from 30 for gentler depth
     tiltReverse = false,
     resetOnLeave = true,
-    dampingFactor = 20, // Increased damping for smoother motion
-    stiffnessFactor = 100, // Reduced stiffness for smoother transitions
+
     breatheAnimation = true,
     breatheScale = 1.015, // Reduced breathing scale for subtlety
     breatheDuration = 4000, // Slower breathing for calmer effect

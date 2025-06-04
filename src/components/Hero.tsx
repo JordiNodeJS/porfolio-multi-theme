@@ -21,8 +21,7 @@ const Hero = () => {
       zAxisMovement: 50,
       tiltReverse: false,
       resetOnLeave: true,
-      dampingFactor: 15,
-      stiffnessFactor: 130,
+
       breatheAnimation: false, // Disable breathing animation for specific themes
       breatheScale: 1.04,
       breatheDuration: 3000,
