@@ -184,6 +184,72 @@
       filter: drop-shadow(0 0 15px var(--glow-color, rgba(59, 130, 246, 0.7)));
     }
   }
+
+  /* Smooth hover transitions for profile images and interactive elements */
+  .profile-image-container,
+  .profile-image-container *,
+  .hover-smooth {
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  }
+
+  .hover-smooth:hover {
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1) !important;
+  }
+
+  /* Smoother scale transitions */
+  .scale-smooth {
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  /* Smooth transition utilities for profile image and background effects */
+  .hover-smooth {
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .scale-smooth {
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      scale 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .profile-image-container {
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  /* Background smooth transitions */
+  .background-smooth {
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+      background 0.5s ease-out, x 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+      y 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  /* Enhanced brutalism theme specific transitions */
+  .brutalism-smooth {
+    transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+      box-shadow 0.4s ease-out, filter 0.3s ease;
+  }
+
+  /* Reduce motion for users who prefer it */
+  @media (prefers-reduced-motion: reduce) {
+    .profile-image-container,
+    .profile-image-container *,
+    .hover-smooth,
+    .scale-smooth,
+    .background-smooth,
+    .brutalism-smooth {
+      transition: none !important;
+      animation: none !important;
+    }
+  }
+
+  /* Enhanced smooth transitions for brutalism theme to reduce harshness */
+  [data-theme="brutalism"] .profile-image-container,
+  [data-theme="brutalism"] .profile-image-container * {
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) !important;
+  }
+
+  [data-theme="brutalism"] .hover-smooth:hover {
+    transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1) !important;
+  }
 }
 
 @layer base {
@@ -228,29 +294,35 @@
   [data-theme="vintage"] body {
     background: linear-gradient(
       to bottom right,
-      #f8f3e6,  /* Fondo más claro para mejor contraste */
-      #f0e6cc,  /* Tono crema suave */
-      #e6d9b5   /* Tono crema ligeramente más cálido */
+      #f8f3e6,
+      /* Fondo más claro para mejor contraste */ #f0e6cc,
+      /* Tono crema suave */ #e6d9b5 /* Tono crema ligeramente más cálido */
     );
     color: #4a3c2a; /* Texto más oscuro para mejor legibilidad */
   }
-  
+
   /* Ajustes de contraste para el tema vintage */
   [data-theme="vintage"] .text-gray-800 {
     color: #4a3c2a; /* Texto principal más oscuro */
   }
-  
+
   [data-theme="vintage"] .text-gray-600 {
     color: #5d4f3d; /* Texto secundario más oscuro */
   }
-  
+
   [data-theme="vintage"] .glass-effect {
-    background-color: rgba(255, 253, 245, 0.9); /* Fondo más claro para mejor contraste */
+    background-color: rgba(
+      255,
+      253,
+      245,
+      0.9
+    ); /* Fondo más claro para mejor contraste */
     border: 1px solid rgba(187, 165, 121, 0.3); /* Borde sutil */
     color: #4a3c2a; /* Color de texto principal */
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
   }
-  
+
   /* Mejoras para títulos y encabezados */
   [data-theme="vintage"] h1,
   [data-theme="vintage"] h2,
@@ -261,18 +333,18 @@
     color: #3a2e1f; /* Color más oscuro para mejor contraste */
     font-weight: 600; /* Peso de fuente ligeramente más grueso */
   }
-  
+
   /* Mejoras para enlaces */
   [data-theme="vintage"] a {
     color: #8b5e3c; /* Color marrón cálido para enlaces */
     font-weight: 500;
     transition: color 0.2s ease;
   }
-  
+
   [data-theme="vintage"] a:hover {
     color: #6e4c30; /* Color más oscuro al pasar el ratón */
   }
-  
+
   /* Mejoras para botones */
   [data-theme="vintage"] .btn-primary {
     background-color: #8b5e3c; /* Color marrón cálido */
@@ -280,7 +352,7 @@
     border: 1px solid #6e4c30;
     transition: all 0.2s ease;
   }
-  
+
   [data-theme="vintage"] .btn-primary:hover {
     background-color: #6e4c30; /* Color más oscuro al pasar el ratón */
   }
@@ -468,6 +540,23 @@
 
   .light .text-white {
     color: rgb(17 24 39);
+  }
+
+  /* Exception for tech icons - they should remain white for visibility */
+  .light .tech-icon {
+    color: rgb(255 255 255) !important;
+  }
+  [data-theme="vintage"] .tech-icon {
+    color: #f3ebd3 !important; /* beige vintage-cream */
+  }
+  [data-theme="retro-pastel"] .tech-icon {
+    color: #ffe9f3 !important; /* rosa-blanco pastel */
+  }
+  [data-theme="brutalism"] .tech-icon,
+  [data-theme="brutalism"] .tech-icon.text-white,
+  [data-theme="brutalism"] .tech-icon.text-black,
+  [data-theme="brutalism"] .tech-icon.text-gray-900 {
+    color: #a0d6db !important;
   }
 
   [data-theme="vintage"] .text-white {
@@ -806,7 +895,7 @@
   }
 
   .container-custom {
-    @apply max-w-7xl mx-auto;
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
 
   /* Navigation theme support */
@@ -1071,15 +1160,9 @@
     @apply font-bold;
     color: #ef7574; /* Color rojo suave */
     text-shadow: 
-      /* Sombra negra abajo */
-      2px 2px 0 #000,
-      /* Sombra clara arriba */
-      -1px -1px 0 #f8d7da,
-      -1px -2px 0 #f5b5b5,
-      /* Contorno */
-      1px -1px 0 #000,
-      -1px 1px 0 #000,
-      1px 1px 0 #000;
+      /* Sombra negra abajo */ 2px 2px 0 #000,
+      /* Sombra clara arriba */ -1px -1px 0 #f8d7da, -1px -2px 0 #f5b5b5,
+      /* Contorno */ 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
     -webkit-text-stroke: 0.5px #000;
     letter-spacing: -0.5px;
     position: relative;
@@ -1087,7 +1170,7 @@
   }
 
   .brutal-title::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: -8px;
     left: 0;

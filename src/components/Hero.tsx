@@ -21,9 +21,8 @@ const Hero = () => {
       zAxisMovement: 50,
       tiltReverse: false,
       resetOnLeave: true,
-      dampingFactor: 15,
-      stiffnessFactor: 130,
-      breatheAnimation: true,
+
+      breatheAnimation: false, // Disable breathing animation for specific themes
       breatheScale: 1.04,
       breatheDuration: 3000,
       glowOnHover: true,
@@ -43,7 +42,12 @@ const Hero = () => {
     }
   );
   return (
-    <section id="hero" className="relative py-20 overflow-hidden">
+    <section
+      id="hero"
+      className={`relative py-20 ${
+        theme === "brutalism" ? "overflow-visible" : "overflow-hidden"
+      }`}
+    >
       {" "}
       {/* Background gradient */}
       <div
@@ -66,12 +70,12 @@ const Hero = () => {
         <div className="flex flex-col items-center">
           {/* Profile image with 3D effect */}
           <div
-            className="perspective-1000 mb-12 mt-12 cursor-pointer"
+            className="perspective-1000 mb-12 mt-12 cursor-pointer profile-image-container hover-smooth"
             ref={profileContainerRef}
           >
             {" "}
             <motion.div
-              className="relative w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full overflow-visible shadow-2xl transform-style-3d"
+              className="relative w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full overflow-visible shadow-2xl transform-style-3d scale-smooth"
               style={{
                 // Apply transform directly from spring props
                 rotateX: springProps.rotateX,
@@ -80,6 +84,9 @@ const Hero = () => {
                 z: springProps.zIndex,
                 // Use CSS custom property for perspective
                 transform: `perspective(1000px)`,
+                // Add smooth transitions for all transformations
+                transition:
+                  "transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease",
               }}
             >
               {" "}
@@ -97,12 +104,17 @@ const Hero = () => {
                     : theme === "brutalism"
                     ? "bg-[#ff6b6b] border-4 border-black"
                     : "bg-gradient-to-br from-gray-100 via-white to-gray-200"
-                } shadow-inner transform-gpu transform-style-3d`}
-                style={{ z: -20 }}
+                } shadow-inner transform-gpu transform-style-3d background-smooth`}
+                style={{
+                  z: -20,
+                  transform: `translateZ(-20px)`,
+                  transition:
+                    "transform 0.8s cubic-bezier(0.23, 1, 0.320, 1), background 0.6s ease-out",
+                }}
               />{" "}
               {/* Dynamic shadow effect */}
               <motion.div
-                className="absolute -inset-4 rounded-full blur-md opacity-70"
+                className="absolute -inset-4 rounded-full blur-md opacity-70 background-smooth"
                 style={{
                   background:
                     theme === "dark"
@@ -118,12 +130,14 @@ const Hero = () => {
                       : "radial-gradient(circle, rgba(59,130,246,0.2) 0%, rgba(147,51,234,0.1) 70%, transparent 100%)",
                   transform:
                     theme === "brutalism"
-                      ? "translateZ(-10px) translateX(0) translateY(0)"
+                      ? "translateZ(-10px)"
                       : "translateZ(-10px)",
-                  x: theme === "brutalism" ? 0 : springProps.rotateY,
-                  y: theme === "brutalism" ? 0 : springProps.rotateX,
+                  opacity: isHovered ? 0.9 : 0.7,
+                  scale: isHovered ? 1.1 : 1.0,
                   boxShadow:
                     theme === "brutalism" ? "5px 5px 0px #000" : "none",
+                  transition:
+                    "transform 0.8s cubic-bezier(0.23, 1, 0.320, 1), opacity 0.6s ease-out, scale 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
                 }}
               />{" "}
               {/* Container for the image with clip-path for the "popping out of circle" effect */}
@@ -138,19 +152,20 @@ const Hero = () => {
                 <motion.img
                   src="/assets/developer.png"
                   alt="Profile"
-                  className="w-full h-full object-cover rounded-full transform-gpu transform-style-3d"
+                  className="w-full h-full object-cover rounded-full transform-gpu transform-style-3d scale-smooth"
                   style={{
                     scale: springProps.scale,
                     filter: isHovered
-                      ? `drop-shadow(0 0 15px ${config.glowColor})`
+                      ? `drop-shadow(0 0 20px ${config.glowColor})`
                       : "none",
-                    transition: "filter 0.3s ease",
+                    transition:
+                      "filter 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), scale 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
                   }}
                 />{" "}
               </motion.div>{" "}
               {/* Border glow effect */}
               <motion.div
-                className={`absolute -inset-1 rounded-full pointer-events-none transform-style-3d ${
+                className={`absolute -inset-1 rounded-full pointer-events-none transform-style-3d background-smooth ${
                   theme === "brutalism" ? "border-4 border-black" : ""
                 }`}
                 style={{
@@ -182,16 +197,18 @@ const Hero = () => {
                     theme === "brutalism"
                       ? "none"
                       : isHovered
-                      ? "blur(10px)"
+                      ? "blur(12px)"
                       : "blur(8px)",
                   transform:
                     theme === "brutalism"
                       ? "translateZ(5px) skew(-3deg)"
                       : "translateZ(5px)",
                   zIndex: 5,
-                  opacity: isHovered ? 0.85 : 0.6,
+                  opacity: isHovered ? 0.9 : 0.6,
+                  scale: isHovered ? 1.05 : 1.0,
                   animation: "rotate 10s linear infinite",
-                  transition: "filter 0.3s ease, opacity 0.3s ease",
+                  transition:
+                    "filter 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.6s ease-out, scale 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
                   boxShadow:
                     theme === "brutalism" ? "4px 4px 0px #000" : "none",
                 }}
@@ -205,6 +222,14 @@ const Hero = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
+            style={{
+              // Ensure text container doesn't clip content
+              overflow: "visible",
+              ...(theme === "brutalism" && {
+                minWidth: "100%",
+                width: "auto",
+              }),
+            }}
           >
             {/* Progressive text reveal for dark, light, retro-pastel themes */}
             {theme === "dark" ||
@@ -251,6 +276,7 @@ const Hero = () => {
                 style={{
                   fontSize: "4.5rem",
                   lineHeight: "1.1",
+                  // Ensure proper display for brutalism theme
                   ...(theme === "brutalism" && {
                     color: "#ef7574",
                     textShadow:
@@ -261,6 +287,8 @@ const Hero = () => {
                       "-1px 1px 0 #000, " +
                       "1px 1px 0 #000",
                     WebkitTextStroke: "0.5px #000",
+                    overflow: "visible", // Ensure text is not clipped
+                    whiteSpace: "nowrap", // Prevent text wrapping that might cause issues
                   }),
                   ...(theme === "vintage" && {
                     textShadow:
@@ -273,8 +301,8 @@ const Hero = () => {
                 }}
               >
                 <TextRevealAnimation
-                  text={portfolioData?.presentation?.name || "JORGE"}
-                  charDelay={0.08}
+                  text={portfolioData?.presentation?.name || "JORGe's web"}
+                  charDelay={theme === "brutalism" ? 0.12 : 0.08} // Slower animation for brutalism to ensure all chars appear
                   animationStyle="scale"
                   once={false}
                   replay={false}
@@ -297,6 +325,16 @@ const Hero = () => {
                   : "text-gray-700"
               }`}
               style={{
+                // Force absolute centering - override any conflicting styles
+                textAlign: "center" as const,
+                display: "flex" as const,
+                justifyContent: "center" as const,
+                alignItems: "center" as const,
+                width: "100%" as const,
+                margin: "0 auto" as const,
+                position: "relative",
+                left: "50%",
+                transform: "translateX(-50%)",
                 ...(theme === "dark" && {
                   textShadow: "0 2px 8px rgba(0,0,0,0.4)",
                 }),
@@ -324,18 +362,25 @@ const Hero = () => {
                 }),
               }}
             >
-              <TextRevealAnimation
-                text={
-                  portfolioData?.presentation?.title ||
-                  "Frontend React Engineer"
-                }
-                charDelay={0.05}
-                once={false}
-              />
+              <div
+                style={{
+                  textAlign: "center",
+                  width: "100%",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                {/* Simple text without animation to ensure centering */}
+                <span style={{ textAlign: "center", display: "inline-block" }}>
+                  {portfolioData?.presentation?.title ||
+                    "Frontend React Engineer"}
+                </span>
+              </div>
             </div>
 
             <motion.div
-              className={`w-24 h-1 mx-auto rounded-full ${
+              className={`w-24 h-1 mx-auto rounded-full mt-4 ${
                 theme === "dark"
                   ? "bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600"
                   : theme === "light"
@@ -349,6 +394,8 @@ const Hero = () => {
                   : "bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
               }`}
               style={{
+                // Additional spacing from subtitle
+                marginTop: "1rem",
                 ...(theme === "vintage" && {
                   filter: "drop-shadow(0 2px 4px rgba(251, 191, 36, 0.6))",
                   height: "3px",

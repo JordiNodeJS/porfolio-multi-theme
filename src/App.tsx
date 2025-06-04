@@ -10,24 +10,21 @@ import ScrollToTop from "./components/ScrollToTop";
 import FloatingParticles from "./components/FloatingParticles";
 import LoadingScreen from "./components/LoadingScreen";
 import { usePortfolioDataFromLocales } from "./hooks/usePortfolioDataFromLocales";
+import { useScrollToSection } from "./hooks/useScrollToSection";
 
 import "./App.css";
 
 function App() {
   const { data: portfolioData } = usePortfolioDataFromLocales();
+  const { scrollToSection } = useScrollToSection();
+
   useEffect(() => {
-    // Smooth scroll behavior for anchor links
+    // Smooth scroll behavior for anchor links with navigation offset
     const handleSmoothScroll = (e: Event) => {
       const target = e.target as HTMLAnchorElement;
       if (target.hash) {
         e.preventDefault();
-        const element = document.querySelector(target.hash);
-        if (element) {
-          element.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-          });
-        }
+        scrollToSection(target.hash);
       }
     };
 
@@ -54,6 +51,7 @@ function App() {
     let currentIndex = 0;
     let currentTitle = "";
     let isDeleting = false;
+    let cycleCount = 0; // Track how many titles we've completed
     const typingSpeed = 150; // ms
     const deletingSpeed = 100; // ms
     const pauseBetweenTitles = 1000; // ms pause between titles
@@ -69,8 +67,18 @@ function App() {
         if (currentIndex < 0) {
           isDeleting = false;
           currentIndex = 0;
-          // Move to next title or loop back to the first one
+          cycleCount++;
+
+          // If we've shown both titles once, stop here
+          if (cycleCount >= titles.length) {
+            document.title =
+              portfolioData?.presentation?.title || "Frontend React Engineer";
+            return;
+          }
+
+          // Move to next title
           currentTitleIndex = (currentTitleIndex + 1) % titles.length;
+
           // Pause before starting to type the next title
           setTimeout(() => {
             requestAnimationFrame(animateTitleLoop);
@@ -83,6 +91,7 @@ function App() {
 
         if (currentIndex === currentTargetTitle.length) {
           document.title = currentTitle; // Display full title before pause
+
           // Pause at the end before deleting
           setTimeout(() => {
             isDeleting = true;

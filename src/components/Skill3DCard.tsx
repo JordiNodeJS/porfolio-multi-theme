@@ -32,8 +32,7 @@ const Skill3DCard = ({
       zAxisMovement: 20,
       tiltReverse: false,
       resetOnLeave: true,
-      dampingFactor: 18,
-      stiffnessFactor: 150,
+
       breatheAnimation: false,
       glowOnHover: true,
       glowColor:
@@ -117,8 +116,8 @@ const Skill3DCard = ({
             } bg-gradient-to-br ${color} mb-3`}
           >
             <Icon
-              className={`w-8 h-8 ${
-                theme === "brutalism" ? "text-black" : "text-white"
+              className={`w-8 h-8 tech-icon ${
+                theme === "brutalism" ? "text-black" : ""
               }`}
             />
           </div>
