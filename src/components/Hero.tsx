@@ -43,8 +43,8 @@ const Hero = () => {
     }
   );
   return (
-    <section 
-      id="hero" 
+    <section
+      id="hero"
       className={`relative py-20 ${
         theme === "brutalism" ? "overflow-visible" : "overflow-hidden"
       }`}
@@ -71,12 +71,12 @@ const Hero = () => {
         <div className="flex flex-col items-center">
           {/* Profile image with 3D effect */}
           <div
-            className="perspective-1000 mb-12 mt-12 cursor-pointer"
+            className="perspective-1000 mb-12 mt-12 cursor-pointer profile-image-container hover-smooth"
             ref={profileContainerRef}
           >
             {" "}
             <motion.div
-              className="relative w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full overflow-visible shadow-2xl transform-style-3d"
+              className="relative w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full overflow-visible shadow-2xl transform-style-3d scale-smooth"
               style={{
                 // Apply transform directly from spring props
                 rotateX: springProps.rotateX,
@@ -85,6 +85,9 @@ const Hero = () => {
                 z: springProps.zIndex,
                 // Use CSS custom property for perspective
                 transform: `perspective(1000px)`,
+                // Add smooth transitions for all transformations
+                transition:
+                  "transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease",
               }}
             >
               {" "}
@@ -143,13 +146,14 @@ const Hero = () => {
                 <motion.img
                   src="/assets/developer.png"
                   alt="Profile"
-                  className="w-full h-full object-cover rounded-full transform-gpu transform-style-3d"
+                  className="w-full h-full object-cover rounded-full transform-gpu transform-style-3d hover-smooth"
                   style={{
                     scale: springProps.scale,
                     filter: isHovered
                       ? `drop-shadow(0 0 15px ${config.glowColor})`
                       : "none",
-                    transition: "filter 0.3s ease",
+                    transition:
+                      "filter 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), scale 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
                   }}
                 />{" "}
               </motion.div>{" "}
@@ -196,7 +200,8 @@ const Hero = () => {
                   zIndex: 5,
                   opacity: isHovered ? 0.85 : 0.6,
                   animation: "rotate 10s linear infinite",
-                  transition: "filter 0.3s ease, opacity 0.3s ease",
+                  transition:
+                    "filter 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.4s ease",
                   boxShadow:
                     theme === "brutalism" ? "4px 4px 0px #000" : "none",
                 }}
@@ -314,12 +319,12 @@ const Hero = () => {
               }`}
               style={{
                 // Force absolute centering - override any conflicting styles
-                textAlign: "center !important" as any,
-                display: "flex !important" as any,
-                justifyContent: "center !important" as any,
-                alignItems: "center !important" as any,
-                width: "100% !important" as any,
-                margin: "0 auto !important" as any,
+                textAlign: "center" as const,
+                display: "flex" as const,
+                justifyContent: "center" as const,
+                alignItems: "center" as const,
+                width: "100%" as const,
+                margin: "0 auto" as const,
                 position: "relative",
                 left: "50%",
                 transform: "translateX(-50%)",
@@ -350,18 +355,19 @@ const Hero = () => {
                 }),
               }}
             >
-              <div 
-                style={{ 
+              <div
+                style={{
                   textAlign: "center",
                   width: "100%",
                   display: "flex",
                   justifyContent: "center",
-                  alignItems: "center"
+                  alignItems: "center",
                 }}
               >
                 {/* Simple text without animation to ensure centering */}
                 <span style={{ textAlign: "center", display: "inline-block" }}>
-                  {portfolioData?.presentation?.title || "Frontend React Engineer"}
+                  {portfolioData?.presentation?.title ||
+                    "Frontend React Engineer"}
                 </span>
               </div>
             </div>

@@ -24,23 +24,23 @@ export const useMotion3DEffect = (
   ref: RefObject<HTMLElement>,
   options: Motion3DOptions = {}
 ) => {
-  // Default options with sensible values
+  // Default options with sensible values - reduced intensity for smoother experience
   const {
-    strength = 25,
-    rotateLimit = 15,
+    strength = 15, // Reduced from 25 for smoother motion
+    rotateLimit = 8, // Reduced from 15 for less extreme rotation
     perspective = 1000,
-    scaleFactor = 1.05,
-    zAxisMovement = 30,
+    scaleFactor = 1.02, // Reduced from 1.05 for subtler scaling
+    zAxisMovement = 15, // Reduced from 30 for gentler depth
     tiltReverse = false,
     resetOnLeave = true,
-    dampingFactor = 15,
-    stiffnessFactor = 130,
+    dampingFactor = 20, // Increased damping for smoother motion
+    stiffnessFactor = 100, // Reduced stiffness for smoother transitions
     breatheAnimation = true,
-    breatheScale = 1.03,
-    breatheDuration = 3000,
+    breatheScale = 1.015, // Reduced breathing scale for subtlety
+    breatheDuration = 4000, // Slower breathing for calmer effect
     glowOnHover = true,
     glowColor = "rgba(59, 130, 246, 0.5)", // Default blue glow
-    glowIntensity = 0.7,
+    glowIntensity = 0.5, // Reduced intensity
   } = options;
 
   // State to track if mouse is over the element
@@ -107,7 +107,6 @@ export const useMotion3DEffect = (
     if (breatheAnimation) {
       startBreathingAnimation();
     }
-
     const handleMouseMove = (e: MouseEvent) => {
       const rect = element.getBoundingClientRect();
 
@@ -115,9 +114,13 @@ export const useMotion3DEffect = (
       const x = (e.clientX - rect.left) / rect.width - 0.5;
       const y = (e.clientY - rect.top) / rect.height - 0.5;
 
-      // Update motion values
-      mouseX.set(x);
-      mouseY.set(y);
+      // Apply easing to mouse movement for smoother transitions
+      const easedX = x * 0.7; // Reduce sensitivity
+      const easedY = y * 0.7;
+
+      // Update motion values with smoothed values
+      mouseX.set(easedX);
+      mouseY.set(easedY);
       scale.set(scaleFactor);
       zIndex.set(zAxisMovement);
     };
@@ -125,16 +128,28 @@ export const useMotion3DEffect = (
     const handleMouseEnter = () => {
       setIsHovered(true);
       stopBreathingAnimation();
+
+      // Smooth transition into hover state
+      setTimeout(() => {
+        scale.set(scaleFactor);
+        zIndex.set(zAxisMovement);
+      }, 50);
     };
 
     const handleMouseLeave = () => {
       setIsHovered(false);
 
       if (resetOnLeave) {
-        mouseX.set(0);
-        mouseY.set(0);
-        scale.set(1);
-        zIndex.set(0);
+        // Smooth transition out of hover state
+        const smoothReset = () => {
+          mouseX.set(0);
+          mouseY.set(0);
+          scale.set(1);
+          zIndex.set(0);
+        };
+
+        // Add slight delay for smoother transition
+        setTimeout(smoothReset, 100);
       }
 
       if (breatheAnimation) {
