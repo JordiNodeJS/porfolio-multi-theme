@@ -105,12 +105,17 @@ const Hero = () => {
                     : theme === "brutalism"
                     ? "bg-[#ff6b6b] border-4 border-black"
                     : "bg-gradient-to-br from-gray-100 via-white to-gray-200"
-                } shadow-inner transform-gpu transform-style-3d`}
-                style={{ z: -20 }}
+                } shadow-inner transform-gpu transform-style-3d background-smooth`}
+                style={{
+                  z: -20,
+                  transform: `translateZ(-20px)`,
+                  transition:
+                    "transform 0.8s cubic-bezier(0.23, 1, 0.320, 1), background 0.6s ease-out",
+                }}
               />{" "}
               {/* Dynamic shadow effect */}
               <motion.div
-                className="absolute -inset-4 rounded-full blur-md opacity-70"
+                className="absolute -inset-4 rounded-full blur-md opacity-70 background-smooth"
                 style={{
                   background:
                     theme === "dark"
@@ -126,12 +131,14 @@ const Hero = () => {
                       : "radial-gradient(circle, rgba(59,130,246,0.2) 0%, rgba(147,51,234,0.1) 70%, transparent 100%)",
                   transform:
                     theme === "brutalism"
-                      ? "translateZ(-10px) translateX(0) translateY(0)"
+                      ? "translateZ(-10px)"
                       : "translateZ(-10px)",
-                  x: theme === "brutalism" ? 0 : springProps.rotateY,
-                  y: theme === "brutalism" ? 0 : springProps.rotateX,
+                  opacity: isHovered ? 0.9 : 0.7,
+                  scale: isHovered ? 1.1 : 1.0,
                   boxShadow:
                     theme === "brutalism" ? "5px 5px 0px #000" : "none",
+                  transition:
+                    "transform 0.8s cubic-bezier(0.23, 1, 0.320, 1), opacity 0.6s ease-out, scale 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
                 }}
               />{" "}
               {/* Container for the image with clip-path for the "popping out of circle" effect */}
@@ -146,20 +153,20 @@ const Hero = () => {
                 <motion.img
                   src="/assets/developer.png"
                   alt="Profile"
-                  className="w-full h-full object-cover rounded-full transform-gpu transform-style-3d hover-smooth"
+                  className="w-full h-full object-cover rounded-full transform-gpu transform-style-3d scale-smooth"
                   style={{
                     scale: springProps.scale,
                     filter: isHovered
-                      ? `drop-shadow(0 0 15px ${config.glowColor})`
+                      ? `drop-shadow(0 0 20px ${config.glowColor})`
                       : "none",
                     transition:
-                      "filter 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), scale 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+                      "filter 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), scale 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
                   }}
                 />{" "}
               </motion.div>{" "}
               {/* Border glow effect */}
               <motion.div
-                className={`absolute -inset-1 rounded-full pointer-events-none transform-style-3d ${
+                className={`absolute -inset-1 rounded-full pointer-events-none transform-style-3d background-smooth ${
                   theme === "brutalism" ? "border-4 border-black" : ""
                 }`}
                 style={{
@@ -191,17 +198,18 @@ const Hero = () => {
                     theme === "brutalism"
                       ? "none"
                       : isHovered
-                      ? "blur(10px)"
+                      ? "blur(12px)"
                       : "blur(8px)",
                   transform:
                     theme === "brutalism"
                       ? "translateZ(5px) skew(-3deg)"
                       : "translateZ(5px)",
                   zIndex: 5,
-                  opacity: isHovered ? 0.85 : 0.6,
+                  opacity: isHovered ? 0.9 : 0.6,
+                  scale: isHovered ? 1.05 : 1.0,
                   animation: "rotate 10s linear infinite",
                   transition:
-                    "filter 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.4s ease",
+                    "filter 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.6s ease-out, scale 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
                   boxShadow:
                     theme === "brutalism" ? "4px 4px 0px #000" : "none",
                 }}
