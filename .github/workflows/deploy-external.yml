@@ -46,5 +46,4 @@ jobs:
         force_orphan: true
         user_name: 'github-actions[bot]'
         user_email: 'github-actions[bot]@users.noreply.github.com'
-        commit_message: 'Deploy from porfolio-multi-theme - ${{ github.sha }}'
-        cname: jordinodejs.github.io 
+        commit_message: 'Deploy from porfolio-multi-theme - ${{ github.sha }}' 
