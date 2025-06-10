@@ -14,7 +14,7 @@ import { useScrollToSection } from "./hooks/useScrollToSection";
 
 import "./App.css";
 
-// Test deployment - 2025-01-10T14:55:00.000Z
+// Test deployment - 2025-06-10
 
 function App() {
   const { data: portfolioData } = usePortfolioDataFromLocales();
