@@ -1,8 +1,9 @@
 {
   "name": "jordinodejs.github.io",
+  "description": "Portfolio moderno con animaciones - Deploy Test Junio 2025",
   "homepage": "https://jordinodejs.github.io",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
