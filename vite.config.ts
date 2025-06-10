@@ -4,7 +4,7 @@ import react from "@vitejs/plugin-react-swc";
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: process.env.VITE_BASE_PATH || (process.env.NODE_ENV === "production" ? "/porfolio-multi-theme/" : "/"),
+  base: process.env.VITE_BASE_PATH || "/",
   build: {
     outDir: "dist",
   },
