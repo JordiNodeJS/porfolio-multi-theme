@@ -150,7 +150,7 @@ const Hero = () => {
                 {" "}
                 {/* 3D Image that "pops out" of the circle */}
                 <motion.img
-                  src="/assets/developer.png"
+                  src={`${import.meta.env.BASE_URL}assets/developer.png`}
                   alt="Profile"
                   className="w-full h-full object-cover rounded-full transform-gpu transform-style-3d scale-smooth"
                   style={{

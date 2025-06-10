@@ -174,7 +174,7 @@ const ProjectCard = ({
         >
           {project.imgCover ? (
             <img
-              src={project.imgCover} // imgCover from rawProjectsFallback
+              src={`${import.meta.env.BASE_URL}${project.imgCover}`} // imgCover from rawProjectsFallback with correct base path
               alt={getProjectTranslation(project.id, "title")}
               className="w-full h-full object-cover"
             />
