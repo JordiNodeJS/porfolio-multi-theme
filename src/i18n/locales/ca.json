@@ -262,5 +262,100 @@
         "it": "Italiano",
         "pt": "Português",
         "ca": "Català"
-    }
+    },
+    "presentation": {
+        "name": "JORGe's web",
+        "title": "Desenvolupador Frontend React",
+        "description": "+ 2 anys d'experiència en el món de la programació, especialitzant-me en React. Compromès amb el desenvolupament d'experiències d'usuari accessibles i d'alt rendiment."
+    },
+    "skillsData": [
+        {
+            "id": "0",
+            "nombre": "React JS",
+            "nivel": "avançat",
+            "category": "frontend",
+            "description": "Biblioteca principal per al desenvolupament d'interfícies"
+        },
+        {
+            "id": "1",
+            "nombre": "TypeScript",
+            "nivel": "intermedi",
+            "category": "frontend",
+            "description": "Superset de JavaScript amb tipat estàtic"
+        },
+        {
+            "id": "2",
+            "nombre": "Node.js",
+            "nivel": "intermedi",
+            "category": "backend",
+            "description": "Runtime de JavaScript per al servidor"
+        },
+        {
+            "id": "3",
+            "nombre": "Anglès",
+            "nivel": "B1",
+            "category": "other",
+            "description": "Nivell de comunicació intermedi"
+        }
+    ],
+    "educationData": [
+        {
+            "id": "edu5cc7",
+            "center": "BootCamp IT Academy",
+            "link": "https://www.barcelonactiva.cat/es/itacademy",
+            "title": "Desenvolupador Front-End React",
+            "description": "Desenvolupador Front-End React al Bootcamp IT Academy: Un programa de 18 setmanes on s'ensenyaren habilitats com HTML, CSS, SASS, JavaScript, ReactJS, entre altres. A més, s'utilitzaren diferents eines com Vite i Create React App, i es treballà amb biblioteques com Bootstrap, Mantine i MUI. Es realitzà un projecte que implicava l'ús de GitHub, Typescript, Node, entre altres. També s'aprengué a desplegar en diferents plataformes, com GitHub Pages, Vercel, Netlify, Render.com i Fly.io.",
+            "start_date": "01/09/2015",
+            "end_date": "30/06/2019",
+            "tags": [
+                "HTML",
+                "CSS",
+                "SASS",
+                "JavaScript",
+                "ReactJS",
+                "MUI",
+                "TailwindCSS",
+                "Bootstrap",
+                "Chakra",
+                "Styled-Components",
+                "Git",
+                "GitHub",
+                "TypeScript"
+            ]
+        },
+        {
+            "id": "edu7fcc",
+            "center": "Centre CIFO La Violeta",
+            "link": "https://serveiocupacio.gencat.cat/es/soc/com-ens-organitzem/centres-propis-formacio-cifo-cfpa/centres-dinnovacio-i-formacio-ocupacional-cifo/cifo-barcelona-la-violeta/index.html",
+            "title": "Desenvolupament d'aplicacions web Full Stack",
+            "description": "Desenvolupament Web Full Stack al CIFO La Violeta: Aquest curs de 600 hores va permetre a l'estudiant adquirir habilitats en programació web en l'entorn client i servidor, així com el desenvolupament de documents web utilitzant llenguatges de marcat. També s'ensenyà sobre usabilitat i accessibilitat en l'entorn client, accés a dades en aplicacions web en l'entorn servidor i la implementació d'aplicacions web en entorns d'internet, intranet i extranet. S'utilitzaren diferents eines de desplegament, com Heroku, Vercel, Netlify i GitHub Pages.",
+            "start_date": "01/09/2018",
+            "end_date": "30/06/2019",
+            "tags": [
+                "HTML",
+                "CSS",
+                "JavaScript",
+                "PHP",
+                "Netlify",
+                "Vercel",
+                "Render",
+                "Fly.io"
+            ]
+        },
+        {
+            "id": "edu5ucc",
+            "center": "SINENSIA IT SOLUTIONS",
+            "title": "Desenvolupament d'aplicacions web ANGULAR",
+            "description": "Desenvolupament d'Aplicacions Web amb Angular a SINENSIA IT SOLUTIONS: Un curs de 60 hores on s'ensenyà el desenvolupament d'aplicacions web utilitzant Angular.",
+            "start_date": "01/09/2018",
+            "end_date": "30/06/2019",
+            "tags": [
+                "HTML",
+                "CSS",
+                "JavaScript",
+                "Angular",
+                "TypeScript"
+            ]
+        }
+    ]
 }
