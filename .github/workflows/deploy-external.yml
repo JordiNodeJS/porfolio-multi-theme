@@ -27,13 +27,22 @@ jobs:
       with:
         bun-version: latest
 
-    - name: Install dependencies
-      run: bun install
+    - name: Clean cache and install dependencies
+      run: |
+        rm -rf node_modules
+        rm -rf dist
+        bun install
 
     - name: Build project for external deployment
       run: |
         export NODE_ENV=production
+        export VITE_BASE_PATH="/"
+        echo "Building with VITE_BASE_PATH: $VITE_BASE_PATH"
         bun run build
+        echo "Build completed, checking dist folder:"
+        ls -la dist/
+        echo "Checking index.html content:"
+        head -20 dist/index.html
       env:
         VITE_BASE_PATH: "/"
 
