@@ -35,6 +35,11 @@ export const TextRevealAnimation = ({
     }
   }, [replay]);
 
+  // Reset animation when text changes (e.g., language change)
+  useEffect(() => {
+    setKey((prevKey) => prevKey + 1);
+  }, [text]);
+
   // Create array of characters from text
   const characters = text.split("");
 
