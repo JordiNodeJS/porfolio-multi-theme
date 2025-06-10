@@ -66,7 +66,7 @@ const rawProjectsFallback: Project[] = [
     description:
       "The App consists of generating a very low resolution image, respecting the outline of the original image, with the purpose of being used as a placeholder or temporary substitute.",
     link: "https://github.com/JordiNodeJS/generate-low-placeholder",
-    demo: "https://generate-low-placeholder.vercel.app",
+    demo: "https://generate-low-placeholder.netlify.app/",
     tags: ["javascript", "react", "tailwindcss", "cloudinary", "vite"],
   },
   {

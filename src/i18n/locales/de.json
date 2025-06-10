@@ -260,6 +260,102 @@
         "fr": "Français",
         "de": "Deutsch",
         "it": "Italiano",
-        "pt": "Português"
-    }
+        "pt": "Português",
+        "ca": "Català"
+    },
+    "presentation": {
+        "name": "JORGe's web",
+        "title": "Frontend React Entwickler",
+        "description": "+ 2 Jahre Erfahrung in der Programmierung, spezialisiert auf React. Verpflichtet zur Entwicklung zugänglicher und leistungsstarker Benutzererfahrungen."
+    },
+    "skillsData": [
+        {
+            "id": "0",
+            "nombre": "React JS",
+            "nivel": "fortgeschritten",
+            "category": "frontend",
+            "description": "Hauptbibliothek für Interface-Entwicklung"
+        },
+        {
+            "id": "1",
+            "nombre": "TypeScript",
+            "nivel": "mittelstufe",
+            "category": "frontend",
+            "description": "JavaScript-Superset mit statischer Typisierung"
+        },
+        {
+            "id": "2",
+            "nombre": "Node.js",
+            "nivel": "mittelstufe",
+            "category": "backend",
+            "description": "JavaScript-Runtime für Server"
+        },
+        {
+            "id": "3",
+            "nombre": "Englisch",
+            "nivel": "B1",
+            "category": "other",
+            "description": "Mittleres Kommunikationsniveau"
+        }
+    ],
+    "educationData": [
+        {
+            "id": "edu5cc7",
+            "center": "BootCamp IT Academy",
+            "link": "https://www.barcelonactiva.cat/es/itacademy",
+            "title": "Front-End React Entwickler",
+            "description": "Front-End React Entwickler im Bootcamp IT Academy: Ein 18-wöchiges Programm, in dem Fähigkeiten wie HTML, CSS, SASS, JavaScript, ReactJS und andere gelehrt wurden. Zusätzlich wurden verschiedene Tools wie Vite und Create React App verwendet und mit Bibliotheken wie Bootstrap, Mantine und MUI gearbeitet. Ein Projekt wurde durchgeführt, das die Verwendung von GitHub, Typescript, Node und anderen beinhaltete. Es wurde auch gelernt, wie man auf verschiedenen Plattformen wie GitHub Pages, Vercel, Netlify, Render.com und Fly.io bereitstellt.",
+            "start_date": "01/09/2015",
+            "end_date": "30/06/2019",
+            "tags": [
+                "HTML",
+                "CSS",
+                "SASS",
+                "JavaScript",
+                "ReactJS",
+                "MUI",
+                "TailwindCSS",
+                "Bootstrap",
+                "Chakra",
+                "Styled-Components",
+                "Git",
+                "GitHub",
+                "TypeScript"
+            ]
+        },
+        {
+            "id": "edu7fcc",
+            "center": "Zentrum CIFO La Violeta",
+            "link": "https://serveiocupacio.gencat.cat/es/soc/com-ens-organitzem/centres-propis-formacio-cifo-cfpa/centres-dinnovacio-i-formacio-ocupacional-cifo/cifo-barcelona-la-violeta/index.html",
+            "title": "Webanwendungsentwicklung Full Stack",
+            "description": "Full Stack Webentwicklung im CIFO La Violeta: Dieser 600-Stunden-Kurs ermöglichte es dem Studenten, Fähigkeiten in der Webprogrammierung in Client- und Serverumgebung zu erwerben sowie die Entwicklung von Webdokumenten mit Markup-Sprachen. Es wurde auch über Benutzerfreundlichkeit und Zugänglichkeit in der Client-Umgebung, Datenzugriff in Webanwendungen in der Serverumgebung und die Implementierung von Webanwendungen in Internet-, Intranet- und Extranet-Umgebungen gelehrt. Verschiedene Bereitstellungstools wurden verwendet, wie Heroku, Vercel, Netlify und GitHub Pages.",
+            "start_date": "01/09/2018",
+            "end_date": "30/06/2019",
+            "tags": [
+                "HTML",
+                "CSS",
+                "JavaScript",
+                "PHP",
+                "Netlify",
+                "Vercel",
+                "Render",
+                "Fly.io"
+            ]
+        },
+        {
+            "id": "edu5ucc",
+            "center": "SINENSIA IT SOLUTIONS",
+            "title": "Webanwendungsentwicklung ANGULAR",
+            "description": "Webanwendungsentwicklung mit Angular bei SINENSIA IT SOLUTIONS: Ein 60-Stunden-Kurs, in dem die Entwicklung von Webanwendungen mit Angular gelehrt wurde.",
+            "start_date": "01/09/2018",
+            "end_date": "30/06/2019",
+            "tags": [
+                "HTML",
+                "CSS",
+                "JavaScript",
+                "Angular",
+                "TypeScript"
+            ]
+        }
+    ]
 }

@@ -333,7 +333,20 @@
     "footer": {
         "rights": "Todos los derechos reservados.",
         "madeWith": "Hecho con",
-        "and": "y"
+        "and": "y",
+        "by": "por",
+        "techStack": "Stack Tecnológico",
+        "connectWithMe": "Conecta conmigo",
+        "description": "Frontend React Developer apasionado por crear experiencias digitales excepcionales con tecnologías modernas.",
+        "designedWith": "Diseñado y desarrollado con ❤️"
+    },
+    "loading": {
+        "text": "Cargando portfolio..."
+    },
+    "theme": {
+        "toggle": "Cambiar tema",
+        "light": "Modo claro",
+        "dark": "Modo oscuro"
     },
     "language": {
         "select": "Seleccionar idioma",
