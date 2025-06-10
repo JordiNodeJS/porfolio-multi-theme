@@ -141,3 +141,11 @@ Ejemplo de estructura para la sección Skills:
 ⭐ **Portfolio completamente funcional, multilenguaje y con animaciones modernas!**
 
 🚀 **Servidor corriendo en:** http://localhost:5173/
+
+---
+
+## 🔄 Último Deploy
+- **Fecha:** 10 de Junio, 2025 ✅
+- **Estado:** Funcionando perfectamente con imágenes corregidas
+- **GitHub Actions:** Configurado y optimizado
+- **GitHub Pages:** Activo en https://jordinodejs.github.io/porfolio-multi-theme/
