@@ -38,15 +38,14 @@ jobs:
     - name: Build project
       run: bun run build
 
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+    - name: Setup Pages
+      uses: actions/configure-pages@v4
+
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
       with:
-        personal_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-        external_repository: jordinodejs/jordinodejs.github.io
-        publish_dir: ./dist
-        publish_branch: main
-        user_name: 'github-actions[bot]'
-        user_email: 'github-actions[bot]@users.noreply.github.com'
-        commit_message: 'Deploy from porfolio-multi-theme - ${{ github.sha }}'
-        cname: jordinodejs.github.io 
+        path: './dist'
+
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4 
