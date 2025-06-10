@@ -33,8 +33,9 @@ jobs:
     - name: Build project for external deployment
       run: |
         export NODE_ENV=production
-        export VITE_BASE_PATH="/"
         bun run build
+      env:
+        VITE_BASE_PATH: "/"
 
     - name: Deploy to External GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
