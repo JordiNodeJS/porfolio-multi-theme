@@ -25,4 +25,3 @@ dist-ssr
 
 test-results
 playwright-report/*
-scripts/*

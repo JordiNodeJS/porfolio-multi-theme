@@ -9,7 +9,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "deploy:github-pages": "node scripts/deploy-to-github-pages.js"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.16",
