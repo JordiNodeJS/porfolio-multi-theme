@@ -10,6 +10,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "deploy": "gh-pages -d dist",
+    "deploy:self": "node scripts/deploy-self.js",
     "deploy:github-pages": "node scripts/deploy-to-github-pages.js",
     "test:deployment": "node scripts/test-deployment.js"
   },
