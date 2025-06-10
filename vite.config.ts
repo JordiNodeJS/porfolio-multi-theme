@@ -5,7 +5,7 @@ import react from "@vitejs/plugin-react-swc";
 export default defineConfig({
   plugins: [react()],
   base: process.env.VITE_BASE_PATH === "/"
-    ? "./"  // Use relative paths for external deployment
+    ? "/"  // Use absolute root path for main domain deployment
     : process.env.VITE_BASE_PATH 
       ? process.env.VITE_BASE_PATH 
       : process.env.NODE_ENV === "production" 

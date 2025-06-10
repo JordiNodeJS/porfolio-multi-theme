@@ -10,9 +10,9 @@ const TEMP_DIR = 'temp-github-pages';
 console.log('🚀 Iniciando despliegue a GitHub Pages...');
 
 try {
-  // 1. Construir el proyecto
+  // 1. Construir el proyecto con configuración para dominio principal
   console.log('📦 Construyendo el proyecto...');
-  execSync('npm run build', { stdio: 'inherit' });
+  execSync('bun run build', { stdio: 'inherit', env: { ...process.env, VITE_BASE_PATH: '/' } });
 
   // 2. Clonar el repositorio de GitHub Pages
   console.log('📥 Clonando repositorio de GitHub Pages...');
