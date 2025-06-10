@@ -1,0 +1,15 @@
+# Configuración para GitHub Pages
+# Asegurar que los archivos JavaScript se sirvan con el MIME type correcto
+AddType application/javascript .js
+AddType text/css .css
+
+# Configuración de caché
+<FilesMatch "\.(js|css|png|jpg|jpeg|gif|svg|ico)$">
+    ExpiresActive On
+    ExpiresDefault "access plus 1 month"
+</FilesMatch>
+
+# Forzar recarga de assets
+<FilesMatch "\.(js|css)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+</FilesMatch> 
