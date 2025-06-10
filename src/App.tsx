@@ -14,6 +14,8 @@ import { useScrollToSection } from "./hooks/useScrollToSection";
 
 import "./App.css";
 
+// Test deployment - 2025-01-10T14:55:00.000Z
+
 function App() {
   const { data: portfolioData } = usePortfolioDataFromLocales();
   const { scrollToSection } = useScrollToSection();
@@ -44,7 +46,7 @@ function App() {
 
   useEffect(() => {
     const titles = [
-      "PORTFOLIO",
+      "PORTFOLIO - Test Deploy 2025-01-10",
       portfolioData?.presentation?.title || "Frontend React Engineer",
     ];
     let currentTitleIndex = 0;

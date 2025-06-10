@@ -59,6 +59,40 @@ bun run build
 
 # Vista previa de producción
 bun run preview
+
+# Desplegar a GitHub Pages
+bun run deploy:github-pages
+```
+
+## 🚀 Despliegue a GitHub Pages
+
+El proyecto incluye un script automatizado para desplegar a GitHub Pages:
+
+```bash
+# Ejecutar despliegue completo
+bun run deploy:github-pages
+```
+
+### ¿Qué hace el script?
+
+1. **📦 Construye el proyecto** usando `npm run build`
+2. **📥 Clona** el repositorio de GitHub Pages
+3. **🧹 Limpia** el directorio temporal (mantiene `.git`)
+4. **📋 Copia** los archivos construidos desde `dist/`
+5. **📤 Sube** los cambios con commit automático
+6. **🧽 Limpia** archivos temporales
+
+### Configuración
+
+El script está configurado para desplegar al repositorio:
+- **Repositorio de destino**: `https://github.com/jordinodejs/jordinodejs.github.io.git`
+- **Directorio de construcción**: `dist/`
+- **Rama de destino**: `main`
+
+Para cambiar la configuración, edita las constantes en `scripts/deploy-to-github-pages.js`:
+
+```javascript
+const GITHUB_PAGES_REPO = 'https://github.com/tu-usuario/tu-usuario.github.io.git';
 ```
 
 ## 🌐 Internacionalización (i18n)
