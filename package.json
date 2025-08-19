@@ -3,7 +3,7 @@
   "description": "Portfolio moderno con animaciones - Desplegado en dominio principal",
   "homepage": "https://jordinodejs.github.io",
   "private": true,
-  "version": "0.0.4",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",

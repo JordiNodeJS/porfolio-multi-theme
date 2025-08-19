@@ -10,6 +10,9 @@ import AnimatedWaves from "./AnimatedWaves";
 // Lazy load as backup
 const LazyAnimatedWaves = lazy(() => import("./AnimatedWaves"));
 
+// Version for deployment verification v1.0.0
+console.log("🚀 Hero component version: 1.0.0 - Automatic deployment test");
+
 const Hero = () => {
   const { theme } = useTheme();
   const { data: portfolioData } = usePortfolioDataFromLocales();
