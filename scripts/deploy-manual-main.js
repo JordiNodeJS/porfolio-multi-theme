@@ -58,23 +58,23 @@ try {
 
   execSync("git add .", { stdio: "inherit" });
 
-  // Verificar si hay cambios
+  // Forzar commit incluso si no hay cambios aparentes
   try {
-    const status = execSync("git status --porcelain", { encoding: "utf8" });
-
-    if (status.trim() === "") {
-      console.log(
-        "ℹ️  No hay cambios que desplegar - el sitio ya está actualizado"
-      );
-    } else {
-      const commitMessage = `Deploy portfolio from porfolio-multi-theme - ${new Date().toISOString()}`;
-      execSync(`git commit -m "${commitMessage}"`, { stdio: "inherit" });
-      execSync("git push origin main", { stdio: "inherit" });
-
-      console.log("✅ ¡Despliegue completado exitosamente!");
-    }
+    const commitMessage = `Deploy portfolio from porfolio-multi-theme - ${new Date().toISOString()}`;
+    execSync(`git commit -m "${commitMessage}" --allow-empty`, { stdio: "inherit" });
+    execSync("git push origin main", { stdio: "inherit" });
+    
+    console.log("✅ ¡Despliegue completado exitosamente!");
   } catch (commitError) {
-    console.log("ℹ️  No hay cambios nuevos para desplegar");
+    console.log("⚠️  Intentando forzar el commit...");
+    try {
+      const forceCommitMessage = `Force deploy portfolio - ${new Date().toISOString()}`;
+      execSync(`git commit -m "${forceCommitMessage}" --allow-empty`, { stdio: "inherit" });
+      execSync("git push origin main --force", { stdio: "inherit" });
+      console.log("✅ ¡Despliegue forzado completado!");
+    } catch (forceError) {
+      console.log("❌ No se pudo forzar el despliegue:", forceError.message);
+    }
   }
 
   // 8. Limpiar directorio temporal
