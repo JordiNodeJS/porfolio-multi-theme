@@ -250,6 +250,33 @@
   [data-theme="brutalism"] .hover-smooth:hover {
     transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1) !important;
   }
+
+  /* Force profile image to be on top */
+  .profile-image-container {
+    isolation: isolate; /* Crear un nuevo contexto de apilamiento */
+    position: relative; /* Asegurar contexto de posicionamiento */
+  }
+
+  .profile-image-container img {
+    z-index: 999 !important;
+    position: relative !important;
+    isolation: isolate !important;
+  }
+
+  /* Force background circle to be behind */
+  .profile-image-container .background-smooth {
+    z-index: -10 !important;
+    isolation: isolate !important;
+  }
+
+  /* Ensure separated circle stays behind */
+  /* NOTE: Previously this targeted the immediate sibling of
+     .profile-image-container, forcing it behind with absolute positioning.
+     That unintentionally affected the text container (title/subtitle),
+     causing overlap with the profile image. The rule is removed to let
+     content flow naturally below the image. If a background circle needs
+     extra stacking control, apply a specific class to that element and
+     target it directly instead of using the adjacent sibling selector. */
 }
 
 @layer base {

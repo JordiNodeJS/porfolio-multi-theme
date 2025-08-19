@@ -130,7 +130,7 @@ const Hero = () => {
         <div className="flex flex-col items-center">
           {/* Profile image with 3D effect */}
           <div
-            className="perspective-1000 mb-12 mt-12 cursor-pointer profile-image-container hover-smooth"
+            className="perspective-1000 mb-8 mt-12 cursor-pointer profile-image-container hover-smooth"
             ref={profileContainerRef}
           >
             {" "}
@@ -192,6 +192,7 @@ const Hero = () => {
                     theme === "brutalism"
                       ? "translateZ(-10px)"
                       : "translateZ(-10px)",
+                  zIndex: 0, // Sombra en el fondo
                   opacity: isHovered ? 0.9 : 0.7,
                   scale: isHovered ? 1.1 : 1.0,
                   boxShadow:
@@ -204,7 +205,10 @@ const Hero = () => {
               <motion.div
                 className="absolute inset-0 overflow-visible transform-style-3d"
                 style={{
+                  zIndex: 100, // Z-index muy alto para asegurar que esté por encima
                   z: springProps.zIndex,
+                  isolation: "isolate", // Crear contexto de apilamiento independiente
+                  transform: "translateZ(20px)", // Mover hacia adelante en 3D
                 }}
               >
                 {" "}
@@ -215,6 +219,8 @@ const Hero = () => {
                   className="w-full h-full object-cover rounded-full transform-gpu transform-style-3d scale-smooth"
                   style={{
                     scale: springProps.scale,
+                    zIndex: 101, // Z-index aún más alto para la imagen específicamente
+                    position: "relative",
                     filter: isHovered
                       ? `drop-shadow(0 0 20px ${config.glowColor})`
                       : "none",
@@ -223,57 +229,53 @@ const Hero = () => {
                   }}
                 />{" "}
               </motion.div>{" "}
-              {/* Border glow effect */}
-              <motion.div
-                className={`absolute -inset-1 rounded-full pointer-events-none transform-style-3d background-smooth ${
-                  theme === "brutalism" ? "border-4 border-black" : ""
-                }`}
-                style={{
-                  background:
-                    theme === "dark"
-                      ? `conic-gradient(from ${
-                          Date.now() % 360
-                        }deg at 50% 50%, #60a5fa, #3b82f6, #2563eb, #1d4ed8, #1e40af, #1e3a8a, #1e3a8a, #1e40af, #1d4ed8, #2563eb, #3b82f6, #60a5fa)`
-                      : theme === "light"
-                      ? `conic-gradient(from ${
-                          Date.now() % 360
-                        }deg at 50% 50%, #93c5fd, #60a5fa, #3b82f6, #2563eb, #1d4ed8, #1e40af, #1e40af, #1d4ed8, #2563eb, #3b82f6, #60a5fa, #93c5fd)`
-                      : theme === "vintage"
-                      ? `conic-gradient(from ${
-                          Date.now() % 360
-                        }deg at 50% 50%, #e3b505, #c89e31, #a87e58, #967043, #826036, #6e4c30, #6e4c30, #826036, #967043, #a87e58, #c89e31, #e3b505)`
-                      : theme === "retro-pastel"
-                      ? `conic-gradient(from ${
-                          Date.now() % 360
-                        }deg at 50% 50%, #ffb5b5, #ffaec0, #f59cb0, #e56b81, #cf6279, #b85671, #b85671, #cf6279, #e56b81, #f59cb0, #ffaec0, #ffb5b5)`
-                      : theme === "brutalism"
-                      ? `conic-gradient(from ${
-                          Date.now() % 360
-                        }deg at 50% 50%, #4ecdc4, #45b7d1, #3b82f6, #ff6b6b, #ffeaa7, #ffeaa7, #ff6b6b, #3b82f6, #45b7d1, #4ecdc4)`
-                      : `conic-gradient(from ${
-                          Date.now() % 360
-                        }deg at 50% 50%, #93c5fd, #60a5fa, #3b82f6, #2563eb, #1d4ed8, #1e40af, #1e40af, #1d4ed8, #2563eb, #3b82f6, #60a5fa, #93c5fd)`,
-                  filter:
-                    theme === "brutalism"
-                      ? "none"
-                      : isHovered
-                      ? "blur(12px)"
-                      : "blur(8px)",
-                  transform:
-                    theme === "brutalism"
-                      ? "translateZ(5px) skew(-3deg)"
-                      : "translateZ(5px)",
-                  zIndex: 5,
-                  opacity: isHovered ? 0.9 : 0.6,
-                  scale: isHovered ? 1.05 : 1.0,
-                  animation: "rotate 10s linear infinite",
-                  transition:
-                    "filter 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.6s ease-out, scale 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
-                  boxShadow:
-                    theme === "brutalism" ? "4px 4px 0px #000" : "none",
-                }}
-              />
             </motion.div>
+            {/* Círculo de color separado - FUERA del contexto 3D */}
+            <motion.div
+              className={`absolute -inset-1 rounded-full pointer-events-none ${
+                theme === "brutalism" ? "border-4 border-black" : ""
+              }`}
+              style={{
+                background:
+                  theme === "dark"
+                    ? `conic-gradient(from ${
+                        Date.now() % 360
+                      }deg at 50% 50%, #60a5fa, #3b82f6, #2563eb, #1d4ed8, #1e40af, #1e3a8a, #1e3a8a, #1e40af, #1d4ed8, #2563eb, #3b82f6, #60a5fa)`
+                    : theme === "light"
+                    ? `conic-gradient(from ${
+                        Date.now() % 360
+                      }deg at 50% 50%, #93c5fd, #60a5fa, #3b82f6, #2563eb, #1d4ed8, #1e40af, #1e40af, #1d4ed8, #2563eb, #3b82f6, #60a5fa, #93c5fd)`
+                    : theme === "vintage"
+                    ? `conic-gradient(from ${
+                        Date.now() % 360
+                      }deg at 50% 50%, #e3b505, #c89e31, #a87e58, #967043, #826036, #6e4c30, #6e4c30, #826036, #967043, #a87e58, #c89e31, #e3b505)`
+                    : theme === "retro-pastel"
+                    ? `conic-gradient(from ${
+                        Date.now() % 360
+                      }deg at 50% 50%, #ffb5b5, #ffaec0, #f59cb0, #e56b81, #cf6279, #b85671, #b85671, #cf6279, #e56b81, #f59cb0, #ffaec0, #ffb5b5)`
+                    : theme === "brutalism"
+                    ? `conic-gradient(from ${
+                        Date.now() % 360
+                      }deg at 50% 50%, #4ecdc4, #45b7d1, #3b82f6, #ff6b6b, #ffeaa7, #ffeaa7, #ff6b6b, #3b82f6, #45b7d1, #4ecdc4)`
+                    : `conic-gradient(from ${
+                        Date.now() % 360
+                      }deg at 50% 50%, #93c5fd, #60a5fa, #3b82f6, #2563eb, #1d4ed8, #1e40af, #1e40af, #1d4ed8, #2563eb, #3b82f6, #60a5fa, #93c5fd)`,
+                filter:
+                  theme === "brutalism"
+                    ? "none"
+                    : isHovered
+                    ? "blur(12px)"
+                    : "blur(8px)",
+                zIndex: -1, // Z-index negativo normal
+                opacity: isHovered ? 0.9 : 0.6,
+                scale: isHovered ? 1.05 : 1.0,
+                animation: "rotate 10s linear infinite",
+                transition:
+                  "filter 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94), scale 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+                boxShadow: theme === "brutalism" ? "4px 4px 0px #000" : "none",
+                mixBlendMode: "multiply", // Blend mode para que se mezcle por detrás
+              }}
+            />
           </div>
 
           {/* Text content with animations */}
@@ -395,73 +397,48 @@ const Hero = () => {
               </div>
             )}
 
+            {/* Caption subtitle - appears below the image */}
             <div
-              className={`text-xl md:text-2xl lg:text-3xl font-medium mb-6 ${
+              className={`text-lg md:text-xl lg:text-2xl font-medium text-center mt-4 mb-6 ${
                 theme === "dark"
-                  ? "text-slate-200"
+                  ? "text-slate-300"
                   : theme === "brutalism"
                   ? "text-black font-bold"
                   : theme === "vintage"
-                  ? "text-amber-700 font-medium"
+                  ? "text-amber-600 font-medium"
                   : theme === "retro-pastel"
                   ? "text-rose-400 font-light"
                   : theme === "light"
-                  ? "text-gray-700"
-                  : "text-gray-700"
+                  ? "text-gray-600"
+                  : "text-gray-600"
               }`}
               style={{
-                // Force absolute centering - override any conflicting styles
-                textAlign: "center" as const,
-                display: "flex" as const,
-                justifyContent: "center" as const,
-                alignItems: "center" as const,
-                width: "100%" as const,
-                margin: "0 auto" as const,
-                position: "relative",
-                left: "50%",
-                transform: "translateX(-50%)",
                 ...(theme === "dark" && {
-                  textShadow: "0 2px 8px rgba(0,0,0,0.4)",
+                  textShadow: "0 1px 3px rgba(0,0,0,0.3)",
                 }),
                 ...(theme === "brutalism" && {
-                  textShadow:
-                    "1px 1px 0 #000, -0.5px -0.5px 0 #fff, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #fff, 0.5px 0.5px 0 #000",
-                  WebkitTextStroke: "0.3px #000",
+                  textShadow: "1px 1px 0 #000, -0.5px -0.5px 0 #fff",
+                  WebkitTextStroke: "0.2px #000",
                 }),
                 ...(theme === "vintage" && {
-                  textShadow:
-                    "1px 1px 2px rgba(0, 0, 0, 0.2), 0 0 10px rgba(251, 191, 36, 0.3)",
+                  textShadow: "0 1px 2px rgba(0, 0, 0, 0.2)",
                   fontFamily: '"Playfair Display", serif',
                   fontStyle: "italic",
-                  letterSpacing: "0.02em",
+                  letterSpacing: "0.01em",
                 }),
                 ...(theme === "retro-pastel" && {
-                  textShadow:
-                    "0 2px 4px rgba(255, 182, 193, 0.3), 0 0 8px rgba(255, 218, 185, 0.2)",
+                  textShadow: "0 1px 2px rgba(255, 182, 193, 0.3)",
                   fontFamily: '"Comfortaa", cursive, sans-serif',
                   letterSpacing: "0.01em",
                   fontWeight: "300",
                 }),
                 ...(theme === "light" && {
-                  textShadow: "0 1px 4px rgba(0,0,0,0.1)",
+                  textShadow: "0 1px 2px rgba(0,0,0,0.1)",
                 }),
               }}
             >
-              <div
-                style={{
-                  textAlign: "center",
-                  width: "100%",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                {/* Simple text without animation to ensure centering */}
-                <span style={{ textAlign: "center", display: "inline-block" }}>
-                  {portfolioData?.presentation?.title ||
-                    "Frontend React Engineer"}
-                </span>
-              </div>
+              {portfolioData?.presentation?.title ||
+                "Desarrollador Frontend React ⚡"}
             </div>
 
             <motion.div
