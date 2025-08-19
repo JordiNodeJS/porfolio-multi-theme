@@ -201,22 +201,24 @@ const Hero = () => {
                     "transform 0.8s cubic-bezier(0.23, 1, 0.320, 1), opacity 0.6s ease-out, scale 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
                 }}
               />{" "}
-              {/* Container for the image with clip-path for the "popping out of circle" effect */}
+              {/* Container for the image clipped perfectly inside the circle */}
               <motion.div
-                className="absolute inset-0 overflow-visible transform-style-3d"
+                className="absolute inset-0 transform-style-3d rounded-full overflow-hidden"
                 style={{
                   zIndex: 100, // Z-index muy alto para asegurar que esté por encima
                   z: springProps.zIndex,
                   isolation: "isolate", // Crear contexto de apilamiento independiente
                   transform: "translateZ(20px)", // Mover hacia adelante en 3D
+                  // Pequeño padding visual con inset para evitar que sobresalga el borde
+                  padding: "0.5px",
+                  boxSizing: "border-box",
                 }}
               >
-                {" "}
-                {/* 3D Image that "pops out" of the circle */}
+                {/* 3D Image clipped within the circle */}
                 <motion.img
                   src={`${import.meta.env.BASE_URL}assets/developer.png`}
                   alt="Profile"
-                  className="w-full h-full object-cover rounded-full transform-gpu transform-style-3d scale-smooth"
+                  className="w-full h-full object-cover transform-gpu transform-style-3d scale-smooth"
                   style={{
                     scale: springProps.scale,
                     zIndex: 101, // Z-index aún más alto para la imagen específicamente
@@ -227,8 +229,8 @@ const Hero = () => {
                     transition:
                       "filter 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), scale 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
                   }}
-                />{" "}
-              </motion.div>{" "}
+                />
+              </motion.div>
             </motion.div>
             {/* Círculo de color separado - FUERA del contexto 3D */}
             <motion.div

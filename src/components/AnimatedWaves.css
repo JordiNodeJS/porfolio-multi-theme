@@ -112,12 +112,13 @@
 .wave-svg {
   position: absolute;
   bottom: 0;
-  left: 0;
-  width: 100%;
+  /* Aggressively extend beyond edges to avoid visible seams when scaling/animating */
+  left: -12%;
+  width: 124%;
   height: 100%;
   /* Prevent edges from showing during animations */
-  transform: translateX(-2%);
-  width: 104%;
+  transform: none;
+  shape-rendering: geometricPrecision;
 }
 
 /* Individual wave path styles for CSS animations fallback */

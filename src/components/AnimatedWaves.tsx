@@ -12,7 +12,7 @@ const AnimatedWaves = () => {
   const waveConfigs = [
     {
       id: "wave-1",
-      path: "M-50,60 Q150,40 300,60 T600,60 Q750,40 900,60 T1200,60 Q1350,40 1550,60 L1550,300 L-50,300 Z",
+      path: "M-200,60 Q150,40 300,60 T600,60 Q750,40 900,60 T1200,60 Q1350,40 1550,60 L1700,300 L-200,300 Z",
       duration: 20,
       delay: 0,
       opacity: 0.8,
@@ -20,7 +20,7 @@ const AnimatedWaves = () => {
     },
     {
       id: "wave-2",
-      path: "M-50,80 Q200,50 400,80 T800,80 Q1000,50 1200,80 T1550,80 L1550,300 L-50,300 Z",
+      path: "M-200,80 Q200,50 400,80 T800,80 Q1000,50 1200,80 T1550,80 L1700,300 L-200,300 Z",
       duration: 25,
       delay: 3,
       opacity: 0.6,
@@ -28,7 +28,7 @@ const AnimatedWaves = () => {
     },
     {
       id: "wave-3",
-      path: "M-50,100 Q100,70 200,100 Q300,130 400,100 Q500,70 600,100 Q700,130 800,100 Q900,70 1000,100 Q1100,130 1200,100 Q1300,70 1400,100 Q1450,70 1550,100 L1550,300 L-50,300 Z",
+      path: "M-200,100 Q100,70 200,100 Q300,130 400,100 Q500,70 600,100 Q700,130 800,100 Q900,70 1000,100 Q1100,130 1200,100 Q1300,70 1400,100 Q1450,70 1550,100 L1700,300 L-200,300 Z",
       duration: 30,
       delay: 6,
       opacity: 0.4,
@@ -41,39 +41,39 @@ const AnimatedWaves = () => {
     switch (theme) {
       case "dark":
         return [
-          "rgba(56, 189, 248, 0.5)", // Cyan - More intense
-          "rgba(59, 130, 246, 0.4)", // Blue
-          "rgba(147, 51, 234, 0.3)", // Purple
+          "rgba(59, 130, 246, 0.55)", // Blue 500
+          "rgba(56, 189, 248, 0.45)", // Cyan 400
+          "rgba(99, 102, 241, 0.35)", // Indigo 500
         ];
       case "light":
         return [
-          "rgba(59, 130, 246, 0.4)", // Blue
-          "rgba(147, 51, 234, 0.3)", // Purple
-          "rgba(236, 72, 153, 0.25)", // Pink
+          "rgba(59, 130, 246, 0.35)", // Blue
+          "rgba(56, 189, 248, 0.30)", // Cyan
+          "rgba(99, 102, 241, 0.25)", // Indigo
         ];
       case "vintage":
         return [
-          "rgba(251, 191, 36, 0.5)", // Gold - More intense
-          "rgba(245, 158, 11, 0.4)", // Amber
-          "rgba(217, 119, 6, 0.3)", // Orange
+          "rgba(180, 141, 80, 0.55)", // Muted ochre
+          "rgba(161, 98, 7, 0.40)", // Brownish amber
+          "rgba(107, 70, 38, 0.35)", // Soft brown
         ];
       case "retro-pastel":
         return [
-          "rgba(255, 182, 193, 0.5)", // Light pink - More intense
-          "rgba(255, 218, 185, 0.4)", // Peach
-          "rgba(250, 176, 196, 0.3)", // Rose
+          "rgba(252, 165, 165, 0.45)", // Rose 300
+          "rgba(196, 181, 253, 0.40)", // Purple 300
+          "rgba(134, 239, 172, 0.35)", // Green 300
         ];
       case "brutalism":
         return [
-          "rgba(255, 107, 107, 0.6)", // Bright red - More intense
-          "rgba(78, 205, 196, 0.5)", // Turquoise
-          "rgba(255, 234, 167, 0.4)", // Yellow
+          "rgba(59, 130, 246, 0.60)", // Brand blue punchy
+          "rgba(56, 189, 248, 0.55)", // Cyan
+          "rgba(168, 85, 247, 0.50)", // Violet
         ];
       default:
         return [
           "rgba(59, 130, 246, 0.4)",
-          "rgba(147, 51, 234, 0.3)",
-          "rgba(236, 72, 153, 0.25)",
+          "rgba(56, 189, 248, 0.35)",
+          "rgba(99, 102, 241, 0.3)",
         ];
     }
   };
@@ -93,11 +93,27 @@ const AnimatedWaves = () => {
     >
       <svg
         className="wave-svg"
-        viewBox="-50 0 1600 300"
+        viewBox="-200 0 1900 300"
         preserveAspectRatio="xMidYMax meet"
         data-testid="wave-svg"
       >
         <defs>
+          {/* Soft edge mask to avoid any visible border on extremes */}
+          <linearGradient id="edgeFade" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="white" stopOpacity="0" />
+            <stop offset="8%" stopColor="white" stopOpacity="1" />
+            <stop offset="92%" stopColor="white" stopOpacity="1" />
+            <stop offset="100%" stopColor="white" stopOpacity="0" />
+          </linearGradient>
+          <mask id="edgeMask">
+            <rect
+              x="-1000"
+              y="-1000"
+              width="4000"
+              height="4000"
+              fill="url(#edgeFade)"
+            />
+          </mask>
           {/* Gradient definitions for each wave */}
           {waveConfigs.map((_, index) => (
             <linearGradient
@@ -132,6 +148,7 @@ const AnimatedWaves = () => {
             fill={`url(#waveGradient-${index})`}
             opacity={wave.opacity}
             filter={theme === "brutalism" ? "none" : "url(#glow)"}
+            mask="url(#edgeMask)"
             initial={{
               pathLength: 0,
               x: 0,
@@ -173,9 +190,7 @@ const AnimatedWaves = () => {
             }}
             style={{
               transformOrigin: "center center",
-              ...(theme === "brutalism" && {
-                filter: "drop-shadow(3px 3px 0px #000)",
-              }),
+              mixBlendMode: theme === "brutalism" ? "normal" : "screen",
             }}
           />
         ))}
