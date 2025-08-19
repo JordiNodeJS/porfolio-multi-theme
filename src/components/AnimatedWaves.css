@@ -2,19 +2,19 @@
 
 @keyframes waveFlow {
   0% {
-    transform: translateX(0) translateY(0) scaleX(1);
+    transform: translateX(0) translateY(0) scaleY(1);
   }
   25% {
-    transform: translateX(30px) translateY(-8px) scaleX(1.05);
+    transform: translateX(20px) translateY(-5px) scaleY(1.03);
   }
   50% {
-    transform: translateX(-15px) translateY(5px) scaleX(0.98);
+    transform: translateX(-10px) translateY(3px) scaleY(0.98);
   }
   75% {
-    transform: translateX(45px) translateY(-12px) scaleX(1.03);
+    transform: translateX(25px) translateY(-8px) scaleY(1.02);
   }
   100% {
-    transform: translateX(0) translateY(0) scaleX(1);
+    transform: translateX(0) translateY(0) scaleY(1);
   }
 }
 
@@ -88,6 +88,8 @@
   height: 100%;
   overflow: hidden;
   pointer-events: none;
+  /* Clip any content that extends beyond the container */
+  clip-path: inset(0 0 0 0);
 }
 
 .wave-svg {
@@ -96,6 +98,9 @@
   left: 0;
   width: 100%;
   height: 100%;
+  /* Prevent edges from showing during animations */
+  transform: translateX(-2%);
+  width: 104%;
 }
 
 /* Individual wave path styles for CSS animations fallback */

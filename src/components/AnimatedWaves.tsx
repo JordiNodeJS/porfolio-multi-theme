@@ -5,11 +5,11 @@ import "./AnimatedWaves.css";
 const AnimatedWaves = () => {
   const { theme } = useTheme();
 
-  // Wave path configurations for different layers with more organic curves
+  // Wave path configurations with extended edges to prevent border distortion
   const waveConfigs = [
     {
       id: "wave-1",
-      path: "M0,60 Q150,40 300,60 T600,60 Q750,40 900,60 T1200,60 Q1350,40 1500,60 L1500,300 L0,300 Z",
+      path: "M-50,60 Q150,40 300,60 T600,60 Q750,40 900,60 T1200,60 Q1350,40 1550,60 L1550,300 L-50,300 Z",
       duration: 20,
       delay: 0,
       opacity: 0.8,
@@ -17,7 +17,7 @@ const AnimatedWaves = () => {
     },
     {
       id: "wave-2", 
-      path: "M0,80 Q200,50 400,80 T800,80 Q1000,50 1200,80 T1500,80 L1500,300 L0,300 Z",
+      path: "M-50,80 Q200,50 400,80 T800,80 Q1000,50 1200,80 T1550,80 L1550,300 L-50,300 Z",
       duration: 25,
       delay: 3,
       opacity: 0.6,
@@ -25,7 +25,7 @@ const AnimatedWaves = () => {
     },
     {
       id: "wave-3",
-      path: "M0,100 Q100,70 200,100 Q300,130 400,100 Q500,70 600,100 Q700,130 800,100 Q900,70 1000,100 Q1100,130 1200,100 Q1300,70 1400,100 Q1450,70 1500,100 L1500,300 L0,300 Z",
+      path: "M-50,100 Q100,70 200,100 Q300,130 400,100 Q500,70 600,100 Q700,130 800,100 Q900,70 1000,100 Q1100,130 1200,100 Q1300,70 1400,100 Q1450,70 1550,100 L1550,300 L-50,300 Z",
       duration: 30,
       delay: 6,
       opacity: 0.4,
@@ -81,7 +81,7 @@ const AnimatedWaves = () => {
     <div className={`wave-container waves-${theme}`}>
       <svg
         className="wave-svg"
-        viewBox="0 0 1500 300"
+        viewBox="-50 0 1600 300"
         preserveAspectRatio="xMidYMax meet"
       >
         <defs>
@@ -121,14 +121,14 @@ const AnimatedWaves = () => {
             filter={theme === "brutalism" ? "none" : "url(#glow)"}
             initial={{ 
               pathLength: 0,
-              x: -50,
-              scale: wave.scale,
+              x: 0,
+              scale: 1,
             }}
             animate={{
               pathLength: 1,
-              x: [0, 30, -15, 45, 0],
-              y: [0, -8, 5, -12, 0],
-              scale: [wave.scale, wave.scale * 1.08, wave.scale * 0.95, wave.scale * 1.05, wave.scale],
+              x: [0, 20, -10, 25, 0],
+              y: [0, -5, 3, -8, 0],
+              scaleY: [1, 1.03, 0.98, 1.02, 1],
             }}
             transition={{
               pathLength: {
@@ -150,7 +150,7 @@ const AnimatedWaves = () => {
                 ease: [0.25, 0.46, 0.45, 0.94],
                 repeatType: "mirror",
               },
-              scale: {
+              scaleY: {
                 duration: wave.duration * 0.6,
                 delay: wave.delay + 0.5,
                 repeat: Infinity,
@@ -159,7 +159,7 @@ const AnimatedWaves = () => {
               },
             }}
             style={{
-              transformOrigin: "center bottom",
+              transformOrigin: "center center",
               ...(theme === "brutalism" && {
                 filter: "drop-shadow(3px 3px 0px #000)",
               }),
