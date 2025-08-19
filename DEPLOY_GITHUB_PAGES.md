@@ -2,23 +2,53 @@
 
 Este documento explica cómo configurar y desplegar el portfolio multi-theme a GitHub Pages.
 
-## ⚠️ MÉTODO RECOMENDADO: Despliegue a rama gh-pages
+## 🌐 CONFIGURACIÓN DE DOMINIO
 
-**IMPORTANTE:** Usar siempre `bun run deploy:self` en lugar de `bun run deploy:github-pages` para evitar errores de nombres de archivo largos en Windows.
+El proyecto está configurado para desplegarse en el **dominio principal** de GitHub Pages:
 
-### Uso (Método que funciona)
+- **URL del sitio:** https://jordinodejs.github.io (dominio principal)
+- **Repositorio fuente:** `porfolio-multi-theme` (código fuente)
+- **Repositorio de despliegue:** `jordinodejs.github.io` (sitio web)
+
+## 🎯 MÉTODOS DE DESPLIEGUE
+
+### Método 1: Despliegue al Dominio Principal (RECOMENDADO)
+
+Para desplegar al dominio principal `https://jordinodejs.github.io`:
+
+```bash
+# 1. Construir el proyecto con configuración para dominio principal
+bun run build
+
+# 2. Desplegar al repositorio principal
+bun run deploy:github-pages
+```
+
+### Método 2: Despliegue a Subdominio (Alternativo)
+
+Para desplegar como subproyecto `https://jordinodejs.github.io/porfolio-multi-theme/`:
 
 ```bash
 # 1. Construir el proyecto
 bun run build
 
-# 2. Desplegar a rama gh-pages
+# 2. Desplegar a rama gh-pages del mismo repositorio
 bun run deploy:self
 ```
 
 ### Configuración en GitHub (OBLIGATORIO después del despliegue)
 
-1. **Ve a tu repositorio** `porfolio-multi-theme` en GitHub
+#### Para Dominio Principal (Método 1):
+1. **Ve al repositorio** `jordinodejs.github.io` en GitHub
+2. **Settings** → **Pages** (menú lateral izquierdo)
+3. **Configurar la fuente:**
+   - Source: **"Deploy from a branch"**
+   - Branch: **"main"**
+   - Folder: **"/ (root)"**
+4. **Save**
+
+#### Para Subdominio (Método 2):
+1. **Ve al repositorio** `porfolio-multi-theme` en GitHub
 2. **Settings** → **Pages** (menú lateral izquierdo)
 3. **Configurar la fuente:**
    - Source: **"Deploy from a branch"**
@@ -47,7 +77,57 @@ Requiere configuración adicional de tokens que no siempre funciona correctament
 
 ## 🤖 PROMPT PARA AI - DESPLIEGUE AUTOMÁTICO
 
-Si eres una AI y el usuario te pide "despliega el proyecto a GitHub Pages", ejecuta EXACTAMENTE estos comandos en este orden:
+### Para Dominio Principal (https://jordinodejs.github.io)
+
+Si eres una AI y el usuario te pide "despliega el proyecto a GitHub Pages en el dominio principal", ejecuta EXACTAMENTE estos comandos:
+
+```bash
+# PASO 1: Verificar configuración
+cd /ruta/al/proyecto/porfolio-multi-theme
+
+# PASO 2: Verificar que vite.config.ts tenga base: "/"
+# (para dominio principal)
+
+# PASO 3: Construir y desplegar
+git add . && git commit -m "Update portfolio for main domain deployment"
+bun run build
+bun run deploy:github-pages
+
+# PASO 4: Informar al usuario
+echo "✅ Despliegue completado a https://jordinodejs.github.io"
+echo "⏱️ Los cambios estarán visibles en 2-10 minutos"
+```
+
+### Para Subdominio (https://jordinodejs.github.io/porfolio-multi-theme/)
+
+Si el usuario prefiere el subdominio, ejecuta:
+
+```bash
+# PASO 1: Cambiar configuración para subdominio
+# Cambiar base: "/" por base: "/porfolio-multi-theme/" en vite.config.ts
+
+# PASO 2: Construir y desplegar
+git add . && git commit -m "Update portfolio for subdomain deployment"
+bun run build
+bun run deploy:self
+
+# PASO 3: Informar al usuario
+echo "✅ Despliegue completado a https://jordinodejs.github.io/porfolio-multi-theme/"
+```
+
+### Comandos de Verificación
+
+```bash
+# Verificar estado del repositorio
+git status
+git log --oneline -3
+
+# Verificar build exitoso
+ls -la dist/
+
+# En caso de errores, verificar:
+bun run build  # Verificar que compile sin errores
+```
 
 ```bash
 # Paso 1: Verificar estado del repositorio
@@ -111,29 +191,43 @@ bun run deploy:self
 
 ## Configuración de Vite
 
-La configuración actual de Vite está optimizada para GitHub Pages:
+### Para Dominio Principal
+La configuración está optimizada para el dominio principal:
 
 ```typescript
 export default defineConfig({
   plugins: [react()],
-  base: "/porfolio-multi-theme/", // Ajustado para project pages
+  base: "/", // Dominio principal: https://jordinodejs.github.io
   build: {
     outDir: "dist",
   },
 });
 ```
 
-## URLs
+### Para Subdominio (si necesitas cambiarlo)
+Para desplegar como subproyecto, cambiar `base` a:
 
-- **Repositorio fuente:** `porfolio-multi-theme`
-- **Método de despliegue:** Rama `gh-pages`
-- **URL del sitio:** https://jordinodejs.github.io/porfolio-multi-theme/
+```typescript
+base: "/porfolio-multi-theme/", // Subdominio: https://jordinodejs.github.io/porfolio-multi-theme/
+```
+
+## URLs Resultantes
+
+- **Dominio principal:** https://jordinodejs.github.io
+- **Subdominio (alternativo):** https://jordinodejs.github.io/porfolio-multi-theme/
 
 ## 🚀 Comandos de Actualización Rápida
 
-Para futuras actualizaciones del portfolio:
+Para actualizaciones al dominio principal:
 
 ```bash
-# Comando único para actualizar y desplegar
+# Comando único para actualizar y desplegar al dominio principal
+git add . && git commit -m "Update portfolio" && bun run deploy:github-pages
+```
+
+Para actualizaciones al subdominio:
+
+```bash
+# Comando único para actualizar y desplegar como subproyecto
 git add . && git commit -m "Update portfolio" && bun run deploy:self
 ```

@@ -4,7 +4,7 @@ import { execSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
 
-const GITHUB_PAGES_REPO = 'https://github.com/jordinodejs/jordinodejs.github.io.git';
+const GITHUB_PAGES_REPO = 'https://github.com/JordiNodeJS/jordinodejs.github.io.git';
 const TEMP_DIR = 'temp-github-pages';
 
 console.log('🚀 Iniciando despliegue a GitHub Pages...');
