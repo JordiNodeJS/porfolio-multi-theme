@@ -5,6 +5,9 @@ import "./AnimatedWaves.css";
 const AnimatedWaves = () => {
   const { theme } = useTheme();
 
+  // Debug log para verificar que el componente se renderiza
+  console.log('🌊 AnimatedWaves component rendering with theme:', theme);
+
   // Wave path configurations with extended edges to prevent border distortion
   const waveConfigs = [
     {
@@ -78,11 +81,21 @@ const AnimatedWaves = () => {
   const colors = getWaveColors();
 
   return (
-    <div className={`wave-container waves-${theme} force-animations`}>
+    <div 
+      className={`wave-container waves-${theme} force-animations`}
+      data-testid="animated-waves"
+      style={{ 
+        minHeight: '100px',
+        display: 'block',
+        visibility: 'visible',
+        pointerEvents: 'none'
+      }}
+    >
       <svg
         className="wave-svg"
         viewBox="-50 0 1600 300"
         preserveAspectRatio="xMidYMax meet"
+        data-testid="wave-svg"
       >
         <defs>
           {/* Gradient definitions for each wave */}

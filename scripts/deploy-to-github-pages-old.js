@@ -4,7 +4,8 @@ import { execSync } from "child_process";
 import fs from "fs";
 import path from "path";
 
-const GITHUB_PAGES_REPO = "https://github.com/JordiNodeJS/jordinodejs.github.io.git";
+const GITHUB_PAGES_REPO =
+  "https://github.com/JordiNodeJS/jordinodejs.github.io.git";
 const TEMP_DIR = "temp-github-pages";
 
 // Helper function to remove directory cross-platform
@@ -21,11 +22,15 @@ function removeDir(dirPath) {
 // Helper function to copy files cross-platform
 function copyFiles(source, dest) {
   if (process.platform === "win32") {
-    execSync(`xcopy "${source}\\*" "${dest}\\" /E /H /Y`, { stdio: "inherit" });
+    execSync(`xcopy "${source}" "${dest}" /E /H /Y`, { stdio: "inherit" });
   } else {
     execSync(`cp -r "${source}"/* "${dest}"/`, { stdio: "inherit" });
   }
 }
+
+const GITHUB_PAGES_REPO =
+  "https://github.com/JordiNodeJS/jordinodejs.github.io.git";
+const TEMP_DIR = "temp-github-pages";
 
 console.log("🚀 Iniciando despliegue a GitHub Pages...");
 
@@ -39,7 +44,9 @@ try {
 
   // 2. Clonar el repositorio de GitHub Pages
   console.log("📥 Clonando repositorio de GitHub Pages...");
-  removeDir(TEMP_DIR);
+  if (fs.existsSync(TEMP_DIR)) {
+    execSync(`rm -rf ${TEMP_DIR}`, { stdio: "inherit" });
+  }
   execSync(`git clone ${GITHUB_PAGES_REPO} ${TEMP_DIR}`, { stdio: "inherit" });
 
   // 3. Limpiar el directorio temporal (excepto .git)
@@ -47,24 +54,19 @@ try {
   const files = fs.readdirSync(TEMP_DIR);
   files.forEach((file) => {
     if (file !== ".git") {
-      const filePath = path.join(TEMP_DIR, file);
-      if (fs.lstatSync(filePath).isDirectory()) {
-        removeDir(filePath);
-      } else {
-        fs.unlinkSync(filePath);
-      }
+      execSync(`rm -rf ${path.join(TEMP_DIR, file)}`, { stdio: "inherit" });
     }
   });
 
   // 4. Copiar archivos construidos
   console.log("📋 Copiando archivos construidos...");
-  copyFiles("dist", TEMP_DIR);
+  execSync(`cp -r dist/* ${TEMP_DIR}/`, { stdio: "inherit" });
 
   // 4.1 Crear archivo .nojekyll para GitHub Pages
   console.log("📄 Creando archivo .nojekyll...");
   fs.writeFileSync(path.join(TEMP_DIR, ".nojekyll"), "");
 
-  // 4.2 Crear timestamp para cache busting
+  // 4.5 Crear timestamp para cache busting
   const timestamp = new Date().toISOString();
   const indexPath = path.join(TEMP_DIR, "index.html");
   if (fs.existsSync(indexPath)) {
@@ -80,15 +82,6 @@ try {
   // 5. Commit y push
   console.log("📤 Subiendo cambios...");
   process.chdir(TEMP_DIR);
-  
-  // Configurar git si es necesario
-  try {
-    execSync("git config user.email", { stdio: "pipe" });
-  } catch {
-    execSync('git config user.email "action@github.com"', { stdio: "inherit" });
-    execSync('git config user.name "GitHub Action"', { stdio: "inherit" });
-  }
-  
   execSync("git add .", { stdio: "inherit" });
 
   // Verificar si hay cambios antes de hacer commit
@@ -96,7 +89,9 @@ try {
     const status = execSync("git status --porcelain", { encoding: "utf8" });
 
     if (status.trim() === "") {
-      console.log("ℹ️  No hay cambios que desplegar - el sitio ya está actualizado");
+      console.log(
+        "ℹ️  No hay cambios que desplegar - el sitio ya está actualizado"
+      );
     } else {
       execSync(
         `git commit -m "Deploy from porfolio-multi-theme - ${new Date().toISOString()}"`,
@@ -112,7 +107,7 @@ try {
 
   // 6. Limpiar
   process.chdir("..");
-  removeDir(TEMP_DIR);
+  execSync(`rm -rf ${TEMP_DIR}`, { stdio: "inherit" });
 
   console.log("🎉 Proceso de despliegue finalizado correctamente!");
 } catch (error) {
@@ -123,7 +118,9 @@ try {
     if (process.cwd().includes(TEMP_DIR)) {
       process.chdir("..");
     }
-    removeDir(TEMP_DIR);
+    if (fs.existsSync(TEMP_DIR)) {
+      execSync(`rm -rf ${TEMP_DIR}`, { stdio: "inherit" });
+    }
   } catch (cleanupError) {
     console.error("⚠️  Error durante la limpieza:", cleanupError.message);
   }
