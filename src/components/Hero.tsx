@@ -92,7 +92,11 @@ const Hero = () => {
               >
                 <path
                   d="M0,60 Q300,40 600,60 T1200,60 L1200,120 L0,120 Z"
-                  fill={theme === 'light' ? "rgba(59, 130, 246, 0.15)" : "rgba(56, 189, 248, 0.25)"}
+                  fill={
+                    theme === "light"
+                      ? "rgba(59, 130, 246, 0.15)"
+                      : "rgba(56, 189, 248, 0.25)"
+                  }
                   className="wave-path-fallback"
                 />
               </svg>
