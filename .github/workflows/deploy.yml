@@ -1,7 +1,9 @@
 name: Deploy to GitHub Pages
 
 on:
-  workflow_dispatch: # Solo manual, para usar el external como principal
+  push:
+    branches: ["main"]
+  workflow_dispatch:
 
 # Configurar permisos para GitHub Pages
 permissions:
