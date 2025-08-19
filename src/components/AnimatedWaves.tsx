@@ -6,7 +6,7 @@ const AnimatedWaves = () => {
   const { theme } = useTheme();
 
   // Debug log para verificar que el componente se renderiza
-  console.log('🌊 AnimatedWaves component rendering with theme:', theme);
+  console.log("🌊 AnimatedWaves component rendering with theme:", theme);
 
   // Wave path configurations with extended edges to prevent border distortion
   const waveConfigs = [
@@ -81,14 +81,14 @@ const AnimatedWaves = () => {
   const colors = getWaveColors();
 
   return (
-    <div 
+    <div
       className={`wave-container waves-${theme} force-animations`}
       data-testid="animated-waves"
-      style={{ 
-        minHeight: '100px',
-        display: 'block',
-        visibility: 'visible',
-        pointerEvents: 'none'
+      style={{
+        minHeight: "100px",
+        display: "block",
+        visibility: "visible",
+        pointerEvents: "none",
       }}
     >
       <svg

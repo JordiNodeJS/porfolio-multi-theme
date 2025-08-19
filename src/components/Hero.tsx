@@ -71,28 +71,44 @@ const Hero = () => {
       />
       {/* Animated Waves Background */}
       <div className="absolute inset-0 z-5">
-        <Suspense fallback={
-          <div className="wave-container-fallback" data-testid="suspense-fallback">
-            <svg className="absolute bottom-0 w-full h-32" viewBox="0 0 1200 120" preserveAspectRatio="none">
-              <path 
-                d="M0,60 Q300,40 600,60 T1200,60 L1200,120 L0,120 Z" 
-                fill="rgba(251, 191, 36, 0.1)" 
-                className="wave-path-fallback"
-              />
-            </svg>
-          </div>
-        }>
+        <Suspense
+          fallback={
+            <div
+              className="wave-container-fallback"
+              data-testid="suspense-fallback"
+            >
+              <svg
+                className="absolute bottom-0 w-full h-32"
+                viewBox="0 0 1200 120"
+                preserveAspectRatio="none"
+              >
+                <path
+                  d="M0,60 Q300,40 600,60 T1200,60 L1200,120 L0,120 Z"
+                  fill="rgba(251, 191, 36, 0.1)"
+                  className="wave-path-fallback"
+                />
+              </svg>
+            </div>
+          }
+        >
           <AnimatedWaves />
           <LazyAnimatedWaves />
         </Suspense>
       </div>
       {/* DEBUG: Simple fallback waves */}
       <div className="absolute inset-0 z-4 pointer-events-none">
-        <div className="wave-container-fallback force-animations" data-testid="fallback-waves">
-          <svg className="absolute bottom-0 w-full h-32" viewBox="0 0 1200 120" preserveAspectRatio="none">
-            <path 
-              d="M0,60 Q300,40 600,60 T1200,60 L1200,120 L0,120 Z" 
-              fill="rgba(251, 191, 36, 0.3)" 
+        <div
+          className="wave-container-fallback force-animations"
+          data-testid="fallback-waves"
+        >
+          <svg
+            className="absolute bottom-0 w-full h-32"
+            viewBox="0 0 1200 120"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M0,60 Q300,40 600,60 T1200,60 L1200,120 L0,120 Z"
+              fill="rgba(251, 191, 36, 0.3)"
               className="wave-path-fallback"
             />
           </svg>
