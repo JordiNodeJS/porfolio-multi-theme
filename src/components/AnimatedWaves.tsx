@@ -16,7 +16,7 @@ const AnimatedWaves = () => {
       scale: 1,
     },
     {
-      id: "wave-2", 
+      id: "wave-2",
       path: "M-50,80 Q200,50 400,80 T800,80 Q1000,50 1200,80 T1550,80 L1550,300 L-50,300 Z",
       duration: 25,
       delay: 3,
@@ -39,7 +39,7 @@ const AnimatedWaves = () => {
       case "dark":
         return [
           "rgba(56, 189, 248, 0.5)", // Cyan - More intense
-          "rgba(59, 130, 246, 0.4)", // Blue  
+          "rgba(59, 130, 246, 0.4)", // Blue
           "rgba(147, 51, 234, 0.3)", // Purple
         ];
       case "light":
@@ -103,10 +103,10 @@ const AnimatedWaves = () => {
 
           {/* Filter for subtle glow effect */}
           <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-            <feMerge> 
-              <feMergeNode in="coloredBlur"/>
-              <feMergeNode in="SourceGraphic"/>
+            <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+            <feMerge>
+              <feMergeNode in="coloredBlur" />
+              <feMergeNode in="SourceGraphic" />
             </feMerge>
           </filter>
         </defs>
@@ -119,7 +119,7 @@ const AnimatedWaves = () => {
             fill={`url(#waveGradient-${index})`}
             opacity={wave.opacity}
             filter={theme === "brutalism" ? "none" : "url(#glow)"}
-            initial={{ 
+            initial={{
               pathLength: 0,
               x: 0,
               scale: 1,
@@ -176,7 +176,7 @@ const AnimatedWaves = () => {
             r={index % 2 === 0 ? 2 : 1.5}
             fill={colors[index % colors.length]}
             opacity={0.4}
-            initial={{ 
+            initial={{
               x: -50,
               opacity: 0,
             }}

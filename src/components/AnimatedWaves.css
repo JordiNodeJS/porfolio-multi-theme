@@ -40,7 +40,8 @@
 }
 
 @keyframes gentleFloat {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0) scale(1);
     opacity: 0.4;
   }
@@ -174,7 +175,7 @@
   .wave-svg {
     height: 80%;
   }
-  
+
   .wave-path-1,
   .wave-path-2,
   .wave-path-3 {

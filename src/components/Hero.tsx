@@ -66,7 +66,6 @@ const Hero = () => {
             : "bg-gradient-to-br from-gray-50 to-white"
         }`}
       />
-      
       {/* Animated Waves Background */}
       <div className="absolute inset-0 z-5">
         <AnimatedWaves />
