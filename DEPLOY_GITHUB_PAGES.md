@@ -24,38 +24,42 @@ bun run build
 bun run deploy:github-pages
 ```
 
-## ⚠️ IMPORTANTE: Problema con Nombres de Archivo Largos en Windows
+## ✅ SOLUCIÓN IMPLEMENTADA
 
-**Error conocido:** El repositorio `jordinodejs.github.io` contiene archivos con nombres muy largos que causan el error:
-```
-fatal: cannot create directory at 'node_modules/.pnpm/...' Filename too long
-```
+**El problema de nombres largos se resolvió configurando:**
 
-### Solución Recomendada:
-
-**OPCIÓN A: Configurar Git para nombres largos (Windows)**
 ```bash
 git config --global core.longpaths true
 ```
 
-**OPCIÓN B: Usar el método alternativo (subdominio)**
-```bash
-# Cambiar base en vite.config.ts a:
-base: "/porfolio-multi-theme/"
+### Método 1: Despliegue al Dominio Principal (FUNCIONANDO ✅)
 
-# Luego desplegar:
-bun run deploy:self
+Para desplegar al dominio principal `https://jordinodejs.github.io`:
+
+```bash
+# PASO 1: Configurar git para nombres largos (solo una vez)
+git config --global core.longpaths true
+
+# PASO 2: Construir y desplegar
+bun run build
+bun run deploy:main
 ```
 
-**OPCIÓN C: Limpieza del repositorio principal (recomendado)**
+### Método 2: Despliegue a Subdominio (Alternativo)
+
+Para desplegar como subproyecto `https://jordinodejs.github.io/porfolio-multi-theme/`:
+
 ```bash
-# En el repositorio jordinodejs.github.io, eliminar node_modules y archivos problemáticos
-# Luego usar: bun run deploy:main
+# Cambiar base en vite.config.ts a: "/porfolio-multi-theme/"
+# Luego:
+bun run build
+bun run deploy:self
 ```
 
 ### Configuración en GitHub (OBLIGATORIO después del despliegue)
 
 #### Para Dominio Principal (Método 1):
+
 1. **Ve al repositorio** `jordinodejs.github.io` en GitHub
 2. **Settings** → **Pages** (menú lateral izquierdo)
 3. **Configurar la fuente:**
@@ -65,6 +69,7 @@ bun run deploy:self
 4. **Save**
 
 #### Para Subdominio (Método 2):
+
 1. **Ve al repositorio** `porfolio-multi-theme` en GitHub
 2. **Settings** → **Pages** (menú lateral izquierdo)
 3. **Configurar la fuente:**
@@ -99,20 +104,24 @@ Requiere configuración adicional de tokens que no siempre funciona correctament
 Si eres una AI y el usuario te pide "despliega el proyecto a GitHub Pages en el dominio principal", ejecuta EXACTAMENTE estos comandos:
 
 ```bash
-# PASO 1: Verificar configuración
+# PASO 1: Configurar Git para nombres largos (solo si no está configurado)
+git config --global core.longpaths true
+
+# PASO 2: Verificar configuración
 cd /ruta/al/proyecto/porfolio-multi-theme
 
-# PASO 2: Verificar que vite.config.ts tenga base: "/"
+# PASO 3: Verificar que vite.config.ts tenga base: "/"
 # (para dominio principal)
 
-# PASO 3: Construir y desplegar
+# PASO 4: Construir y desplegar
 git add . && git commit -m "Update portfolio for main domain deployment"
 bun run build
-bun run deploy:github-pages
+bun run deploy:main
 
-# PASO 4: Informar al usuario
+# PASO 5: Informar al usuario
 echo "✅ Despliegue completado a https://jordinodejs.github.io"
 echo "⏱️ Los cambios estarán visibles en 2-10 minutos"
+echo "📝 Configuración en GitHub Pages debe usar rama 'main' en repositorio jordinodejs.github.io"
 ```
 
 ### Para Subdominio (https://jordinodejs.github.io/porfolio-multi-theme/)
@@ -209,6 +218,7 @@ bun run deploy:self
 ## Configuración de Vite
 
 ### Para Dominio Principal
+
 La configuración está optimizada para el dominio principal:
 
 ```typescript
@@ -222,6 +232,7 @@ export default defineConfig({
 ```
 
 ### Para Subdominio (si necesitas cambiarlo)
+
 Para desplegar como subproyecto, cambiar `base` a:
 
 ```typescript
