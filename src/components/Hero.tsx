@@ -16,6 +16,14 @@ console.log("🚀 Hero component version: 1.0.0 - Automatic deployment test");
 const Hero = () => {
   const { theme } = useTheme();
   const { data: portfolioData } = usePortfolioDataFromLocales();
+  // Compute display name based on theme. For brutalism we want the phrase "JORGe's web"
+  // (or the localized name + "'s web" when a name exists).
+  const displayName =
+    theme === "brutalism"
+      ? portfolioData?.presentation?.name
+        ? `${portfolioData.presentation.name}'s web`
+        : "JORGe's web"
+      : portfolioData?.presentation?.name || "JORGE";
   const profileContainerRef = useRef<HTMLDivElement>(null);
 
   // Using our enhanced 3D effect hook for better physics-based animations
@@ -288,7 +296,7 @@ const Hero = () => {
             theme === "light" ||
             theme === "retro-pastel" ? (
               <ProgressiveTextReveal
-                text={portfolioData?.presentation?.name || "JORGE"}
+                text={displayName}
                 duration={4000}
                 className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-4 bg-clip-text text-transparent ${
                   theme === "dark"
@@ -352,13 +360,38 @@ const Hero = () => {
                   }),
                 }}
               >
-                <TextRevealAnimation
-                  text={portfolioData?.presentation?.name || "JORGe's web"}
-                  charDelay={theme === "brutalism" ? 0.12 : 0.08} // Slower animation for brutalism to ensure all chars appear
-                  animationStyle="scale"
-                  once={false}
-                  replay={false}
-                />
+                {theme === "brutalism" ? (
+                  // For brutalism show the full phrase immediately (no per-char animation)
+                  <span
+                    style={{
+                      fontSize: "4.5rem",
+                      lineHeight: "1.1",
+                      color: "#ef7574",
+                      textShadow:
+                        "2px 2px 0 #000, " +
+                        "-1px -1px 0 #f8d7da, " +
+                        "-1px -2px 0 #f5b5b5, " +
+                        "1px -1px 0 #000, " +
+                        "-1px 1px 0 #000, " +
+                        "1px 1px 0 #000",
+                      WebkitTextStroke: "0.5px #000",
+                      overflow: "visible",
+                      whiteSpace: "normal", // Permite salto de línea
+                      display: "inline-block",
+                      fontWeight: 700,
+                    }}
+                  >
+                    {displayName}
+                  </span>
+                ) : (
+                  <TextRevealAnimation
+                    text={displayName}
+                    charDelay={0.08}
+                    animationStyle="scale"
+                    once={false}
+                    replay={false}
+                  />
+                )}
               </div>
             )}
 
