@@ -14,10 +14,12 @@ Este documento explica el sistema de despliegue automático configurado para el 
 ### 🔧 Cómo Funciona el Despliegue Automático
 
 #### 1. **Trigger Automático**
+
 - Se ejecuta automáticamente con `git push origin main`
 - Detecta cambios en: `src/`, `public/`, `index.html`, `package.json`, `vite.config.ts`, `tailwind.config.js`
 
 #### 2. **Proceso de Build**
+
 ```yaml
 - name: Setup Bun
   uses: oven-sh/setup-bun@v1
@@ -32,6 +34,7 @@ Este documento explica el sistema de despliegue automático configurado para el 
 ```
 
 #### 3. **Deploy Automático**
+
 ```yaml
 - name: Deploy to external repository
   run: |
@@ -99,14 +102,14 @@ name: Deploy to External GitHub Pages
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
     paths:
-      - 'src/**'
-      - 'public/**'
-      - 'index.html'
-      - 'package.json'
-      - 'vite.config.ts'
-      - 'tailwind.config.js'
+      - "src/**"
+      - "public/**"
+      - "index.html"
+      - "package.json"
+      - "vite.config.ts"
+      - "tailwind.config.js"
 
 jobs:
   deploy:
@@ -141,7 +144,6 @@ jobs:
 ---
 
 ⭐ **Despliegue automático configurado y funcionando perfectamente!**
-
 
 **NO uses nunca:**
 
