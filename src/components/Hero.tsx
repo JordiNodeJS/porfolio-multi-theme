@@ -72,8 +72,9 @@ const Hero = () => {
             : "bg-gradient-to-br from-gray-50 to-white"
         }`}
       />
-      {/* Animated Waves Background */}
-      <div className="absolute inset-0 z-5">
+  {/* Animated Waves Background */}
+  {/* Ensure waves don't intercept pointer events (can block mobile nav buttons) */}
+  <div className="absolute inset-0 z-0 pointer-events-none">
         <Suspense
           fallback={
             <div
@@ -94,8 +95,11 @@ const Hero = () => {
             </div>
           }
         >
-          <AnimatedWaves />
-          <LazyAnimatedWaves />
+          {/* Animated waves are visual only — keep them from catching pointer events */}
+          <div className="pointer-events-none">
+            <AnimatedWaves />
+            <LazyAnimatedWaves />
+          </div>
         </Suspense>
       </div>
       {/* DEBUG: Simple fallback waves */}
