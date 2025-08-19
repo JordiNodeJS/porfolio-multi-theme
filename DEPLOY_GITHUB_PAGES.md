@@ -24,16 +24,33 @@ bun run build
 bun run deploy:github-pages
 ```
 
-### Método 2: Despliegue a Subdominio (Alternativo)
+## ⚠️ IMPORTANTE: Problema con Nombres de Archivo Largos en Windows
 
-Para desplegar como subproyecto `https://jordinodejs.github.io/porfolio-multi-theme/`:
+**Error conocido:** El repositorio `jordinodejs.github.io` contiene archivos con nombres muy largos que causan el error:
+```
+fatal: cannot create directory at 'node_modules/.pnpm/...' Filename too long
+```
 
+### Solución Recomendada:
+
+**OPCIÓN A: Configurar Git para nombres largos (Windows)**
 ```bash
-# 1. Construir el proyecto
-bun run build
+git config --global core.longpaths true
+```
 
-# 2. Desplegar a rama gh-pages del mismo repositorio
+**OPCIÓN B: Usar el método alternativo (subdominio)**
+```bash
+# Cambiar base en vite.config.ts a:
+base: "/porfolio-multi-theme/"
+
+# Luego desplegar:
 bun run deploy:self
+```
+
+**OPCIÓN C: Limpieza del repositorio principal (recomendado)**
+```bash
+# En el repositorio jordinodejs.github.io, eliminar node_modules y archivos problemáticos
+# Luego usar: bun run deploy:main
 ```
 
 ### Configuración en GitHub (OBLIGATORIO después del despliegue)

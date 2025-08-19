@@ -12,6 +12,7 @@
     "preview": "vite preview",
     "deploy": "gh-pages -d dist",
     "deploy:self": "node scripts/deploy-self.js",
+    "deploy:main": "node scripts/deploy-manual-main.js",
     "deploy:github-pages": "node scripts/deploy-to-github-pages.js",
     "test:deployment": "node scripts/test-deployment.js"
   },
