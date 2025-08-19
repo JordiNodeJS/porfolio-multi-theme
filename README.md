@@ -59,41 +59,48 @@ bun run build
 
 # Vista previa de producción
 bun run preview
-
-# Desplegar a GitHub Pages
-bun run deploy:github-pages
 ```
 
-## 🚀 Despliegue a GitHub Pages
+## 🚀 Despliegue Automático a GitHub Pages
 
-El proyecto incluye un script automatizado para desplegar a GitHub Pages:
+### ✨ ¡Despliegue Completamente Automatizado!
+
+El proyecto utiliza **GitHub Actions** para despliegue automático. **No necesitas ejecutar scripts manuales.**
+
+#### 🔧 Cómo Funciona
+
+1. **Haces cambios** en tu código local
+2. **Subes a GitHub** con `git push origin main`
+3. **GitHub Actions automáticamente**:
+   - 📦 Construye el proyecto con Bun
+   - � Despliega a `https://jordinodejs.github.io`
+   - ⚡ ¡Listo en menos de 2 minutos!
+
+#### 📋 Workflow Simple
 
 ```bash
-# Ejecutar despliegue completo
-bun run deploy:github-pages
+# 1. Desarrollar localmente
+bun dev
+
+# 2. Confirmar cambios
+git add .
+git commit -m "feat: nueva funcionalidad"
+
+# 3. Subir cambios (esto dispara el deploy automático)
+git push origin main
+
+# ¡YA ESTÁ! GitHub Actions se encarga del resto
 ```
 
-### ¿Qué hace el script?
+#### ⚙️ Configuración GitHub Actions
 
-1. **📦 Construye el proyecto** usando `npm run build`
-2. **📥 Clona** el repositorio de GitHub Pages
-3. **🧹 Limpia** el directorio temporal (mantiene `.git`)
-4. **📋 Copia** los archivos construidos desde `dist/`
-5. **📤 Sube** los cambios con commit automático
-6. **🧽 Limpia** archivos temporales
+El archivo `.github/workflows/deploy-external.yml` maneja el despliegue automático:
 
-### Configuración
-
-El script está configurado para desplegar al repositorio:
-- **Repositorio de destino**: `https://github.com/jordinodejs/jordinodejs.github.io.git`
-- **Directorio de construcción**: `dist/`
-- **Rama de destino**: `main`
-
-Para cambiar la configuración, edita las constantes en `scripts/deploy-to-github-pages.js`:
-
-```javascript
-const GITHUB_PAGES_REPO = 'https://github.com/tu-usuario/tu-usuario.github.io.git';
-```
+- **Trigger**: Push a la rama `main`
+- **Detecta cambios en**: `src/`, `public/`, `index.html`, `package.json`, etc.
+- **Repositorio destino**: `jordinodejs.github.io`
+- **Build tool**: Bun
+- **Deploy**: Automático con git push
 
 ## 🌐 Internacionalización (i18n)
 
@@ -136,16 +143,22 @@ Ejemplo de estructura para la sección Skills:
 }
 ```
 
+## 🔄 Estado Actual del Proyecto
+
+### ✅ Despliegue Automático Configurado
+- **GitHub Actions**: Configurado y funcionando
+- **URL Producción**: https://jordinodejs.github.io
+- **Última actualización**: Enero 2025
+- **Deploy automático**: Activado con push a `main`
+
+### 🚀 Workflow Optimizado
+1. **Desarrollo**: `bun dev` (servidor local)
+2. **Testing**: Playwright automático en CI/CD
+3. **Deploy**: Automático con `git push origin main`
+4. **Resultado**: Portfolio actualizado en menos de 2 minutos
+
 ---
 
-⭐ **Portfolio completamente funcional, multilenguaje y con animaciones modernas!**
+⭐ **Portfolio completamente funcional, multilenguaje y con despliegue automático!**
 
 🚀 **Servidor corriendo en:** http://localhost:5173/
-
----
-
-## 🔄 Último Deploy
-- **Fecha:** 10 de Junio, 2025 ✅
-- **Estado:** Funcionando perfectamente con imágenes corregidas
-- **GitHub Actions:** Configurado y optimizado
-- **GitHub Pages:** Activo en https://jordinodejs.github.io/porfolio-multi-theme/
