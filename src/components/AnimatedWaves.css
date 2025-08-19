@@ -105,6 +105,9 @@
   height: 100%;
   overflow: hidden;
   pointer-events: none;
+  /* Ensure no margins or padding */
+  margin: 0;
+  padding: 0;
   /* Clip any content that extends beyond the container */
   clip-path: inset(0 0 0 0);
 }
@@ -112,13 +115,16 @@
 .wave-svg {
   position: absolute;
   bottom: 0;
-  /* Aggressively extend beyond edges to avoid visible seams when scaling/animating */
-  left: -12%;
-  width: 124%;
+  /* Extend completely to edges and beyond */
+  left: -20%;
+  width: 140%;
   height: 100%;
   /* Prevent edges from showing during animations */
   transform: none;
   shape-rendering: geometricPrecision;
+  /* Ensure no margins or gaps */
+  margin: 0;
+  padding: 0;
 }
 
 /* Individual wave path styles for CSS animations fallback */

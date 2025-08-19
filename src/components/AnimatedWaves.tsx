@@ -12,7 +12,7 @@ const AnimatedWaves = () => {
   const waveConfigs = [
     {
       id: "wave-1",
-      path: "M-200,60 Q150,40 300,60 T600,60 Q750,40 900,60 T1200,60 Q1350,40 1550,60 L1700,300 L-200,300 Z",
+      path: "M-400,60 Q-100,40 200,60 Q500,80 800,60 Q1100,40 1400,60 Q1700,80 2000,60 L2200,400 L-400,400 Z",
       duration: 20,
       delay: 0,
       opacity: 0.8,
@@ -20,7 +20,7 @@ const AnimatedWaves = () => {
     },
     {
       id: "wave-2",
-      path: "M-200,80 Q200,50 400,80 T800,80 Q1000,50 1200,80 T1550,80 L1700,300 L-200,300 Z",
+      path: "M-400,80 Q-50,50 300,80 Q650,110 1000,80 Q1350,50 1700,80 Q2050,110 2200,80 L2200,400 L-400,400 Z",
       duration: 25,
       delay: 3,
       opacity: 0.6,
@@ -28,7 +28,7 @@ const AnimatedWaves = () => {
     },
     {
       id: "wave-3",
-      path: "M-200,100 Q100,70 200,100 Q300,130 400,100 Q500,70 600,100 Q700,130 800,100 Q900,70 1000,100 Q1100,130 1200,100 Q1300,70 1400,100 Q1450,70 1550,100 L1700,300 L-200,300 Z",
+      path: "M-400,100 Q-200,70 0,100 Q200,130 400,100 Q600,70 800,100 Q1000,130 1200,100 Q1400,70 1600,100 Q1800,130 2000,100 Q2100,70 2200,100 L2200,400 L-400,400 Z",
       duration: 30,
       delay: 6,
       opacity: 0.4,
@@ -93,8 +93,8 @@ const AnimatedWaves = () => {
     >
       <svg
         className="wave-svg"
-        viewBox="-200 0 1900 300"
-        preserveAspectRatio="xMidYMax meet"
+        viewBox="-400 0 2600 400"
+        preserveAspectRatio="xMidYMax slice"
         data-testid="wave-svg"
       >
         <defs>

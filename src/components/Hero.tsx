@@ -1,14 +1,11 @@
 import { motion } from "framer-motion";
 import { useTheme } from "../hooks/useTheme";
-import { useRef, Suspense, lazy } from "react";
+import { useRef, Suspense } from "react";
 import useMotion3DEffect from "../hooks/useMotion3DEffect";
 import { TextRevealAnimation } from "./TextRevealAnimation";
 import ProgressiveTextReveal from "./ProgressiveTextReveal";
 import { usePortfolioDataFromLocales } from "../hooks/usePortfolioDataFromLocales";
 import AnimatedWaves from "./AnimatedWaves";
-
-// Lazy load as backup
-const LazyAnimatedWaves = lazy(() => import("./AnimatedWaves"));
 
 // Version for deployment verification v1.0.0
 console.log("🚀 Hero component version: 1.0.0 - Automatic deployment test");
@@ -95,7 +92,7 @@ const Hero = () => {
               >
                 <path
                   d="M0,60 Q300,40 600,60 T1200,60 L1200,120 L0,120 Z"
-                  fill="rgba(251, 191, 36, 0.1)"
+                  fill={theme === 'light' ? "rgba(59, 130, 246, 0.15)" : "rgba(56, 189, 248, 0.25)"}
                   className="wave-path-fallback"
                 />
               </svg>
@@ -103,27 +100,7 @@ const Hero = () => {
           }
         >
           <AnimatedWaves />
-          <LazyAnimatedWaves />
         </Suspense>
-      </div>
-      {/* DEBUG: Simple fallback waves */}
-      <div className="absolute inset-0 z-4 pointer-events-none">
-        <div
-          className="wave-container-fallback force-animations"
-          data-testid="fallback-waves"
-        >
-          <svg
-            className="absolute bottom-0 w-full h-32"
-            viewBox="0 0 1200 120"
-            preserveAspectRatio="none"
-          >
-            <path
-              d="M0,60 Q300,40 600,60 T1200,60 L1200,120 L0,120 Z"
-              fill="rgba(251, 191, 36, 0.3)"
-              className="wave-path-fallback"
-            />
-          </svg>
-        </div>
       </div>
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4">
