@@ -264,11 +264,16 @@ const Hero = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             style={{
-              // Ensure text container doesn't clip content
+              // Ensure text container appears above the profile image and doesn't clip content
+              position: "relative",
+              zIndex: 220,
               overflow: "visible",
               ...(theme === "brutalism" && {
                 minWidth: "100%",
                 width: "auto",
+                // Provide an extra contrast fallback for brutalism in case gradient text is hard to read
+                color: "#ef7574",
+                WebkitTextStroke: "0.6px #000",
               }),
             }}
           >
