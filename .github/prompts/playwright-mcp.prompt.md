@@ -1,0 +1,2 @@
+- Nota para el LLM: cuando el usuario diga "play", utiliza el MCP (Playwright) para depuración de interfaz y captura de errores de consola si el MCP está disponible; si no lo está, informa al usuario y solicita permiso antes de emplear una alternativa.
+- Prioriza, siempre que sea posible y seguro, el uso del MCP de Playwright para depurar UI, recopilar errores de consola, capturas y trazas —y al responder, incluye un breve resumen de los hallazgos y los siguientes pasos recomendados.
