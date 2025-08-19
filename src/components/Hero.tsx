@@ -92,7 +92,11 @@ const Hero = () => {
               >
                 <path
                   d="M0,60 Q300,40 600,60 T1200,60 L1200,120 L0,120 Z"
-                  fill={theme === 'light' ? "rgba(59, 130, 246, 0.15)" : "rgba(56, 189, 248, 0.25)"}
+                  fill={
+                    theme === "light"
+                      ? "rgba(59, 130, 246, 0.15)"
+                      : "rgba(56, 189, 248, 0.25)"
+                  }
                   className="wave-path-fallback"
                 />
               </svg>
@@ -310,11 +314,11 @@ const Hero = () => {
                   theme === "brutalism"
                     ? "text-black"
                     : theme === "vintage"
-                    ? "bg-clip-text text-transparent"
+                    ? "text-amber-900"
                     : "bg-clip-text text-transparent"
                 } ${
                   theme === "vintage"
-                    ? "bg-gradient-to-r from-yellow-600 via-amber-500 to-orange-600"
+                    ? ""
                     : theme === "brutalism"
                     ? ""
                     : "bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600"
@@ -322,6 +326,8 @@ const Hero = () => {
                 style={{
                   fontSize: "4.5rem",
                   lineHeight: "1.1",
+                  position: "relative",
+                  zIndex: 999,
                   // Ensure proper display for brutalism theme
                   ...(theme === "brutalism" && {
                     color: "#ef7574",
@@ -337,12 +343,16 @@ const Hero = () => {
                     whiteSpace: "nowrap", // Prevent text wrapping that might cause issues
                   }),
                   ...(theme === "vintage" && {
+                    color: "#2d1810", // Color café muy oscuro para máximo contraste
                     textShadow:
-                      "2px 2px 4px rgba(0, 0, 0, 0.3), 0 0 20px rgba(251, 191, 36, 0.5)",
+                      "3px 3px 6px rgba(0, 0, 0, 0.8), " +
+                      "1px 1px 0 rgba(255, 255, 255, 0.8), " +
+                      "0 0 30px rgba(251, 191, 36, 0.9)",
                     fontFamily: '"Playfair Display", serif',
-                    fontWeight: "700",
+                    fontWeight: "900", // Peso más grueso
                     letterSpacing: "0.05em",
-                    filter: "drop-shadow(0 4px 8px rgba(139, 94, 60, 0.4))",
+                    filter: "drop-shadow(0 6px 12px rgba(0, 0, 0, 0.7))",
+                    WebkitTextStroke: "1px rgba(255, 255, 255, 0.3)",
                   }),
                 }}
               >
@@ -369,6 +379,31 @@ const Hero = () => {
                   >
                     {displayName}
                   </span>
+                ) : theme === "vintage" ? (
+                  // For vintage show the text directly with high contrast
+                  <span
+                    style={{
+                      fontSize: "4.5rem",
+                      lineHeight: "1.1",
+                      color: "#2d1810",
+                      textShadow:
+                        "3px 3px 6px rgba(0, 0, 0, 0.8), " +
+                        "1px 1px 0 rgba(255, 255, 255, 0.8), " +
+                        "0 0 30px rgba(251, 191, 36, 0.9)",
+                      fontFamily: '"Playfair Display", serif',
+                      fontWeight: "900",
+                      letterSpacing: "0.05em",
+                      filter: "drop-shadow(0 6px 12px rgba(0, 0, 0, 0.7))",
+                      WebkitTextStroke: "1px rgba(255, 255, 255, 0.3)",
+                      overflow: "visible",
+                      whiteSpace: "normal",
+                      display: "inline-block",
+                      position: "relative",
+                      zIndex: 1000,
+                    }}
+                  >
+                    {displayName}
+                  </span>
                 ) : (
                   <TextRevealAnimation
                     text={displayName}
@@ -389,7 +424,7 @@ const Hero = () => {
                   : theme === "brutalism"
                   ? "text-black font-bold"
                   : theme === "vintage"
-                  ? "text-amber-600 font-medium"
+                  ? "text-amber-900 font-bold"
                   : theme === "retro-pastel"
                   ? "text-rose-400 font-light"
                   : theme === "light"
@@ -397,6 +432,8 @@ const Hero = () => {
                   : "text-gray-600"
               }`}
               style={{
+                position: "relative",
+                zIndex: 999,
                 ...(theme === "dark" && {
                   textShadow: "0 1px 3px rgba(0,0,0,0.3)",
                 }),
@@ -405,10 +442,16 @@ const Hero = () => {
                   WebkitTextStroke: "0.2px #000",
                 }),
                 ...(theme === "vintage" && {
-                  textShadow: "0 1px 2px rgba(0, 0, 0, 0.2)",
+                  color: "#2d1810", // Color café muy oscuro
+                  textShadow:
+                    "2px 2px 4px rgba(0, 0, 0, 0.7), " +
+                    "1px 1px 0 rgba(255, 255, 255, 0.6), " +
+                    "0 0 20px rgba(251, 191, 36, 0.8)",
                   fontFamily: '"Playfair Display", serif',
                   fontStyle: "italic",
                   letterSpacing: "0.01em",
+                  fontWeight: "700",
+                  WebkitTextStroke: "0.5px rgba(255, 255, 255, 0.2)",
                 }),
                 ...(theme === "retro-pastel" && {
                   textShadow: "0 1px 2px rgba(255, 182, 193, 0.3)",
