@@ -191,7 +191,7 @@
   .drifting-particle {
     animation: none;
   }
-  
+
   /* Allow override for force-animations class */
   .force-animations .wave-path-1,
   .force-animations .wave-path-2,
@@ -200,26 +200,26 @@
   .force-animations .drifting-particle {
     animation: revert;
   }
-  
+
   .force-animations .wave-path-1 {
     animation: waveFlow 20s ease-in-out infinite;
     animation-delay: 0s;
   }
-  
+
   .force-animations .wave-path-2 {
     animation: waveFlow 25s ease-in-out infinite;
     animation-delay: 3s;
   }
-  
+
   .force-animations .wave-path-3 {
     animation: waveFlow 30s ease-in-out infinite;
     animation-delay: 6s;
   }
-  
+
   .force-animations .floating-particle {
     animation: gentleFloat 8s ease-in-out infinite;
   }
-  
+
   .force-animations .drifting-particle {
     animation: particleDrift 12s linear infinite;
   }
