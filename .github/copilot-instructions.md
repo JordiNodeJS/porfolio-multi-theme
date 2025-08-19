@@ -38,26 +38,22 @@ bun add -d [package-name]
 #### Proceso de Deploy
 
 1. **Desarrollo local**:
-
    ```bash
    bun dev  # Desarrollar en http://localhost:5174/
    ```
 
 2. **Confirmar cambios**:
-
    ```bash
    git add .
    git commit -m "feat: descripción de los cambios"
    ```
 
 3. **Deploy automático**:
-
    ```bash
    git push origin main
    ```
-
+   
    **¡YA ESTÁ!** GitHub Actions automáticamente:
-
    - 📦 Detecta los cambios
    - 🔨 Construye el proyecto con Bun
    - 🚀 Despliega a https://jordinodejs.github.io
@@ -79,7 +75,7 @@ bun add -d [package-name]
 ### ❌ QUE NO HACER
 
 - ~~No usar scripts manuales~~ (ya eliminados)
-- ~~No ejecutar comandos de deploy~~
+- ~~No ejecutar comandos de deploy~~ 
 - ~~No configurar nada manualmente~~
 
 **Solo usa: `git push origin main` y el resto es automático**

@@ -146,14 +146,12 @@ Ejemplo de estructura para la sección Skills:
 ## 🔄 Estado Actual del Proyecto
 
 ### ✅ Despliegue Automático Configurado
-
 - **GitHub Actions**: Configurado y funcionando
 - **URL Producción**: https://jordinodejs.github.io
 - **Última actualización**: Enero 2025
 - **Deploy automático**: Activado con push a `main`
 
 ### 🚀 Workflow Optimizado
-
 1. **Desarrollo**: `bun dev` (servidor local)
 2. **Testing**: Playwright automático en CI/CD
 3. **Deploy**: Automático con `git push origin main`
