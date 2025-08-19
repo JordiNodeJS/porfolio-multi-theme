@@ -71,22 +71,6 @@ export const useMotion3DEffect = (
   // Animation controls for programmatic animations
   const controls = useAnimation();
 
-  // Animation for breathing effect when not hovered
-  const startBreathingAnimation = () => {
-    if (!breatheAnimation || isHovered) return;
-
-    let isIncreasing = true;
-    const animate = async () => {
-      if (isHovered) return;
-
-      scale.set(isIncreasing ? breatheScale : 1);
-      isIncreasing = !isIncreasing;
-      breatheTimerRef.current = window.setTimeout(animate, breatheDuration);
-    };
-
-    animate();
-  };
-
   // Stop breathing animation
   const stopBreathingAnimation = () => {
     if (breatheTimerRef.current) {
@@ -99,6 +83,22 @@ export const useMotion3DEffect = (
   useEffect(() => {
     const element = ref.current;
     if (!element) return;
+
+    // Animation for breathing effect when not hovered
+    const startBreathingAnimation = () => {
+      if (!breatheAnimation || isHovered) return;
+
+      let isIncreasing = true;
+      const animate = async () => {
+        if (isHovered) return;
+
+        scale.set(isIncreasing ? breatheScale : 1);
+        isIncreasing = !isIncreasing;
+        breatheTimerRef.current = window.setTimeout(animate, breatheDuration);
+      };
+
+      animate();
+    };
 
     // Start breathing if enabled
     if (breatheAnimation) {
@@ -179,6 +179,8 @@ export const useMotion3DEffect = (
     zAxisMovement,
     resetOnLeave,
     breatheAnimation,
+    breatheDuration,
+    breatheScale,
     isHovered,
   ]);
 
