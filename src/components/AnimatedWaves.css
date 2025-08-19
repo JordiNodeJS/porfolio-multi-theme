@@ -1,0 +1,188 @@
+/* Animated Waves CSS - Wind and Breeze Effects */
+
+@keyframes waveFlow {
+  0% {
+    transform: translateX(0) translateY(0) scaleX(1);
+  }
+  25% {
+    transform: translateX(30px) translateY(-8px) scaleX(1.05);
+  }
+  50% {
+    transform: translateX(-15px) translateY(5px) scaleX(0.98);
+  }
+  75% {
+    transform: translateX(45px) translateY(-12px) scaleX(1.03);
+  }
+  100% {
+    transform: translateX(0) translateY(0) scaleX(1);
+  }
+}
+
+@keyframes windyMovement {
+  0% {
+    transform: translateX(0) translateY(0) rotate(0deg);
+  }
+  20% {
+    transform: translateX(15px) translateY(-5px) rotate(1deg);
+  }
+  40% {
+    transform: translateX(-10px) translateY(3px) rotate(-0.5deg);
+  }
+  60% {
+    transform: translateX(25px) translateY(-8px) rotate(1.5deg);
+  }
+  80% {
+    transform: translateX(-5px) translateY(2px) rotate(-0.8deg);
+  }
+  100% {
+    transform: translateX(0) translateY(0) rotate(0deg);
+  }
+}
+
+@keyframes gentleFloat {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.4;
+  }
+  25% {
+    transform: translateY(-10px) scale(1.1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(5px) scale(0.9);
+    opacity: 0.3;
+  }
+  75% {
+    transform: translateY(-8px) scale(1.05);
+    opacity: 0.7;
+  }
+}
+
+@keyframes particleDrift {
+  0% {
+    transform: translateX(0) translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateX(60px) translateY(-15px) rotate(180deg);
+    opacity: 0.7;
+  }
+  90% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateX(120px) translateY(5px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Wave container styles */
+.wave-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.wave-svg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Individual wave path styles for CSS animations fallback */
+.wave-path-1 {
+  animation: waveFlow 20s ease-in-out infinite;
+  animation-delay: 0s;
+}
+
+.wave-path-2 {
+  animation: waveFlow 25s ease-in-out infinite;
+  animation-delay: 3s;
+}
+
+.wave-path-3 {
+  animation: waveFlow 30s ease-in-out infinite;
+  animation-delay: 6s;
+}
+
+/* Floating particles */
+.floating-particle {
+  animation: gentleFloat 8s ease-in-out infinite;
+}
+
+.drifting-particle {
+  animation: particleDrift 12s linear infinite;
+}
+
+/* Wind effect modifiers */
+.wind-light {
+  animation-duration: 1.2s;
+}
+
+.wind-medium {
+  animation-duration: 0.8s;
+}
+
+.wind-strong {
+  animation-duration: 0.5s;
+}
+
+/* Theme-specific wave effects */
+.waves-dark {
+  filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.3));
+}
+
+.waves-light {
+  filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.2));
+}
+
+.waves-vintage {
+  filter: drop-shadow(0 0 12px rgba(251, 191, 36, 0.4)) sepia(20%);
+}
+
+.waves-retro-pastel {
+  filter: drop-shadow(0 0 6px rgba(255, 182, 193, 0.3)) saturate(1.2);
+}
+
+.waves-brutalism {
+  filter: drop-shadow(3px 3px 0px #000) contrast(1.2);
+}
+
+/* Performance optimizations */
+.wave-container * {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .wave-svg {
+    height: 80%;
+  }
+  
+  .wave-path-1,
+  .wave-path-2,
+  .wave-path-3 {
+    animation-duration: 15s, 20s, 25s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wave-path-1,
+  .wave-path-2,
+  .wave-path-3,
+  .floating-particle,
+  .drifting-particle {
+    animation: none;
+  }
+}

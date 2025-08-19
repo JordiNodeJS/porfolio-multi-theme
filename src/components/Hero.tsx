@@ -5,6 +5,7 @@ import useMotion3DEffect from "../hooks/useMotion3DEffect";
 import { TextRevealAnimation } from "./TextRevealAnimation";
 import ProgressiveTextReveal from "./ProgressiveTextReveal";
 import { usePortfolioDataFromLocales } from "../hooks/usePortfolioDataFromLocales";
+import AnimatedWaves from "./AnimatedWaves";
 
 const Hero = () => {
   const { theme } = useTheme();
@@ -65,6 +66,11 @@ const Hero = () => {
             : "bg-gradient-to-br from-gray-50 to-white"
         }`}
       />
+      
+      {/* Animated Waves Background */}
+      <div className="absolute inset-0 z-5">
+        <AnimatedWaves />
+      </div>
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4">
         <div className="flex flex-col items-center">
