@@ -38,6 +38,19 @@ try {
   console.log("📋 Copiando archivos construidos...");
   execSync(`cp -r dist/* ${TEMP_DIR}/`, { stdio: "inherit" });
 
+  // 4.5 Crear timestamp para cache busting
+  const timestamp = new Date().toISOString();
+  const indexPath = path.join(TEMP_DIR, "index.html");
+  if (fs.existsSync(indexPath)) {
+    let indexContent = fs.readFileSync(indexPath, "utf8");
+    indexContent = indexContent.replace(
+      "<head>",
+      `<head>\n    <!-- Deploy timestamp: ${timestamp} -->`
+    );
+    fs.writeFileSync(indexPath, indexContent);
+    console.log("⏱️ Añadido timestamp para cache busting");
+  }
+
   // 5. Commit y push
   console.log("📤 Subiendo cambios...");
   process.chdir(TEMP_DIR);

@@ -78,7 +78,7 @@ const AnimatedWaves = () => {
   const colors = getWaveColors();
 
   return (
-    <div className={`wave-container waves-${theme}`}>
+    <div className={`wave-container waves-${theme} force-animations`}>
       <svg
         className="wave-svg"
         viewBox="-50 0 1600 300"
